@@ -381,10 +381,23 @@ section + section { border-top: 1px solid var(--hair); }
 
 /* ---------- 02 TEST ---------- */
 
-.quiz { border: 2px solid var(--ink); background: var(--paper); max-width: 58rem; }
+/* Aufgeklebtes Blatt statt UI-Rahmen: leicht gedreht, mit Schlagschatten
+   und Klebestreifen. */
+.quiz {
+  position: relative; background: var(--paper); max-width: 58rem;
+  transform: rotate(-.35deg);
+  box-shadow: 6px 8px 0 rgba(20,19,18,.10), 0 1px 0 rgba(20,19,18,.25);
+}
+.quiz::before {
+  content: ""; position: absolute; z-index: 3;
+  top: -12px; left: 50%; width: clamp(70px,12vw,120px); height: 26px;
+  transform: translateX(-50%) rotate(1.6deg);
+  background: rgba(20,19,18,.09);
+  border-inline: 1px dashed rgba(20,19,18,.14);
+}
 .quiz-bar {
   display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-  padding: .9rem clamp(1rem,3vw,2rem); border-bottom: 2px solid var(--ink);
+  padding: 1.15rem clamp(1rem,3vw,2rem) .9rem; border-bottom: 1px solid var(--hair);
   font-family: var(--mono); font-size: .6875rem; font-weight: 700;
   letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2);
 }
@@ -442,9 +455,12 @@ section + section { border-top: 1px solid var(--hair); }
 
 /* ---------- 03 CODES ---------- */
 
+/* Stempelbogen: perforierte Trennung statt Rahmengitter. */
 .glyphs {
-  display: grid; gap: 0; border: 2px solid var(--ink);
+  display: grid; gap: 0;
   grid-template-columns: repeat(2,1fr);
+  background: var(--paper);
+  box-shadow: 5px 6px 0 rgba(20,19,18,.08);
 }
 @media (min-width: 42rem) { .glyphs { grid-template-columns: repeat(4,1fr); } }
 @media (min-width: 68rem) { .glyphs { grid-template-columns: repeat(7,1fr); } }
@@ -454,7 +470,8 @@ section + section { border-top: 1px solid var(--hair); }
   font: inherit; display: flex; flex-direction: column; align-items: center;
   gap: .9rem; padding: clamp(1.25rem,3vw,2rem) .75rem;
   transition: background .12s, color .12s;
-  box-shadow: inset -1px -1px 0 var(--hair);
+  border-right: 2px dashed var(--hair);
+  border-bottom: 2px dashed var(--hair);
 }
 .glyph svg { width: clamp(38px,6vw,52px); height: auto; color: var(--ink); transition: color .12s; }
 .glyph:hover { background: var(--wall-2); }
@@ -475,19 +492,23 @@ section + section { border-top: 1px solid var(--hair); }
   margin: 0; color: var(--ink); max-width: none;
 }
 
-.lex { display: grid; gap: 0; border: 2px solid var(--ink); grid-template-columns: 1fr; }
+/* Karteizettel-Raster: Haarlinien statt Kästen, oben eine kräftige Regel. */
+.lex {
+  display: grid; grid-template-columns: 1fr;
+  border-top: 3px solid var(--ink);
+  column-gap: clamp(1.5rem,3vw,3rem);
+}
 @media (min-width: 46rem) { .lex { grid-template-columns: repeat(2,1fr); } }
 @media (min-width: 76rem) { .lex { grid-template-columns: repeat(3,1fr); } }
 
 .card {
   background: transparent; border: 0; text-align: left;
-  padding: 1.15rem 1.25rem; cursor: pointer; color: var(--ink); font: inherit;
+  padding: 1.05rem 0; cursor: pointer; color: var(--ink); font: inherit;
   display: flex; flex-direction: column; gap: .5rem;
-  transition: background .12s;
-  box-shadow: inset -1px -1px 0 var(--hair);
+  border-bottom: 1px solid var(--hair);
+  transition: color .12s;
 }
-.card:hover { background: var(--wall-2); }
-.card[aria-expanded="true"] { background: var(--paper); }
+.card:hover .term { color: var(--red); }
 .card .term {
   font-family: var(--display); font-weight: 900; text-transform: uppercase;
   letter-spacing: -.025em; font-size: 1.0625rem; line-height: 1.05;
@@ -512,17 +533,34 @@ section + section { border-top: 1px solid var(--hair); }
 .band-img { margin: 0 0 clamp(2.5rem,5vw,4rem); clip-path: var(--torn-band); }
 .band-img img { display: block; width: 100%; height: auto; }
 
-.mech { display: grid; gap: 0; border: 2px solid var(--ink); grid-template-columns: 1fr; }
-@media (min-width: 44rem) { .mech { grid-template-columns: repeat(2,1fr); } }
-@media (min-width: 72rem) { .mech { grid-template-columns: repeat(4,1fr); } }
-.mech-item { padding: clamp(1.35rem,2.6vw,2rem); box-shadow: inset -1px -1px 0 var(--hair); }
-.mech-item .n { font-family: var(--mono); font-size: .6875rem; font-weight: 700; letter-spacing: .2em; color: var(--red); display: block; margin-bottom: 1.25rem; }
+/* Keine Kacheln. Typografische Liste: fette Regel, große Ziffer,
+   Text hängt daneben. Boxen im Raster sehen nach Baukasten aus. */
+.mech {
+  display: grid; grid-template-columns: 1fr;
+  column-gap: clamp(2rem,5vw,5.5rem); row-gap: 0;
+}
+@media (min-width: 60rem) { .mech { grid-template-columns: repeat(2,1fr); } }
+
+.mech-item {
+  border-top: 3px solid var(--ink);
+  padding: clamp(1.35rem,2.4vw,1.9rem) 0 clamp(1.75rem,3vw,2.5rem);
+  display: grid; grid-template-columns: auto minmax(0,1fr);
+  column-gap: clamp(.9rem,2vw,1.5rem);
+}
+.mech-item .n {
+  grid-row: 1 / span 3;
+  font-family: var(--display); font-weight: 900;
+  font-size: clamp(2rem,4.5vw,3.25rem); line-height: .8;
+  letter-spacing: -.05em; color: var(--red);
+  font-variant-numeric: tabular-nums;
+}
 .mech-item h3 {
   font-family: var(--display); font-weight: 900; text-transform: uppercase;
   letter-spacing: -.035em; font-size: clamp(1.375rem,2.6vw,1.875rem);
-  line-height: .95; margin: 0 0 .8rem;
+  line-height: .95; margin: 0 0 .7rem;
 }
-.mech-item p { margin: 0; font-size: .9375rem; color: var(--ink-2); }
+.mech-item p { margin: 0; font-size: .9375rem; color: var(--ink-2); max-width: 40ch; }
+.mech-item .src { grid-column: 2; }
 
 .facts { margin-top: clamp(2.5rem,5vw,4rem); display: grid; gap: clamp(1.5rem,3vw,2.5rem); grid-template-columns: 1fr; }
 @media (min-width: 52rem) { .facts { grid-template-columns: repeat(3,1fr); } }
@@ -545,14 +583,15 @@ section + section { border-top: 1px solid var(--hair); }
 .tun-img { display: block; clip-path: var(--torn-blob); background: var(--paper); transform: rotate(-1.5deg); }
 .tun-img img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
 
-.acts { display: grid; gap: 0; border: 2px solid var(--ink); }
+/* Ebenfalls ohne Kasten — Haarlinie statt Rahmen. */
+.acts { display: grid; gap: 0; border-top: 3px solid var(--ink); }
 .act {
-  padding: clamp(1.25rem,2.6vw,1.85rem);
-  display: grid; gap: 1rem; grid-template-columns: auto minmax(0,1fr);
-  align-items: start; transition: background .12s;
-  box-shadow: inset 0 -1px 0 var(--hair);
+  padding: clamp(1.25rem,2.6vw,1.85rem) 0;
+  display: grid; gap: clamp(.9rem,2vw,1.75rem);
+  grid-template-columns: auto minmax(0,1fr);
+  align-items: start;
+  border-bottom: 1px solid var(--hair);
 }
-.act:hover { background: var(--wall-2); }
 .act .n {
   font-family: var(--display); font-weight: 900;
   font-size: clamp(1.75rem,4vw,2.75rem); line-height: .85;
@@ -603,3 +642,11 @@ footer b { color: var(--ink); }
 .js .rv { opacity: 0; transform: translateY(16px); transition: opacity .55s ease, transform .55s ease; }
 .js .rv.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .js .rv { opacity: 1; transform: none; transition: none; } }
+
+/* Elemente mit eigener Drehung: die Reveal-Regel setzt transform:none
+   und würde sie sonst platt bügeln. Muss nach der Reveal-Regel stehen. */
+.js .quiz.rv    { transform: translateY(16px) rotate(-.35deg); }
+.js .quiz.rv.in { transform: rotate(-.35deg); }
+@media (prefers-reduced-motion: reduce) {
+  .js .quiz.rv, .js .quiz.rv.in { transform: rotate(-.35deg); }
+}
