@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZEICHEN LESEN — Decoder für antisemitische Codes</title>
+<meta name="description" content="Hass sagt nicht mehr, wie er heißt. Interaktiver Decoder für antisemitische Codes. Kampagnenprototyp, Bachelorarbeit Mediendesign.">
+<meta name="color-scheme" content="dark">
+<link rel="stylesheet" href="assets/styles.css">
+<script>
+  /* Scroll-Reveal nur aktivieren, wenn JS läuft — sonst bleibt alles sichtbar.
+     Sicherheitsnetz: Falls app.js nicht lädt, nach 2 s alles einblenden. */
+  document.documentElement.classList.add('js');
+  setTimeout(function () {
+    if (!window.__rvReady) {
+      document.documentElement.classList.remove('js');
+    }
+  }, 2000);
+</script>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<header class="hero shell">
+  <div class="topbar">
+    <span class="brand">Zeichen&nbsp;Lesen</span>
+    <nav>
+      <a href="#scan">Scan</a>
+      <a href="#test">Test</a>
+      <a href="#codes">Codes</a>
+      <a href="#melden">Melden</a>
+    </nav>
+  </div>
+
+  <div class="hero-main">
+    <h1 class="d">
+      Hass sagt nicht mehr,<br>
+      wie er <em data-t="heißt">heißt</em>.
+    </h1>
+  </div>
+
+  <div class="hero-foot">
+    <p class="claim">
+      Er sagt <strong>Globalisten</strong>. Er schreibt <strong>109</strong>.
+      Er setzt drei Klammern um ein Wort — und alle Eingeweihten wissen Bescheid.
+    </p>
+    <p class="stat"><b id="total">0</b> Codes</p>
+    <div class="cta-row">
+      <a class="btn mark" href="#test">Test starten</a>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<!-- ========== 01 SCAN ========== -->
+<section id="scan" class="shell">
+  <div class="sec-head rv">
+    <p class="eyebrow">01 — Scan</p>
+    <h2 class="d">Elf Codes.<br>Ein Absatz.</h2>
+  </div>
+
+  <div class="scan-frame rv" id="scanFrame">
+    <div class="scanline" aria-hidden="true"></div>
+    <div class="scan-meta">
+      <span>Konstruiertes Beispiel</span>
+      <span class="live" id="scanCount">Nicht analysiert</span>
+    </div>
+    <div class="scan-inner">
+      <p class="passage" id="passage"></p>
+      <div class="scan-actions">
+        <button type="button" class="btn mark" id="scanBtn">Codes markieren</button>
+      </div>
+      <div class="annot" id="annot" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 02 TEST ========== -->
+<section id="test" class="shell">
+  <div class="sec-head rv">
+    <p class="eyebrow">02 — Test</p>
+    <h2 class="d">Code oder nicht?</h2>
+  </div>
+
+  <div class="quiz rv">
+    <div class="quiz-bar">
+      <span id="qPos">1 / 8</span>
+      <span class="score" id="qScore">0 richtig</span>
+    </div>
+    <div class="progress"><i id="qBar" style="width:0%"></i></div>
+    <div class="quiz-body">
+      <p class="prompt d" id="qPrompt"></p>
+      <p class="prompt-ctx" id="qCtx"></p>
+      <div class="choices" id="qChoices"></div>
+      <div id="qVerdict" aria-live="polite"></div>
+      <div class="quiz-foot" id="qFoot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 03 CODES ========== -->
+<section id="codes" class="shell">
+  <div class="sec-head rv">
+    <p class="eyebrow">03 — Codes</p>
+    <h2 class="d">Sieben Erzählungen</h2>
+  </div>
+
+  <div class="glyphs rv" id="glyphs" role="group" aria-label="Narrativ wählen"></div>
+
+  <div class="drill" id="drill" aria-live="polite"></div>
+</section>
+
+<!-- ========== 04 MELDEN ========== -->
+<section id="melden" class="shell">
+  <div class="melden rv">
+    <svg class="mglyph" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" aria-hidden="true">
+      <path d="M32 6v14M32 30v12M32 50v6"/>
+      <path d="M6 56 32 8l26 48H6z"/>
+    </svg>
+    <div>
+      <p class="eyebrow">04 — Melden</p>
+      <h2 class="d">Etwas gesehen?</h2>
+      <p class="sub">
+        Antisemitische Vorfälle, Symbole oder Drohungen kann man melden —
+        anonym und ohne Anzeige.
+      </p>
+      <div class="cta-row" style="margin-top:2rem">
+        <a class="btn mark" href="https://www.verfassungsschutz.de/DE/service/buerger-und-betroffene/hinweistelefon/hinweis-geben_node.html" target="_blank" rel="noopener noreferrer">Hinweis geben — BfV</a>
+        <a class="btn" href="https://report-antisemitism.de" target="_blank" rel="noopener noreferrer">Vorfall melden — RIAS</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FUSS ========== -->
+<footer class="shell">
+  <p class="big d">Zeichen lesen.<br>Haltung zeigen.</p>
+  <div class="foot-grid">
+    <p>
+      <b>Prototyp.</b> Gestalterische Studienarbeit, Bachelorarbeit
+      Mediendesign. Kein Angebot einer Behörde, keine Rechtsberatung.
+      Diese Seite zeigt bewusst kein antisemitisches Bildmaterial — sie
+      markiert nur. Codes lassen sich nie mechanisch entschlüsseln:
+      Es entscheidet immer der Kontext.
+    </p>
+    <p>
+      <b>Quellen.</b> Bundesamt für Verfassungsschutz, „Versteckte Botschaften“
+      (2026) · Amadeu Antonio Stiftung, „deconstruct antisemitism!“ (2021) ·
+      Regishut, „Antisemitismus erkennen“ (2023) · bpb, Dossier Antisemitismus ·
+      Bayerische Informationsstelle gegen Extremismus.
+    </p>
+  </div>
+</footer>
+
+<script src="assets/codes.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
