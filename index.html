@@ -143,6 +143,18 @@
     <h2 class="d">Sieben Erzählungen</h2>
   </div>
 
+  <aside class="bruecke rv">
+    <p class="bruecke-h">Nicht nur rechts.</p>
+    <p>
+      Antisemitismus gilt als <strong>Brückennarrativ</strong>: Er verbindet
+      Milieus, die sonst wenig teilen — rechtsextreme, verschwörungsideologische,
+      islamistische, christlich-fundamentalistische und linke. Auch in der
+      politischen Mitte ist er verbreitet. Wer ihn nur am rechten Rand sucht,
+      übersieht den größeren Teil.
+    </p>
+    <span class="src">Quelle: BfV, „Ideologie als Brückennarrativ“, S. 15–17 · Regishut gliedert die Codes genau nach diesen Spektren</span>
+  </aside>
+
   <div class="glyphs rv" id="glyphs" role="group" aria-label="Narrativ wählen"></div>
 
   <div class="drill" id="drill" aria-live="polite"></div>
@@ -192,7 +204,14 @@
       </picture>
     </div>
 
-    <div class="acts rv" id="acts"></div>
+    <div class="acts-wrap rv">
+      <div class="acts" id="acts" tabindex="0" role="group" aria-label="Fünf Schritte, horizontal blätterbar"></div>
+      <div class="acts-nav">
+        <button type="button" class="btn nav-prev" id="actPrev" aria-label="Vorheriger Schritt">←</button>
+        <button type="button" class="btn nav-next" id="actNext" aria-label="Nächster Schritt">→</button>
+        <span class="acts-pos" id="actPos" aria-live="polite">1 / 5</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -234,8 +253,7 @@
     <p>
       <b>Quellen.</b> Bundesamt für Verfassungsschutz, „Versteckte Botschaften“
       (2026) · Amadeu Antonio Stiftung, „deconstruct antisemitism!“ (2021) ·
-      Regishut, „Antisemitismus erkennen“ (2023) · bpb, Dossier Antisemitismus ·
-      Bayerische Informationsstelle gegen Extremismus.
+      Regishut, „Antisemitismus erkennen“ (2023) · bpb, Dossier Antisemitismus.
     </p>
   </div>
 </footer>

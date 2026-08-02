@@ -324,13 +324,97 @@
   ACTIONS.forEach(function (a, i) {
     var d = el("div", "act");
     d.appendChild(el("span", "n", String(i + 1)));
-    var body = el("div");
-    body.appendChild(el("h3", null, a.h));
-    body.appendChild(el("p", null, a.p));
-    body.appendChild(el("span", "src", "Quelle: " + a.src));
-    d.appendChild(body);
+    d.appendChild(el("h3", null, a.h));
+    d.appendChild(el("p", null, a.p));
+    d.appendChild(el("span", "src", "Quelle: " + a.src));
     actsEl.appendChild(d);
   });
+
+  /* -- Karussell: Skalierung nach Abstand zur Mitte, Ziehen, Blättern -- */
+  (function () {
+    var cards = $$(".act", actsEl);
+    if (!cards.length) return;
+    var posEl = $("#actPos");
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    /* pending wird sofort beim Klick gesetzt, active erst beim Scrollen.
+       Sonst rechnen zwei schnelle Klicks beide vom selben Stand aus. */
+    var ticking = false, active = 0, pending = 0;
+
+    function update() {
+      ticking = false;
+      var box = actsEl.getBoundingClientRect();
+      var mid = box.left + box.width / 2;
+      var best = 0, bestD = Infinity;
+      cards.forEach(function (c, i) {
+        var r = c.getBoundingClientRect();
+        var d = Math.abs((r.left + r.width / 2) - mid);
+        var t = Math.min(d / (box.width / 2 || 1), 1);
+        if (!reduce) {
+          c.style.transform = "scale(" + (1 - t * 0.14).toFixed(3) + ")";
+          c.style.opacity = (1 - t * 0.5).toFixed(3);
+        }
+        if (d < bestD) { bestD = d; best = i; }
+      });
+      cards.forEach(function (c, i) { c.classList.toggle("is-active", i === best); });
+      active = best;
+      if (!down) pending = best;
+      posEl.textContent = (best + 1) + " / " + cards.length;
+    }
+
+    actsEl.addEventListener("scroll", function () {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+    }, { passive: true });
+
+    function go(dir) {
+      pending = Math.min(cards.length - 1, Math.max(0, pending + dir));
+      cards[pending].scrollIntoView({
+        behavior: reduce ? "auto" : "smooth", inline: "center", block: "nearest"
+      });
+    }
+    $("#actPrev").addEventListener("click", function () { go(-1); });
+    $("#actNext").addEventListener("click", function () { go(1); });
+
+    /* Ziehen mit der Maus — Touch und Trackpad kann der Browser selbst. */
+    var down = false, startX = 0, startLeft = 0, moved = 0;
+    actsEl.addEventListener("pointerdown", function (e) {
+      if (e.pointerType !== "mouse") return;
+      down = true; moved = 0;
+      startX = e.clientX; startLeft = actsEl.scrollLeft;
+      actsEl.classList.add("dragging");
+      actsEl.setPointerCapture(e.pointerId);
+    });
+    actsEl.addEventListener("pointermove", function (e) {
+      if (!down) return;
+      var dx = e.clientX - startX;
+      moved = Math.max(moved, Math.abs(dx));
+      actsEl.scrollLeft = startLeft - dx;
+    });
+    function endDrag(e) {
+      if (!down) return;
+      down = false;
+      actsEl.classList.remove("dragging");
+      try { actsEl.releasePointerCapture(e.pointerId); } catch (err) {}
+      /* Einrasten wieder aktivieren und zur nächsten Karte springen. */
+      var box = actsEl.getBoundingClientRect();
+      var mid = box.left + box.width / 2, best = 0, bestD = Infinity;
+      cards.forEach(function (c, i) {
+        var r = c.getBoundingClientRect();
+        var d = Math.abs((r.left + r.width / 2) - mid);
+        if (d < bestD) { bestD = d; best = i; }
+      });
+      cards[best].scrollIntoView({
+        behavior: reduce ? "auto" : "smooth", inline: "center", block: "nearest"
+      });
+    }
+    actsEl.addEventListener("pointerup", endDrag);
+    actsEl.addEventListener("pointercancel", endDrag);
+    actsEl.addEventListener("click", function (e) {
+      if (moved > 6) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+
+    update();
+    window.addEventListener("resize", update);
+  })();
 
   /* ---------------------------------------------------------
      5 — TICKER
@@ -373,7 +457,56 @@
   }
 
   /* ---------------------------------------------------------
-     8 — SCROLL-REVEAL
+     8 — GEKRITZEL-EBENE
+     Handgezeichnete Marken über die ganze Seite, wie mit Edding
+     aufs Plakat. Bewusst KEIN Dreieck-mit-Auge: das ist in diesem
+     Lexikon ein antisemitischer Code, kein Ornament.
+     --------------------------------------------------------- */
+  var MARKS = {
+    x:      '<path d="M6 8c14 16 30 32 46 44M52 7C38 22 22 38 8 52"/>',
+    zigzag: '<path d="M2 34c8-14 14 8 22-6s14 10 22-4 14 8 22-6"/>',
+    ring:   '<path d="M9 30C7 15 24 6 49 7c24 1 43 9 44 22 1 13-17 22-43 22C25 51 11 44 9 29c0-5 1-10 5-15"/>',
+    arrow:  '<path d="M4 46C16 22 40 8 74 6"/><path d="M60 3l16 4M76 7l-9 13"/>',
+    spark:  '<path d="M30 2v20M30 38v20M2 30h20M38 30h20M11 11l13 13M36 36l13 13M49 11L36 24M24 36 11 49"/>',
+    tick:   '<path d="M4 30c10 10 18 16 24 20 10-18 24-34 42-46"/>'
+  };
+  var VIEWBOX = { x: "0 0 60 60", zigzag: "0 0 70 40", ring: "0 0 100 60",
+                  arrow: "0 0 80 52", spark: "0 0 60 60", tick: "0 0 72 54" };
+
+  /* Feste Positionen statt Zufall — reproduzierbar und kontrolliert. */
+  var SCATTER = {
+    scan:     [["x", 88, 4, 14, 34], ["zigzag", 4, 62, 12, -8]],
+    test:     [["spark", 92, 12, 11, 0], ["tick", 3, 78, 13, -12]],
+    codes:    [["zigzag", 90, 70, 13, 9], ["x", 5, 8, 10, -18]],
+    mechanik: [["arrow", 88, 82, 14, 22], ["x", 6, 90, 9, 12]],
+    tun:      [["spark", 4, 8, 10, 0], ["zigzag", 93, 40, 12, -14]],
+    melden:   [["x", 92, 74, 11, 26]]
+  };
+
+  Object.keys(SCATTER).forEach(function (id) {
+    var sec = document.getElementById(id);
+    if (!sec) return;
+    SCATTER[id].forEach(function (cfg) {
+      var kind = cfg[0];
+      var s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      s.setAttribute("viewBox", VIEWBOX[kind]);
+      s.setAttribute("fill", "none");
+      s.setAttribute("stroke", "currentColor");
+      s.setAttribute("stroke-width", "4");
+      s.setAttribute("stroke-linecap", "round");
+      s.setAttribute("aria-hidden", "true");
+      s.setAttribute("class", "scrawl");
+      s.innerHTML = MARKS[kind];
+      s.style.left = cfg[1] + "%";
+      s.style.top = cfg[2] + "%";
+      s.style.width = cfg[3] + "rem";
+      s.style.transform = "rotate(" + cfg[4] + "deg)";
+      sec.insertBefore(s, sec.firstChild);
+    });
+  });
+
+  /* ---------------------------------------------------------
+     9 — SCROLL-REVEAL
      --------------------------------------------------------- */
   var reveals = $$(".rv");
   if (!("IntersectionObserver" in window) ||

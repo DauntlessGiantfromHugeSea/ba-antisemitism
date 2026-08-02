@@ -98,7 +98,12 @@ body::after {
   background-size: 3px 3px;
 }
 
-::selection { background: var(--red); color: #fff; }
+/* Markieren = das Prinzip der Seite, also auch beim Auswählen.
+   Bewusst lasierend und ohne Farbwechsel: ::selection zeichnet den
+   Kasten über die Font-Metrik, nicht über die sichtbaren Versalien.
+   Bei Arial Black mit line-height .85 hängt ein deckender Block weit
+   unter der Schrift — ein Wisch verzeiht das. */
+::selection { background: rgba(225,37,27,.32); }
 
 a { color: var(--ink); text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 a:hover { background: var(--red); color: #fff; text-decoration: none; }
@@ -331,8 +336,38 @@ mark, .hl {
 /* Abschnitte, in denen Elemente über die Kante hinausragen, klippen
    selbst — sonst verbreitert der Ausbruch das Dokument.
    clip statt hidden: erzeugt keinen Scrollcontainer. */
-section { padding-block: clamp(3.5rem,8vw,7rem); overflow-x: clip; }
+section {
+  padding-block: clamp(3.5rem,8vw,7rem);
+  overflow-x: clip;
+  position: relative;
+  isolation: isolate;
+}
 @supports not (overflow-x: clip) { section { overflow-x: hidden; } }
+
+/* Gekritzel liegt hinter allem Inhalt des Abschnitts. */
+.scrawl {
+  position: absolute; z-index: -1; height: auto;
+  pointer-events: none; color: var(--red); opacity: .3;
+}
+.scrawl:nth-of-type(2n) { color: var(--ink); opacity: .16; }
+@media (max-width: 62rem) { .scrawl { display: none; } }
+
+/* ---------- Einschub: Brückennarrativ ---------- */
+
+.bruecke {
+  max-width: 44rem;
+  margin: 0 0 clamp(2rem,4vw,3rem);
+  padding-left: clamp(1rem,2vw,1.5rem);
+  border-left: 5px solid var(--red);
+}
+.bruecke-h {
+  font-family: var(--display); font-weight: 900; text-transform: uppercase;
+  letter-spacing: -.035em; font-size: clamp(1.25rem,3vw,2rem);
+  line-height: 1; margin: 0 0 .7rem; max-width: none;
+}
+.bruecke p { font-size: 1rem; color: var(--ink-2); max-width: 52ch; }
+.bruecke strong { background: var(--red); color: #fff; padding: .02em .2em; }
+#codes .bruecke { margin-left: auto; }
 
 .sec-head { margin-bottom: clamp(2.25rem,4.5vw,3.5rem); }
 .sec-head .eyebrow { margin-bottom: 1rem; }
@@ -375,7 +410,6 @@ section { padding-block: clamp(3.5rem,8vw,7rem); overflow-x: clip; }
   /* 05 Was tun — Illustration bricht über die rechte Kante hinaus */
   #tun { padding-block: clamp(4rem,8vw,7rem); }
   #tun .tun-img { margin-right: calc(var(--pad) * -1.4); }
-  #tun .acts { max-width: 62rem; }
 
   /* 06 Melden — kompakt, kein großer Abstand davor */
   #melden { padding-block: clamp(2rem,4vw,3.5rem) clamp(4rem,8vw,7rem); }
@@ -691,14 +725,51 @@ section { padding-block: clamp(3.5rem,8vw,7rem); overflow-x: clip; }
 .tun-img { display: block; clip-path: var(--torn-blob); background: var(--paper); transform: rotate(-1.5deg); }
 .tun-img img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
 
-/* Ebenfalls ohne Kasten — Haarlinie statt Rahmen. */
-.acts { display: grid; gap: 0; border-top: 3px solid var(--ink); }
+/* Horizontales Karussell: einrastende Karten, aktive Karte groß.
+   Native Scroll-Snap statt Bibliothek — Trägheit auf Touch und
+   Trackpad kommt vom Browser. Ohne JS bleibt es scrollbar. */
+.acts-wrap { position: relative; }
+
+.acts {
+  display: flex; gap: clamp(1rem,2vw,1.75rem);
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  padding-block: clamp(1.5rem,3vw,2.5rem);
+  padding-inline: max(0px, calc(50% - 12rem));
+  scrollbar-width: none; -ms-overflow-style: none;
+  cursor: grab;
+}
+.acts::-webkit-scrollbar { display: none; }
+.acts.dragging { cursor: grabbing; scroll-snap-type: none; }
+
 .act {
-  padding: clamp(1.25rem,2.6vw,1.85rem) 0;
-  display: grid; gap: clamp(.9rem,2vw,1.75rem);
-  grid-template-columns: auto minmax(0,1fr);
-  align-items: start;
-  border-bottom: 1px solid var(--hair);
+  flex: 0 0 clamp(15rem, 26vw, 24rem);
+  scroll-snap-align: center;
+  background: var(--paper);
+  padding: clamp(1.35rem,2.4vw,2rem);
+  display: grid; gap: .5rem;
+  align-content: start;
+  box-shadow: 5px 6px 0 rgba(20,19,18,.10);
+  transform-origin: center bottom;
+  transition: transform .35s cubic-bezier(.2,.7,.3,1), opacity .35s ease;
+  user-select: none;
+}
+.act.is-active { box-shadow: 8px 10px 0 rgba(225,37,27,.18), 5px 6px 0 rgba(20,19,18,.12); }
+
+.acts-nav {
+  display: flex; align-items: center; gap: .6rem;
+  margin-top: clamp(.5rem,1.5vw,1rem);
+}
+.acts-nav .btn { padding: .7rem 1.15rem; font-size: 1rem; line-height: 1; }
+.acts-pos {
+  font-family: var(--mono); font-size: .6875rem; font-weight: 700;
+  letter-spacing: .16em; color: var(--ink-3);
+  font-variant-numeric: tabular-nums; margin-left: .5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .act { transition: none; }
+  .acts { scroll-behavior: auto; }
 }
 .act .n {
   font-family: var(--display); font-weight: 900;

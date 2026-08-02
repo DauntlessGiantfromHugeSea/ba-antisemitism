@@ -8,8 +8,6 @@
    [REG]  Regishut: „Antisemitismus erkennen. Symbole, Codes und
           Parolen", Berlin 2023 (ISBN 978-3-00-077634-2)
    [BPB]  bpb, Dossier Antisemitismus: Glossar / Tiermetaphern
-   [BIGE] Bayerisches Informationsstelle gegen Extremismus:
-          Zeichen und Symbole des Rechtsextremismus
    ========================================================= */
 
 /* Jedes Narrativ bekommt ein Zeichen — abgeleitet aus dem
@@ -33,7 +31,7 @@ const CATEGORIES = [
   { id: "israel", label: "Israelbezogen", claim: "„Der Staat ist das Böse.“", catSrc: "BfV Kap. 2.6 · REG S. 64–74",
     icon: '<path d="M32 52 8 12h48L32 52z"/>' },
 
-  { id: "zeichen", label: "Zeichen & Zahlen", claim: "„Wer’s weiß, weiß es.“", catSrc: "BfV S. 71 f. · BIGE",
+  { id: "zeichen", label: "Zeichen & Zahlen", claim: "„Wer’s weiß, weiß es.“", catSrc: "BfV S. 71 f.",
     icon: '<path d="M26 10C16 18 12 25 12 32s4 14 14 22M34 10c10 8 14 15 14 22s-4 14-14 22"/><path d="M20 14c-6 6-9 12-9 18s3 12 9 18M44 14c6 6 9 12 9 18s-3 12-9 18"/>' }
 ];
 
@@ -259,18 +257,12 @@ const CODES = [
     d: "„6 Million Wasn't Enough“. Verhöhnt die Opfer des Holocaust und fordert offen einen erneuten Genozid." },
   { t: "GTKRWN", c: "zeichen", src: "BfV",
     d: "Akronym mit offener Aufstachelung zur Vernichtung jüdischen Lebens. Extremfall der Dehumanisierung." },
-  { t: "88 / 18 / 28", c: "zeichen", src: "BIGE",
-    d: "Buchstabenpositionen im Alphabet: 88 = „Heil Hitler“, 18 = „Adolf Hitler“, 28 = „Blood and Honour“. Bei 28 greift das Kennzeichenverbot der verbotenen Organisation.", flag: "kontextabhängig strafbar" },
-  { t: "14 Words", c: "zeichen", src: "BIGE",
-    d: "Rassistische Parole von David Lane. Erkennungszeichen der internationalen Neonazi-Szene, häufig mit 88 kombiniert („1488“)." },
   { t: "Hakennase", c: "zeichen", src: "AAS · BPB · REG",
     d: "Zentrales Merkmal fast jeder antisemitischen Darstellung — von Münzen des 17. Jh. bis zu Stürmer-Karikaturen und heutigen Memes. Macht zugeschriebene Minderwertigkeit körperlich sichtbar." },
   { t: "Schläfenlocken & Hut", c: "zeichen", src: "BfV · REG",
     d: "Das Erscheinungsbild ultraorthodoxer Juden wird stellvertretend für alle Jüdinnen und Juden gesetzt und markiert sie kollektiv als fremdartig." },
   { t: "Davidstern als Feindmarkierung", c: "zeichen", src: "BfV · REG",
     d: "Auf Hüten, Stirnen, Flaggen oder Logos angebracht, markiert der Stern den angeblich „wahren Urheber“ hinter einem politischen Geschehen." },
-  { t: "Hakenkreuz", c: "zeichen", src: "BIGE · REG",
-    d: "Zentrales NS-Symbol in allen Varianten. Nach § 86a StGB verboten; Ausnahme sind eindeutig gegnerische Darstellungen wie das durchgestrichene Hakenkreuz.", flag: "§ 86a StGB" },
   { t: "Die Juden sind unser Unglück", c: "zeichen", src: "REG",
     d: "Formel von Heinrich von Treitschke (1879), später Kopfzeile des NS-Hetzblatts „Der Stürmer“. Bis heute in Abwandlungen im Umlauf." }
 ];
@@ -470,6 +462,4 @@ const SOURCES = [
     d: "Regishut, Berlin 2023. Nach politischen Spektren gegliedert, mit umfangreichem Register und Angaben zur Strafbarkeit." },
   { k: "BPB", t: "Dossier Antisemitismus – Glossar",
     d: "Bundeszentrale für politische Bildung. Herkunft und heutige Verwendung einzelner Metaphern, u. a. Tiermetaphern." },
-  { k: "BIGE", t: "Zeichen und Symbole des Rechtsextremismus",
-    d: "Bayerische Informationsstelle gegen Extremismus. Zahlencodes, Parolen und Grußformen mit Einordnung zur Strafbarkeit." }
 ];

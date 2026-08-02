@@ -25,22 +25,41 @@ Gestalterische Leitidee: *Mechanismen entlarven, nicht Codes feiern.*
 
 | # | Abschnitt | Was passiert |
 |---|-----------|--------------|
-| 01 | **Scan** | Ein konstruierter Beispieltext wird per Marker-Sweep analysiert. Elf Codes werden nummeriert markiert, jeder mit eigener Analyse. |
-| 02 | **Test** | Acht Aussagen, drei Antwortoptionen. Die dritte — *„Kommt auf den Kontext an“* — ist keine Ausrede, sondern bei diesem Thema oft die fachlich richtige Antwort. |
-| 03 | **Codes** | Sieben Narrative, je ein Zeichen. Antippen öffnet die zugehörigen Codes mit Erklärung und Quellenangabe. |
-| 04 | **Melden** | Weiterleitung an BfV-Hinweistelefon und RIAS-Meldestelle. |
+| 01 | **Scan** | Konstruierter Beispieltext, Marker-Sweep, elf nummerierte Codes mit Einzelanalyse. |
+| 02 | **Test** | Acht Aussagen, drei Antwortoptionen. Die dritte — *„Kommt auf den Kontext an“* — ist keine Ausrede, sondern oft die fachlich richtige Antwort. |
+| 03 | **Codes** | Sieben Narrative als Zeichen, Drill-down zu 108 Einträgen. Davor der Hinweis, dass Antisemitismus ein Brückennarrativ ist. |
+| 04 | **Mechanik** | Vier Hebel, dazu drei belegte Zahlen zur Verbreitung. |
+| 05 | **Was tun** | Fünf Handlungsschritte als einrastendes Karussell. |
+| 06 | **Melden** | BfV-Hinweistelefon und RIAS-Meldestelle. |
+
+**Jede Aussage trägt eine Quellenangabe.**
 
 ## Gestaltung
 
-- **Farbe** — Schwarz, Weiß, Textmarker-Gelb `#F2FF00`. Ein einziger Akzent,
-  weil Markieren das ganze Prinzip ist. Semantik (richtig / falsch /
-  Graubereich) ist strikt davon getrennt.
+Bildwelt nach Vorbild *Rights Against the Right*: helle Betonwand, dicke
+schwarze Versalien, Rot als Marker, gerissene Papierkanten, viel Luft.
+
+- **Farbe** — Wand `#E8E6E1`, Tinte `#141312`, Rot `#E1251B`. Ein Akzent, weil
+  Markieren das Prinzip ist. Semantik (richtig / falsch / Graubereich) ist
+  strikt davon getrennt.
 - **Typografie** — Arial Black als Display, Mono für Codes und Labels.
-  Chiffren gehören in Monospace.
-- **Bewusst einheitliche Bildwelt.** Kein Light-Mode: Eine Kampagne wechselt
-  nicht das Gesicht.
+  Chiffren gehören in Monospace. Sektionsnummern als Konturziffern.
+- **Kein gleichförmiges Raster.** Jeder Abschnitt hat ab 62 rem eine eigene
+  Anlage — Überlappungen, Ausbrüche, wechselnde Spaltenbreiten.
+- **Gekritzel-Ebene** — handgezeichnete Marken über die Seite verteilt.
+  Bewusst **kein** Dreieck-mit-Auge: das ist in diesem Lexikon ein
+  antisemitischer Code, kein Ornament.
 - **Kein antisemitisches Bildmaterial.** Ausschließlich Markierung und
   Annotation.
+
+### Abgrenzung zum Rechtsextremismus
+
+Die Sammlung enthält **nur antisemitische** Codes. Rein rechtsextreme
+Erkennungszeichen ohne Antisemitismusbezug (Zahlencodes wie 88 oder 18,
+„14 Words“, das Hakenkreuz) wurden bewusst entfernt — sonst verwischt der
+Gegenstand. Antisemitismus ist zudem kein Randphänomen des rechten Spektrums,
+sondern ein Brückennarrativ über Milieus hinweg; darauf weist die Seite
+ausdrücklich hin (BfV S. 15–17).
 
 ## Hero-Bild
 
@@ -69,11 +88,12 @@ Statische Seite, keine Abhängigkeiten, kein Build.
 index.html
 assets/
   styles.css    Design-Tokens und Layout
-  codes.js      Datenbasis: 111 Codes, 7 Narrative, Quiz, Beispieltext
-  app.js        Scan, Test, Drill-down, Ticker, Scroll-Reveal
+  codes.js      Datenbasis: 108 Codes, 7 Narrative, Quiz, Beispieltext
+  app.js        Scan, Test, Drill-down, Karussell, Fries, Gekritzel
   img/
-    hero.jpg        Collage, 1672 × 941
-    hero-small.jpg  Variante für schmale Schirme
+    hero.jpg / hero-small.jpg        Collage für den Kopf
+    propaganda.jpg / -small.jpg      Collage für „Mechanik“
+    schreier.jpg                     Illustration für „Was tun“
 ```
 
 Lokal ansehen:
@@ -91,7 +111,7 @@ sichtbar, kein horizontaler Scroll bis 375 px.
 
 ## Datenbasis
 
-Alle 111 Einträge stammen aus Fachpublikationen; die Zuordnung steht an jedem
+Alle 108 Einträge stammen aus Fachpublikationen; die Zuordnung steht an jedem
 Eintrag.
 
 | Kürzel | Quelle |
@@ -100,7 +120,6 @@ Eintrag.
 | AAS | Amadeu Antonio Stiftung: *deconstruct antisemitism! Antisemitische Codes und Metaphern erkennen.* Berlin 2021 |
 | REG | Regishut: *Antisemitismus erkennen. Symbole, Codes und Parolen.* Berlin 2023, ISBN 978-3-00-077634-2 |
 | BPB | Bundeszentrale für politische Bildung: Dossier Antisemitismus, Glossar |
-| BIGE | Bayerische Informationsstelle gegen Extremismus: Zeichen und Symbole des Rechtsextremismus |
 
 ## Grenzen
 
