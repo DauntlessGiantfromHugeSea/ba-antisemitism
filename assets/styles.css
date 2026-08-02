@@ -141,9 +141,11 @@ a:hover { background: var(--red); color: #fff; text-decoration: none; }
 
 /* ---------- Handgezeichnete Marken ---------- */
 
-.circled { position: relative; display: inline-block; }
+/* Als Grid-Kind wird inline-block zu block — der Ring umkreiste dann
+   die ganze Spaltenbreite statt der Zahl. */
+.circled { position: relative; display: inline-block; width: fit-content; justify-self: start; }
 .scrawl-ring {
-  position: absolute; left: -14%; top: -18%; width: 128%; height: 136%;
+  position: absolute; left: -19%; top: -22%; width: 146%; height: 146%;
   color: var(--red); pointer-events: none;
   stroke-dasharray: 420; stroke-dashoffset: 420;
 }
@@ -285,8 +287,13 @@ mark, .hl {
 .subline::after { content: ""; display: block; height: 4px; width: 6.5rem; background: var(--red); margin-top: .6rem; }
 
 @media (max-width: 63.999rem) {
+  /* Die Zeile im Streifen waere hier nur wenige Pixel hoch. Sie steht
+     stattdessen unter dem Bild; der Streifen schrumpft auf einen
+     schmalen Klebestreifen, der die eingebrannte Schrift weiter
+     abdeckt, ohne als leere Flaeche zu wirken. */
   .ov-strip p { visibility: hidden; }
   .ov-strip .scribble { display: none; }
+  .ov-strip { top: 58%; height: 9.5%; left: 36%; width: 39%; }
   .subline { display: block; }
 }
 @media (max-width: 40rem) {
@@ -435,6 +442,10 @@ section {
 .posts-wrap { position: relative; }
 .posts {
   display: flex; gap: clamp(1rem,2vw,1.75rem);
+  /* Karten sollen ihre eigene Hoehe behalten. Ohne das streckt Flex
+     alle auf die Hoehe der laengsten — unter kurzen Posts steht dann
+     eine lange leere Flaeche. */
+  align-items: flex-start;
   overflow-x: auto; overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   padding-block: clamp(1.25rem,2.5vw,2rem);
@@ -482,7 +493,6 @@ section {
   font-size: clamp(.9375rem,1.5vw,1.25rem);
   margin: 0; padding: clamp(1.1rem,2vw,1.6rem);
   max-width: none; color: #6E6963; transition: color .4s ease;
-  flex: 1 0 auto;
 }
 .post.scanned .post-body { color: var(--on-dark); }
 
