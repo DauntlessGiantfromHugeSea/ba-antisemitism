@@ -15,25 +15,25 @@
 /* Jedes Narrativ bekommt ein Zeichen — abgeleitet aus dem
    Bildrepertoire, das es tatsächlich benutzt. */
 const CATEGORIES = [
-  { id: "geld", label: "Geldmacht", claim: "„Sie kontrollieren das Geld.“",
+  { id: "geld", label: "Geldmacht", claim: "„Sie kontrollieren das Geld.“", catSrc: "BfV Kap. 2.1 · AAS S. 10 f.",
     icon: '<circle cx="32" cy="32" r="13"/><path d="M32 14v36M24 22h13a5 5 0 0 1 0 10H27a5 5 0 0 0 0 10h13"/>' },
 
-  { id: "welt", label: "Weltverschwörung", claim: "„Sie ziehen die Fäden.“",
+  { id: "welt", label: "Weltverschwörung", claim: "„Sie ziehen die Fäden.“", catSrc: "BfV Kap. 2.2 · REG S. 30–39",
     icon: '<path d="M10 12h44M22 12v10M42 12v10M32 12v8"/><path d="M32 20a6 6 0 1 1 0 12 6 6 0 0 1 0-12z"/><path d="M32 32v10M32 42l-9 12M32 42l9 12M22 22l-6 10M42 22l6 10"/>' },
 
-  { id: "bio", label: "Krankheit & Blut", claim: "„Sie vergiften uns.“",
+  { id: "bio", label: "Krankheit & Blut", claim: "„Sie vergiften uns.“", catSrc: "BfV Kap. 2.3 · REG S. 40–45",
     icon: '<path d="M4 32s11-15 28-15 28 15 28 15-11 15-28 15S4 32 4 32z"/><circle cx="32" cy="32" r="8"/><circle cx="32" cy="32" r="2.5" fill="currentColor"/>' },
 
-  { id: "tier", label: "Entmenschlichung", claim: "„Sie sind keine Menschen.“",
+  { id: "tier", label: "Entmenschlichung", claim: "„Sie sind keine Menschen.“", catSrc: "BfV Kap. 2.4 · bpb, Tiermetaphern",
     icon: '<path d="M32 8c9 0 15 7 15 15v6c0 3 2 4 4 5"/><path d="M32 8c-9 0-15 7-15 15v6c0-3-2 4-4 5"/><circle cx="26" cy="22" r="2.5" fill="currentColor"/><circle cx="38" cy="22" r="2.5" fill="currentColor"/><path d="M17 30c-4 6-9 10-13 12M22 33c-3 8-6 14-10 18M32 34c0 9-1 16-2 22M42 33c3 8 6 14 10 18M47 30c4 6 9 10 13 12"/>' },
 
-  { id: "schuld", label: "Schuldabwehr", claim: "„Schluss damit.“",
+  { id: "schuld", label: "Schuldabwehr", claim: "„Schluss damit.“", catSrc: "BfV Kap. 2.5 · AAS S. 30 f.",
     icon: '<path d="M12 20h40M12 30h28M12 40h34"/><path d="M6 52h52" stroke-width="7"/>' },
 
-  { id: "israel", label: "Israelbezogen", claim: "„Der Staat ist das Böse.“",
+  { id: "israel", label: "Israelbezogen", claim: "„Der Staat ist das Böse.“", catSrc: "BfV Kap. 2.6 · REG S. 64–74",
     icon: '<path d="M32 52 8 12h48L32 52z"/>' },
 
-  { id: "zeichen", label: "Zeichen & Zahlen", claim: "„Wer’s weiß, weiß es.“",
+  { id: "zeichen", label: "Zeichen & Zahlen", claim: "„Wer’s weiß, weiß es.“", catSrc: "BfV S. 71 f. · BIGE",
     icon: '<path d="M26 10C16 18 12 25 12 32s4 14 14 22M34 10c10 8 14 15 14 22s-4 14-14 22"/><path d="M20 14c-6 6-9 12-9 18s3 12 9 18M44 14c6 6 9 12 9 18s-3 12-9 18"/>' }
 ];
 
@@ -280,38 +280,98 @@ const CODES = [
 const PASSAGE = [
   { txt: "Wacht endlich auf! Die " },
   { mark: "Hochfinanz", kind: "Begriffsersetzung",
-    note: "Ersetzt das belastete Wort. Steht für eine angebliche „jüdische Weltfinanzkontrolle“ und ähnelt dem NS-Terminus „internationales Finanzjudentum“." },
+    note: "Ersetzt das belastete Wort. Steht für eine angebliche „jüdische Weltfinanzkontrolle“ und ähnelt dem NS-Terminus „internationales Finanzjudentum“.",
+    src: "BfV S. 27 · AAS S. 11" },
   { txt: " an der " },
   { mark: "Ostküste", kind: "Begriffsersetzung",
-    note: "Geografischer Verweis auf den angeblich jüdisch kontrollierten Finanzplatz New York — und damit auf Jüdinnen und Juden insgesamt." },
+    note: "Verweist auf den angeblich jüdisch kontrollierten Finanzplatz New York — und damit auf Jüdinnen und Juden insgesamt.",
+    src: "BfV S. 31 · AAS S. 11" },
   { txt: " und " },
   { mark: "(((ihre Freunde)))", kind: "Optisches Zeichen",
-    note: "Die dreifachen Klammern („Echo“) markieren eine Gruppe als jüdisch. Der Satz selbst sagt nichts — die Klammern erledigen die Zuschreibung." },
+    note: "Die dreifachen Klammern („Echo“) markieren eine Gruppe als jüdisch. Der Satz selbst sagt nichts — die Klammern erledigen die Zuschreibung.",
+    src: "BfV S. 32" },
   { txt: " im " },
   { mark: "WEF", kind: "Institution als Chiffre",
-    note: "Das Weltwirtschaftsforum steht stellvertretend für eine geheime, staatenlenkende Elite. Signalwörter dieser Art treten typischerweise gehäuft auf." },
+    note: "Das Weltwirtschaftsforum steht für eine geheime, staatenlenkende Elite. Solche Signalwörter treten fast immer gehäuft auf.",
+    src: "BfV S. 26 f." },
   { txt: " haben den " },
   { mark: "Great Reset", kind: "Verschwörungsnarrativ",
-    note: "Ursprünglich ein WEF-Konzept, umgedeutet zum Plan einer „Elite“ zur Versklavung der Menschheit." },
+    note: "Ursprünglich ein WEF-Konzept für die Zeit nach der Pandemie, umgedeutet zum Plan einer „Elite“ zur Versklavung der Menschheit.",
+    src: "BfV S. 39 · AAS S. 8" },
   { txt: " längst beschlossen. " },
   { mark: "Soros", kind: "Personalisierung",
-    note: "Ein Einzelname steht für die ganze Gruppe. Soros personifiziert „Hochfinanz“ und „Globalisten“ und ersetzt ältere Chiffren wie Rothschild." },
+    note: "Ein Einzelname steht für die ganze Gruppe. Soros personifiziert „Hochfinanz“ und „Globalisten“ und ersetzt ältere Chiffren wie Rothschild.",
+    src: "BfV S. 51 · AAS S. 24" },
   { txt: " " },
   { mark: "zieht die Fäden", kind: "Puppenspieler-Motiv",
-    note: "Das Marionettenbild unterstellt, sichtbare Politik sei nur Fassade und alle Akteure seien Werkzeuge eines „jüdischen Willens“." },
+    note: "Das Marionettenbild unterstellt, sichtbare Politik sei nur Fassade und alle Akteure seien Werkzeuge eines „jüdischen Willens“.",
+    src: "BfV S. 37 · AAS S. 8" },
   { txt: ", die " },
   { mark: "Bilderberger", kind: "Institution als Chiffre",
-    note: "Die Intransparenz der Konferenz dient als Beleg für eine „geheime Weltregierung“ unter „jüdischem Einfluss“." },
+    note: "Die Intransparenz der Konferenz dient als angeblicher Beleg für eine „geheime Weltregierung“ unter „jüdischem Einfluss“.",
+    src: "BfV S. 39" },
   { txt: " nicken ab, und die " },
   { mark: "Lügenpresse", kind: "Verschwörungsnarrativ",
-    note: "Behauptet gesteuerte, gleichgeschaltete Medien. Dahinter steht das Narrativ einer „jüdischen“ Kontrolle der Öffentlichkeit." },
+    note: "Behauptet gesteuerte, gleichgeschaltete Medien. Dahinter steht das Narrativ einer „jüdischen“ Kontrolle der Öffentlichkeit — schon Treitschke behauptete das 1879.",
+    src: "AAS S. 36 f." },
   { txt: " schweigt. " },
   { mark: "109", kind: "Zahlencode",
-    note: "„Aus 109 Ländern vertrieben“. Zahlen erzeugen keine Bilder im Kopf und wirken sachlich — genau das macht sie als Erkennungszeichen wirksam." },
+    note: "„Aus 109 Ländern vertrieben“. Die mitgedachte 110 macht daraus eine Drohung. Zahlen erzeugen keine Bilder im Kopf und wirken sachlich — das macht sie wirksam.",
+    src: "BfV S. 55" },
   { txt: " Länder haben es gemerkt. " },
   { mark: "Wir sind die neuen Juden", kind: "Täter-Opfer-Umkehr",
-    note: "Beansprucht den Opferstatus der Verfolgten für sich selbst. Verharmlost die Shoah und entwertet das Gedenken." },
+    note: "Beansprucht den Opferstatus der Verfolgten für sich selbst. Verharmlost die Shoah und entwertet das Gedenken.",
+    src: "AAS S. 34 f. · REG S. 38" },
   { txt: "." }
+];
+
+/* Wie Propaganda arbeitet — vier Mechanismen.
+   Kurz gehalten: das ist der Einstieg, nicht die Theorie. */
+const MECHANIK = [
+  { h: "Verzerrung",
+    p: "Eine komplizierte Lage wird auf eine einzige Ursache heruntergebrochen. Das fühlt sich wie Durchblick an, ist aber das Gegenteil.",
+    src: "BfV, „Erklärungsfunktion“, S. 27 u. 51" },
+  { h: "Emotion",
+    p: "Codes zielen am Verstand vorbei. Sie lösen Angst, Wut oder Ekel aus — und manchmal das gute Gefühl, mehr zu wissen als andere.",
+    src: "BfV, „Was Codes mit den Rezipierenden machen“, S. 73" },
+  { h: "Wiederholung",
+    p: "Je öfter du etwas siehst, desto normaler wirkt es. Reichweite ist kein Nebeneffekt, sondern der Zweck.",
+    src: "BfV, „Erhöhung der Reichweite“, S. 19" },
+  { h: "Feindbild",
+    p: "Eine Gruppe wird als Ursache markiert. Das schweißt die eigene Gruppe zusammen und senkt die Hemmschwelle für Angriffe.",
+    src: "BfV S. 29 · AAS S. 6" }
+];
+
+/* Zahlen, die die Relevanz belegen — jede mit Herkunft. */
+const FACTS = [
+  { n: "15,6 %",
+    p: "der Bevölkerung übertragen ihre Ablehnung israelischer Politik auf „die Juden“ — machen also Einzelne kollektiv verantwortlich.",
+    src: "Leipziger Autoritarismus-Studie 2024, zit. n. BfV S. 16" },
+  { n: "22,7 %",
+    p: "stimmen zu, Israels Politik sei so schlimm wie die der Nazis im Zweiten Weltkrieg. Diese Gleichsetzung dient der Schuldabwehr.",
+    src: "Leipziger Autoritarismus-Studie 2024, zit. n. BfV S. 16" },
+  { n: "Links wie rechts",
+    p: "Sekundärer Antisemitismus ist weit verbreitet — unabhängig davon, wo sich jemand politisch verortet. Das ist kein Randproblem.",
+    src: "Decker/Kiess/Brähler 2024, zit. n. BfV S. 16" }
+];
+
+/* Was man konkret tun kann. Handlungswissen, keine Appelle. */
+const ACTIONS = [
+  { h: "Nicht weiterleiten",
+    p: "Auch nicht, um dich darüber aufzuregen. Jeder Repost ist Reichweite — und Reichweite ist genau das Ziel. Screenshot statt Teilen.",
+    src: "BfV, „Erhöhung der Reichweite“, S. 19" },
+  { h: "Belegen",
+    p: "Screenshot mit Datum, Profilname und dem, was drumherum steht. Ohne Beleg und ohne Kontext kann später niemand etwas damit anfangen.",
+    src: "Bundesverband RIAS, report-antisemitism.de" },
+  { h: "Kontext prüfen",
+    p: "Ein einzelnes Wort beweist nichts. Entscheidend sind Umfeld, Absender, Adressat und ob sich Codes häufen. Codes treten selten allein auf.",
+    src: "BfV, „Codes erkennen und einordnen“, S. 21" },
+  { h: "Widersprechen, nicht diskutieren",
+    p: "Kurz benennen, was du siehst — nicht in eine Debatte einsteigen. Gegen Verschwörungserzählungen helfen reine Fakten nachweislich nicht.",
+    src: "Amadeu Antonio Stiftung, S. 38" },
+  { h: "Hilfe holen",
+    p: "Du musst das nicht allein regeln. Lehrkraft, Vertrauensperson, Meldestelle. Wer betroffen ist, hat Anspruch auf Beratung.",
+    src: "RIAS · BfV-Hinweistelefon" }
 ];
 
 const QUIZ = [

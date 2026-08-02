@@ -52,6 +52,7 @@
     annotEl.appendChild(h);
     annotEl.appendChild(el("p", null, part.note));
     annotEl.appendChild(el("span", "kind", part.kind));
+    if (part.src) annotEl.appendChild(el("span", "src", "Quelle: " + part.src));
   }
 
   function resetAnnot() {
@@ -261,7 +262,10 @@
     if (!openCat) return;
 
     var head = el("div", "drill-head");
-    head.appendChild(el("p", "drill-claim", cat.claim));
+    var left = el("div");
+    left.appendChild(el("p", "drill-claim", cat.claim));
+    if (cat.catSrc) left.appendChild(el("span", "src", "Quelle: " + cat.catSrc));
+    head.appendChild(left);
     var close = el("button", "btn", "Schließen");
     close.type = "button";
     close.addEventListener("click", function () { toggleCat(cat); });
@@ -279,8 +283,7 @@
       term.appendChild(el("span", "plus", "+"));
       b.appendChild(term);
       b.appendChild(el("div", "def", x.d));
-      var meta = el("div", "cat", x.src);
-      b.appendChild(meta);
+      b.appendChild(el("div", "cat", "Quelle: " + x.src));
       if (x.flag) b.appendChild(el("span", "flag", x.flag));
 
       b.addEventListener("click", function () {
@@ -293,6 +296,41 @@
   }
 
   $("#total").textContent = String(CODES.length);
+
+  /* ---------------------------------------------------------
+     4 — MECHANIK · ZAHLEN · WAS TUN
+     Jede Aussage trägt ihre Herkunft.
+     --------------------------------------------------------- */
+  var mechEl = $("#mech");
+  MECHANIK.forEach(function (m, i) {
+    var d = el("div", "mech-item");
+    d.appendChild(el("span", "n", String(i + 1).padStart(2, "0")));
+    d.appendChild(el("h3", null, m.h));
+    d.appendChild(el("p", null, m.p));
+    d.appendChild(el("span", "src", "Quelle: " + m.src));
+    mechEl.appendChild(d);
+  });
+
+  var factsEl = $("#facts");
+  FACTS.forEach(function (f) {
+    var d = el("div", "fact");
+    d.appendChild(el("span", "fig", f.n));
+    d.appendChild(el("p", null, f.p));
+    d.appendChild(el("span", "src", "Quelle: " + f.src));
+    factsEl.appendChild(d);
+  });
+
+  var actsEl = $("#acts");
+  ACTIONS.forEach(function (a, i) {
+    var d = el("div", "act");
+    d.appendChild(el("span", "n", String(i + 1)));
+    var body = el("div");
+    body.appendChild(el("h3", null, a.h));
+    body.appendChild(el("p", null, a.p));
+    body.appendChild(el("span", "src", "Quelle: " + a.src));
+    d.appendChild(body);
+    actsEl.appendChild(d);
+  });
 
   /* ---------------------------------------------------------
      5 — TICKER
