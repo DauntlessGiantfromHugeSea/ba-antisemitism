@@ -757,8 +757,8 @@ section {
 .act.is-active { box-shadow: 8px 10px 0 rgba(225,37,27,.18), 5px 6px 0 rgba(20,19,18,.12); }
 
 .acts-nav {
-  display: flex; align-items: center; gap: .6rem;
-  margin-top: clamp(.5rem,1.5vw,1rem);
+  display: flex; align-items: center; justify-content: center;
+  gap: .6rem; margin-top: clamp(.5rem,1.5vw,1rem);
 }
 .acts-nav .btn { padding: .7rem 1.15rem; font-size: 1rem; line-height: 1; }
 .acts-pos {
