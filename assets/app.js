@@ -621,14 +621,18 @@
   var VIEWBOX = { x: "0 0 60 60", zigzag: "0 0 70 40", ring: "0 0 100 60",
                   arrow: "0 0 80 52", spark: "0 0 60 60", tick: "0 0 72 54" };
 
-  /* Feste Positionen statt Zufall — reproduzierbar und kontrolliert. */
+  /* Feste Positionen statt Zufall — reproduzierbar und kontrolliert.
+     Die Abschnitte haben overflow-x: clip. Rechts sitzende Marken
+     wurden dadurch angeschnitten; die Werte sind so gewaehlt, dass
+     jede Marke vollstaendig im Abschnitt liegt.
+     [Form, links %, oben %, Breite rem, Drehung Grad, Ton] */
   var SCATTER = {
-    scan:     [["x", 88, 4, 14, 34], ["zigzag", 4, 62, 12, -8]],
-    test:     [["spark", 92, 12, 11, 0], ["tick", 3, 78, 13, -12]],
-    codes:    [["zigzag", 90, 70, 13, 9], ["x", 5, 8, 10, -18]],
-    mechanik: [["arrow", 88, 82, 14, 22], ["x", 6, 90, 9, 12]],
-    tun:      [["spark", 4, 8, 10, 0], ["zigzag", 93, 40, 12, -14]],
-    melden:   [["x", 92, 74, 11, 26]]
+    scan:     [["x",      80,  4, 8.5,  34, "red"], ["zigzag",  4, 60, 7.5,  -8, "ink"]],
+    test:     [["spark",  85, 10, 7.0,   0, "ink"], ["tick",    3, 76, 8.0, -12, "red"]],
+    codes:    [["zigzag", 83, 68, 8.0,   9, "red"], ["x",       4,  6, 7.0, -18, "ink"]],
+    mechanik: [["arrow",  83, 80, 8.0,  22, "red"], ["x",       5, 88, 6.0,  12, "ink"]],
+    tun:      [["spark",   4,  6, 7.0,   0, "ink"], ["zigzag", 84, 38, 8.0, -14, "red"]],
+    melden:   [["x",      85, 68, 7.0,  26, "red"]]
   };
 
   Object.keys(SCATTER).forEach(function (id) {
@@ -643,7 +647,7 @@
       s.setAttribute("stroke-width", "4");
       s.setAttribute("stroke-linecap", "round");
       s.setAttribute("aria-hidden", "true");
-      s.setAttribute("class", "scrawl");
+      s.setAttribute("class", "scrawl scrawl-" + (cfg[5] || "red"));
       s.innerHTML = MARKS[kind];
       s.style.left = cfg[1] + "%";
       s.style.top = cfg[2] + "%";

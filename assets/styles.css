@@ -353,9 +353,12 @@ section {
 /* Gekritzel liegt hinter allem Inhalt des Abschnitts. */
 .scrawl {
   position: absolute; z-index: -1; height: auto;
-  pointer-events: none; color: var(--red); opacity: .3;
+  pointer-events: none;
 }
-.scrawl:nth-of-type(2n) { color: var(--ink); opacity: .16; }
+/* Ton wird beim Erzeugen gesetzt, nicht über nth-of-type — mit einer
+   Marke pro Abschnitt hätte die Regel nie gegriffen. */
+.scrawl-red { color: var(--red); opacity: .28; }
+.scrawl-ink { color: var(--ink); opacity: .14; }
 @media (max-width: 62rem) { .scrawl { display: none; } }
 
 /* ---------- Einschub: Brückennarrativ ---------- */
