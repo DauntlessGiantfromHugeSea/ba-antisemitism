@@ -389,6 +389,34 @@ const POSTS = [
 
 /* Wie Propaganda arbeitet — vier Mechanismen.
    Kurz gehalten: das ist der Einstieg, nicht die Theorie. */
+/* Häufige Fragen. Kurz gehalten, jede Antwort belegt. */
+const FAQ = [
+  { q: "Darf man Israel denn nicht kritisieren?",
+    a: "Doch, und es passiert ständig — auch in Israel selbst. Antisemitisch wird Kritik dort, wo sie den Staat pauschal wegen seiner bloßen Existenz angreift, wo alte Feindbilder auf ihn übertragen werden oder wo „die Juden“ als homogene Masse in Haftung genommen werden. Der Satz „man darf ja nichts sagen“ ist seit jeher ein Satz der radikalen Rechten: Er macht die sprechende Person zum Opfer eines Redeverbots, das es nicht gibt.",
+    src: "Amadeu Antonio Stiftung, nichts-gegen-juden.de" },
+
+  { q: "Ich habe jüdische Freunde — dann bin ich doch kein Antisemit.",
+    a: "Persönliche Beziehungen sagen nichts darüber aus, ob jemand antisemitische Überzeugungen teilt. Antisemitismus wirkt als Ideologie überindividuell. Die Soziologin Julia Bernstein beschreibt den Satz als Abwehrstrategie: Wer die eigene Aussage als problematisch erkennt, ruft vorbeugend jüdische Freunde auf, um das gesellschaftlich Unsagbare sagbar zu machen.",
+    src: "Julia Bernstein, zit. n. nichts-gegen-juden.de" },
+
+  { q: "Ist Antisemitismus nicht vor allem ein Problem von rechts?",
+    a: "Nein. Er gilt als Brückennarrativ: Er verbindet Milieus, die sonst wenig teilen — rechtsextreme, verschwörungsideologische, islamistische, christlich-fundamentalistische und linke — und schlägt eine Brücke zwischen Rand und Mitte. Sekundärer Antisemitismus ist unabhängig davon verbreitet, ob sich jemand links oder rechts verortet.",
+    src: "BfV S. 15–17 · Leipziger Autoritarismus-Studie 2024" },
+
+  { q: "Wird da nicht viel hineininterpretiert?",
+    a: "Das ist eine berechtigte Frage — und genau deshalb entscheidet nie ein einzelnes Wort. Maßgeblich sind Gesamtzusammenhang, mediales und soziales Umfeld, Absender, Adressat und das vorausgesetzte Wissen. Ein starkes Indiz ist die Häufung: Codes treten fast nie allein auf.",
+    src: "BfV, „Codes erkennen und einordnen“, S. 21" },
+
+  { q: "Warum reicht es nicht, einfach Fakten zu nennen?",
+    a: "Weil Verschwörungserzählungen sich gegen Fakten immunisieren: Jeder Gegenbeleg gilt als gefälscht. Die Haltung entzieht sich rationalen Argumenten. Wirksamer ist, das Muster zu benennen, statt die Behauptung im Detail zu widerlegen.",
+    src: "Amadeu Antonio Stiftung, S. 38 · nichts-gegen-juden.de" },
+
+  { q: "Woran erkenne ich einen Code, der in keiner Liste steht?",
+    a: "An der Machart. Es sind immer dieselben sechs Werkzeuge: vage Anspielung, Personalisierung (ein Name steht für die Gruppe), Begriffsersetzung, abwertendes Bild, Zahlencode und optisches Zeichen. Wer die kennt, braucht keine vollständige Liste — die gibt es ohnehin nicht, weil laufend neue Codes entstehen.",
+    src: "BfV, „Werkzeugkasten der Umwegkommunikation“, S. 71 f." }
+];
+
+/* Wie Propaganda arbeitet — vier Mechanismen. */
 const MECHANIK = [
   { h: "Verzerrung",
     p: "Eine komplizierte Lage wird auf eine einzige Ursache heruntergebrochen. Das fühlt sich wie Durchblick an, ist aber das Gegenteil.",

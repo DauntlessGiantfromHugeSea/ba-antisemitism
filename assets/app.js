@@ -110,25 +110,47 @@
      1 — SCAN: vier Posts im Karussell, jeder einzeln scannbar
      --------------------------------------------------------- */
   var postsEl = $("#posts");
-  var annotEl = $("#annot");
+  var bubbleEl = $("#bubble");
+  var wrapEl = postsEl.parentElement;
   var allToks = [];
   var postResets = [];
 
-  function resetAnnot() {
-    annotEl.innerHTML = "";
-    annotEl.appendChild(el("p", "ph",
-      "Erst scannen, dann einen markierten Code antippen — die Analyse erscheint hier."));
+  function closeBubble() {
+    bubbleEl.hidden = true;
+    bubbleEl.classList.remove("open");
+    allToks.forEach(function (o) { o.setAttribute("aria-expanded", "false"); });
   }
 
-  function showAnnot(i, part) {
-    annotEl.innerHTML = "";
-    var h = el("h3");
-    h.appendChild(el("span", "idx", String(i)));
-    h.appendChild(document.createTextNode(part.mark));
-    annotEl.appendChild(h);
-    annotEl.appendChild(el("p", null, part.note));
-    annotEl.appendChild(el("span", "kind", part.kind));
-    if (part.src) annotEl.appendChild(el("span", "src", "Quelle: " + part.src));
+  /* Sprechblase am angeklickten Code. Liegt ausserhalb des Scrollers,
+     sonst wuerde sie vom overflow abgeschnitten. */
+  function openBubble(tok, part) {
+    bubbleEl.innerHTML = "";
+    var h = el("p", "bub-term", part.mark);
+    bubbleEl.appendChild(h);
+    bubbleEl.appendChild(el("p", "bub-kind", part.kind));
+    bubbleEl.appendChild(el("p", "bub-note", part.note));
+    if (part.src) bubbleEl.appendChild(el("span", "src", "Quelle: " + part.src));
+
+    var close = el("button", "bub-x", "×");
+    close.type = "button";
+    close.setAttribute("aria-label", "Schließen");
+    close.addEventListener("click", closeBubble);
+    bubbleEl.appendChild(close);
+
+    bubbleEl.hidden = false;
+    bubbleEl.classList.add("open");
+
+    var t = tok.getBoundingClientRect();
+    var w = wrapEl.getBoundingClientRect();
+    var bw = bubbleEl.offsetWidth;
+    var left = (t.left - w.left) + t.width / 2 - bw / 2;
+    left = Math.max(8, Math.min(left, w.width - bw - 8));
+    bubbleEl.style.left = Math.round(left) + "px";
+    bubbleEl.style.top = Math.round(t.bottom - w.top + 10) + "px";
+
+    /* Zeiger auf den Code ausrichten */
+    var tip = (t.left - w.left) + t.width / 2 - left;
+    bubbleEl.style.setProperty("--tip", Math.round(Math.max(16, Math.min(tip, bw - 16))) + "px");
   }
 
   POSTS.forEach(function (post, pi) {
@@ -156,10 +178,11 @@
       b.appendChild(document.createTextNode(part.mark));
       b.addEventListener("click", function (e) {
         e.stopPropagation();
-        allToks.forEach(function (o) { o.setAttribute("aria-expanded", "false"); });
+        var wasOpen = b.getAttribute("aria-expanded") === "true";
+        closeBubble();
+        if (wasOpen) return;
         b.setAttribute("aria-expanded", "true");
-        showAnnot(idx, part);
-        annotEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        openBubble(b, part);
       });
       allToks.push(b);
       body.appendChild(b);
@@ -189,7 +212,7 @@
         btn.textContent = "Codes markieren";
         btn.classList.add("mark");
         count.textContent = n + " versteckt";
-        resetAnnot();
+        closeBubble();
         return;
       }
       card.classList.add("scanning");
@@ -203,7 +226,6 @@
         btn.textContent = "Zurücksetzen";
         btn.classList.remove("mark");
         count.textContent = n + " gefunden";
-        resetAnnot();
       }, reduce ? 10 : 1000);
     });
 
@@ -224,7 +246,10 @@
     postsEl.appendChild(card);
   });
 
-  resetAnnot();
+  postsEl.addEventListener("scroll", closeBubble, { passive: true });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeBubble();
+  });
 
   /* Beim Blaettern klappen die anderen Karten wieder zu — sonst bleibt
      eine aufgeklappte Erklaerung hinter einem stehen. */
@@ -238,7 +263,7 @@
           if (before) changed = true;
         }
       });
-      if (changed) resetAnnot();
+      closeBubble();
     });
 
   function POSTS_SCANNED(i) {
@@ -485,6 +510,31 @@
   });
 
   carousel(actsEl, ".act", "#actPrev", "#actNext", "#actPos");
+
+
+  /* ---------------------------------------------------------
+     Häufige Fragen — Details/Summary, kein eigenes JS nötig
+     --------------------------------------------------------- */
+  var faqEl = $("#faq");
+  if (faqEl) {
+    FAQ.forEach(function (item) {
+      var d = el("details", "faq-item");
+      var sum = el("summary");
+      sum.appendChild(el("span", "faq-q", item.q));
+      sum.appendChild(el("span", "faq-plus", "+"));
+      d.appendChild(sum);
+      var body = el("div", "faq-a");
+      body.appendChild(el("p", null, item.a));
+      body.appendChild(el("span", "src", "Quelle: " + item.src));
+      d.appendChild(body);
+      /* Immer nur eine Frage offen. */
+      d.addEventListener("toggle", function () {
+        if (!d.open) return;
+        $$(".faq-item", faqEl).forEach(function (o) { if (o !== d) o.open = false; });
+      });
+      faqEl.appendChild(d);
+    });
+  }
 
   /* ---------------------------------------------------------
      5 — TICKER

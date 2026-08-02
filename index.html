@@ -30,6 +30,7 @@
       <a href="#test">Test</a>
       <a href="#codes">Codes</a>
       <a href="#mechanik">Mechanik</a>
+      <a href="#fragen">Fragen</a>
       <a href="#tun">Was tun</a>
       <a href="#melden">Melden</a>
     </nav>
@@ -74,7 +75,6 @@
     </p>
     <div class="cta-row">
       <a class="btn mark" href="#test">Test starten</a>
-      <a class="btn" href="#codes">Lexikon</a>
     </div>
   </div>
 </header>
@@ -98,14 +98,13 @@
 
   <div class="posts-wrap rv">
     <div class="posts" id="posts" tabindex="0" role="group" aria-label="Vier Beispielposts, horizontal blätterbar"></div>
+    <div class="bubble" id="bubble" role="status" aria-live="polite" hidden></div>
     <div class="acts-nav">
       <button type="button" class="btn nav-prev" id="postPrev" aria-label="Vorheriger Post">←</button>
       <button type="button" class="btn nav-next" id="postNext" aria-label="Nächster Post">→</button>
       <span class="acts-pos" id="postPos" aria-live="polite">1 / 4</span>
     </div>
   </div>
-
-  <div class="annot rv" id="annot" aria-live="polite"></div>
 </section>
 
 <!-- ========== 02 TEST ========== -->
@@ -196,12 +195,21 @@
   </div>
 </section>
 
-<!-- ========== 05 WAS TUN ========== -->
+<!-- ========== FRAGEN ========== -->
+<section id="fragen" class="shell">
+  <div class="sec-head rv">
+    <p class="eyebrow"><span class="secnum" aria-hidden="true">05</span>Fragen</p>
+    <h2 class="d">Häufig gefragt</h2>
+  </div>
+  <div class="faq rv" id="faq"></div>
+</section>
+
+<!-- ========== 06 WAS TUN ========== -->
 <section id="tun">
   <div class="shell">
     <div class="tun-top rv">
       <div>
-        <p class="eyebrow"><span class="secnum" aria-hidden="true">05</span>Was tun</p>
+        <p class="eyebrow"><span class="secnum" aria-hidden="true">06</span>Was tun</p>
         <h2 class="d">Du siehst<br>so was. Und jetzt?</h2>
         <p class="sub">
           Fünf Dinge, die wirklich etwas ändern — und eines, das du besser
@@ -224,17 +232,16 @@
   </div>
 </section>
 
-<div class="frieze" aria-hidden="true"></div>
-
 <!-- ========== 06 MELDEN ========== -->
 <section id="melden" class="shell">
   <div class="melden rv">
-    <svg class="mglyph" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" aria-hidden="true">
-      <path d="M32 6v14M32 30v12M32 50v6"/>
-      <path d="M6 56 32 8l26 48H6z"/>
+    <svg class="mglyph" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+      <path d="M32 10 58 56H6z"/>
+      <path d="M32 27v11"/>
+      <circle cx="32" cy="47.5" r="1.9" fill="currentColor" stroke="none"/>
     </svg>
     <div>
-      <p class="eyebrow"><span class="secnum" aria-hidden="true">06</span>Melden</p>
+      <p class="eyebrow"><span class="secnum" aria-hidden="true">07</span>Melden</p>
       <h2 class="d">Etwas gesehen?</h2>
       <p class="sub">
         Antisemitische Vorfälle, Symbole oder Drohungen kann man melden —
