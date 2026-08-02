@@ -328,13 +328,63 @@ mark, .hl {
 
 /* ---------- Sektionen ---------- */
 
-section { padding-block: clamp(3.5rem,8vw,7rem); }
-section + section { border-top: 1px solid var(--hair); }
+/* Abschnitte, in denen Elemente über die Kante hinausragen, klippen
+   selbst — sonst verbreitert der Ausbruch das Dokument.
+   clip statt hidden: erzeugt keinen Scrollcontainer. */
+section { padding-block: clamp(3.5rem,8vw,7rem); overflow-x: clip; }
+@supports not (overflow-x: clip) { section { overflow-x: hidden; } }
 
 .sec-head { margin-bottom: clamp(2.25rem,4.5vw,3.5rem); }
 .sec-head .eyebrow { margin-bottom: 1rem; }
 .sec-head h2 { font-size: clamp(2.25rem,7vw,5.5rem); margin-bottom: 1.25rem; }
 .sec-head .sub { font-size: clamp(1rem,.95rem + .3vw,1.125rem); }
+
+/* =========================================================
+   RHYTHMUSBRUCH
+   Gleiche Breite, gleicher Abstand, gleicher Kopfaufbau in
+   jedem Abschnitt liest sich wie ein Baukasten. Ab hier
+   bekommt jeder Abschnitt eine eigene Anlage.
+   ========================================================= */
+
+@media (min-width: 62rem) {
+
+  /* 01 Scan — Kopf schmal und links, Panel bricht nach rechts aus */
+  #scan { padding-block: clamp(4rem,7vw,6rem) clamp(5rem,10vw,9rem); }
+  #scan .sec-head { max-width: 26rem; }
+  #scan .sec-head h2 { font-size: clamp(2rem,4vw,3.25rem); }
+  #scan .scan-frame { margin-right: calc(var(--pad) * -1); }
+
+  /* 02 Test — Schlagzeile riesig, Blatt nach rechts versetzt und
+     nach oben in den Abschnitt darüber geschoben */
+  #test { padding-block: 0 clamp(5rem,9vw,8rem); }
+  #test .sec-head { max-width: 30rem; margin-bottom: -3.5rem; }
+  #test .sec-head h2 { font-size: clamp(3rem,9vw,8rem); }
+  #test .quiz { margin-left: auto; margin-right: clamp(0rem,4vw,5rem); }
+
+  /* 03 Codes — Kopf rechtsbündig, Stempelbogen volle Breite */
+  #codes { padding-block: clamp(4rem,8vw,7rem); }
+  #codes .sec-head { margin-left: auto; text-align: right; max-width: 34rem; }
+  #codes .sec-head .eyebrow { justify-content: flex-end; }
+
+  /* 04 Mechanik — Bild volle Breite, Kopf schiebt sich darüber */
+  #mechanik { padding-block: clamp(3rem,6vw,5rem) clamp(5rem,10vw,9rem); }
+  #mechanik .band-img { margin-block: clamp(-7rem,-6vw,-3rem) clamp(2.5rem,5vw,4rem); }
+  #mechanik .sec-head { max-width: 32rem; position: relative; z-index: 2; }
+  #mechanik .mech { margin-left: clamp(0rem,8vw,10rem); }
+
+  /* 05 Was tun — Illustration bricht über die rechte Kante hinaus */
+  #tun { padding-block: clamp(4rem,8vw,7rem); }
+  #tun .tun-img { margin-right: calc(var(--pad) * -1.4); }
+  #tun .acts { max-width: 62rem; }
+
+  /* 06 Melden — kompakt, kein großer Abstand davor */
+  #melden { padding-block: clamp(2rem,4vw,3.5rem) clamp(4rem,8vw,7rem); }
+}
+
+/* Unregelmäßige Spaltenbreiten — drei gleiche Drittel wirken gebaut. */
+@media (min-width: 52rem) {
+  .facts { grid-template-columns: 1.15fr 1fr 1.3fr; }
+}
 
 /* ---------- Quellenangabe ---------- */
 
