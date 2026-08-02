@@ -289,32 +289,57 @@ section + section { border-top: 1px solid var(--hair); }
 
 /* ---------- 01 SCAN — dunkler Einschub ---------- */
 
+/* Risskante als aufgelegte Streifen statt clip-path auf dem Rahmen:
+   ein clip-path würde Kopfzeile und Quellenangabe abschneiden. */
 .scan-frame {
   position: relative; background: var(--dark); color: var(--on-dark);
-  overflow: hidden; clip-path: var(--torn-band);
+  overflow: hidden;
+}
+.scan-frame::before, .scan-frame::after {
+  content: ""; position: absolute; left: 0; right: 0;
+  height: 20px; background: var(--wall); z-index: 2; pointer-events: none;
+}
+.scan-frame::before {
+  top: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 30%, 93% 96%, 85% 34%, 76% 88%, 67% 40%,
+    58% 98%, 50% 36%, 41% 92%, 32% 38%, 23% 86%, 14% 34%, 6% 90%, 0 40%);
+}
+.scan-frame::after {
+  bottom: 0;
+  clip-path: polygon(0 100%, 100% 100%, 100% 70%, 93% 4%, 85% 66%, 76% 12%, 67% 60%,
+    58% 2%, 50% 64%, 41% 8%, 32% 62%, 23% 14%, 14% 66%, 6% 10%, 0 60%);
 }
 .scan-meta {
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
   font-family: var(--mono); font-size: .6875rem; font-weight: 700;
   letter-spacing: .14em; text-transform: uppercase; color: var(--on-dark-2);
-  padding: 1.6rem clamp(1.25rem,3vw,2.5rem) .85rem;
+  padding: 2.1rem clamp(1.25rem,3vw,2.5rem) .85rem;
   border-bottom: 1px solid rgba(255,255,255,.14);
 }
 .scan-meta .live { color: var(--red); }
-.scan-inner { padding: clamp(1.5rem,4vw,3rem) clamp(1.25rem,3vw,2.5rem) clamp(2rem,4vw,3.25rem); }
+.scan-inner { padding: clamp(1.5rem,4vw,3rem) clamp(1.25rem,3vw,2.5rem) clamp(2.5rem,5vw,3.75rem); }
 
 .passage {
   font-family: var(--display); font-weight: 900; text-transform: uppercase;
-  letter-spacing: -.03em; line-height: 1.1;
+  letter-spacing: -.03em;
+  /* Luft für die roten Marker — bei 1.1 kollidieren die Kästen,
+     bei 1.42 stoßen sie exakt aneinander. */
+  line-height: 1.58;
   font-size: clamp(1.25rem,3.2vw,2.5rem);
-  margin: 0; max-width: 26ch; color: #6E6963;
+  margin: 0; max-width: 24ch; color: #6E6963;
   transition: color .4s ease;
 }
 .scanned .passage { color: var(--on-dark); }
 
 .tok {
-  border: 0; padding: 0 .05em; margin: 0; background: transparent;
+  border: 0; padding: .06em .16em; margin: 0; background: transparent;
   color: inherit; font: inherit; cursor: default; position: relative;
+  /* font: inherit deckt text-transform nicht ab — Buttons blieben gemischt. */
+  text-transform: inherit;
+  /* Buttons sind inline-block: ohne eigene Zeilenhöhe füllt der Marker
+     die volle Zeilenhöhe und stößt an den Marker der Nachbarzeile. */
+  line-height: 1.06;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
   transition: background .25s, color .25s;
 }
 .scanned .tok { cursor: pointer; background: var(--red); color: #fff; }
