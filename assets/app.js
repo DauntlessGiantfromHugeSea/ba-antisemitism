@@ -15,6 +15,34 @@
   }
 
   /* ---------------------------------------------------------
+     0 — EINGANGSHINWEIS
+     Nur per JS geoeffnet: Faellt JS aus, bleibt der Dialog zu
+     und die Seite normal lesbar. Der Hinweis steht dann in der
+     Fusszeile. Einmal pro Sitzung.
+     --------------------------------------------------------- */
+  (function () {
+    var gate = $("#gate");
+    if (!gate || typeof gate.showModal !== "function") return;
+
+    var KEY = "zl-hinweis-gelesen";
+    var seen = false;
+    try { seen = sessionStorage.getItem(KEY) === "1"; } catch (e) {}
+    if (seen) return;
+
+    function done() {
+      try { sessionStorage.setItem(KEY, "1"); } catch (e) {}
+      document.documentElement.classList.remove("gated");
+    }
+
+    document.documentElement.classList.add("gated");
+    gate.addEventListener("close", done);
+    /* Escape zaehlt als gelesen — einen Modal-Dialog nicht schliessbar
+       zu machen waere ein Barrierefreiheitsproblem. */
+    $("#gateOk").addEventListener("click", function () { gate.close(); });
+    gate.showModal();
+  })();
+
+  /* ---------------------------------------------------------
      Karussell — geteilt von Posts und Handlungsschritten.
      Native scroll-snap; JS ergaenzt Skalierung nach Abstand zur
      Mitte, Maus-Ziehen, Blaettern und Positionsanzeige.

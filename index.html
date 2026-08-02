@@ -20,6 +20,34 @@
 </head>
 <body>
 
+<!-- Eingangshinweis. Ohne JavaScript bleibt der Dialog geschlossen
+     und die Seite normal lesbar — der Hinweis steht dann in der Fußzeile. -->
+<dialog class="gate" id="gate" aria-labelledby="gateTitle">
+  <p class="gate-eyebrow">Hinweis vor dem Start</p>
+  <h2 class="gate-title d" id="gateTitle">Studienprojekt</h2>
+  <div class="gate-body">
+    <p>
+      Diese Seite ist ein gestalterischer Prototyp aus einer
+      <strong>Bachelorarbeit im Studiengang Mediendesign</strong> von
+      <strong>Dustyn Model</strong> an der <strong>IU Internationalen
+      Hochschule</strong>.
+    </p>
+    <p>
+      Sie ist <strong>kein Angebot der IU Internationalen Hochschule</strong>
+      und erscheint nicht in deren Namen. Ebenso wenig ist sie ein Angebot
+      einer Behörde oder einer der genannten Organisationen. Keine
+      Rechtsberatung.
+    </p>
+    <p>
+      Die gezeigten Beiträge sind <strong>konstruiert</strong> — kein reales
+      Material. Alle inhaltlichen Angaben stammen aus den in der Fußzeile
+      genannten Fachpublikationen und sind an jeder Aussage einzeln belegt.
+    </p>
+  </div>
+  <button type="button" class="btn mark" id="gateOk" autofocus>Verstanden — Seite ansehen</button>
+</dialog>
+
+
 <!-- ========== HERO — Collage-Bild ========== -->
 <header class="hero">
 
@@ -260,10 +288,17 @@
   <p class="big d">Zeichen lesen.<br><em>Haltung zeigen.</em></p>
   <div class="foot-grid">
     <p>
-      <b>Prototyp.</b> Gestalterische Studienarbeit, Bachelorarbeit
-      Mediendesign. Kein Angebot einer Behörde, keine Rechtsberatung.
-      Diese Seite zeigt bewusst kein antisemitisches Bildmaterial — sie
-      markiert nur. Codes lassen sich nie mechanisch entschlüsseln:
+      <b>Studienprojekt.</b> Gestalterischer Prototyp aus einer Bachelorarbeit
+      im Studiengang Mediendesign von <b>Dustyn Model</b> an der
+      <b>IU Internationalen Hochschule</b>. Die Seite ist kein Angebot der
+      IU Internationalen Hochschule und erscheint nicht in deren Namen —
+      ebenso wenig im Namen einer Behörde oder einer der genannten
+      Organisationen. Keine Rechtsberatung.
+    </p>
+    <p>
+      <b>Zum Inhalt.</b> Die gezeigten Beiträge sind konstruiert, kein reales
+      Material. Diese Seite zeigt bewusst kein antisemitisches Bildmaterial —
+      sie markiert nur. Codes lassen sich nie mechanisch entschlüsseln:
       Es entscheidet immer der Kontext.
     </p>
     <p>

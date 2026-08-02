@@ -508,6 +508,45 @@ section {
   text-transform: uppercase; color: var(--on-dark-2);
 }
 
+/* ---------- Eingangshinweis ---------- */
+
+.gated { overflow: hidden; }
+
+.gate {
+  border: 0; padding: 0; max-width: none; max-height: none;
+  width: min(38rem, calc(100vw - 2rem));
+  background: var(--red); color: #fff;
+  padding: clamp(1.75rem,4vw,3rem) clamp(1.5rem,3.5vw,3rem) clamp(1.5rem,3vw,2.5rem);
+  box-shadow: 10px 12px 0 rgba(20,19,18,.35);
+}
+.gate::backdrop { background: rgba(20,19,18,.82); }
+
+.gate-eyebrow {
+  font-family: var(--mono); font-size: .6875rem; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,.72); margin: 0 0 .9rem; max-width: none;
+}
+.gate-title {
+  /* Etwas unter der Innenbreite bleiben — „Studienprojekt" sass sonst
+     exakt auf der Kante und liess den Dialog um wenige Pixel scrollen. */
+  font-size: clamp(1.75rem,6vw,3.25rem); color: #fff;
+  margin: 0 0 1.5rem;
+}
+.gate-body { border-top: 2px solid rgba(255,255,255,.35); padding-top: 1.25rem; }
+.gate-body p {
+  margin: 0 0 .9rem; max-width: 54ch;
+  font-size: clamp(.9375rem,.9rem + .2vw,1.0625rem); line-height: 1.5;
+  color: rgba(255,255,255,.94);
+}
+.gate-body p:last-child { margin-bottom: 0; }
+.gate-body strong { color: #fff; }
+
+.gate .btn {
+  margin-top: 1.75rem;
+  background: #fff; border-color: #fff; color: var(--ink);
+}
+.gate .btn:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
+
 /* ---------- Sprechblase am Code ---------- */
 
 .bubble {
