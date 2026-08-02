@@ -344,7 +344,36 @@
   });
 
   /* ---------------------------------------------------------
-     6 — SCROLL-REVEAL
+     6 — FRIES
+     Die sieben Narrativ-Zeichen als Stempelband. Füllt die
+     Bandbreite, damit auf breiten Schirmen keine Lücke bleibt.
+     --------------------------------------------------------- */
+  $$(".frieze").forEach(function (band) {
+    for (var i = 0; i < 28; i++) {
+      band.appendChild(svgFor(CATEGORIES[i % CATEGORIES.length]));
+    }
+  });
+
+  /* ---------------------------------------------------------
+     7 — RING UM DIE ZAHL
+     Zeichnet sich, sobald er ins Bild kommt.
+     --------------------------------------------------------- */
+  var circled = $(".circled");
+  if (circled) {
+    if (!("IntersectionObserver" in window)) {
+      circled.classList.add("drawn");
+    } else {
+      var ringIO = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add("drawn"); ringIO.unobserve(e.target); }
+        });
+      }, { threshold: .6 });
+      ringIO.observe(circled);
+    }
+  }
+
+  /* ---------------------------------------------------------
+     8 — SCROLL-REVEAL
      --------------------------------------------------------- */
   var reveals = $$(".rv");
   if (!("IntersectionObserver" in window) ||

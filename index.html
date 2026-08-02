@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ZEICHEN LESEN — Decoder für antisemitische Codes</title>
 <meta name="description" content="Hass sagt nicht mehr, wie er heißt. Interaktiver Decoder für antisemitische Codes. Kampagnenprototyp, Bachelorarbeit Mediendesign.">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="light">
 <link rel="stylesheet" href="assets/styles.css">
 <script>
   /* Scroll-Reveal nur aktivieren, wenn JS läuft — sonst bleibt alles sichtbar.
@@ -66,7 +66,12 @@
       Er schreibt <strong>109</strong>. Er setzt drei Klammern um ein Wort —
       und alle Eingeweihten wissen Bescheid.
     </p>
-    <p class="stat"><b id="total">0</b> Codes</p>
+    <p class="stat circled">
+      <b id="total">0</b> Codes
+      <svg class="scrawl-ring" viewBox="0 0 200 110" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" aria-hidden="true">
+        <path d="M18 58C14 30 46 11 96 12c48 1 86 17 88 42 2 26-33 44-86 44C50 98 22 84 18 57c-1-9 2-19 9-28"/>
+      </svg>
+    </p>
     <div class="cta-row">
       <a class="btn mark" href="#test">Test starten</a>
       <a class="btn" href="#codes">Lexikon</a>
@@ -78,10 +83,12 @@
   <div class="ticker-track" id="ticker"></div>
 </div>
 
+<div class="frieze" aria-hidden="true"></div>
+
 <!-- ========== 01 SCAN ========== -->
 <section id="scan" class="shell">
   <div class="sec-head rv">
-    <p class="eyebrow">01 — Scan</p>
+    <p class="eyebrow"><span class="secnum" aria-hidden="true">01</span>Scan</p>
     <h2 class="d">Elf Codes.<br>Ein Absatz.</h2>
   </div>
 
@@ -95,6 +102,11 @@
       <p class="passage" id="passage"></p>
       <div class="scan-actions">
         <button type="button" class="btn mark" id="scanBtn">Codes markieren</button>
+        <svg class="scrawl-arrow" viewBox="0 0 110 60" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 48c14-26 40-40 78-42"/>
+          <path d="M70 2l14 4M84 6l-8 12"/>
+        </svg>
+        <span class="scrawl-note">hier drücken</span>
       </div>
       <div class="annot" id="annot" aria-live="polite"></div>
     </div>
@@ -104,7 +116,7 @@
 <!-- ========== 02 TEST ========== -->
 <section id="test" class="shell">
   <div class="sec-head rv">
-    <p class="eyebrow">02 — Test</p>
+    <p class="eyebrow"><span class="secnum" aria-hidden="true">02</span>Test</p>
     <h2 class="d">Code oder nicht?</h2>
   </div>
 
@@ -127,7 +139,7 @@
 <!-- ========== 03 CODES ========== -->
 <section id="codes" class="shell">
   <div class="sec-head rv">
-    <p class="eyebrow">03 — Codes</p>
+    <p class="eyebrow"><span class="secnum" aria-hidden="true">03</span>Codes</p>
     <h2 class="d">Sieben Erzählungen</h2>
   </div>
 
@@ -140,7 +152,7 @@
 <section id="mechanik">
   <div class="shell">
     <div class="sec-head rv">
-      <p class="eyebrow">04 — Mechanik</p>
+      <p class="eyebrow"><span class="secnum" aria-hidden="true">04</span>Mechanik</p>
       <h2 class="d">Wie das<br>funktioniert</h2>
       <p class="sub">
         Codes sind kein Zufall. Sie benutzen vier Hebel — immer dieselben.
@@ -168,7 +180,7 @@
   <div class="shell">
     <div class="tun-top rv">
       <div>
-        <p class="eyebrow">05 — Was tun</p>
+        <p class="eyebrow"><span class="secnum" aria-hidden="true">05</span>Was tun</p>
         <h2 class="d">Du siehst<br>so was. Und jetzt?</h2>
         <p class="sub">
           Fünf Dinge, die wirklich etwas ändern — und eines, das du besser
@@ -184,6 +196,8 @@
   </div>
 </section>
 
+<div class="frieze" aria-hidden="true"></div>
+
 <!-- ========== 06 MELDEN ========== -->
 <section id="melden" class="shell">
   <div class="melden rv">
@@ -192,7 +206,7 @@
       <path d="M6 56 32 8l26 48H6z"/>
     </svg>
     <div>
-      <p class="eyebrow">06 — Melden</p>
+      <p class="eyebrow"><span class="secnum" aria-hidden="true">06</span>Melden</p>
       <h2 class="d">Etwas gesehen?</h2>
       <p class="sub">
         Antisemitische Vorfälle, Symbole oder Drohungen kann man melden —
