@@ -42,6 +42,25 @@ Gestalterische Leitidee: *Mechanismen entlarven, nicht Codes feiern.*
 - **Kein antisemitisches Bildmaterial.** Ausschließlich Markierung und
   Annotation.
 
+## Hero-Bild
+
+Die Collage liegt als Bild vor (`assets/img/hero.jpg`). Die Schrift darin
+ist **nicht** Teil des Bildes: Ein gerissener Banner und ein Papierstreifen
+liegen als HTML-Elemente darüber und decken die eingebrannte Schrift ab.
+Titel und Unterzeile sind damit echter, markier- und durchsuchbarer Text.
+
+Die Overlays sind prozentual auf das Originalbild bezogen — das Bild darf
+deshalb **nicht** beschnitten werden (`object-fit: cover`), sonst verrutschen
+sie. Unter 1024 px wird die Unterzeile aus dem Streifen ausgeblendet und
+darunter in lesbarer Größe ausgegeben; unter 640 px wird das Bild über die
+Viewportbreite hinaus vergrößert, damit die Schlagzeile Wirkung behält.
+
+> **Offen:** Das Bild ist KI-generiert. Für die Bachelorarbeit ist das zu
+> deklarieren. Außerdem enthält die Collage hebräische Schriftfetzen — die
+> sollten von jemandem geprüft werden, der Hebräisch liest. Bildgeneratoren
+> setzen hebräische Zeichen häufig zu sinnlosen Folgen zusammen, und auf
+> einer Seite über Antisemitismus wäre das ein vermeidbarer Angriffspunkt.
+
 ## Technik
 
 Statische Seite, keine Abhängigkeiten, kein Build.
@@ -52,6 +71,9 @@ assets/
   styles.css    Design-Tokens und Layout
   codes.js      Datenbasis: 111 Codes, 7 Narrative, Quiz, Beispieltext
   app.js        Scan, Test, Drill-down, Ticker, Scroll-Reveal
+  img/
+    hero.jpg        Collage, 1672 × 941
+    hero-small.jpg  Variante für schmale Schirme
 ```
 
 Lokal ansehen:

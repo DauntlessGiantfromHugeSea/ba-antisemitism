@@ -20,37 +20,10 @@
 </head>
 <body>
 
-<!-- ========== HERO — Collage ========== -->
-<header class="hero shell">
+<!-- ========== HERO — Collage-Bild ========== -->
+<header class="hero">
 
-  <!-- Gerissene Fragmente. Rein dekorativ, alle aria-hidden. -->
-  <div class="frag frag-red   f1" aria-hidden="true"></div>
-  <div class="frag frag-paper f2" aria-hidden="true"></div>
-  <div class="frag frag-half  f3" aria-hidden="true"></div>
-  <div class="frag frag-paper f4" aria-hidden="true"></div>
-  <div class="frag frag-red   f5" aria-hidden="true"></div>
-  <div class="frag frag-paper f6" aria-hidden="true"></div>
-
-  <svg class="crosshair ch1" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-    <circle cx="20" cy="20" r="9"/><path d="M20 0v11M20 29v11M0 20h11M29 20h11"/>
-  </svg>
-  <svg class="crosshair ch2" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-    <circle cx="20" cy="20" r="9"/><path d="M20 0v11M20 29v11M0 20h11M29 20h11"/>
-  </svg>
-
-  <span class="bangs" aria-hidden="true">!!!</span>
-
-  <svg class="megaphone" viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="miter" aria-hidden="true">
-    <path d="M6 34h20l34-20v62L26 56H6z" fill="currentColor" fill-opacity=".14"/>
-    <path d="M26 34v22"/>
-    <path d="M14 56v18h14V56"/>
-    <g class="bolt" stroke="currentColor" stroke-width="5">
-      <path d="M78 22l-8 16h12l-8 16"/>
-      <path d="M98 14l-8 20h13l-9 20"/>
-    </g>
-  </svg>
-
-  <div class="topbar">
+  <div class="topbar shell">
     <span class="brand">Zeichen&nbsp;Lesen</span>
     <nav>
       <a href="#scan">Scan</a>
@@ -60,20 +33,32 @@
     </nav>
   </div>
 
-  <div class="hero-main">
-    <div class="band">
-      <h1 class="d">Antisemitische<br>Codes</h1>
+  <!-- Collage als Bild, Schrift als echter Text darüber.
+       Banner und Streifen decken die eingebrannte Schrift ab. -->
+  <div class="hero-visual">
+    <picture class="hero-img">
+      <source media="(max-width: 47.999rem)" srcset="assets/img/hero-small.jpg">
+      <img src="assets/img/hero.jpg" alt="" role="presentation" fetchpriority="high" width="1672" height="941">
+    </picture>
+
+    <div class="ov-band">
+      <h1 class="d">Antisemitismus</h1>
     </div>
-    <div class="strip">
+
+    <div class="ov-strip">
       <p>Erkennen. Verstehen. Widersprechen.</p>
-      <svg class="scribble" viewBox="0 0 300 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M2 8c40-6 78 2 118-2s76-5 116 1 62-3 62-3"/>
-        <path d="M14 4c46 5 84-3 126 1s70 4 112-2"/>
+      <svg class="scribble" viewBox="0 0 300 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M3 7c40-5 78 2 118-2s76-4 116 1 60-3 60-3"/>
+        <path d="M16 3c46 4 84-3 126 1s70 3 112-2"/>
       </svg>
     </div>
   </div>
 
-  <div class="hero-foot">
+  <!-- Auf schmalen Schirmen wäre die Zeile im Streifen nur wenige Pixel
+       hoch. Dort steht sie stattdessen hier, in lesbarer Größe. -->
+  <p class="subline shell">Erkennen. Verstehen. Widersprechen.</p>
+
+  <div class="hero-foot shell">
     <p class="claim">
       Hass sagt nicht mehr, wie er heißt. Er sagt <strong>Globalisten</strong>.
       Er schreibt <strong>109</strong>. Er setzt drei Klammern um ein Wort —
