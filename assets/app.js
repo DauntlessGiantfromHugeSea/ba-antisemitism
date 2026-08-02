@@ -15,34 +15,107 @@
   }
 
   /* ---------------------------------------------------------
-     1 — SCAN
+     Karussell — geteilt von Posts und Handlungsschritten.
+     Native scroll-snap; JS ergaenzt Skalierung nach Abstand zur
+     Mitte, Maus-Ziehen, Blaettern und Positionsanzeige.
      --------------------------------------------------------- */
-  var passageEl = $("#passage");
-  var annotEl   = $("#annot");
-  var scanBtn   = $("#scanBtn");
-  var frameEl   = $("#scanFrame");
-  var markIndex = 0;
+  function carousel(scroller, itemSel, prevSel, nextSel, posSel) {
+    var cards = $$(itemSel, scroller);
+    if (!cards.length) return;
+    var posEl = $(posSel);
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var ticking = false, active = 0, pending = 0, down = false;
 
-  PASSAGE.forEach(function (part) {
-    if (part.txt) {
-      passageEl.appendChild(document.createTextNode(part.txt));
-      return;
+    function update() {
+      ticking = false;
+      var box = scroller.getBoundingClientRect();
+      var mid = box.left + box.width / 2;
+      var best = 0, bestD = Infinity;
+      cards.forEach(function (c, i) {
+        var r = c.getBoundingClientRect();
+        var d = Math.abs((r.left + r.width / 2) - mid);
+        var t = Math.min(d / (box.width / 2 || 1), 1);
+        if (!reduce) {
+          c.style.transform = "scale(" + (1 - t * 0.12).toFixed(3) + ")";
+          c.style.opacity = (1 - t * 0.45).toFixed(3);
+        }
+        if (d < bestD) { bestD = d; best = i; }
+      });
+      cards.forEach(function (c, i) { c.classList.toggle("is-active", i === best); });
+      active = best;
+      if (!down) pending = best;
+      if (posEl) posEl.textContent = (best + 1) + " / " + cards.length;
     }
-    markIndex += 1;
-    var i = markIndex;
-    var b = el("button", "tok");
-    b.type = "button";
-    b.setAttribute("aria-expanded", "false");
-    b.dataset.n = String(i);
-    b.disabled = true;
-    b.appendChild(document.createTextNode(part.mark));
-    b.addEventListener("click", function () {
-      $$(".tok", passageEl).forEach(function (o) { o.setAttribute("aria-expanded", "false"); });
-      b.setAttribute("aria-expanded", "true");
-      showAnnot(i, part);
+
+    scroller.addEventListener("scroll", function () {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+    }, { passive: true });
+
+    function snapTo(i) {
+      cards[i].scrollIntoView({
+        behavior: reduce ? "auto" : "smooth", inline: "center", block: "nearest"
+      });
+    }
+    function go(dir) {
+      pending = Math.min(cards.length - 1, Math.max(0, pending + dir));
+      snapTo(pending);
+    }
+    var pv = $(prevSel), nx = $(nextSel);
+    if (pv) pv.addEventListener("click", function () { go(-1); });
+    if (nx) nx.addEventListener("click", function () { go(1); });
+
+    /* Maus-Ziehen. Touch und Trackpad kann der Browser selbst. */
+    var startX = 0, startLeft = 0, moved = 0;
+    scroller.addEventListener("pointerdown", function (e) {
+      if (e.pointerType !== "mouse") return;
+      if (e.target.closest("button, a")) return;
+      down = true; moved = 0;
+      startX = e.clientX; startLeft = scroller.scrollLeft;
+      scroller.classList.add("dragging");
+      scroller.setPointerCapture(e.pointerId);
     });
-    passageEl.appendChild(b);
-  });
+    scroller.addEventListener("pointermove", function (e) {
+      if (!down) return;
+      var dx = e.clientX - startX;
+      moved = Math.max(moved, Math.abs(dx));
+      scroller.scrollLeft = startLeft - dx;
+    });
+    function endDrag(e) {
+      if (!down) return;
+      down = false;
+      scroller.classList.remove("dragging");
+      try { scroller.releasePointerCapture(e.pointerId); } catch (err) {}
+      var box = scroller.getBoundingClientRect();
+      var mid = box.left + box.width / 2, best = 0, bestD = Infinity;
+      cards.forEach(function (c, i) {
+        var r = c.getBoundingClientRect();
+        var d = Math.abs((r.left + r.width / 2) - mid);
+        if (d < bestD) { bestD = d; best = i; }
+      });
+      pending = best; snapTo(best);
+    }
+    scroller.addEventListener("pointerup", endDrag);
+    scroller.addEventListener("pointercancel", endDrag);
+    scroller.addEventListener("click", function (e) {
+      if (moved > 6) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+
+    update();
+    window.addEventListener("resize", update);
+  }
+
+  /* ---------------------------------------------------------
+     1 — SCAN: vier Posts im Karussell, jeder einzeln scannbar
+     --------------------------------------------------------- */
+  var postsEl = $("#posts");
+  var annotEl = $("#annot");
+  var allToks = [];
+
+  function resetAnnot() {
+    annotEl.innerHTML = "";
+    annotEl.appendChild(el("p", "ph",
+      "Erst scannen, dann einen markierten Code antippen — die Analyse erscheint hier."));
+  }
 
   function showAnnot(i, part) {
     annotEl.innerHTML = "";
@@ -55,42 +128,88 @@
     if (part.src) annotEl.appendChild(el("span", "src", "Quelle: " + part.src));
   }
 
-  function resetAnnot() {
-    annotEl.innerHTML = "";
-    annotEl.appendChild(el("p", "ph",
-      "↑ Markierten Code antippen — Analyse erscheint hier"));
-  }
+  POSTS.forEach(function (post, pi) {
+    var card = el("article", "post");
 
-  scanBtn.addEventListener("click", function () {
-    if (frameEl.classList.contains("scanned")) {
-      frameEl.classList.remove("scanned");
-      $$(".tok", passageEl).forEach(function (t) {
-        t.disabled = true;
-        t.setAttribute("aria-expanded", "false");
+    var head = el("div", "post-head");
+    head.appendChild(el("span", "post-av", String(pi + 1)));
+    var who = el("div");
+    who.appendChild(el("span", "post-handle", post.handle));
+    who.appendChild(el("span", "post-meta", post.meta));
+    head.appendChild(who);
+    card.appendChild(head);
+
+    var body = el("p", "post-body");
+    var n = 0;
+    post.parts.forEach(function (part) {
+      if (part.txt) { body.appendChild(document.createTextNode(part.txt)); return; }
+      n += 1;
+      var idx = n;
+      var b = el("button", "tok");
+      b.type = "button";
+      b.dataset.n = String(idx);
+      b.setAttribute("aria-expanded", "false");
+      b.disabled = true;
+      b.appendChild(document.createTextNode(part.mark));
+      b.addEventListener("click", function (e) {
+        e.stopPropagation();
+        allToks.forEach(function (o) { o.setAttribute("aria-expanded", "false"); });
+        b.setAttribute("aria-expanded", "true");
+        showAnnot(idx, part);
+        annotEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
       });
-      scanBtn.textContent = "Codes markieren";
-      scanBtn.classList.add("mark");
-      $("#scanCount").textContent = "Nicht analysiert";
-      annotEl.innerHTML = "";
-      annotEl.appendChild(el("p", "ph", "Scan zurückgesetzt."));
-      return;
-    }
-    frameEl.classList.add("scanning");
-    scanBtn.disabled = true;
-    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.setTimeout(function () {
-      frameEl.classList.remove("scanning");
-      frameEl.classList.add("scanned");
-      $$(".tok", passageEl).forEach(function (t) { t.disabled = false; });
-      scanBtn.disabled = false;
-      scanBtn.textContent = "Zurücksetzen";
-      scanBtn.classList.remove("mark");
-      resetAnnot();
-      $("#scanCount").textContent = markIndex + " Codes gefunden";
-    }, reduce ? 10 : 1200);
+      allToks.push(b);
+      body.appendChild(b);
+    });
+    card.appendChild(body);
+
+    var bar = el("div", "post-bar");
+    var btn = el("button", "btn mark", "Codes markieren");
+    btn.type = "button";
+    var count = el("span", "post-count", n + " versteckt");
+    bar.appendChild(btn);
+    bar.appendChild(count);
+    card.appendChild(bar);
+
+    /* Gegenrede — erst nach dem Scan sichtbar. */
+    var reply = el("div", "post-reply");
+    reply.appendChild(el("p", "post-reply-h", "Was du antworten kannst"));
+    reply.appendChild(el("p", null, post.reply));
+    reply.appendChild(el("span", "src", "Quelle: " + post.replySrc));
+    card.appendChild(reply);
+
+    var toks = $$(".tok", card);
+    btn.addEventListener("click", function () {
+      if (card.classList.contains("scanned")) {
+        card.classList.remove("scanned");
+        toks.forEach(function (t) { t.disabled = true; t.setAttribute("aria-expanded", "false"); });
+        btn.textContent = "Codes markieren";
+        btn.classList.add("mark");
+        count.textContent = n + " versteckt";
+        resetAnnot();
+        return;
+      }
+      card.classList.add("scanning");
+      btn.disabled = true;
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.setTimeout(function () {
+        card.classList.remove("scanning");
+        card.classList.add("scanned");
+        toks.forEach(function (t) { t.disabled = false; });
+        btn.disabled = false;
+        btn.textContent = "Zurücksetzen";
+        btn.classList.remove("mark");
+        count.textContent = n + " gefunden";
+        resetAnnot();
+      }, reduce ? 10 : 1000);
+    });
+
+    card.appendChild(el("div", "scanline"));
+    postsEl.appendChild(card);
   });
 
   resetAnnot();
+  carousel(postsEl, ".post", "#postPrev", "#postNext", "#postPos");
 
   /* ---------------------------------------------------------
      2 — TEST
@@ -330,91 +449,7 @@
     actsEl.appendChild(d);
   });
 
-  /* -- Karussell: Skalierung nach Abstand zur Mitte, Ziehen, Blättern -- */
-  (function () {
-    var cards = $$(".act", actsEl);
-    if (!cards.length) return;
-    var posEl = $("#actPos");
-    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    /* pending wird sofort beim Klick gesetzt, active erst beim Scrollen.
-       Sonst rechnen zwei schnelle Klicks beide vom selben Stand aus. */
-    var ticking = false, active = 0, pending = 0;
-
-    function update() {
-      ticking = false;
-      var box = actsEl.getBoundingClientRect();
-      var mid = box.left + box.width / 2;
-      var best = 0, bestD = Infinity;
-      cards.forEach(function (c, i) {
-        var r = c.getBoundingClientRect();
-        var d = Math.abs((r.left + r.width / 2) - mid);
-        var t = Math.min(d / (box.width / 2 || 1), 1);
-        if (!reduce) {
-          c.style.transform = "scale(" + (1 - t * 0.14).toFixed(3) + ")";
-          c.style.opacity = (1 - t * 0.5).toFixed(3);
-        }
-        if (d < bestD) { bestD = d; best = i; }
-      });
-      cards.forEach(function (c, i) { c.classList.toggle("is-active", i === best); });
-      active = best;
-      if (!down) pending = best;
-      posEl.textContent = (best + 1) + " / " + cards.length;
-    }
-
-    actsEl.addEventListener("scroll", function () {
-      if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
-    }, { passive: true });
-
-    function go(dir) {
-      pending = Math.min(cards.length - 1, Math.max(0, pending + dir));
-      cards[pending].scrollIntoView({
-        behavior: reduce ? "auto" : "smooth", inline: "center", block: "nearest"
-      });
-    }
-    $("#actPrev").addEventListener("click", function () { go(-1); });
-    $("#actNext").addEventListener("click", function () { go(1); });
-
-    /* Ziehen mit der Maus — Touch und Trackpad kann der Browser selbst. */
-    var down = false, startX = 0, startLeft = 0, moved = 0;
-    actsEl.addEventListener("pointerdown", function (e) {
-      if (e.pointerType !== "mouse") return;
-      down = true; moved = 0;
-      startX = e.clientX; startLeft = actsEl.scrollLeft;
-      actsEl.classList.add("dragging");
-      actsEl.setPointerCapture(e.pointerId);
-    });
-    actsEl.addEventListener("pointermove", function (e) {
-      if (!down) return;
-      var dx = e.clientX - startX;
-      moved = Math.max(moved, Math.abs(dx));
-      actsEl.scrollLeft = startLeft - dx;
-    });
-    function endDrag(e) {
-      if (!down) return;
-      down = false;
-      actsEl.classList.remove("dragging");
-      try { actsEl.releasePointerCapture(e.pointerId); } catch (err) {}
-      /* Einrasten wieder aktivieren und zur nächsten Karte springen. */
-      var box = actsEl.getBoundingClientRect();
-      var mid = box.left + box.width / 2, best = 0, bestD = Infinity;
-      cards.forEach(function (c, i) {
-        var r = c.getBoundingClientRect();
-        var d = Math.abs((r.left + r.width / 2) - mid);
-        if (d < bestD) { bestD = d; best = i; }
-      });
-      cards[best].scrollIntoView({
-        behavior: reduce ? "auto" : "smooth", inline: "center", block: "nearest"
-      });
-    }
-    actsEl.addEventListener("pointerup", endDrag);
-    actsEl.addEventListener("pointercancel", endDrag);
-    actsEl.addEventListener("click", function (e) {
-      if (moved > 6) { e.preventDefault(); e.stopPropagation(); }
-    }, true);
-
-    update();
-    window.addEventListener("resize", update);
-  })();
+  carousel(actsEl, ".act", "#actPrev", "#actNext", "#actPos");
 
   /* ---------------------------------------------------------
      5 — TICKER

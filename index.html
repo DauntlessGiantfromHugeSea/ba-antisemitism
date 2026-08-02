@@ -89,28 +89,23 @@
 <section id="scan" class="shell">
   <div class="sec-head rv">
     <p class="eyebrow"><span class="secnum" aria-hidden="true">01</span>Scan</p>
-    <h2 class="d">Elf Codes.<br>Ein Absatz.</h2>
+    <h2 class="d">Vier Posts.<br>Neunzehn Codes.</h2>
+    <p class="sub">
+      Vier konstruierte Beiträge — kein reales Material. Jeder sieht auf den
+      ersten Blick nach normaler Empörung aus. Scanne sie einzeln.
+    </p>
   </div>
 
-  <div class="scan-frame rv" id="scanFrame">
-    <div class="scanline" aria-hidden="true"></div>
-    <div class="scan-meta">
-      <span>Konstruiertes Beispiel</span>
-      <span class="live" id="scanCount">Nicht analysiert</span>
-    </div>
-    <div class="scan-inner">
-      <p class="passage" id="passage"></p>
-      <div class="scan-actions">
-        <button type="button" class="btn mark" id="scanBtn">Codes markieren</button>
-        <svg class="scrawl-arrow" viewBox="0 0 110 60" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M6 48c14-26 40-40 78-42"/>
-          <path d="M70 2l14 4M84 6l-8 12"/>
-        </svg>
-        <span class="scrawl-note">hier drücken</span>
-      </div>
-      <div class="annot" id="annot" aria-live="polite"></div>
+  <div class="posts-wrap rv">
+    <div class="posts" id="posts" tabindex="0" role="group" aria-label="Vier Beispielposts, horizontal blätterbar"></div>
+    <div class="acts-nav">
+      <button type="button" class="btn nav-prev" id="postPrev" aria-label="Vorheriger Post">←</button>
+      <button type="button" class="btn nav-next" id="postNext" aria-label="Nächster Post">→</button>
+      <span class="acts-pos" id="postPos" aria-live="polite">1 / 4</span>
     </div>
   </div>
+
+  <div class="annot rv" id="annot" aria-live="polite"></div>
 </section>
 
 <!-- ========== 02 TEST ========== -->
@@ -178,6 +173,20 @@
       <source media="(max-width: 47.999rem)" srcset="assets/img/propaganda-small.jpg">
       <img src="assets/img/propaganda.jpg" alt="" role="presentation" loading="lazy" width="1672" height="941">
     </picture>
+
+    <!-- Schrift als echter Text. Banner und Streifen decken die
+         eingebrannte Schrift des Bildes ab. -->
+    <div class="pv-band"><p>Propaganda</p></div>
+
+    <div class="pv-claim">
+      <p>Sie informiert nicht.<br>Sie manipuliert.<br>Sie formt Meinungen.</p>
+      <p class="pv-hit">Sie existiert.</p>
+    </div>
+
+    <figcaption class="sr-only">
+      Collage zum Thema Propaganda: „Propaganda — sie informiert nicht,
+      sie manipuliert, sie formt Meinungen. Sie existiert.“
+    </figcaption>
   </figure>
 
   <div class="shell">
