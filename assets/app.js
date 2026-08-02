@@ -19,12 +19,12 @@
      Native scroll-snap; JS ergaenzt Skalierung nach Abstand zur
      Mitte, Maus-Ziehen, Blaettern und Positionsanzeige.
      --------------------------------------------------------- */
-  function carousel(scroller, itemSel, prevSel, nextSel, posSel) {
+  function carousel(scroller, itemSel, prevSel, nextSel, posSel, onChange) {
     var cards = $$(itemSel, scroller);
     if (!cards.length) return;
     var posEl = $(posSel);
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var ticking = false, active = 0, pending = 0, down = false;
+    var ticking = false, active = 0, pending = 0, down = false, notified = -1;
 
     function update() {
       ticking = false;
@@ -45,6 +45,8 @@
       active = best;
       if (!down) pending = best;
       if (posEl) posEl.textContent = (best + 1) + " / " + cards.length;
+      /* Nur bei echtem Wechsel melden, nicht bei jedem Scroll-Frame. */
+      if (onChange && best !== notified) { notified = best; onChange(best, cards); }
     }
 
     scroller.addEventListener("scroll", function () {
@@ -110,6 +112,7 @@
   var postsEl = $("#posts");
   var annotEl = $("#annot");
   var allToks = [];
+  var postResets = [];
 
   function resetAnnot() {
     annotEl.innerHTML = "";
@@ -204,12 +207,44 @@
       }, reduce ? 10 : 1000);
     });
 
+    /* Zuruecksetzen, wenn die Karte aus dem Fokus scrollt. */
+    postResets.push(function () {
+      if (!card.classList.contains("scanned")) return;
+      card.classList.remove("scanned");
+      toks.forEach(function (t) {
+        t.disabled = true;
+        t.setAttribute("aria-expanded", "false");
+      });
+      btn.textContent = "Codes markieren";
+      btn.classList.add("mark");
+      count.textContent = n + " versteckt";
+    });
+
     card.appendChild(el("div", "scanline"));
     postsEl.appendChild(card);
   });
 
   resetAnnot();
-  carousel(postsEl, ".post", "#postPrev", "#postNext", "#postPos");
+
+  /* Beim Blaettern klappen die anderen Karten wieder zu — sonst bleibt
+     eine aufgeklappte Erklaerung hinter einem stehen. */
+  carousel(postsEl, ".post", "#postPrev", "#postNext", "#postPos",
+    function (activeIndex) {
+      var changed = false;
+      postResets.forEach(function (reset, i) {
+        if (i !== activeIndex) {
+          var before = POSTS_SCANNED(i);
+          reset();
+          if (before) changed = true;
+        }
+      });
+      if (changed) resetAnnot();
+    });
+
+  function POSTS_SCANNED(i) {
+    var c = $$(".post", postsEl)[i];
+    return !!(c && c.classList.contains("scanned"));
+  }
 
   /* ---------------------------------------------------------
      2 — TEST
