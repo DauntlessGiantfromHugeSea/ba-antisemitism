@@ -425,7 +425,7 @@
 
   /* ---------------------------------------------------------
      3 — CODES: Glyphen-Raster mit Drill-down
-     Sieben Zeichen. Erst antippen zeigt die Codes.
+     Sechs Erzählungen und ein Werkzeugfeld. Erst antippen zeigt die Codes.
      --------------------------------------------------------- */
   var glyphsEl = $("#glyphs");
   var drillEl  = $("#drill");
@@ -451,7 +451,9 @@
     b.dataset.cat = cat.id;
     b.setAttribute("aria-pressed", "false");
     b.appendChild(svgFor(cat));
-    b.appendChild(el("span", "gl-label", cat.label));
+    var lab = el("span", "gl-label", cat.label);
+    if (cat.tool) lab.appendChild(el("small", "gl-tag", "Werkzeug, keine Erzählung"));
+    b.appendChild(lab);
     b.appendChild(el("span", "gl-n", String(n)));
     b.addEventListener("click", function () { toggleCat(cat); });
     glyphsEl.appendChild(b);
@@ -508,13 +510,16 @@
      4 — MECHANIK · ZAHLEN · WAS TUN
      Jede Aussage trägt ihre Herkunft.
      --------------------------------------------------------- */
+  /* Die sechs Werkzeuge der Umwegkommunikation (BfV S. 71 f.).
+     Die früheren vier Hebel (MECHANIK) bleiben als Daten erhalten. */
   var mechEl = $("#mech");
-  MECHANIK.forEach(function (m, i) {
+  TOOLS.forEach(function (m) {
     var d = el("div", "mech-item");
-    d.appendChild(el("span", "n", String(i + 1).padStart(2, "0")));
+    d.appendChild(el("span", "n", m.n));
     d.appendChild(el("h3", null, m.h));
     d.appendChild(el("p", null, m.p));
-    d.appendChild(el("span", "src", "Quelle: " + m.src));
+    d.appendChild(el("p", "ex", m.ex));
+    d.appendChild(el("span", "src", "Quelle: BfV, S. 71 f."));
     mechEl.appendChild(d);
   });
 

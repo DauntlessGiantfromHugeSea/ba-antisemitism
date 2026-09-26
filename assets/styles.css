@@ -1107,3 +1107,30 @@ mark, .hl {
 .gate-body p:last-child { margin-bottom: 0; }
 .gate-body strong { font-weight: 650; }
 .gate .btn { margin-top: 1.75rem; }
+
+
+/* ---------------------------------------------------------
+   Markierung der Collagen durch Text (26.09.2026)
+   Die Bilder zeigen Stilmittel. Der Text darunter benennt sie.
+   --------------------------------------------------------- */
+.img-note {
+  margin-top: clamp(1rem, 2.4vw, 1.5rem);
+  padding-left: 1rem; border-left: 3px solid var(--red-tx);
+  max-width: 62ch; color: var(--ink-2); font-size: .9375rem; line-height: 1.55;
+}
+.img-note-h {
+  display: block; font-family: var(--mono); font-size: .6875rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--red-tx);
+  margin-bottom: .35rem;
+}
+.lex-note {
+  max-width: 62ch; color: var(--ink-2); font-size: .9375rem; line-height: 1.55;
+  margin: 0 0 clamp(1.25rem, 3vw, 2rem);
+}
+.mech-item .ex {
+  margin-top: .9rem; font-family: var(--mono); font-size: .8125rem; color: var(--ink);
+}
+.gl-tag {
+  display: block; margin-top: .35rem; font-family: var(--mono); font-size: .625rem;
+  font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .85;
+}

@@ -31,7 +31,7 @@ const CATEGORIES = [
   { id: "israel", label: "Israelbezogen", claim: "„Der Staat ist das Böse.“", catSrc: "BfV Kap. 2.6 · REG S. 64–74",
     icon: '<path d="M32 52 8 12h48L32 52z"/>' },
 
-  { id: "zeichen", label: "Zeichen & Zahlen", claim: "„Wer’s weiß, weiß es.“", catSrc: "BfV S. 71 f.",
+  { id: "zeichen", label: "Zeichen & Zahlen", tool: true, claim: "„Wer’s weiß, weiß es.“", catSrc: "BfV S. 71 f.",
     icon: '<path d="M26 10C16 18 12 25 12 32s4 14 14 22M34 10c10 8 14 15 14 22s-4 14-14 22"/><path d="M20 14c-6 6-9 12-9 18s3 12 9 18M44 14c6 6 9 12 9 18s-3 12-9 18"/>' }
 ];
 
@@ -538,7 +538,7 @@ const TOOLS = [
     ex: "Krake · Parasit · Krebs" },
   { n: "Werkzeug 5", h: "Zahlencode",
     p: "Zahlen erzeugen zunächst keine Bilder im Kopf. Genau diese vermeintliche Sachlichkeit macht sie effektiv: nach außen bedeutungslos, nach innen Erkennungszeichen.",
-    ex: "109/110 · 271k · 88" },
+    ex: "109/110 · 271k" },
   { n: "Werkzeug 6", h: "Optisches Zeichen",
     p: "Überzeichnete Körpermerkmale oder grafische Abwandlungen tarnen und markieren zugleich. Sie erlauben Gleichgesinnten, sich untereinander zu erkennen.",
     ex: "(((...))) · JDN LGN" }
