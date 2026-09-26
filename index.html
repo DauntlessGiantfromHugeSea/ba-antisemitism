@@ -53,6 +53,8 @@
 
 
 <!-- ========== KOPFLEISTE ========== -->
+<div class="progress-top" aria-hidden="true"><i id="readBar"></i></div>
+
 <header class="topbar" id="topbar">
   <div class="shell topbar-in">
     <a class="brand" href="#top" aria-label="Zeichen Lesen — zum Seitenanfang">Zeichen&nbsp;Lesen</a>
@@ -68,6 +70,7 @@
       <a href="#tun"><span>06</span>Was tun</a>
       <a href="#melden"><span>07</span>Melden</a>
     </nav>
+    <a class="btn mark sm topbar-cta" href="#test">Test starten</a>
   </div>
 </header>
 
@@ -75,6 +78,11 @@
 <!-- ========== HERO ========== -->
 <section class="hero" id="top">
   <div class="shell">
+    <div class="hero-meta">
+      <span>Decoder für antisemitische Codes</span>
+      <span>Kampagnenprototyp · BA Mediendesign</span>
+    </div>
+
     <h1 class="d hero-title">
       <span class="ln"><span>Hass sagt</span></span>
       <span class="ln"><span>nicht mehr,</span></span>
@@ -84,16 +92,55 @@
     <div class="hero-foot">
       <p class="claim">
         Er sagt <mark>Globalisten</mark>. Er schreibt <mark>109</mark>.
-        Er setzt drei Klammern um ein Wort. Diese Seite zeigt
-        <b id="total">108</b> solcher Codes.
-        <span class="src">Quelle: BfV („Globalisten“, „109“, „(((…)))“) · REG — alle drei Codes stehen erläutert in Abschnitt 03</span>
+        Er setzt drei Klammern um ein Wort — und alle Eingeweihten wissen
+        Bescheid. Diese Seite macht sichtbar, was ein Code leistet und
+        warum er wirkt.
+      </p>
+      <p class="stat">
+        <b id="total">108</b>
+        <span>Codes aus vier Fachpublikationen — jeder einzeln belegt</span>
       </p>
       <div class="cta-row">
-        <a class="btn mark" href="#scan">Los geht’s <span class="arr" aria-hidden="true">↓</span></a>
+        <a class="btn mark" href="#test">Test starten <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn" href="#codes">Codes ansehen</a>
       </div>
     </div>
   </div>
+
+  <!-- Collage als Bild, Schrift als echter Text darüber.
+       Die Balken decken die eingebrannte Schrift ab. -->
+  <div class="hero-visual">
+    <picture class="hero-img">
+      <source media="(max-width: 47.999rem)" srcset="assets/img/hero-small.jpg">
+      <img src="assets/img/hero.jpg" alt="" role="presentation" fetchpriority="high" width="1672" height="941">
+    </picture>
+
+    <div class="ov-band" aria-hidden="true">
+      <p class="d">Antisemitismus</p>
+    </div>
+
+    <div class="ov-strip">
+      <p>Erkennen. Verstehen. Widersprechen.</p>
+    </div>
+  </div>
+
+  <!-- Auf schmalen Schirmen wäre die Zeile im Streifen nur wenige Pixel
+       hoch. Dort steht sie stattdessen hier, in lesbarer Größe. -->
+  <p class="subline shell d">Erkennen. Verstehen. Widersprechen.</p>
+
+  <!-- Die Collage zeigt ein Stilmittel. Der Text darunter markiert es. -->
+  <p class="img-note shell rv">
+    <span class="img-note-h">Im Bild markiert</span>
+    Ein Davidstern, auf den Rücken gesprüht, dazu Fadenkreuze. So markiert
+    antisemitische Propaganda Jüdinnen und Juden als Ziel. Die Collage zeigt
+    das Stilmittel, damit du es erkennst.
+    <span class="src">Quelle: BfV, „Die unsichtbare Hand“, Kap. 2.2 · Davidstern als Feindmarkierung</span>
+  </p>
 </section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="ticker"></div>
+</div>
 
 
 <!-- ========== 01 SCAN ========== -->
@@ -103,8 +150,8 @@
       <p class="eyebrow"><span class="secnum">01</span>Scan</p>
       <h2 class="d">Vier Posts.<br>Neunzehn Codes.</h2>
       <p class="sub">
-        Vier konstruierte Beiträge — kein reales Material. Tippe auf
-        <b>„Codes markieren“</b>, dann auf einen roten Begriff.
+        Vier konstruierte Beiträge — kein reales Material. Jeder sieht auf den
+        ersten Blick nach normaler Empörung aus. Scanne sie einzeln.
       </p>
     </div>
   </div>
@@ -130,8 +177,8 @@
       <p class="eyebrow"><span class="secnum">02</span>Test</p>
       <h2 class="d">Code<br>oder nicht?</h2>
       <p class="sub">
-        Acht Aussagen, drei Antwortmöglichkeiten. Jede Auflösung nennt
-        ihre Quelle.
+        Acht Aussagen, drei Antworten. Die dritte — „Kommt auf den Kontext
+        an“ — ist keine Ausrede, sondern oft die fachlich richtige.
       </p>
     </div>
 
@@ -158,11 +205,13 @@
   <div class="shell">
     <div class="sec-head rv">
       <p class="eyebrow"><span class="secnum">03</span>Codes</p>
-      <h2 class="d">Sieben<br>Erzählungen.</h2>
+      <h2 class="d">Sechs<br>Erzählungen.</h2>
       <p class="sub">
-        Wähle eine Erzählung. Darunter erscheinen ihre Codes — antippen
-        für die Erklärung.
+        Jedes Narrativ hat sein eigenes Bildrepertoire. Wähle ein Zeichen,
+        um die Codes dahinter zu sehen. Das siebte Feld ist keine Erzählung:
+        Zahlen und Zeichen sind Werkzeuge, mit denen alle sechs verschlüsselt werden.
       </p>
+      <span class="src">Quelle: BfV, Kap. 2 · Werkzeuge S. 71 f.</span>
     </div>
 
     <aside class="bruecke rv">
@@ -179,6 +228,13 @@
       </div>
     </aside>
 
+    <p class="lex-note rv">
+      Kein vollständiges Lexikon und keine Checkliste. Codes kommen und gehen
+      schnell, und für sich sind die meisten Begriffe noch nicht antisemitisch.
+      Es entscheidet der Zusammenhang.
+      <span class="src">Quelle: BfV S. 7 · AAS S. 6</span>
+    </p>
+
     <div class="glyphs rv" id="glyphs" role="group" aria-label="Narrativ wählen"></div>
 
     <div class="drill" id="drill" aria-live="polite"></div>
@@ -193,8 +249,10 @@
       <p class="eyebrow"><span class="secnum">04</span>Mechanik</p>
       <h2 class="d">Wie das<br>funktioniert.</h2>
       <p class="sub">
-        Vier Hebel, mit denen Codes wirken — jeder einzeln belegt.
+        Codes sind kein Zufall. Sie benutzen sechs Werkzeuge — immer dieselben.
+        Wer die kennt, erkennt auch Codes, die in keiner Liste stehen.
       </p>
+      <span class="src">Quelle: BfV, „Werkzeugkasten der Umwegkommunikation“, S. 71 f.</span>
     </div>
   </div>
 
@@ -215,9 +273,19 @@
 
     <figcaption class="sr-only">
       Collage zum Thema Propaganda: „Propaganda — sie informiert nicht,
-      sie manipuliert, sie formt Meinungen. Sie existiert.“
+      sie manipuliert, sie formt Meinungen. Sie existiert.“ Darüber ein
+      großes Auge und der Satz „Sie lenken, was du denkst.“
     </figcaption>
   </figure>
+
+  <p class="img-note shell rv">
+    <span class="img-note-h">Im Bild markiert</span>
+    „Sie lenken, was du denkst.“ Ein ungenanntes „Sie“ ist eine vage
+    Anspielung. Wörtlich sagt der Satz nichts, aber er erzeugt Verdacht.
+    So beginnt die Erzählung von der unsichtbaren Hand, die im Verborgenen
+    alles steuert.
+    <span class="src">Quelle: BfV, Werkzeug „Vage Anspielung“, S. 71 f. · „Die unsichtbare Hand“, Kap. 2.2</span>
+  </p>
 
   <div class="shell">
     <div class="mech rv" id="mech"></div>
@@ -234,14 +302,14 @@
 
 
 <!-- ========== 05 FRAGEN ========== -->
-<section id="fragen" class="sec">
+<section id="fragen" class="sec dark">
   <div class="shell">
     <div class="sec-head rv">
       <p class="eyebrow"><span class="secnum">05</span>Fragen</p>
       <h2 class="d">Häufig<br>gefragt.</h2>
       <p class="sub">
-        Einwände und was die Fachliteratur dazu sagt. Antippen zum
-        Aufklappen.
+        Die Einwände, die fast immer kommen — und was die Fachliteratur
+        dazu sagt.
       </p>
     </div>
     <div class="faq rv" id="faq"></div>
@@ -257,8 +325,8 @@
         <p class="eyebrow"><span class="secnum">06</span>Was tun</p>
         <h2 class="d">Du siehst so was.<br>Und jetzt?</h2>
         <p class="sub">
-          Fünf Schritte, jeder mit Quelle. Wischen oder mit den Pfeilen
-          blättern.
+          Fünf Dinge, die wirklich etwas ändern — und eines, das du besser
+          lässt. Kein Appell, sondern Handwerk.
         </p>
       </div>
       <picture class="tun-img">
@@ -287,8 +355,8 @@
     <h2 class="d">Etwas<br>gesehen?</h2>
     <div class="melden-side">
       <p class="sub">
-        Zwei Stellen, an die du antisemitische Vorfälle, Symbole oder
-        Drohungen melden kannst.
+        Antisemitische Vorfälle, Symbole oder Drohungen kann man melden —
+        anonym und ohne Anzeige.
       </p>
       <div class="melden-links">
         <a class="mlink" href="https://www.verfassungsschutz.de/DE/service/buerger-und-betroffene/hinweistelefon/hinweis-geben_node.html" target="_blank" rel="noopener noreferrer">
@@ -322,10 +390,10 @@
       </p>
       <p>
         <b>Zum Inhalt.</b> Die gezeigten Beiträge sind konstruiert, kein reales
-        Material. Diese Seite zeigt bewusst kein antisemitisches Bildmaterial —
-        sie markiert nur. Ob ein Begriff als Code verwendet wird, entscheiden
-        Umfeld, Absender und Adressat (BfV, „Codes erkennen und einordnen“,
-        S. 21).
+        Material. Die Collagen sind eigens gestaltet, kein Originalmaterial.
+        Wo sie antisemitische Stilmittel zeigen, steht darunter, welches es ist
+        und woher der Befund stammt. Codes lassen sich nie mechanisch entschlüsseln:
+        Es entscheidet immer der Kontext.
       </p>
       <p>
         <b>Quellen.</b> Bundesamt für Verfassungsschutz, „Versteckte Botschaften“

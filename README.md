@@ -26,40 +26,35 @@ Gestalterische Leitidee: *Mechanismen entlarven, nicht Codes feiern.*
 | # | Abschnitt | Was passiert |
 |---|-----------|--------------|
 | 01 | **Scan** | Vier konstruierte Posts im Karussell, je mit Marker-Sweep — zusammen 19 nummerierte Codes mit Sprechblase und Gegenrede. |
-| 02 | **Test** | Acht Aussagen, drei Antwortoptionen (unproblematisch / kommt auf den Kontext an / Code). Jede Auflösung nennt ihre Quelle. |
+| 02 | **Test** | Acht Aussagen, drei Antwortoptionen. Die dritte — *„Kommt auf den Kontext an“* — ist keine Ausrede, sondern oft die fachlich richtige Antwort. |
 | 03 | **Codes** | Sieben Narrative als Zeichen, Drill-down zu 108 Einträgen. Davor der Hinweis, dass Antisemitismus ein Brückennarrativ ist. |
-| 04 | **Mechanik** | Vier Hebel, danach drei belegte Zahlen zur Verbreitung. |
+| 04 | **Mechanik** | Vier Hebel, danach ein rotes Band mit drei belegten Zahlen zur Verbreitung. |
 | 05 | **Fragen** | Sechs typische Einwände mit Antwort aus der Fachliteratur. |
 | 06 | **Was tun** | Fünf Handlungsschritte als einrastendes Karussell. |
 | 07 | **Melden** | BfV-Hinweistelefon und RIAS-Meldestelle. |
 
-**Jede inhaltliche Aussage trägt eine Quellenangabe.** Aussagen ohne Beleg
-wurden entfernt; übrig bleiben nur Bedienhinweise und Selbstauskünfte der
-Seite (konstruierte Beispiele, Studienprojekt, keine Rechtsberatung).
+**Jede Aussage trägt eine Quellenangabe.**
 
 ## Gestaltung
 
-Nach Vorbild *Rights Against the Right*, bewusst reduziert: großflächige,
-kondensierte Versalien, Hell und Schwarz als Flächen, Rot als Signal.
-Klare Linien statt Collage-Papier. Die Begründungen stehen ausführlich in
-[`docs/designentscheidungen.md`](docs/designentscheidungen.md).
+Nach Vorbild *Rights Against the Right*: großflächige, kondensierte
+Versalien, harte Farbflächen, Rot als Signal. Klare Linien statt
+Collage-Papier — die Collagen stehen nur noch als Vollbild-Bänder.
 
-- **Farbe** — Papier `#F1F0EC`, Tinte `#0E0E0D`, Rot `#E1251B`. Fast alles
-  steht auf Hell; schwarz sind nur Test und Fuß, rot als Fläche nur
-  „Melden“ — Rot heißt: markieren oder handeln. Für kleine Schrift gibt es dunklere bzw. hellere Rotstufen, damit
+- **Farbe** — Papier `#F1F0EC`, Tinte `#0E0E0D`, Rot `#E1251B`. Die Abschnitte
+  wechseln als ganze Flächen: hell, schwarz (Test, Fragen, Fuß), rot (Zahlen,
+  Melden). Für kleine Schrift gibt es dunklere bzw. hellere Rotstufen, damit
   der Kontrast AA erreicht. Semantik (richtig / falsch / Graubereich) ist
   strikt vom Akzent getrennt.
 - **Typografie** — Archivo (variabel) in 66 % Breite und Stärke 900 als
   Display, Archivo normal als Fließtext, JetBrains Mono für Codes, Labels und
   Quellen. Die Hero-Zeile und das Fuß-Motto sind so bemessen, dass sie die
   Spaltenbreite füllen (geprüft von 320 bis 2560 px).
-- **Kopf** — nur die These, ein kurzer Absatz mit Quelle und ein Knopf
-  („Los geht’s“), der zum ersten Abschnitt führt.
 - **Ein Kopfmuster für alle Abschnitte** — Linie, rote Nummer, riesige
   Überschrift links, Unterzeile rechts unten.
-- **Bewegung** — nur die Headline fährt zeilenweise ein, Abschnitte blenden
-  dezent ein, die Scan-Linie läuft über die Posts. Alles respektiert
-  `prefers-reduced-motion`.
+- **Bewegung** — Headline fährt zeilenweise ein, Zahl zählt hoch, Laufband
+  mit rot durchgestrichenen Codes, Buttons mit Wisch-Füllung, Lesefortschritt
+  im Kopf. Alles respektiert `prefers-reduced-motion`.
 - **Wortmarke durchgestrichen** — Codes werden gestrichen. Bewusst **kein**
   Dreieck-mit-Auge als Ornament: das ist in diesem Lexikon ein
   antisemitischer Code.
@@ -78,19 +73,22 @@ ausdrücklich hin (BfV S. 15–17).
 ## Hero-Bild
 
 Der Kopf ist rein typografisch: Die Schlagzeile *„Hass sagt nicht mehr, wie
-er heißt.“* ist das `h1`. Die Kopf-Collage (`assets/img/hero.jpg`) ist
-**derzeit nicht eingebunden** — damit ist auch die ungeprüfte hebräische
-Schrift darin nicht mehr auf der Seite. Die Datei liegt weiter im Repo.
+er heißt.“* ist das `h1`. Darunter steht die Collage (`assets/img/hero.jpg`)
+als Vollbild-Band. Ihre eingebrannte Schrift wird von einem schwarzen Balken
+und einem hellen Streifen als HTML-Elemente abgedeckt — „Antisemitismus“ und
+die Unterzeile sind damit echter Text.
 
-Eingebunden bleibt die Propaganda-Collage im Abschnitt Mechanik. Ihre
-eingebrannte Schrift wird von Balken als HTML-Elementen abgedeckt. Die Balken
-sind prozentual auf das Originalbild bezogen — das Bild darf deshalb
-**nicht** beschnitten werden (`object-fit: cover`), sonst verrutschen sie.
+Die Balken sind prozentual auf das Originalbild bezogen — das Bild darf
+deshalb **nicht** beschnitten werden (`object-fit: cover`), sonst verrutschen
+sie. Unter 1024 px entfällt der Streifen, der Balken wird verlängert und die
+Unterzeile steht lesbar unter dem Bild. Dasselbe Prinzip gilt für die
+Propaganda-Collage im Abschnitt Mechanik.
 
-> **Offen:** Die Collagen sind KI-generiert. Für die Bachelorarbeit ist das
-> zu deklarieren. Falls die Kopf-Collage wieder eingebunden wird, sollten
-> ihre hebräischen Schriftfetzen vorher von jemandem geprüft werden, der
-> Hebräisch liest.
+> **Offen:** Das Bild ist KI-generiert. Für die Bachelorarbeit ist das zu
+> deklarieren. Außerdem enthält die Collage hebräische Schriftfetzen — die
+> sollten von jemandem geprüft werden, der Hebräisch liest. Bildgeneratoren
+> setzen hebräische Zeichen häufig zu sinnlosen Folgen zusammen, und auf
+> einer Seite über Antisemitismus wäre das ein vermeidbarer Angriffspunkt.
 
 ## Technik
 
@@ -104,10 +102,10 @@ assets/
   styles.css    Design-Tokens und Layout
   codes.js      Datenbasis: 108 Codes, 7 Narrative, Posts, Quiz, FAQ,
                 Mechanik, Zahlen, Handlungsschritte
-  app.js        Scan, Test, Drill-down, Karussell, Kopfleiste, Menü
+  app.js        Scan, Test, Drill-down, Karussell, Kopfleiste, Menü, Laufband
   fonts/        Archivo und JetBrains Mono (variabel, WOFF2, SIL OFL 1.1)
   img/
-    hero.jpg / hero-small.jpg        Collage für den Kopf (derzeit nicht eingebunden)
+    hero.jpg / hero-small.jpg        Collage für den Kopf
     propaganda.jpg / -small.jpg      Collage für „Mechanik“
     schreier.jpg                     Illustration für „Was tun“
 ```

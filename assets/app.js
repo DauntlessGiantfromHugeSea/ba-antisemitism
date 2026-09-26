@@ -64,8 +64,8 @@
         var d = Math.abs((r.left + r.width / 2) - mid);
         var t = Math.min(d / (box.width / 2 || 1), 1);
         if (!reduce) {
-          c.style.transform = "scale(" + (1 - t * 0.05).toFixed(3) + ")";
-          c.style.opacity = (1 - t * 0.5).toFixed(3);
+          c.style.transform = "scale(" + (1 - t * 0.12).toFixed(3) + ")";
+          c.style.opacity = (1 - t * 0.45).toFixed(3);
         }
         if (d < bestD) { bestD = d; best = i; }
       });
@@ -397,10 +397,10 @@
 
     var q = score / QUIZ.length;
     var msg;
-    /* Nur Rückmeldung zum Ergebnis — keine Aussagen ohne Quelle. */
-    if (q >= .9)      msg = "Fast alles richtig eingeordnet.";
-    else if (q >= .6) msg = "Die meisten Aussagen richtig eingeordnet. Wiederhole den Test, um die Auflösungen der übrigen zu lesen.";
-    else              msg = "Wiederhole den Test und lies die Auflösungen — jede nennt ihre Quelle.";
+    if (q >= .9)      msg = "Du erkennst auch die Graubereiche. Genau die sind der schwierige Teil.";
+    else if (q >= .6) msg = "Die eindeutigen Codes sitzen. Schwierig wird es dort, wo der Kontext entscheidet.";
+    else if (q >= .3) msg = "Die meisten Codes wirken genau deshalb, weil sie beim ersten Lesen harmlos aussehen.";
+    else              msg = "Das ist der Normalfall — und der Grund, warum Codes funktionieren. Sie sind gebaut, um nicht aufzufallen.";
     var p = el("p", null, msg);
     p.style.marginTop = "1.25rem";
     wrap.appendChild(p);
@@ -425,7 +425,7 @@
 
   /* ---------------------------------------------------------
      3 — CODES: Glyphen-Raster mit Drill-down
-     Sieben Zeichen. Erst antippen zeigt die Codes.
+     Sechs Erzählungen und ein Werkzeugfeld. Erst antippen zeigt die Codes.
      --------------------------------------------------------- */
   var glyphsEl = $("#glyphs");
   var drillEl  = $("#drill");
@@ -451,7 +451,9 @@
     b.dataset.cat = cat.id;
     b.setAttribute("aria-pressed", "false");
     b.appendChild(svgFor(cat));
-    b.appendChild(el("span", "gl-label", cat.label));
+    var lab = el("span", "gl-label", cat.label);
+    if (cat.tool) lab.appendChild(el("small", "gl-tag", "Werkzeug, keine Erzählung"));
+    b.appendChild(lab);
     b.appendChild(el("span", "gl-n", String(n)));
     b.addEventListener("click", function () { toggleCat(cat); });
     glyphsEl.appendChild(b);
@@ -508,13 +510,16 @@
      4 — MECHANIK · ZAHLEN · WAS TUN
      Jede Aussage trägt ihre Herkunft.
      --------------------------------------------------------- */
+  /* Die sechs Werkzeuge der Umwegkommunikation (BfV S. 71 f.).
+     Die früheren vier Hebel (MECHANIK) bleiben als Daten erhalten. */
   var mechEl = $("#mech");
-  MECHANIK.forEach(function (m, i) {
+  TOOLS.forEach(function (m) {
     var d = el("div", "mech-item");
-    d.appendChild(el("span", "n", String(i + 1).padStart(2, "0")));
+    d.appendChild(el("span", "n", m.n));
     d.appendChild(el("h3", null, m.h));
     d.appendChild(el("p", null, m.p));
-    d.appendChild(el("span", "src", "Quelle: " + m.src));
+    d.appendChild(el("p", "ex", m.ex));
+    d.appendChild(el("span", "src", "Quelle: BfV, S. 71 f."));
     mechEl.appendChild(d);
   });
 
@@ -565,10 +570,22 @@
   }
 
   /* ---------------------------------------------------------
+     5 — TICKER
+     Die Codes, die gerade im Umlauf sind.
+     Liste wird verdoppelt, damit die Schleife nahtlos läuft.
+     --------------------------------------------------------- */
+  var tickerEl = $("#ticker");
+  var ticker = CODES.map(function (x) { return x.t; });
+  ticker.concat(ticker).forEach(function (t) {
+    tickerEl.appendChild(el("span", null, t));
+  });
+
+  /* ---------------------------------------------------------
      6 — KOPFLEISTE
-     Rand beim Scrollen, aktiver Abschnitt.
+     Rand beim Scrollen, Lesefortschritt, aktiver Abschnitt.
      --------------------------------------------------------- */
   var topbar = $("#topbar");
+  var readBar = $("#readBar");
   var navLinks = $$(".nav a");
   var headTicking = false;
 
@@ -576,6 +593,10 @@
     headTicking = false;
     var y = window.scrollY || window.pageYOffset;
     if (topbar) topbar.classList.toggle("scrolled", y > 8);
+    if (readBar) {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      readBar.style.transform = "scaleX(" + (max > 0 ? Math.min(y / max, 1) : 0).toFixed(4) + ")";
+    }
   }
   window.addEventListener("scroll", function () {
     if (!headTicking) { headTicking = true; window.requestAnimationFrame(onScroll); }
@@ -625,7 +646,32 @@
   }
 
   /* ---------------------------------------------------------
-     8 — SCROLL-REVEAL
+     8 — ZAHL IM KOPF zählt hoch
+     Ohne JS steht die Zahl fest im HTML.
+     --------------------------------------------------------- */
+  var totalEl = $("#total");
+  if (totalEl && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var target = CODES.length, t0 = null;
+    totalEl.textContent = "0";
+    var tick = function (ts) {
+      if (t0 === null) t0 = ts;
+      var k = Math.min((ts - t0) / 1400, 1);
+      totalEl.textContent = String(Math.round(target * (1 - Math.pow(1 - k, 3))));
+      if (k < 1) window.requestAnimationFrame(tick);
+    };
+    var startCount = function () {
+      window.setTimeout(function () { window.requestAnimationFrame(tick); }, 450);
+    };
+    /* Hinter dem Eingangshinweis liefe die Zahl ungesehen ab. */
+    if (document.documentElement.classList.contains("gated")) {
+      $("#gate").addEventListener("close", startCount, { once: true });
+    } else {
+      startCount();
+    }
+  }
+
+  /* ---------------------------------------------------------
+     9 — SCROLL-REVEAL
      --------------------------------------------------------- */
   var reveals = $$(".rv");
   if (!("IntersectionObserver" in window) ||
