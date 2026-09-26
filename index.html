@@ -6,6 +6,8 @@
 <title>ZEICHEN LESEN — Decoder für antisemitische Codes</title>
 <meta name="description" content="Hass sagt nicht mehr, wie er heißt. Interaktiver Decoder für antisemitische Codes. Kampagnenprototyp, Bachelorarbeit Mediendesign.">
 <meta name="color-scheme" content="light">
+<meta name="theme-color" content="#F1F0EC">
+<link rel="preload" href="assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/styles.css">
 <script>
   /* Scroll-Reveal nur aktivieren, wenn JS läuft — sonst bleibt alles sichtbar.
@@ -19,6 +21,8 @@
 </script>
 </head>
 <body>
+
+<a class="skip" href="#scan">Zum Inhalt springen</a>
 
 <!-- Eingangshinweis. Ohne JavaScript bleibt der Dialog geschlossen
      und die Seite normal lesbar — der Hinweis steht dann in der Fußzeile. -->
@@ -44,150 +48,188 @@
       genannten Fachpublikationen und sind an jeder Aussage einzeln belegt.
     </p>
   </div>
-  <button type="button" class="btn mark" id="gateOk" autofocus>Verstanden — Seite ansehen</button>
+  <button type="button" class="btn light" id="gateOk" autofocus>Verstanden — Seite ansehen <span class="arr" aria-hidden="true">→</span></button>
 </dialog>
 
 
-<!-- ========== HERO — Collage-Bild ========== -->
-<header class="hero">
+<!-- ========== KOPFLEISTE ========== -->
+<div class="progress-top" aria-hidden="true"><i id="readBar"></i></div>
 
-  <div class="topbar shell">
-    <span class="brand">Zeichen&nbsp;Lesen</span>
-    <nav>
-      <a href="#scan">Scan</a>
-      <a href="#test">Test</a>
-      <a href="#codes">Codes</a>
-      <a href="#mechanik">Mechanik</a>
-      <a href="#fragen">Fragen</a>
-      <a href="#tun">Was tun</a>
-      <a href="#melden">Melden</a>
+<header class="topbar" id="topbar">
+  <div class="shell topbar-in">
+    <a class="brand" href="#top" aria-label="Zeichen Lesen — zum Seitenanfang">Zeichen&nbsp;Lesen</a>
+    <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">
+      <span class="menu-lbl">Menü</span><span class="menu-ico" aria-hidden="true"><i></i><i></i></span>
+    </button>
+    <nav class="nav" id="nav" aria-label="Abschnitte">
+      <a href="#scan"><span>01</span>Scan</a>
+      <a href="#test"><span>02</span>Test</a>
+      <a href="#codes"><span>03</span>Codes</a>
+      <a href="#mechanik"><span>04</span>Mechanik</a>
+      <a href="#fragen"><span>05</span>Fragen</a>
+      <a href="#tun"><span>06</span>Was tun</a>
+      <a href="#melden"><span>07</span>Melden</a>
     </nav>
+    <a class="btn mark sm topbar-cta" href="#test">Test starten</a>
+  </div>
+</header>
+
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="top">
+  <div class="shell">
+    <div class="hero-meta">
+      <span>Decoder für antisemitische Codes</span>
+      <span>Kampagnenprototyp · BA Mediendesign</span>
+    </div>
+
+    <h1 class="d hero-title">
+      <span class="ln"><span>Hass sagt</span></span>
+      <span class="ln"><span>nicht mehr,</span></span>
+      <span class="ln"><span class="red">wie er heißt.</span></span>
+    </h1>
+
+    <div class="hero-foot">
+      <p class="claim">
+        Er sagt <mark>Globalisten</mark>. Er schreibt <mark>109</mark>.
+        Er setzt drei Klammern um ein Wort — und alle Eingeweihten wissen
+        Bescheid. Diese Seite macht sichtbar, was ein Code leistet und
+        warum er wirkt.
+      </p>
+      <p class="stat">
+        <b id="total">108</b>
+        <span>Codes aus vier Fachpublikationen — jeder einzeln belegt</span>
+      </p>
+      <div class="cta-row">
+        <a class="btn mark" href="#test">Test starten <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn" href="#codes">Codes ansehen</a>
+      </div>
+    </div>
   </div>
 
   <!-- Collage als Bild, Schrift als echter Text darüber.
-       Banner und Streifen decken die eingebrannte Schrift ab. -->
+       Die Balken decken die eingebrannte Schrift ab. -->
   <div class="hero-visual">
     <picture class="hero-img">
       <source media="(max-width: 47.999rem)" srcset="assets/img/hero-small.jpg">
       <img src="assets/img/hero.jpg" alt="" role="presentation" fetchpriority="high" width="1672" height="941">
     </picture>
 
-    <div class="ov-band">
-      <h1 class="d">Antisemitismus</h1>
+    <div class="ov-band" aria-hidden="true">
+      <p class="d">Antisemitismus</p>
     </div>
 
     <div class="ov-strip">
       <p>Erkennen. Verstehen. Widersprechen.</p>
-      <svg class="scribble" viewBox="0 0 300 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M3 7c40-5 78 2 118-2s76-4 116 1 60-3 60-3"/>
-        <path d="M16 3c46 4 84-3 126 1s70 3 112-2"/>
-      </svg>
     </div>
   </div>
 
   <!-- Auf schmalen Schirmen wäre die Zeile im Streifen nur wenige Pixel
        hoch. Dort steht sie stattdessen hier, in lesbarer Größe. -->
-  <p class="subline shell">Erkennen. Verstehen. Widersprechen.</p>
-
-  <div class="hero-foot shell">
-    <p class="claim">
-      Hass sagt nicht mehr, wie er heißt. Er sagt <strong>Globalisten</strong>.
-      Er schreibt <strong>109</strong>. Er setzt drei Klammern um ein Wort —
-      und alle Eingeweihten wissen Bescheid.
-    </p>
-    <p class="stat circled">
-      <b id="total">0</b> Codes
-      <svg class="scrawl-ring" viewBox="0 0 200 110" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" aria-hidden="true">
-        <path d="M18 58C14 30 46 11 96 12c48 1 86 17 88 42 2 26-33 44-86 44C50 98 22 84 18 57c-1-9 2-19 9-28"/>
-      </svg>
-    </p>
-    <div class="cta-row">
-      <a class="btn mark" href="#test">Test starten</a>
-    </div>
-  </div>
-</header>
+  <p class="subline shell d">Erkennen. Verstehen. Widersprechen.</p>
+</section>
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track" id="ticker"></div>
 </div>
 
-<div class="frieze" aria-hidden="true"></div>
 
 <!-- ========== 01 SCAN ========== -->
-<section id="scan" class="shell">
-  <div class="sec-head rv">
-    <p class="eyebrow"><span class="secnum" aria-hidden="true">01</span>Scan</p>
-    <h2 class="d">Vier Posts.<br>Neunzehn Codes.</h2>
-    <p class="sub">
-      Vier konstruierte Beiträge — kein reales Material. Jeder sieht auf den
-      ersten Blick nach normaler Empörung aus. Scanne sie einzeln.
-    </p>
+<section id="scan" class="sec">
+  <div class="shell">
+    <div class="sec-head rv">
+      <p class="eyebrow"><span class="secnum">01</span>Scan</p>
+      <h2 class="d">Vier Posts.<br>Neunzehn Codes.</h2>
+      <p class="sub">
+        Vier konstruierte Beiträge — kein reales Material. Jeder sieht auf den
+        ersten Blick nach normaler Empörung aus. Scanne sie einzeln.
+      </p>
+    </div>
   </div>
 
   <div class="posts-wrap rv">
     <div class="posts" id="posts" tabindex="0" role="group" aria-label="Vier Beispielposts, horizontal blätterbar"></div>
     <div class="bubble" id="bubble" role="status" aria-live="polite" hidden></div>
-    <div class="acts-nav">
-      <button type="button" class="btn nav-prev" id="postPrev" aria-label="Vorheriger Post">←</button>
-      <button type="button" class="btn nav-next" id="postNext" aria-label="Nächster Post">→</button>
+    <div class="acts-nav shell">
       <span class="acts-pos" id="postPos" aria-live="polite">1 / 4</span>
+      <span class="acts-btns">
+        <button type="button" class="btn icon nav-prev" id="postPrev" aria-label="Vorheriger Post">←</button>
+        <button type="button" class="btn icon nav-next" id="postNext" aria-label="Nächster Post">→</button>
+      </span>
     </div>
   </div>
 </section>
+
 
 <!-- ========== 02 TEST ========== -->
-<section id="test" class="shell">
-  <div class="sec-head rv">
-    <p class="eyebrow"><span class="secnum" aria-hidden="true">02</span>Test</p>
-    <h2 class="d">Code oder nicht?</h2>
-  </div>
-
-  <div class="quiz rv">
-    <div class="quiz-bar">
-      <span id="qPos">1 / 8</span>
-      <span class="score" id="qScore">0 richtig</span>
-    </div>
-    <div class="progress"><i id="qBar" style="width:0%"></i></div>
-    <div class="quiz-body">
-      <p class="prompt d" id="qPrompt"></p>
-      <p class="prompt-ctx" id="qCtx"></p>
-      <div class="choices" id="qChoices"></div>
-      <div id="qVerdict" aria-live="polite"></div>
-      <div class="quiz-foot" id="qFoot"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== 03 CODES ========== -->
-<section id="codes" class="shell">
-  <div class="sec-head rv">
-    <p class="eyebrow"><span class="secnum" aria-hidden="true">03</span>Codes</p>
-    <h2 class="d">Sieben Erzählungen</h2>
-  </div>
-
-  <aside class="bruecke rv">
-    <p class="bruecke-h">Nicht nur rechts.</p>
-    <p>
-      Antisemitismus gilt als <strong>Brückennarrativ</strong>: Er verbindet
-      Milieus, die sonst wenig teilen — rechtsextreme, verschwörungsideologische,
-      islamistische, christlich-fundamentalistische und linke. Auch in der
-      politischen Mitte ist er verbreitet. Wer ihn nur am rechten Rand sucht,
-      übersieht den größeren Teil.
-    </p>
-    <span class="src">Quelle: BfV, „Ideologie als Brückennarrativ“, S. 15–17 · Regishut gliedert die Codes genau nach diesen Spektren</span>
-  </aside>
-
-  <div class="glyphs rv" id="glyphs" role="group" aria-label="Narrativ wählen"></div>
-
-  <div class="drill" id="drill" aria-live="polite"></div>
-</section>
-
-<!-- ========== 04 MECHANIK ========== -->
-<section id="mechanik">
+<section id="test" class="sec dark">
   <div class="shell">
     <div class="sec-head rv">
-      <p class="eyebrow"><span class="secnum" aria-hidden="true">04</span>Mechanik</p>
-      <h2 class="d">Wie das<br>funktioniert</h2>
+      <p class="eyebrow"><span class="secnum">02</span>Test</p>
+      <h2 class="d">Code<br>oder nicht?</h2>
+      <p class="sub">
+        Acht Aussagen, drei Antworten. Die dritte — „Kommt auf den Kontext
+        an“ — ist keine Ausrede, sondern oft die fachlich richtige.
+      </p>
+    </div>
+
+    <div class="quiz rv">
+      <div class="quiz-bar">
+        <span id="qPos">1 / 8</span>
+        <span class="score" id="qScore">0 richtig</span>
+      </div>
+      <div class="progress"><i id="qBar" style="width:0%"></i></div>
+      <div class="quiz-body">
+        <p class="prompt d" id="qPrompt"></p>
+        <p class="prompt-ctx" id="qCtx"></p>
+        <div class="choices" id="qChoices"></div>
+        <div id="qVerdict" aria-live="polite"></div>
+        <div class="quiz-foot" id="qFoot"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== 03 CODES ========== -->
+<section id="codes" class="sec">
+  <div class="shell">
+    <div class="sec-head rv">
+      <p class="eyebrow"><span class="secnum">03</span>Codes</p>
+      <h2 class="d">Sieben<br>Erzählungen.</h2>
+      <p class="sub">
+        Jedes Narrativ hat sein eigenes Bildrepertoire. Wähle ein Zeichen,
+        um die Codes dahinter zu sehen.
+      </p>
+    </div>
+
+    <aside class="bruecke rv">
+      <p class="bruecke-h d">Nicht nur rechts.</p>
+      <div>
+        <p>
+          Antisemitismus gilt als <strong>Brückennarrativ</strong>: Er verbindet
+          Milieus, die sonst wenig teilen — rechtsextreme, verschwörungsideologische,
+          islamistische, christlich-fundamentalistische und linke. Auch in der
+          politischen Mitte ist er verbreitet. Wer ihn nur am rechten Rand sucht,
+          übersieht den größeren Teil.
+        </p>
+        <span class="src">Quelle: BfV, „Ideologie als Brückennarrativ“, S. 15–17 · Regishut gliedert die Codes genau nach diesen Spektren</span>
+      </div>
+    </aside>
+
+    <div class="glyphs rv" id="glyphs" role="group" aria-label="Narrativ wählen"></div>
+
+    <div class="drill" id="drill" aria-live="polite"></div>
+  </div>
+</section>
+
+
+<!-- ========== 04 MECHANIK ========== -->
+<section id="mechanik" class="sec">
+  <div class="shell">
+    <div class="sec-head rv">
+      <p class="eyebrow"><span class="secnum">04</span>Mechanik</p>
+      <h2 class="d">Wie das<br>funktioniert.</h2>
       <p class="sub">
         Codes sind kein Zufall. Sie benutzen vier Hebel — immer dieselben.
         Wer die kennt, erkennt auch Codes, die in keiner Liste stehen.
@@ -201,11 +243,11 @@
       <img src="assets/img/propaganda.jpg" alt="" role="presentation" loading="lazy" width="1672" height="941">
     </picture>
 
-    <!-- Schrift als echter Text. Banner und Streifen decken die
+    <!-- Schrift als echter Text. Die Balken decken die
          eingebrannte Schrift des Bildes ab. -->
-    <div class="pv-band"><p>Propaganda</p></div>
+    <div class="pv-band" aria-hidden="true"><p class="d">Propaganda</p></div>
 
-    <div class="pv-claim">
+    <div class="pv-claim" aria-hidden="true">
       <p>Sie informiert nicht.<br>Sie manipuliert.<br>Sie formt Meinungen.</p>
       <p class="pv-hit">Sie existiert.</p>
     </div>
@@ -218,27 +260,41 @@
 
   <div class="shell">
     <div class="mech rv" id="mech"></div>
+  </div>
+</section>
 
+<!-- Zahlen zur Verbreitung — rotes Band über volle Breite -->
+<section class="facts-band" aria-label="Zahlen zur Verbreitung">
+  <div class="shell">
+    <p class="eyebrow">Zahlen zur Verbreitung</p>
     <div class="facts rv" id="facts"></div>
   </div>
 </section>
 
-<!-- ========== FRAGEN ========== -->
-<section id="fragen" class="shell">
-  <div class="sec-head rv">
-    <p class="eyebrow"><span class="secnum" aria-hidden="true">05</span>Fragen</p>
-    <h2 class="d">Häufig gefragt</h2>
+
+<!-- ========== 05 FRAGEN ========== -->
+<section id="fragen" class="sec dark">
+  <div class="shell">
+    <div class="sec-head rv">
+      <p class="eyebrow"><span class="secnum">05</span>Fragen</p>
+      <h2 class="d">Häufig<br>gefragt.</h2>
+      <p class="sub">
+        Die Einwände, die fast immer kommen — und was die Fachliteratur
+        dazu sagt.
+      </p>
+    </div>
+    <div class="faq rv" id="faq"></div>
   </div>
-  <div class="faq rv" id="faq"></div>
 </section>
 
+
 <!-- ========== 06 WAS TUN ========== -->
-<section id="tun">
+<section id="tun" class="sec">
   <div class="shell">
     <div class="tun-top rv">
-      <div>
-        <p class="eyebrow"><span class="secnum" aria-hidden="true">06</span>Was tun</p>
-        <h2 class="d">Du siehst<br>so was. Und jetzt?</h2>
+      <div class="sec-head">
+        <p class="eyebrow"><span class="secnum">06</span>Was tun</p>
+        <h2 class="d">Du siehst so was.<br>Und jetzt?</h2>
         <p class="sub">
           Fünf Dinge, die wirklich etwas ändern — und eines, das du besser
           lässt. Kein Appell, sondern Handwerk.
@@ -248,64 +304,77 @@
         <img src="assets/img/schreier.jpg" alt="" role="presentation" loading="lazy" width="1100" height="733">
       </picture>
     </div>
+  </div>
 
-    <div class="acts-wrap rv">
-      <div class="acts" id="acts" tabindex="0" role="group" aria-label="Fünf Schritte, horizontal blätterbar"></div>
-      <div class="acts-nav">
-        <button type="button" class="btn nav-prev" id="actPrev" aria-label="Vorheriger Schritt">←</button>
-        <button type="button" class="btn nav-next" id="actNext" aria-label="Nächster Schritt">→</button>
-        <span class="acts-pos" id="actPos" aria-live="polite">1 / 5</span>
-      </div>
+  <div class="acts-wrap rv">
+    <div class="acts" id="acts" tabindex="0" role="group" aria-label="Fünf Schritte, horizontal blätterbar"></div>
+    <div class="acts-nav shell">
+      <span class="acts-pos" id="actPos" aria-live="polite">1 / 5</span>
+      <span class="acts-btns">
+        <button type="button" class="btn icon nav-prev" id="actPrev" aria-label="Vorheriger Schritt">←</button>
+        <button type="button" class="btn icon nav-next" id="actNext" aria-label="Nächster Schritt">→</button>
+      </span>
     </div>
   </div>
 </section>
 
-<!-- ========== 06 MELDEN ========== -->
-<section id="melden" class="shell">
-  <div class="melden rv">
-    <svg class="mglyph" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
-      <path d="M32 10 58 56H6z"/>
-      <path d="M32 27v11"/>
-      <circle cx="32" cy="47.5" r="1.9" fill="currentColor" stroke="none"/>
-    </svg>
-    <div>
-      <p class="eyebrow"><span class="secnum" aria-hidden="true">07</span>Melden</p>
-      <h2 class="d">Etwas gesehen?</h2>
+
+<!-- ========== 07 MELDEN ========== -->
+<section id="melden" class="sec red">
+  <div class="shell melden rv">
+    <p class="eyebrow"><span class="secnum">07</span>Melden</p>
+    <h2 class="d">Etwas<br>gesehen?</h2>
+    <div class="melden-side">
       <p class="sub">
         Antisemitische Vorfälle, Symbole oder Drohungen kann man melden —
         anonym und ohne Anzeige.
       </p>
-      <div class="cta-row" style="margin-top:2rem">
-        <a class="btn mark" href="https://www.verfassungsschutz.de/DE/service/buerger-und-betroffene/hinweistelefon/hinweis-geben_node.html" target="_blank" rel="noopener noreferrer">Hinweis geben — BfV</a>
-        <a class="btn" href="https://report-antisemitism.de" target="_blank" rel="noopener noreferrer">Vorfall melden — RIAS</a>
+      <div class="melden-links">
+        <a class="mlink" href="https://www.verfassungsschutz.de/DE/service/buerger-und-betroffene/hinweistelefon/hinweis-geben_node.html" target="_blank" rel="noopener noreferrer">
+          <span class="mlink-k">BfV</span>
+          <span class="mlink-t">Hinweis geben</span>
+          <span class="arr" aria-hidden="true">↗</span>
+        </a>
+        <a class="mlink" href="https://report-antisemitism.de" target="_blank" rel="noopener noreferrer">
+          <span class="mlink-k">RIAS</span>
+          <span class="mlink-t">Vorfall melden</span>
+          <span class="arr" aria-hidden="true">↗</span>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
+
 <!-- ========== FUSS ========== -->
-<footer class="shell">
-  <p class="big d">Zeichen lesen.<br><em>Haltung zeigen.</em></p>
-  <div class="foot-grid">
-    <p>
-      <b>Studienprojekt.</b> Gestalterischer Prototyp aus einer Bachelorarbeit
-      im Studiengang Mediendesign von <b>Dustyn Model</b> an der
-      <b>IU Internationalen Hochschule</b>. Die Seite ist kein Angebot der
-      IU Internationalen Hochschule und erscheint nicht in deren Namen —
-      ebenso wenig im Namen einer Behörde oder einer der genannten
-      Organisationen. Keine Rechtsberatung.
-    </p>
-    <p>
-      <b>Zum Inhalt.</b> Die gezeigten Beiträge sind konstruiert, kein reales
-      Material. Diese Seite zeigt bewusst kein antisemitisches Bildmaterial —
-      sie markiert nur. Codes lassen sich nie mechanisch entschlüsseln:
-      Es entscheidet immer der Kontext.
-    </p>
-    <p>
-      <b>Quellen.</b> Bundesamt für Verfassungsschutz, „Versteckte Botschaften“
-      (2026) · Amadeu Antonio Stiftung, „deconstruct antisemitism!“ (2021) ·
-      Regishut, „Antisemitismus erkennen“ (2023) · bpb, Dossier Antisemitismus.
-    </p>
+<footer class="foot">
+  <div class="shell">
+    <p class="big d">Zeichen lesen.<br><span class="red">Haltung zeigen.</span></p>
+    <div class="foot-grid">
+      <p>
+        <b>Studienprojekt.</b> Gestalterischer Prototyp aus einer Bachelorarbeit
+        im Studiengang Mediendesign von <b>Dustyn Model</b> an der
+        <b>IU Internationalen Hochschule</b>. Die Seite ist kein Angebot der
+        IU Internationalen Hochschule und erscheint nicht in deren Namen —
+        ebenso wenig im Namen einer Behörde oder einer der genannten
+        Organisationen. Keine Rechtsberatung.
+      </p>
+      <p>
+        <b>Zum Inhalt.</b> Die gezeigten Beiträge sind konstruiert, kein reales
+        Material. Diese Seite zeigt bewusst kein antisemitisches Bildmaterial —
+        sie markiert nur. Codes lassen sich nie mechanisch entschlüsseln:
+        Es entscheidet immer der Kontext.
+      </p>
+      <p>
+        <b>Quellen.</b> Bundesamt für Verfassungsschutz, „Versteckte Botschaften“
+        (2026) · Amadeu Antonio Stiftung, „deconstruct antisemitism!“ (2021) ·
+        Regishut, „Antisemitismus erkennen“ (2023) · bpb, Dossier Antisemitismus.
+      </p>
+    </div>
+    <div class="foot-bar">
+      <span>Zeichen Lesen · Kampagnenprototyp</span>
+      <a href="#top">Nach oben ↑</a>
+    </div>
   </div>
 </footer>
 

@@ -521,7 +521,7 @@
   var factsEl = $("#facts");
   FACTS.forEach(function (f) {
     var d = el("div", "fact");
-    d.appendChild(el("span", "fig", f.n));
+    d.appendChild(el("span", /\d/.test(f.n) ? "fig" : "fig word", f.n));
     d.appendChild(el("p", null, f.p));
     d.appendChild(el("span", "src", "Quelle: " + f.src));
     factsEl.appendChild(d);
@@ -576,86 +576,94 @@
   });
 
   /* ---------------------------------------------------------
-     6 — FRIES
-     Die sieben Narrativ-Zeichen als Stempelband. Füllt die
-     Bandbreite, damit auf breiten Schirmen keine Lücke bleibt.
+     6 — KOPFLEISTE
+     Rand beim Scrollen, Lesefortschritt, aktiver Abschnitt.
      --------------------------------------------------------- */
-  $$(".frieze").forEach(function (band) {
-    for (var i = 0; i < 28; i++) {
-      band.appendChild(svgFor(CATEGORIES[i % CATEGORIES.length]));
-    }
-  });
+  var topbar = $("#topbar");
+  var readBar = $("#readBar");
+  var navLinks = $$(".nav a");
+  var headTicking = false;
 
-  /* ---------------------------------------------------------
-     7 — RING UM DIE ZAHL
-     Zeichnet sich, sobald er ins Bild kommt.
-     --------------------------------------------------------- */
-  var circled = $(".circled");
-  if (circled) {
-    if (!("IntersectionObserver" in window)) {
-      circled.classList.add("drawn");
-    } else {
-      var ringIO = new IntersectionObserver(function (es) {
-        es.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add("drawn"); ringIO.unobserve(e.target); }
-        });
-      }, { threshold: .6 });
-      ringIO.observe(circled);
+  function onScroll() {
+    headTicking = false;
+    var y = window.scrollY || window.pageYOffset;
+    if (topbar) topbar.classList.toggle("scrolled", y > 8);
+    if (readBar) {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      readBar.style.transform = "scaleX(" + (max > 0 ? Math.min(y / max, 1) : 0).toFixed(4) + ")";
     }
+  }
+  window.addEventListener("scroll", function () {
+    if (!headTicking) { headTicking = true; window.requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+
+  if ("IntersectionObserver" in window && navLinks.length) {
+    var navIO = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        navLinks.forEach(function (a) {
+          var on = a.getAttribute("href") === "#" + e.target.id;
+          a.classList.toggle("is-current", on);
+          if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+        });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    navLinks.forEach(function (a) {
+      var sec = document.querySelector(a.getAttribute("href"));
+      if (sec) navIO.observe(sec);
+    });
   }
 
   /* ---------------------------------------------------------
-     8 — GEKRITZEL-EBENE
-     Handgezeichnete Marken über die ganze Seite, wie mit Edding
-     aufs Plakat. Bewusst KEIN Dreieck-mit-Auge: das ist in diesem
-     Lexikon ein antisemitischer Code, kein Ornament.
+     7 — MENÜ auf schmalen Schirmen
+     Vollbild-Ebene. Escape und Linkklick schließen.
      --------------------------------------------------------- */
-  var MARKS = {
-    x:      '<path d="M6 8c14 16 30 32 46 44M52 7C38 22 22 38 8 52"/>',
-    zigzag: '<path d="M2 34c8-14 14 8 22-6s14 10 22-4 14 8 22-6"/>',
-    ring:   '<path d="M9 30C7 15 24 6 49 7c24 1 43 9 44 22 1 13-17 22-43 22C25 51 11 44 9 29c0-5 1-10 5-15"/>',
-    arrow:  '<path d="M4 46C16 22 40 8 74 6"/><path d="M60 3l16 4M76 7l-9 13"/>',
-    spark:  '<path d="M30 2v20M30 38v20M2 30h20M38 30h20M11 11l13 13M36 36l13 13M49 11L36 24M24 36 11 49"/>',
-    tick:   '<path d="M4 30c10 10 18 16 24 20 10-18 24-34 42-46"/>'
-  };
-  var VIEWBOX = { x: "0 0 60 60", zigzag: "0 0 70 40", ring: "0 0 100 60",
-                  arrow: "0 0 80 52", spark: "0 0 60 60", tick: "0 0 72 54" };
-
-  /* Feste Positionen statt Zufall — reproduzierbar und kontrolliert.
-     Die Abschnitte haben overflow-x: clip. Rechts sitzende Marken
-     wurden dadurch angeschnitten; die Werte sind so gewaehlt, dass
-     jede Marke vollstaendig im Abschnitt liegt.
-     [Form, links %, oben %, Breite rem, Drehung Grad, Ton] */
-  var SCATTER = {
-    scan:     [["x",      80,  4, 8.5,  34, "red"], ["zigzag",  4, 60, 7.5,  -8, "ink"]],
-    test:     [["spark",  85, 10, 7.0,   0, "ink"], ["tick",    3, 76, 8.0, -12, "red"]],
-    codes:    [["zigzag", 83, 68, 8.0,   9, "red"], ["x",       4,  6, 7.0, -18, "ink"]],
-    mechanik: [["arrow",  83, 80, 8.0,  22, "red"], ["x",       5, 88, 6.0,  12, "ink"]],
-    tun:      [["spark",   4,  6, 7.0,   0, "ink"], ["zigzag", 84, 38, 8.0, -14, "red"]],
-    melden:   [["x",      85, 68, 7.0,  26, "red"]]
-  };
-
-  Object.keys(SCATTER).forEach(function (id) {
-    var sec = document.getElementById(id);
-    if (!sec) return;
-    SCATTER[id].forEach(function (cfg) {
-      var kind = cfg[0];
-      var s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      s.setAttribute("viewBox", VIEWBOX[kind]);
-      s.setAttribute("fill", "none");
-      s.setAttribute("stroke", "currentColor");
-      s.setAttribute("stroke-width", "4");
-      s.setAttribute("stroke-linecap", "round");
-      s.setAttribute("aria-hidden", "true");
-      s.setAttribute("class", "scrawl scrawl-" + (cfg[5] || "red"));
-      s.innerHTML = MARKS[kind];
-      s.style.left = cfg[1] + "%";
-      s.style.top = cfg[2] + "%";
-      s.style.width = cfg[3] + "rem";
-      s.style.transform = "rotate(" + cfg[4] + "deg)";
-      sec.insertBefore(s, sec.firstChild);
+  var menuBtn = $("#menuBtn");
+  var nav = $("#nav");
+  if (menuBtn && nav) {
+    var setMenu = function (open) {
+      menuBtn.setAttribute("aria-expanded", String(open));
+      nav.classList.toggle("open", open);
+      document.documentElement.classList.toggle("menu-open", open);
+      menuBtn.querySelector(".menu-lbl").textContent = open ? "Schließen" : "Menü";
+    };
+    menuBtn.addEventListener("click", function () {
+      setMenu(menuBtn.getAttribute("aria-expanded") !== "true");
     });
-  });
+    navLinks.forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.classList.contains("open")) { setMenu(false); menuBtn.focus(); }
+    });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth >= 896 && nav.classList.contains("open")) setMenu(false);
+    });
+  }
+
+  /* ---------------------------------------------------------
+     8 — ZAHL IM KOPF zählt hoch
+     Ohne JS steht die Zahl fest im HTML.
+     --------------------------------------------------------- */
+  var totalEl = $("#total");
+  if (totalEl && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var target = CODES.length, t0 = null;
+    totalEl.textContent = "0";
+    var tick = function (ts) {
+      if (t0 === null) t0 = ts;
+      var k = Math.min((ts - t0) / 1400, 1);
+      totalEl.textContent = String(Math.round(target * (1 - Math.pow(1 - k, 3))));
+      if (k < 1) window.requestAnimationFrame(tick);
+    };
+    var startCount = function () {
+      window.setTimeout(function () { window.requestAnimationFrame(tick); }, 450);
+    };
+    /* Hinter dem Eingangshinweis liefe die Zahl ungesehen ab. */
+    if (document.documentElement.classList.contains("gated")) {
+      $("#gate").addEventListener("close", startCount, { once: true });
+    } else {
+      startCount();
+    }
+  }
 
   /* ---------------------------------------------------------
      9 — SCROLL-REVEAL
