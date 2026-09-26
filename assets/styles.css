@@ -101,7 +101,7 @@ body {
 a { color: inherit; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
 .dark :focus-visible, .foot :focus-visible { outline-color: var(--red-dk); }
-.red :focus-visible, .facts-band :focus-visible, .gate :focus-visible { outline-color: #fff; }
+.red :focus-visible, .gate :focus-visible { outline-color: #fff; }
 
 img { max-width: 100%; }
 
@@ -170,18 +170,14 @@ mark, .hl {
   padding: 1.05rem 1.5rem; border: 2px solid currentColor;
   background: transparent; color: var(--ink); cursor: pointer;
   text-decoration: none; display: inline-flex; align-items: center; gap: .7rem;
-  transition: color .25s var(--ease), border-color .25s var(--ease);
 }
 /* Füllung wischt von links herein */
 .btn::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: var(--ink); transform: scaleX(0); transform-origin: right;
-  transition: transform .35s var(--ease);
+  background: var(--ink); opacity: 0;
 }
-.btn:hover::before, .btn:focus-visible::before { transform: scaleX(1); transform-origin: left; }
+.btn:hover::before, .btn:focus-visible::before { opacity: 1; }
 .btn:hover, .btn:focus-visible { color: var(--paper); border-color: var(--ink); }
-.btn .arr { transition: transform .3s var(--ease); }
-.btn:hover .arr { transform: translateX(4px); }
 
 .btn.mark { background: var(--red); border-color: var(--red); color: #fff; }
 .btn.mark:hover, .btn.mark:focus-visible { border-color: var(--ink); color: #fff; }
@@ -202,23 +198,12 @@ mark, .hl {
 .dark .btn:not(.mark):hover, .dark .btn:not(.mark):focus-visible { color: var(--ink); border-color: var(--on-dark); }
 .dark .btn.mark:hover { color: var(--ink); border-color: var(--on-dark); }
 
-@media (prefers-reduced-motion: reduce) {
-  .btn::before, .btn .arr { transition: none; }
-}
 
 .cta-row { display: flex; gap: .6rem; flex-wrap: wrap; }
 
 /* =========================================================
    KOPFLEISTE
    ========================================================= */
-
-.progress-top {
-  position: fixed; inset: 0 0 auto; height: 3px; z-index: 120; pointer-events: none;
-}
-.progress-top i {
-  display: block; height: 100%; background: var(--red);
-  transform: scaleX(0); transform-origin: left;
-}
 
 .topbar {
   position: sticky; top: 0; z-index: 100;
@@ -265,10 +250,6 @@ mark, .hl {
 .nav a:hover::after, .nav a.is-current::after { transform: scaleX(1); }
 
 .menu-btn { display: none; }
-
-@media (max-width: 71.999rem) {
-  .topbar-cta { display: none; }
-}
 
 /* Schmale Schirme: Menü als Vollbild-Ebene.
    Nur mit JS eingeklappt — ohne JS bleibt die Navigation als Zeile. */
@@ -322,137 +303,44 @@ mark, .hl {
 }
 
 /* =========================================================
-   HERO
+   HERO — nur die These und ein Einstieg
    ========================================================= */
 
-.hero { padding-top: clamp(1.5rem, 4vw, 3.5rem); position: relative; }
-
-.hero-meta {
-  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-  font-family: var(--mono); font-size: .75rem; font-weight: 550;
-  letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2);
-  padding-bottom: clamp(1rem, 2.5vw, 2rem);
-  border-bottom: 2px solid var(--ink);
-}
+.hero { padding-block: clamp(2.5rem, 7vw, 6rem) clamp(3rem, 7vw, 6rem); border-bottom: 2px solid var(--ink); }
 
 /* Schlagzeile füllt die Breite. */
 .hero-title {
   /* Breiteste Zeile „WIE ER HEISST." ≈ 5,5 em — so füllt sie die Spalte. */
   font-size: clamp(3rem, 16.4vw, 16rem);
   line-height: .84; letter-spacing: -.018em;
-  margin: clamp(1.25rem, 3vw, 2.5rem) 0 0;
+  margin: 0;
   text-wrap: nowrap;
 }
 .hero-title .ln { display: block; overflow: hidden; padding-bottom: .04em; margin-bottom: -.04em; }
 .hero-title .ln > span { display: block; }
 
-/* Zeilen fahren von unten ein — reine CSS-Animation. */
+/* Die einzige ausdrückliche Bewegung der Seite: Zeilen fahren ein. */
 @media (prefers-reduced-motion: no-preference) {
   .hero-title .ln > span { animation: rise .9s var(--ease) both; }
   .hero-title .ln:nth-child(2) > span { animation-delay: .08s; }
   .hero-title .ln:nth-child(3) > span { animation-delay: .16s; }
-  .hero-meta, .hero-foot { animation: fade .8s ease .35s both; }
+  .hero-foot { animation: fade .8s ease .35s both; }
 }
 /* Hinter dem Eingangshinweis warten — erst nach dem Schließen abspielen. */
-.gated .hero-title .ln > span, .gated .hero-meta, .gated .hero-foot { animation-play-state: paused; }
+.gated .hero-title .ln > span, .gated .hero-foot { animation-play-state: paused; }
 @keyframes rise { from { transform: translateY(105%); } to { transform: none; } }
 @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
 .hero-foot {
-  display: grid; gap: 1.75rem 2.5rem; grid-template-columns: 1fr;
-  align-items: end;
-  padding-block: clamp(2rem, 4vw, 3.5rem) clamp(2.5rem, 5vw, 4.5rem);
-}
-@media (min-width: 52rem) {
-  .hero-foot { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
-  .hero-foot .cta-row { grid-column: 1 / -1; }
-}
-@media (min-width: 76rem) {
-  .hero-foot { grid-template-columns: minmax(0, 34rem) minmax(0, 1fr) auto; }
-  .hero-foot .cta-row { grid-column: auto; justify-self: end; }
+  display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
+  gap: 1.75rem 3rem; margin-top: clamp(2rem, 4vw, 3.5rem);
 }
 .claim {
-  font-size: clamp(1.0625rem, 1rem + .45vw, 1.375rem); line-height: 1.4;
-  margin: 0; font-weight: 450; max-width: 36ch;
+  font-size: clamp(1.125rem, 1rem + .6vw, 1.5rem); line-height: 1.4;
+  margin: 0; font-weight: 450; max-width: 34ch;
 }
-
-.stat { margin: 0; display: flex; align-items: flex-end; gap: 1rem; }
-.stat b {
-  font-family: var(--display); font-weight: 900; font-stretch: 66%;
-  font-size: clamp(4rem, 9vw, 7.5rem); line-height: .78;
-  letter-spacing: -.02em; color: var(--red); font-variant-numeric: tabular-nums;
-}
-.stat span {
-  font-family: var(--mono); font-size: .75rem; font-weight: 550;
-  letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2);
-  line-height: 1.45; max-width: 18ch; padding-bottom: .25rem;
-}
-
-/* ---------- Collage als Vollbild-Band ---------- */
-
-/* Das Bild darf NICHT beschnitten werden — die Balken sind
-   prozentual auf das Original bezogen. */
-.hero-visual {
-  position: relative; container-type: inline-size; line-height: 0;
-  background: var(--ink);
-}
-.hero-img, .hero-img img { display: block; width: 100%; height: auto; }
-
-.ov-band {
-  position: absolute; left: 20%; top: 27%; width: 61%; height: 31%;
-  background: var(--ink);
-  display: flex; align-items: center; justify-content: center;
-}
-.ov-band p { font-size: 8.4cqw; line-height: .9; color: var(--on-dark); margin: 0; max-width: none; white-space: nowrap; }
-
-.ov-strip {
-  position: absolute; left: 35.5%; top: 57%; width: 38.5%; height: 12%;
-  background: var(--paper);
-  display: flex; align-items: center; justify-content: center;
-}
-.ov-strip p {
-  font-family: var(--display); font-weight: 900; font-stretch: 70%;
-  text-transform: uppercase; font-size: 2.05cqw; line-height: 1;
-  color: var(--ink); margin: 0; max-width: none; white-space: nowrap;
-  box-shadow: inset 0 -.28em 0 rgba(225,37,27,.9);
-}
-
-.subline {
-  display: none; max-width: none;
-  font-size: clamp(1.5rem, 7.5vw, 2.75rem); color: var(--ink);
-  padding-block: 1.5rem 0; margin: 0;
-}
-
-@media (max-width: 63.999rem) {
-  /* Die Zeile im Streifen wäre hier nur wenige Pixel hoch. Der Streifen
-     entfällt, der schwarze Balken wird verlängert und deckt beide
-     eingebrannten Zeilen ab. Die Unterzeile steht lesbar darunter. */
-  .ov-strip { display: none; }
-  .ov-band { top: 26%; height: 46%; }
-  .subline { display: block; padding-bottom: 1.5rem; }
-}
-
-/* ---------- Laufband: Codes, rot durchgestrichen ---------- */
-
-.ticker {
-  background: var(--ink); color: var(--on-dark);
-  overflow: hidden; padding-block: clamp(.9rem, 2vw, 1.4rem);
-}
-.ticker-track { display: flex; width: max-content; animation: roll 140s linear infinite; }
-.ticker:hover .ticker-track { animation-play-state: paused; }
-.ticker span {
-  position: relative;
-  font-family: var(--display); font-weight: 900; font-stretch: 66%;
-  font-size: clamp(1.75rem, 4.2vw, 3.5rem); line-height: 1;
-  text-transform: uppercase; letter-spacing: -.005em;
-  margin-inline: clamp(.9rem, 2vw, 1.6rem); white-space: nowrap;
-}
-.ticker span::after {
-  content: ""; position: absolute; left: -.08em; right: -.08em; top: 52%;
-  height: .12em; background: var(--red); transform: rotate(-2deg);
-}
-@keyframes roll { to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
+.claim b { color: var(--red-tx); font-weight: 700; font-variant-numeric: tabular-nums; }
+.claim .src { font-size: .6875rem; line-height: 1.5; margin-top: 1rem; }
 
 /* =========================================================
    ABSCHNITTE
@@ -491,7 +379,7 @@ mark, .hl {
 
 /* ---------- Scroll-Reveal (fail-safe) ---------- */
 
-.js .rv { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.js .rv { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
 .js .rv.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .js .rv { opacity: 1; transform: none; transition: none; } }
 
@@ -902,31 +790,26 @@ mark, .hl {
 
 /* ---------- Zahlen: rotes Band ---------- */
 
-.facts-band {
-  background: var(--red); color: #fff;
-  padding-block: clamp(3.5rem, 8vw, 7rem);
-}
-.facts-band .eyebrow { color: #fff; border-top: 2px solid #fff; padding-top: 1rem; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+.facts-band { padding-block: 0 clamp(4.5rem, 10vw, 9rem); }
+.facts-band .eyebrow { max-width: none; border-top: 2px solid var(--ink); padding-top: 1rem; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
 .facts { display: grid; gap: clamp(2rem, 4vw, 3rem); grid-template-columns: 1fr; }
 @media (min-width: 56rem) { .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .fact .fig {
   display: block; font-family: var(--display); font-weight: 900; font-stretch: 66%;
   text-transform: uppercase; letter-spacing: -.01em; line-height: .82;
-  font-size: clamp(4rem, 9vw, 8.5rem); color: #fff;
+  font-size: clamp(4rem, 9vw, 8.5rem); color: var(--red);
   font-variant-numeric: tabular-nums; margin-bottom: 1.1rem;
 }
 /* Wort statt Zahl — kleiner, damit es auf Höhe der Zahlen bleibt. */
 .fact .fig.word { font-size: clamp(2.75rem, 4.6vw, 4.5rem); line-height: .86; }
-.fact p { margin: 0; font-size: 1.0625rem; color: #fff; max-width: 34ch; }
-.facts-band .src { color: rgba(255,255,255,.9); }
-.facts-band .src::before { color: #fff; }
+.fact p { margin: 0; font-size: 1.0625rem; color: var(--ink-2); max-width: 34ch; }
 
 /* =========================================================
    05 FRAGEN
    ========================================================= */
 
-.faq { border-top: 2px solid var(--on-dark); }
-.faq-item { border-bottom: 1px solid var(--line-dk); }
+.faq { border-top: 2px solid var(--ink); }
+.faq-item { border-bottom: 1px solid var(--line); }
 .faq-item summary {
   list-style: none; cursor: pointer;
   display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
@@ -938,17 +821,17 @@ mark, .hl {
   text-transform: uppercase; font-size: clamp(1.375rem, 3vw, 2.5rem); line-height: 1;
   transition: color .2s;
 }
-.faq-item summary:hover .faq-q { color: var(--red-dk); }
+.faq-item summary:hover .faq-q { color: var(--red-tx); }
 .faq-plus {
   flex: none; width: 2.5rem; height: 2.5rem; display: grid; place-items: center;
   border: 2px solid currentColor; border-radius: 50%;
   font-family: var(--body); font-size: 1.375rem; line-height: 1;
   transition: transform .35s var(--ease), background .2s, border-color .2s;
 }
-.faq-item[open] .faq-plus { transform: rotate(45deg); background: var(--red); border-color: var(--red); }
-.faq-item[open] .faq-q { color: var(--red-dk); }
+.faq-item[open] .faq-plus { transform: rotate(45deg); background: var(--red); border-color: var(--red); color: #fff; }
+.faq-item[open] .faq-q { color: var(--red-tx); }
 .faq-a { padding: 0 0 clamp(1.5rem, 3vw, 2.25rem); }
-.faq-a p { margin: 0; font-size: 1.0625rem; line-height: 1.6; color: var(--on-dark-2); max-width: 62ch; }
+.faq-a p { margin: 0; font-size: 1.0625rem; line-height: 1.6; color: var(--ink-2); max-width: 62ch; }
 
 /* =========================================================
    06 WAS TUN
