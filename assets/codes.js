@@ -16,13 +16,13 @@ const CATEGORIES = [
   { id: "geld", label: "Geldmacht", claim: "„Sie kontrollieren das Geld.“", catSrc: "BfV Kap. 2.1 · AAS S. 10 f.",
     icon: '<circle cx="32" cy="32" r="13"/><path d="M32 14v36M24 22h13a5 5 0 0 1 0 10H27a5 5 0 0 0 0 10h13"/>' },
 
-  { id: "welt", label: "Weltverschwörung", claim: "„Sie ziehen die Fäden.“", catSrc: "BfV Kap. 2.2 · REG S. 30–39",
+  { id: "welt", label: "Welt\u00ADverschwörung", claim: "„Sie ziehen die Fäden.“", catSrc: "BfV Kap. 2.2 · REG S. 30–39",
     icon: '<path d="M10 12h44M22 12v10M42 12v10M32 12v8"/><path d="M32 20a6 6 0 1 1 0 12 6 6 0 0 1 0-12z"/><path d="M32 32v10M32 42l-9 12M32 42l9 12M22 22l-6 10M42 22l6 10"/>' },
 
   { id: "bio", label: "Krankheit & Blut", claim: "„Sie vergiften uns.“", catSrc: "BfV Kap. 2.3 · REG S. 40–45",
     icon: '<path d="M4 32s11-15 28-15 28 15 28 15-11 15-28 15S4 32 4 32z"/><circle cx="32" cy="32" r="8"/><circle cx="32" cy="32" r="2.5" fill="currentColor"/>' },
 
-  { id: "tier", label: "Entmenschlichung", claim: "„Sie sind keine Menschen.“", catSrc: "BfV Kap. 2.4 · bpb, Tiermetaphern",
+  { id: "tier", label: "Ent\u00ADmenschlichung", claim: "„Sie sind keine Menschen.“", catSrc: "BfV Kap. 2.4 · bpb, Tiermetaphern",
     icon: '<path d="M32 8c9 0 15 7 15 15v6c0 3 2 4 4 5"/><path d="M32 8c-9 0-15 7-15 15v6c0-3-2 4-4 5"/><circle cx="26" cy="22" r="2.5" fill="currentColor"/><circle cx="38" cy="22" r="2.5" fill="currentColor"/><path d="M17 30c-4 6-9 10-13 12M22 33c-3 8-6 14-10 18M32 34c0 9-1 16-2 22M42 33c3 8 6 14 10 18M47 30c4 6 9 10 13 12"/>' },
 
   { id: "schuld", label: "Schuldabwehr", claim: "„Schluss damit.“", catSrc: "BfV Kap. 2.5 · AAS S. 30 f.",

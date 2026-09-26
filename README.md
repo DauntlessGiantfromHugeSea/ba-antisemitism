@@ -25,30 +25,39 @@ Gestalterische Leitidee: *Mechanismen entlarven, nicht Codes feiern.*
 
 | # | Abschnitt | Was passiert |
 |---|-----------|--------------|
-| 01 | **Scan** | Konstruierter Beispieltext, Marker-Sweep, elf nummerierte Codes mit Einzelanalyse. |
+| 01 | **Scan** | Vier konstruierte Posts im Karussell, je mit Marker-Sweep — zusammen 19 nummerierte Codes mit Sprechblase und Gegenrede. |
 | 02 | **Test** | Acht Aussagen, drei Antwortoptionen. Die dritte — *„Kommt auf den Kontext an“* — ist keine Ausrede, sondern oft die fachlich richtige Antwort. |
 | 03 | **Codes** | Sieben Narrative als Zeichen, Drill-down zu 108 Einträgen. Davor der Hinweis, dass Antisemitismus ein Brückennarrativ ist. |
-| 04 | **Mechanik** | Vier Hebel, dazu drei belegte Zahlen zur Verbreitung. |
-| 05 | **Was tun** | Fünf Handlungsschritte als einrastendes Karussell. |
-| 06 | **Melden** | BfV-Hinweistelefon und RIAS-Meldestelle. |
+| 04 | **Mechanik** | Vier Hebel, danach ein rotes Band mit drei belegten Zahlen zur Verbreitung. |
+| 05 | **Fragen** | Sechs typische Einwände mit Antwort aus der Fachliteratur. |
+| 06 | **Was tun** | Fünf Handlungsschritte als einrastendes Karussell. |
+| 07 | **Melden** | BfV-Hinweistelefon und RIAS-Meldestelle. |
 
 **Jede Aussage trägt eine Quellenangabe.**
 
 ## Gestaltung
 
-Bildwelt nach Vorbild *Rights Against the Right*: helle Betonwand, dicke
-schwarze Versalien, Rot als Marker, gerissene Papierkanten, viel Luft.
+Nach Vorbild *Rights Against the Right*: großflächige, kondensierte
+Versalien, harte Farbflächen, Rot als Signal. Klare Linien statt
+Collage-Papier — die Collagen stehen nur noch als Vollbild-Bänder.
 
-- **Farbe** — Wand `#E8E6E1`, Tinte `#141312`, Rot `#E1251B`. Ein Akzent, weil
-  Markieren das Prinzip ist. Semantik (richtig / falsch / Graubereich) ist
-  strikt davon getrennt.
-- **Typografie** — Arial Black als Display, Mono für Codes und Labels.
-  Chiffren gehören in Monospace. Sektionsnummern als Konturziffern.
-- **Kein gleichförmiges Raster.** Jeder Abschnitt hat ab 62 rem eine eigene
-  Anlage — Überlappungen, Ausbrüche, wechselnde Spaltenbreiten.
-- **Gekritzel-Ebene** — handgezeichnete Marken über die Seite verteilt.
-  Bewusst **kein** Dreieck-mit-Auge: das ist in diesem Lexikon ein
-  antisemitischer Code, kein Ornament.
+- **Farbe** — Papier `#F1F0EC`, Tinte `#0E0E0D`, Rot `#E1251B`. Die Abschnitte
+  wechseln als ganze Flächen: hell, schwarz (Test, Fragen, Fuß), rot (Zahlen,
+  Melden). Für kleine Schrift gibt es dunklere bzw. hellere Rotstufen, damit
+  der Kontrast AA erreicht. Semantik (richtig / falsch / Graubereich) ist
+  strikt vom Akzent getrennt.
+- **Typografie** — Archivo (variabel) in 66 % Breite und Stärke 900 als
+  Display, Archivo normal als Fließtext, JetBrains Mono für Codes, Labels und
+  Quellen. Die Hero-Zeile und das Fuß-Motto sind so bemessen, dass sie die
+  Spaltenbreite füllen (geprüft von 320 bis 2560 px).
+- **Ein Kopfmuster für alle Abschnitte** — Linie, rote Nummer, riesige
+  Überschrift links, Unterzeile rechts unten.
+- **Bewegung** — Headline fährt zeilenweise ein, Zahl zählt hoch, Laufband
+  mit rot durchgestrichenen Codes, Buttons mit Wisch-Füllung, Lesefortschritt
+  im Kopf. Alles respektiert `prefers-reduced-motion`.
+- **Wortmarke durchgestrichen** — Codes werden gestrichen. Bewusst **kein**
+  Dreieck-mit-Auge als Ornament: das ist in diesem Lexikon ein
+  antisemitischer Code.
 - **Kein antisemitisches Bildmaterial.** Ausschließlich Markierung und
   Annotation.
 
@@ -63,16 +72,17 @@ ausdrücklich hin (BfV S. 15–17).
 
 ## Hero-Bild
 
-Die Collage liegt als Bild vor (`assets/img/hero.jpg`). Die Schrift darin
-ist **nicht** Teil des Bildes: Ein gerissener Banner und ein Papierstreifen
-liegen als HTML-Elemente darüber und decken die eingebrannte Schrift ab.
-Titel und Unterzeile sind damit echter, markier- und durchsuchbarer Text.
+Der Kopf ist rein typografisch: Die Schlagzeile *„Hass sagt nicht mehr, wie
+er heißt.“* ist das `h1`. Darunter steht die Collage (`assets/img/hero.jpg`)
+als Vollbild-Band. Ihre eingebrannte Schrift wird von einem schwarzen Balken
+und einem hellen Streifen als HTML-Elemente abgedeckt — „Antisemitismus“ und
+die Unterzeile sind damit echter Text.
 
-Die Overlays sind prozentual auf das Originalbild bezogen — das Bild darf
+Die Balken sind prozentual auf das Originalbild bezogen — das Bild darf
 deshalb **nicht** beschnitten werden (`object-fit: cover`), sonst verrutschen
-sie. Unter 1024 px wird die Unterzeile aus dem Streifen ausgeblendet und
-darunter in lesbarer Größe ausgegeben; unter 640 px wird das Bild über die
-Viewportbreite hinaus vergrößert, damit die Schlagzeile Wirkung behält.
+sie. Unter 1024 px entfällt der Streifen, der Balken wird verlängert und die
+Unterzeile steht lesbar unter dem Bild. Dasselbe Prinzip gilt für die
+Propaganda-Collage im Abschnitt Mechanik.
 
 > **Offen:** Das Bild ist KI-generiert. Für die Bachelorarbeit ist das zu
 > deklarieren. Außerdem enthält die Collage hebräische Schriftfetzen — die
@@ -82,14 +92,18 @@ Viewportbreite hinaus vergrößert, damit die Schlagzeile Wirkung behält.
 
 ## Technik
 
-Statische Seite, keine Abhängigkeiten, kein Build.
+Statische Seite, keine Abhängigkeiten, kein Build. Die Schriften liegen
+lokal im Repo — es werden keine externen Dienste (z. B. Google Fonts)
+angefragt.
 
 ```
 index.html
 assets/
   styles.css    Design-Tokens und Layout
-  codes.js      Datenbasis: 108 Codes, 7 Narrative, Quiz, Beispieltext
-  app.js        Scan, Test, Drill-down, Karussell, Fries, Gekritzel
+  codes.js      Datenbasis: 108 Codes, 7 Narrative, Posts, Quiz, FAQ,
+                Mechanik, Zahlen, Handlungsschritte
+  app.js        Scan, Test, Drill-down, Karussell, Kopfleiste, Menü, Laufband
+  fonts/        Archivo und JetBrains Mono (variabel, WOFF2, SIL OFL 1.1)
   img/
     hero.jpg / hero-small.jpg        Collage für den Kopf
     propaganda.jpg / -small.jpg      Collage für „Mechanik“
@@ -105,9 +119,10 @@ python3 -m http.server 8000
 Dann `http://localhost:8000` öffnen. Alternativ per GitHub Pages
 (Settings → Pages → Branch `main`, Ordner `/`).
 
-**Barrierefreiheit & Robustheit:** Tastaturbedienbar mit sichtbarem Fokus,
-`prefers-reduced-motion` wird respektiert, Inhalte bleiben ohne JavaScript
-sichtbar, kein horizontaler Scroll bis 375 px.
+**Barrierefreiheit & Robustheit:** Tastaturbedienbar mit sichtbarem Fokus
+und Sprunglink, `prefers-reduced-motion` wird respektiert, Inhalte bleiben
+ohne JavaScript sichtbar (die Navigation bleibt dann eine Zeile statt
+Vollbild-Menü), kein horizontaler Scroll von 320 bis 2560 px.
 
 ## Datenbasis
 
