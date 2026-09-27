@@ -42,13 +42,13 @@ const CODES = [
   { t: "Globalisten", c: "geld", src: "BfV · REG",
     d: "Chiffre für eine „kosmopolitische Elite“ ohne Bindung an Vaterland, Kultur oder Tradition, die nationale Souveränität zugunsten internationaler Organisationen untergrabe." },
   { t: "Ostküste", c: "geld", src: "BfV · AAS",
-    d: "Geografischer Verweis auf den angeblich jüdisch kontrollierten Finanzstandort New York — und damit auf Jüdinnen und Juden im Allgemeinen." },
+    d: "Geografischer Verweis auf den angeblich jüdisch kontrollierten Finanzstandort New York, und damit auf Jüdinnen und Juden im Allgemeinen." },
   { t: "Wall Street", c: "geld", src: "BfV · AAS",
     d: "Synonym für ein „wurzelloses“, internationales „Finanzjudentum“. Rahmt den Kapitalismus als fremde, feindselige Macht gegen die nationale Gemeinschaft." },
   { t: "Raffendes vs. schaffendes Kapital", c: "geld", src: "AAS · REG",
     d: "Künstliche Trennung: „schaffende“ (einheimische) Arbeit gegen „raffendes“ (angeblich jüdisches) Finanzkapital. Kernformel der NS-Wirtschaftspropaganda." },
   { t: "Großkapitalisten", c: "geld", src: "BfV",
-    d: "Zeichnet das Feindbild eines gierigen Ausbeuters ohne Loyalität zu „Volk und Nation“ — dieselbe Trennung wie raffend/schaffend." },
+    d: "Zeichnet das Feindbild eines gierigen Ausbeuters ohne Loyalität zu „Volk und Nation“, dieselbe Trennung wie raffend/schaffend." },
   { t: "Zinsknechtschaft", c: "geld", src: "REG",
     d: "NS-Kampfbegriff. Unterstellt, ein jüdisch gedachtes Finanzwesen halte das „schaffende Volk“ durch Zinsen in Abhängigkeit." },
   { t: "Rothschild", c: "geld", src: "BfV · AAS · REG",
@@ -62,13 +62,13 @@ const CODES = [
   { t: "Warburg", c: "geld", src: "BfV",
     d: "Jüdische Bankiersfamilie; Paul Warburgs Rolle bei der Gründung der US-Notenbank dient als Aufhänger für Verschwörungsmythen." },
   { t: "BlackRock", c: "geld", src: "BfV",
-    d: "Fungiert als Code, der das Narrativ einer „jüdischen Weltfinanzkontrolle“ bedient. Sachliche Kritik am Einfluss von Vermögensverwaltern ist davon zu unterscheiden — der Kontext entscheidet." },
+    d: "Fungiert als Code, der das Narrativ einer „jüdischen Weltfinanzkontrolle“ bedient. Sachliche Kritik am Einfluss von Vermögensverwaltern ist davon zu unterscheiden, der Kontext entscheidet." },
   { t: "Goldman Sachs", c: "geld", src: "REG",
     d: "Bankname als Chiffre für eine angeblich jüdisch gesteuerte Weltwirtschaft." },
   { t: "Geldjude / Wucherer", c: "geld", src: "BfV · AAS",
     d: "Bildformel des sozialen Antisemitismus: Geldsäcke, Dollarzeichen, der dick-dünn-Kontrast zwischen Ausbeuter und Ausgebeutetem." },
   { t: "Schnorrer", c: "geld", src: "REG",
-    d: "Abwertung als unproduktiv und schmarotzend — Brücke zwischen sozialem Antisemitismus und Parasiten-Metaphorik." },
+    d: "Abwertung als unproduktiv und schmarotzend. Brücke zwischen sozialem Antisemitismus und Parasiten-Metaphorik." },
   { t: "Schekel", c: "geld", src: "BfV",
     d: "Israelische Währung als Code für „jüdisches“ Geld. Markiert Profit und Besitz als jüdisch." },
   { t: "Happy Merchant", c: "geld", src: "BfV · AAS",
@@ -80,7 +80,7 @@ const CODES = [
   { t: "Strippenzieher / Drahtzieher", c: "welt", src: "AAS · REG",
     d: "„Der Jude“ ziehe im Verborgenen die Fäden und lenke so das Weltgeschehen. Verbindet alle Verschwörungsnarrative miteinander." },
   { t: "Großer Austausch / Umvolkung", c: "welt", src: "AAS · REG",
-    d: "Behauptet, eine — jüdisch gedachte — globale Elite wolle die weiße Bevölkerung durch Einwanderung ersetzen. Bezugspunkt der Attentäter von Christchurch und Halle 2019." },
+    d: "Behauptet, eine, jüdisch gedachte, globale Elite wolle die weiße Bevölkerung durch Einwanderung ersetzen. Bezugspunkt der Attentäter von Christchurch und Halle 2019." },
   { t: "Great Reset", c: "welt", src: "BfV · AAS · REG",
     d: "Ursprünglich ein WEF-Konzept für die Zeit nach der Coronapandemie, umgedeutet zum Plan einer „Elite“ zur Versklavung oder Vernichtung der Menschheit." },
   { t: "New World Order (NWO)", c: "welt", src: "BfV · AAS · REG",
@@ -93,10 +93,10 @@ const CODES = [
     d: "Ethischer Bund, in Verschwörungserzählungen mit jüdischen Familien verknüpft zum Feindbild einer „jüdisch-freimaurerischen Weltverschwörung“." },
   { t: "Bilderberger", c: "welt", src: "BfV · REG",
     d: "Die Intransparenz der seit 1954 stattfindenden Konferenz dient als Code für eine „geheime Weltregierung“ unter „jüdischem Einfluss“." },
-  { t: "tptb — the powers that be", c: "welt", src: "BfV",
+  { t: "tptb, the powers that be", c: "welt", src: "BfV",
     d: "„Die herrschenden Mächte“. Bewusst vage gehalten, markiert eine anonyme, meist jüdisch gedachte „Weltelite“." },
   { t: "Kalergi-Plan", c: "welt", src: "BfV · REG",
-    d: "Nach Richard Coudenhove-Kalergi. Behauptet, „Eliten“ planten den Austausch der weißen Bevölkerung — oft verknüpft mit „jüdischer Steuerung“." },
+    d: "Nach Richard Coudenhove-Kalergi. Behauptet, „Eliten“ planten den Austausch der weißen Bevölkerung, oft verknüpft mit „jüdischer Steuerung“." },
   { t: "Kaufman-Plan", c: "welt", src: "BfV · REG",
     d: "Ein folgenloses Pamphlet von 1941, von der NS-Propaganda zum Beleg einer „jüdischen Vernichtungslust“ gegen die Deutschen umgedeutet." },
   { t: "Hooton-Plan", c: "welt", src: "REG",
@@ -110,7 +110,7 @@ const CODES = [
   { t: "JewSA / Jewnited States", c: "welt", src: "BfV · AAS",
     d: "Kofferwörter aus Jew und USA. Unterstellen, die Vereinigten Staaten stünden unter jüdischer Kontrolle und seien Werkzeug jüdischer Interessen." },
   { t: "Lügenpresse", c: "welt", src: "AAS · REG",
-    d: "Behauptet, die Medien seien gleichgeschaltet und gesteuert. Dahinter steht oft das Narrativ einer „jüdischen Verschwörung“ — schon Treitschke behauptete das im 19. Jh." },
+    d: "Behauptet, die Medien seien gleichgeschaltet und gesteuert. Dahinter steht oft das Narrativ einer „jüdischen Verschwörung“, schon Treitschke behauptete das im 19. Jh." },
   { t: "Tavistock-Institut", c: "welt", src: "BfV",
     d: "Britische Forschungseinrichtung von 1947, in Verschwörungsmythen zur Zentrale globaler „Gedankenkontrolle“ erklärt." },
   { t: "Staat im Staate", c: "welt", src: "REG",
@@ -186,7 +186,7 @@ const CODES = [
   { t: "Umerziehung", c: "schuld", src: "BfV · REG",
     d: "Kampfbegriff mit Gehirnwäsche-Assoziation: Die Deutschen würden bis heute manipuliert, um ihr „natürliches“ Nationalbewusstsein zu zerstören." },
   { t: "Psychologischer Völkermord", c: "schuld", src: "BfV",
-    d: "Erklärt das Erinnern zum eigentlichen Verbrechen — an „den Deutschen“. Klassische Täter-Opfer-Umkehr." },
+    d: "Erklärt das Erinnern zum eigentlichen Verbrechen, an „den Deutschen“. Klassische Täter-Opfer-Umkehr." },
   { t: "Morgenthau-Plan", c: "schuld", src: "BfV · REG",
     d: "Nie verabschiedeter Entwurf von 1944 zur Deindustrialisierung Deutschlands, umgedeutet zum „jüdischen Racheplan“." },
   { t: "Muh 6 Gorillion", c: "schuld", src: "BfV",
@@ -196,7 +196,7 @@ const CODES = [
   { t: "6-Millionen-Lüge / Auschwitzlüge", c: "schuld", src: "REG",
     d: "Offene Leugnung des Holocaust. In Deutschland als Volksverhetzung strafbar." },
   { t: "Judenstern „Ungeimpft“", c: "schuld", src: "BfV · AAS · REG",
-    d: "Der gelbe Zwangsstern der NS-Zeit, getragen mit der Aufschrift „Ungeimpft“. Botschaft: „Wir sind die neuen Juden“ — Täter-Opfer-Umkehr und Holocaustrelativierung." },
+    d: "Der gelbe Zwangsstern der NS-Zeit, getragen mit der Aufschrift „Ungeimpft“. Botschaft: „Wir sind die neuen Juden“. Täter-Opfer-Umkehr und Holocaustrelativierung." },
   { t: "Impfholocaust", c: "schuld", src: "BfV",
     d: "Setzt staatliche Impfpolitik mit dem Holocaust gleich. Verharmlost die NS-Verbrechen und dämonisiert demokratische Institutionen zugleich." },
   { t: "Babycaust", c: "schuld", src: "AAS · REG",
@@ -212,7 +212,7 @@ const CODES = [
 
   /* ---------- ISRAELBEZOGEN ---------- */
   { t: "Zionisten / ZiOS", c: "israel", src: "BfV · AAS · REG",
-    d: "Herabwürdigender Ersatzbegriff für „die Israelis“ oder „die Juden“. Der Zionismus selbst ist eine legitime politische Bewegung — der Code kippt ihn ins Feindbild." },
+    d: "Herabwürdigender Ersatzbegriff für „die Israelis“ oder „die Juden“. Der Zionismus selbst ist eine legitime politische Bewegung, der Code kippt ihn ins Feindbild." },
   { t: "ZOG / ZORG / JOG", c: "israel", src: "BfV · AAS · REG",
     d: "„Zionist“ bzw. „Jewish Occupied Government“: Westliche Regierungen seien Marionetten einer zionistischen bzw. jüdischen Besatzung." },
   { t: "USrael", c: "israel", src: "BfV · AAS · REG",
@@ -220,17 +220,17 @@ const CODES = [
   { t: "IsraHell", c: "israel", src: "BfV",
     d: "Kofferwort aus Israel und Hell. Dämonisiert den Staat als Ort des „absolut Bösen“." },
   { t: "Rotes Dreieck", c: "israel", src: "BfV · REG",
-    d: "Seit Ende 2023 in HAMAS-Propaganda als Zielmarkierung verwendet. 2024 vom BMI als Kennzeichen in die Verbotsverfügung aufgenommen — die Verwendung kann strafbar sein.", flag: "kennzeichenverbot" },
+    d: "Seit Ende 2023 in HAMAS-Propaganda als Zielmarkierung verwendet. 2024 vom BMI als Kennzeichen in die Verbotsverfügung aufgenommen, die Verwendung kann strafbar sein.", flag: "kennzeichenverbot" },
   { t: "Kindermörder Israel", c: "israel", src: "BfV · AAS · REG",
     d: "Aktualisiert die Ritualmordlegende: Israel vergieße das Blut palästinensischer Kinder mit Absicht. Aus dieser Vorstellung können Vernichtungswünsche folgen." },
   { t: "Apartheidstaat / Unrechtsstaat", c: "israel", src: "AAS · REG",
-    d: "Spricht Israel Rechtsstaatlichkeit und demokratischen Charakter grundsätzlich ab. Der Begriff selbst ist nicht antisemitisch — entscheidend ist der Kontext." },
+    d: "Spricht Israel Rechtsstaatlichkeit und demokratischen Charakter grundsätzlich ab. Der Begriff selbst ist nicht antisemitisch, entscheidend ist der Kontext." },
   { t: "Zionazis", c: "israel", src: "REG",
     d: "Gleichsetzung israelischer Politik mit dem Nationalsozialismus. Verharmlost die NS-Verbrechen und kehrt Täter und Opfer um." },
   { t: "Krebsgeschwür (auf Israel bezogen)", c: "israel", src: "REG",
     d: "Von islamistischen Regimen und Gruppen zur Dämonisierung Israels genutzt: Der Staat müsse „entfernt“ werden." },
   { t: "From the river to the sea", c: "israel", src: "REG",
-    d: "Parole, die je nach Kontext als Forderung nach Auflösung des Staates Israel verstanden wird. Von deutschen Gerichten teils als strafbar bewertet — Kontext entscheidet." },
+    d: "Parole, die je nach Kontext als Forderung nach Auflösung des Staates Israel verstanden wird. Von deutschen Gerichten teils als strafbar bewertet. Kontext entscheidet." },
   { t: "Chaibar, Chaibar, ya Yahud", c: "israel", src: "REG",
     d: "Bezieht sich auf Mohammeds Feldzug gegen die jüdische Oasenstadt Chaibar im 7. Jh. Erinnert an die Unterwerfung „der Juden“ und dient als Vernichtungsdrohung." },
   { t: "Udrub, Udrub Tal Abib", c: "israel", src: "REG",
@@ -248,7 +248,7 @@ const CODES = [
   { t: "(((Echo)))", c: "zeichen", src: "BfV",
     d: "Dreifache Klammern markieren Personen, Firmen, Organisationen oder Gruppen als „jüdisch“, ohne es auszusprechen. Im Netz weit verbreitet." },
   { t: "JDN LGN", c: "zeichen", src: "BfV · REG",
-    d: "Entvokalisierung von „Juden lügen“. Nutzt die Fähigkeit des Gehirns, unvollständige Wörter zu ergänzen — und umgeht damit Filter und Strafverfolgung." },
+    d: "Entvokalisierung von „Juden lügen“. Nutzt die Fähigkeit des Gehirns, unvollständige Wörter zu ergänzen, und umgeht damit Filter und Strafverfolgung." },
   { t: "Juice / 🧃", c: "zeichen", src: "BfV",
     d: "Phonetische Nähe zu „Jews“. Als Saftkarton-Emoji verschleiert der Code antisemitische Inhalte und umgeht automatische Moderation." },
   { t: "109 / 110", c: "zeichen", src: "BfV",
@@ -258,7 +258,7 @@ const CODES = [
   { t: "GTKRWN", c: "zeichen", src: "BfV",
     d: "Akronym mit offener Aufstachelung zur Vernichtung jüdischen Lebens. Extremfall der Dehumanisierung." },
   { t: "Hakennase", c: "zeichen", src: "AAS · BPB · REG",
-    d: "Zentrales Merkmal fast jeder antisemitischen Darstellung — von Münzen des 17. Jh. bis zu Stürmer-Karikaturen und heutigen Memes. Macht zugeschriebene Minderwertigkeit körperlich sichtbar." },
+    d: "Zentrales Merkmal fast jeder antisemitischen Darstellung, von Münzen des 17. Jh. bis zu Stürmer-Karikaturen und heutigen Memes. Macht zugeschriebene Minderwertigkeit körperlich sichtbar." },
   { t: "Schläfenlocken & Hut", c: "zeichen", src: "BfV · REG",
     d: "Das Erscheinungsbild ultraorthodoxer Juden wird stellvertretend für alle Jüdinnen und Juden gesetzt und markiert sie kollektiv als fremdartig." },
   { t: "Davidstern als Feindmarkierung", c: "zeichen", src: "BfV · REG",
@@ -276,8 +276,8 @@ const CODES = [
 const POSTS = [
   {
     handle: "@wach_und_frei_2026",
-    meta: "Konstruiert · Muster: Verschwörungserzählung",
-    reply: "Die Vorstellung jüdischer Medienmacht ist über 150 Jahre alt \u2014 und ebenso lange falsch. In Deutschland gibt es keine Zensur, Meldungen sind über mehrere unabhängige Quellen überprüfbar, Fehler werden benannt. Widersprüchliche Informationen entstehen durch Interessen im Konflikt, nicht durch eine Verschwörung. Die Behauptung immunisiert sich selbst: Jeder Gegenbeleg gilt als gefälscht.",
+    meta: "Ausgedacht · Muster: Verschwörungserzählung",
+    reply: "Die Idee, dass Juden die Medien kontrollieren, ist über 150 Jahre alt. Und genauso lange falsch. In Deutschland gibt es keine Zensur. Meldungen kann man über mehrere unabhängige Quellen prüfen, Fehler werden benannt. Die Behauptung schützt sich selbst: Jeder Gegenbeweis gilt als gefälscht.",
     replySrc: "Amadeu Antonio Stiftung, nichts-gegen-juden.de: „Die Juden kontrollieren doch die Medien!“",
     parts: [
       { txt: "Wacht endlich auf! Die " },
@@ -286,11 +286,11 @@ const POSTS = [
         src: "BfV S. 27 \u00b7 AAS S. 11" },
       { txt: " an der " },
       { mark: "Ostküste", kind: "Begriffsersetzung",
-        note: "Verweist auf den angeblich jüdisch kontrollierten Finanzplatz New York \u2014 und damit auf Jüdinnen und Juden insgesamt.",
+        note: "Verweist auf den angeblich jüdisch kontrollierten Finanzplatz New York, und damit auf Jüdinnen und Juden insgesamt.",
         src: "BfV S. 31 \u00b7 AAS S. 11" },
       { txt: " und " },
       { mark: "(((ihre Freunde)))", kind: "Optisches Zeichen",
-        note: "Die dreifachen Klammern („Echo“) markieren eine Gruppe als jüdisch. Der Satz selbst sagt nichts \u2014 die Klammern erledigen die Zuschreibung.",
+        note: "Die dreifachen Klammern („Echo“) markieren eine Gruppe als jüdisch. Der Satz selbst sagt nichts, die Klammern erledigen die Zuschreibung.",
         src: "BfV S. 32" },
       { txt: " haben den " },
       { mark: "Great Reset", kind: "Verschwörungsnarrativ",
@@ -306,15 +306,15 @@ const POSTS = [
         src: "BfV S. 37 \u00b7 AAS S. 8" },
       { txt: ", und die " },
       { mark: "Lügenpresse", kind: "Verschwörungsnarrativ",
-        note: "Behauptet gesteuerte, gleichgeschaltete Medien. Dahinter steht das Narrativ einer „jüdischen“ Kontrolle der Öffentlichkeit \u2014 schon Treitschke behauptete das 1879.",
+        note: "Behauptet gesteuerte, gleichgeschaltete Medien. Dahinter steht das Narrativ einer „jüdischen“ Kontrolle der Öffentlichkeit, schon Treitschke behauptete das 1879.",
         src: "AAS S. 36 f." },
       { txt: " schweigt." }
     ]
   },
   {
     handle: "@echte.geschichte.de",
-    meta: "Konstruiert · Muster: Schuldabwehr",
-    reply: "„Man darf ja nichts sagen“ ist seit jeher ein Satz der radikalen Rechten \u2014 er inszeniert die sprechende Person als Opfer eines Redeverbots, das es nicht gibt. Erinnerung ist kein Kult, sondern Voraussetzung dafür, dass so etwas nicht wieder passiert. Wer einen Schlussstrich fordert, will nicht diskutieren, sondern aufhören.",
+    meta: "Ausgedacht · Muster: Schuldabwehr",
+    reply: "„Man darf ja nichts sagen“ ist ein alter Satz der radikalen Rechten. Wer ihn sagt, macht sich selbst zum Opfer eines Redeverbots, das es nicht gibt. Erinnern ist kein Kult. Es sorgt dafür, dass so etwas nicht wieder passiert. Wer einen Schlussstrich will, will nicht reden, sondern aufhören.",
     replySrc: "Amadeu Antonio Stiftung, nichts-gegen-juden.de: „Man darf ja nichts sagen …“ \u00b7 AAS S. 31",
     parts: [
       { txt: "Schluss mit dem " },
@@ -329,7 +329,7 @@ const POSTS = [
       { mark: "Plan der Siegermächte", kind: "Verschwörungsnarrativ",
         note: "Bedient klassische Mythen über eine („jüdisch“ gelenkte) Fremdherrschaft: Die Entnazifizierung sei strategisch geplante Beherrschung gewesen.",
         src: "BfV S. 59" },
-      { txt: ". Wer das sagt, wird fertiggemacht \u2014 " },
+      { txt: ". Wer das sagt, wird fertiggemacht, " },
       { mark: "wir sind die neuen Juden", kind: "Täter-Opfer-Umkehr",
         note: "Beansprucht den Verfolgungsstatus der Shoah-Opfer für die eigene Lage. Verharmlost den Holocaust und entwertet das Gedenken.",
         src: "AAS S. 34 f. \u00b7 REG S. 38" },
@@ -338,13 +338,13 @@ const POSTS = [
   },
   {
     handle: "@nahost.klartext",
-    meta: "Konstruiert · Muster: israelbezogen",
-    reply: "Kritik an israelischer Regierungspolitik ist legitim und findet ständig statt \u2014 auch in Israel selbst. Antisemitisch wird sie dort, wo sie den Staat pauschal wegen seiner bloßen Existenz angreift, wo alte Feindbilder wie der Kindermord auf ihn übertragen werden oder wo „die Juden“ als homogene Masse in Haftung genommen werden. Der Unterschied liegt nicht im Thema, sondern in der Form.",
+    meta: "Ausgedacht · Muster: israelbezogen",
+    reply: "Israels Regierung zu kritisieren ist okay und passiert ständig, auch in Israel selbst. Antisemitisch wird es, wenn man den Staat angreift, nur weil es ihn gibt, alte Feindbilder wie den Kindermord auf ihn überträgt oder „die Juden“ insgesamt verantwortlich macht. Nicht das Thema ist das Problem, sondern wie man darüber redet.",
     replySrc: "Amadeu Antonio Stiftung, nichts-gegen-juden.de: „Man darf ja nichts sagen …“ \u00b7 BfV S. 65",
     parts: [
       { txt: "Der " },
       { mark: "Apartheidstaat", kind: "Dämonisierung",
-        note: "Spricht Israel Rechtsstaatlichkeit und demokratischen Charakter grundsätzlich ab. Der Begriff allein ist nicht antisemitisch \u2014 hier entscheidet, was drumherum steht.",
+        note: "Spricht Israel Rechtsstaatlichkeit und demokratischen Charakter grundsätzlich ab. Der Begriff allein ist nicht antisemitisch, hier entscheidet, was drumherum steht.",
         src: "AAS S. 16 f. \u00b7 REG S. 70" },
       { txt: " zeigt sein wahres Gesicht. " },
       { mark: "Kindermörder", kind: "Ritualmordlegende",
@@ -352,7 +352,7 @@ const POSTS = [
         src: "BfV S. 67 \u00b7 AAS S. 18 f." },
       { txt: " Und die " },
       { mark: "Zionisten", kind: "Begriffsersetzung",
-        note: "Herabwürdigender Ersatzbegriff für „die Israelis“ oder „die Juden“. Der Zionismus selbst ist eine legitime politische Bewegung \u2014 der Code kippt ihn ins Feindbild.",
+        note: "Herabwürdigender Ersatzbegriff für „die Israelis“ oder „die Juden“. Der Zionismus selbst ist eine legitime politische Bewegung, der Code kippt ihn ins Feindbild.",
         src: "BfV S. 65 \u00b7 AAS S. 14 f." },
       { txt: " in Washington decken alles. " },
       { mark: "USrael", kind: "Kofferwort",
@@ -360,19 +360,19 @@ const POSTS = [
         src: "BfV S. 69 \u00b7 AAS S. 12" },
       { txt: " " },
       { mark: "\ud83d\udd3a", kind: "Zielmarkierung",
-        note: "Das rote Dreieck stammt aus HAMAS-Propaganda und diente dort als Zielmarkierung. Seit 2024 vom BMI als Organisationskennzeichen erfasst \u2014 die Verwendung kann strafbar sein.",
+        note: "Das rote Dreieck stammt aus HAMAS-Propaganda und diente dort als Zielmarkierung. Seit 2024 vom BMI als Organisationskennzeichen erfasst, die Verwendung kann strafbar sein.",
         src: "BfV S. 68" }
     ]
   },
   {
     handle: "@memes.ohne.filter",
-    meta: "Konstruiert · Muster: Zahlen- und Zeichencodes",
-    reply: "Auf Zahlencodes muss man nicht inhaltlich antworten \u2014 es gibt nichts zu widerlegen. Sinnvoller ist: benennen, was es ist, nicht weiterverbreiten, melden. Genau darauf zielen solche Codes: Wer widerspricht, verschafft ihnen Reichweite; wer sie ignoriert, lässt sie normal werden. Screenshot und Meldung sind die Antwort.",
+    meta: "Ausgedacht · Muster: Zahlen- und Zeichencodes",
+    reply: "Auf Zahlencodes musst du nicht inhaltlich antworten. Da gibt es nichts zu widerlegen. Benenn, was es ist, teil es nicht weiter und melde es. Wer diskutiert, gibt dem Code Reichweite. Wer ihn ignoriert, lässt ihn normal werden. Screenshot und Meldung sind die Antwort.",
     replySrc: "BfV S. 19 (Reichweite als Zweck) \u00b7 Bundesverband RIAS",
     parts: [
       { txt: "Kleine Erinnerung: " },
       { mark: "109", kind: "Zahlencode",
-        note: "„Aus 109 Ländern vertrieben“. Die mitgedachte 110 macht daraus eine Drohung. Zahlen erzeugen keine Bilder im Kopf und wirken sachlich \u2014 das macht sie wirksam.",
+        note: "„Aus 109 Ländern vertrieben“. Die mitgedachte 110 macht daraus eine Drohung. Zahlen erzeugen keine Bilder im Kopf und wirken sachlich, das macht sie wirksam.",
         src: "BfV S. 55" },
       { txt: " Länder können sich nicht irren. Die Wahrheit über " },
       { mark: "\ud83e\uddc3", kind: "Filterumgehung",
@@ -380,87 +380,85 @@ const POSTS = [
         src: "BfV S. 55" },
       { txt: " will keiner hören. " },
       { mark: "JDN LGN", kind: "Entvokalisierung",
-        note: "Das Gehirn ergänzt „Juden lügen“ selbstständig. Die Auslassung ist keine Abschwächung, sondern Tarnung \u2014 sie umgeht Filter und erschwert die Strafverfolgung.",
+        note: "Das Gehirn ergänzt „Juden lügen“ selbstständig. Die Auslassung ist keine Abschwächung, sondern Tarnung, sie umgeht Filter und erschwert die Strafverfolgung.",
         src: "BfV S. 48" },
       { txt: " Wer es kapiert, kapiert es." }
     ]
   }
 ];
 
-/* Wie Propaganda arbeitet — vier Mechanismen.
-   Kurz gehalten: das ist der Einstieg, nicht die Theorie. */
 /* Häufige Fragen. Kurz gehalten, jede Antwort belegt. */
 const FAQ = [
   { q: "Darf man Israel denn nicht kritisieren?",
-    a: "Doch, und es passiert ständig — auch in Israel selbst. Antisemitisch wird Kritik dort, wo sie den Staat pauschal wegen seiner bloßen Existenz angreift, wo alte Feindbilder auf ihn übertragen werden oder wo „die Juden“ als homogene Masse in Haftung genommen werden. Der Satz „man darf ja nichts sagen“ ist seit jeher ein Satz der radikalen Rechten: Er macht die sprechende Person zum Opfer eines Redeverbots, das es nicht gibt.",
+    a: "Doch. Das passiert ständig, auch in Israel selbst. Antisemitisch wird es, wenn man den Staat angreift, nur weil es ihn gibt, alte Feindbilder auf ihn überträgt oder „die Juden“ insgesamt verantwortlich macht. Und „man darf ja nichts sagen“ ist ein alter Satz der radikalen Rechten. Wer ihn sagt, macht sich zum Opfer eines Redeverbots, das es nicht gibt.",
     src: "Amadeu Antonio Stiftung, nichts-gegen-juden.de" },
 
-  { q: "Ich habe jüdische Freunde — dann bin ich doch kein Antisemit.",
-    a: "Persönliche Beziehungen sagen nichts darüber aus, ob jemand antisemitische Überzeugungen teilt. Antisemitismus wirkt als Ideologie überindividuell. Die Soziologin Julia Bernstein beschreibt den Satz als Abwehrstrategie: Wer die eigene Aussage als problematisch erkennt, ruft vorbeugend jüdische Freunde auf, um das gesellschaftlich Unsagbare sagbar zu machen.",
+  { q: "Ich habe jüdische Freunde, dann bin ich doch kein Antisemit.",
+    a: "Freundschaften sagen nichts darüber, was jemand denkt. Antisemitismus ist eine Ideologie und hängt nicht an einzelnen Menschen. Die Soziologin Julia Bernstein nennt den Satz eine Abwehrstrategie: Wer merkt, dass die eigene Aussage problematisch ist, schiebt vorher die jüdischen Freunde vor. So soll das Unsagbare sagbar werden.",
     src: "Julia Bernstein, zit. n. nichts-gegen-juden.de" },
 
   { q: "Ist Antisemitismus nicht vor allem ein Problem von rechts?",
-    a: "Nein. Er gilt als Brückennarrativ: Er verbindet Milieus, die sonst wenig teilen — rechtsextreme, verschwörungsideologische, islamistische, christlich-fundamentalistische und linke — und schlägt eine Brücke zwischen Rand und Mitte. Sekundärer Antisemitismus ist unabhängig davon verbreitet, ob sich jemand links oder rechts verortet.",
+    a: "Nein. Antisemitismus verbindet Gruppen, die sonst wenig teilen: Rechtsextreme, Verschwörungsgläubige, Islamisten, christliche Fundamentalisten und Linke. Er reicht vom Rand bis in die Mitte. Antisemitismus, der die Erinnerung an den Holocaust abwehrt, gibt es links wie rechts.",
     src: "BfV S. 15–17 · Leipziger Autoritarismus-Studie 2024" },
 
   { q: "Wird da nicht viel hineininterpretiert?",
-    a: "Das ist eine berechtigte Frage — und genau deshalb entscheidet nie ein einzelnes Wort. Maßgeblich sind Gesamtzusammenhang, mediales und soziales Umfeld, Absender, Adressat und das vorausgesetzte Wissen. Ein starkes Indiz ist die Häufung: Codes treten fast nie allein auf.",
+    a: "Berechtigte Frage. Deshalb entscheidet nie ein einzelnes Wort. Es kommt darauf an, wo etwas steht, wer es sagt, an wen und was vorausgesetzt wird. Ein starkes Zeichen ist, wenn mehrere Codes zusammenkommen. Allein kommen sie fast nie.",
     src: "BfV, „Codes erkennen und einordnen“, S. 21" },
 
   { q: "Warum reicht es nicht, einfach Fakten zu nennen?",
-    a: "Weil Verschwörungserzählungen sich gegen Fakten immunisieren: Jeder Gegenbeleg gilt als gefälscht. Die Haltung entzieht sich rationalen Argumenten. Wirksamer ist, das Muster zu benennen, statt die Behauptung im Detail zu widerlegen.",
-    src: "Amadeu Antonio Stiftung, S. 38 · nichts-gegen-juden.de" },
+    a: "Weil Verschwörungserzählungen sich gegen Fakten abschotten: Jeder Gegenbeweis gilt als gefälscht. Mit Argumenten allein kommst du da nicht weiter.",
+    src: "Amadeu Antonio Stiftung, nichts-gegen-juden.de" },
 
   { q: "Woran erkenne ich einen Code, der in keiner Liste steht?",
-    a: "An der Machart. Es sind immer dieselben sechs Werkzeuge: vage Anspielung, Personalisierung (ein Name steht für die Gruppe), Begriffsersetzung, abwertendes Bild, Zahlencode und optisches Zeichen. Wer die kennt, braucht keine vollständige Liste — die gibt es ohnehin nicht, weil laufend neue Codes entstehen.",
+    a: "An der Machart. Es sind immer dieselben sechs Werkzeuge: vage Anspielung, ein Name für die ganze Gruppe, harmlos klingende Ersatzwörter, abwertende Bilder, Zahlencodes und optische Zeichen. Wer die kennt, braucht keine vollständige Liste. Die gibt es sowieso nicht, weil ständig neue Codes entstehen.",
     src: "BfV, „Werkzeugkasten der Umwegkommunikation“, S. 71 f." }
 ];
 
 /* Wie Propaganda arbeitet — vier Mechanismen. */
 const MECHANIK = [
   { h: "Verzerrung",
-    p: "Eine komplizierte Lage wird auf eine einzige Ursache heruntergebrochen. Das fühlt sich wie Durchblick an, ist aber das Gegenteil.",
+    p: "Eine komplizierte Lage wird auf eine einzige Ursache runtergebrochen. Fühlt sich wie Durchblick an, ist aber das Gegenteil.",
     src: "BfV, „Erklärungsfunktion“, S. 27 u. 51" },
   { h: "Emotion",
-    p: "Codes zielen am Verstand vorbei. Sie lösen Angst, Wut oder Ekel aus — und manchmal das gute Gefühl, mehr zu wissen als andere.",
+    p: "Zielt am Verstand vorbei. Löst Angst, Wut oder Ekel aus. Manchmal auch das gute Gefühl, mehr zu wissen als andere.",
     src: "BfV, „Was Codes mit den Rezipierenden machen“, S. 73" },
   { h: "Wiederholung",
     p: "Je öfter du etwas siehst, desto normaler wirkt es. Reichweite ist kein Nebeneffekt, sondern der Zweck.",
     src: "BfV, „Erhöhung der Reichweite“, S. 19" },
   { h: "Feindbild",
-    p: "Eine Gruppe wird als Ursache markiert. Das schweißt die eigene Gruppe zusammen und senkt die Hemmschwelle für Angriffe.",
+    p: "Eine Gruppe wird als schuldig markiert. Das schweißt die eigene Gruppe zusammen und senkt die Hemmschwelle für Angriffe.",
     src: "BfV S. 29 · AAS S. 6" }
 ];
 
 /* Zahlen, die die Relevanz belegen — jede mit Herkunft. */
 const FACTS = [
   { n: "15,6 %",
-    p: "der Bevölkerung übertragen ihre Ablehnung israelischer Politik auf „die Juden“ — machen also Einzelne kollektiv verantwortlich.",
+    p: "der Menschen in Deutschland übertragen ihre Ablehnung von Israels Politik auf „die Juden“.",
     src: "Leipziger Autoritarismus-Studie 2024, zit. n. BfV S. 16" },
   { n: "22,7 %",
-    p: "stimmen zu, Israels Politik sei so schlimm wie die der Nazis im Zweiten Weltkrieg. Diese Gleichsetzung dient der Schuldabwehr.",
+    p: "stimmen zu, Israels Politik in Palästina sei so schlimm wie die der Nazis im Zweiten Weltkrieg. Der Vergleich dreht Täter und Opfer um und soll von deutscher Schuld ablenken.",
     src: "Leipziger Autoritarismus-Studie 2024, zit. n. BfV S. 16" },
   { n: "Links wie rechts",
-    p: "Sekundärer Antisemitismus ist weit verbreitet — unabhängig davon, wo sich jemand politisch verortet. Das ist kein Randproblem.",
+    p: "Antisemitismus, der die Erinnerung an den Holocaust abwehrt, gibt es überall. Egal, ob sich jemand links oder rechts sieht. Das ist kein Randproblem.",
     src: "Decker/Kiess/Brähler 2024, zit. n. BfV S. 16" }
 ];
 
 /* Was man konkret tun kann. Handlungswissen, keine Appelle. */
 const ACTIONS = [
   { h: "Nicht weiterleiten",
-    p: "Auch nicht, um dich darüber aufzuregen. Jeder Repost ist Reichweite — und Reichweite ist genau das Ziel. Screenshot statt Teilen.",
+    p: "Auch nicht, um dich aufzuregen. Jeder Repost bringt Reichweite, und genau darum geht es. Screenshot statt Teilen.",
     src: "BfV, „Erhöhung der Reichweite“, S. 19" },
   { h: "Belegen",
-    p: "Screenshot mit Datum, Profilname und dem, was drumherum steht. Ohne Beleg und ohne Kontext kann später niemand etwas damit anfangen.",
+    p: "Screenshot mit Datum, Profilname und dem, was drumherum steht. Ohne Kontext kann später niemand etwas damit anfangen.",
     src: "Bundesverband RIAS, report-antisemitism.de" },
   { h: "Kontext prüfen",
-    p: "Ein einzelnes Wort beweist nichts. Entscheidend sind Umfeld, Absender, Adressat und ob sich Codes häufen. Codes treten selten allein auf.",
+    p: "Ein einzelnes Wort beweist nichts. Schau, wo es steht, wer es schreibt, an wen und ob mehrere Codes zusammenkommen.",
     src: "BfV, „Codes erkennen und einordnen“, S. 21" },
   { h: "Widersprechen, nicht diskutieren",
-    p: "Kurz benennen, was du siehst — nicht in eine Debatte einsteigen. Gegen Verschwörungserzählungen helfen reine Fakten nachweislich nicht.",
-    src: "Amadeu Antonio Stiftung, S. 38" },
+    p: "Sag kurz, was du siehst. Lass dich nicht in eine Diskussion ziehen. Reine Fakten helfen gegen Verschwörungserzählungen nicht.",
+    src: "Amadeu Antonio Stiftung, nichts-gegen-juden.de" },
   { h: "Hilfe holen",
-    p: "Du musst das nicht allein regeln. Lehrkraft, Vertrauensperson, Meldestelle. Wer betroffen ist, hat Anspruch auf Beratung.",
+    p: "Du musst das nicht allein regeln. Sprich mit einer Lehrkraft, einer Vertrauensperson oder einer Meldestelle. Wenn du selbst betroffen bist, kannst du dir Beratung holen.",
     src: "RIAS · BfV-Hinweistelefon" }
 ];
 
@@ -469,78 +467,78 @@ const QUIZ = [
     q: "Die Hochfinanz an der Ostküste zieht mal wieder die Fäden.",
     ctx: "Kommentar unter einem Zeitungsartikel zur Inflation",
     a: "code",
-    why: "Drei Codes in einem Satz: „Hochfinanz“ und „Ostküste“ ersetzen das belastete Wort, „die Fäden ziehen“ ruft das Puppenspieler-Motiv auf. Genau diese Häufung ist laut BfV ein starkes Indiz — antisemitische Codes treten selten isoliert auf.",
+    why: "Drei Codes in einem Satz. „Hochfinanz“ und „Ostküste“ stehen verschlüsselt für „die Juden“, „die Fäden ziehen“ ruft das Bild vom Puppenspieler auf. Laut BfV ist genau diese Häufung ein starkes Zeichen. Codes kommen selten allein.",
     src: "BfV, Kap. 2.1 · AAS S. 10 f."
   },
   {
     q: "Die Entscheidung der israelischen Regierung halte ich für falsch.",
     ctx: "Wortmeldung in einer Podiumsdiskussion",
     a: "ok",
-    why: "Kritik an einer konkreten Regierungsentscheidung. Kein Kollektivbezug, keine Übertragung auf Jüdinnen und Juden, kein Rückgriff auf antisemitische Bildwelten. Sachliche Kritik an israelischer Politik ist kein Antisemitismus — das betonen alle herangezogenen Quellen ausdrücklich.",
+    why: "Kritik an einer konkreten Entscheidung. Es geht nicht um „die Juden“, und es werden keine antisemitischen Bilder benutzt. Sachliche Kritik an israelischer Politik ist kein Antisemitismus.",
     src: "IHRA-Arbeitsdefinition · REG S. 8 f."
   },
   {
     q: "Interessant, wem die (((Medienhäuser))) so gehören.",
     ctx: "Antwort in einem Diskussionsforum",
     a: "code",
-    why: "Die dreifachen Klammern („Echo“) markieren die Gruppe als jüdisch. Der Satz selbst behauptet nichts Justiziables — die Zuschreibung liegt vollständig in der Typografie. Ein Musterbeispiel für Umwegkommunikation.",
+    why: "Die drei Klammern markieren eine Gruppe als jüdisch. Der Satz selbst behauptet nichts, wofür man belangt werden könnte. Die ganze Botschaft steckt in der Schrift. So funktioniert Kommunikation über Umwege.",
     src: "BfV, Exkurs „(((echoing)))“, S. 32"
   },
   {
     q: "109",
     ctx: "Kommentar unter dem Beitrag einer jüdischen Gemeinde",
     a: "code",
-    why: "Behauptet, Jüdinnen und Juden seien aus exakt 109 Ländern vertrieben worden. Die implizite 110 macht daraus eine Drohung: Das aktuelle Wohnland soll das nächste werden.",
+    why: "Die Zahl behauptet, Jüdinnen und Juden seien aus genau 109 Ländern vertrieben worden. Mitgemeint ist die 110: Das Land, in dem sie jetzt leben, soll das nächste sein. Das ist eine Drohung.",
     src: "BfV, S. 55"
   },
   {
     q: "NIE WIEDER … FÜR WEN?",
     ctx: "Aufschrift auf einem Demonstrationsplakat",
     a: "grau",
-    why: "Das BfV führt genau dieses Motiv als Graubereich. Antisemitisch gelesen wendet es den Holocaust instrumentell gegen Israel und greift die Erinnerungskultur als Heuchelei an. Nicht antisemitisch gelesen klagt es Opferhierarchien in der Menschenrechtsdebatte an. Entscheidend sind Umfeld, Absender und was sonst im Bild ist.",
+    why: "Das BfV nennt genau dieses Motiv einen Graubereich. Antisemitisch gelesen benutzt es den Holocaust gegen Israel und stellt Erinnerung als Heuchelei hin. Anders gelesen kritisiert es, dass manche Opfer mehr zählen als andere. Es kommt darauf an, wo es steht, wer es zeigt und was sonst noch zu sehen ist.",
     src: "BfV, Kap. 2.5, Fallbeispiel 2, S. 60 f."
   },
   {
     q: "JDN LGN",
     ctx: "Aufdruck auf einem T-Shirt bei einer Demonstration",
     a: "code",
-    why: "Entvokalisierung: Das Gehirn ergänzt „Juden lügen“ selbstständig. Die Auslassung ist keine Abschwächung, sondern Tarnung — sie umgeht Moderationsfilter und erschwert die Strafverfolgung, während die Botschaft für Eingeweihte vollständig ankommt.",
+    why: "Die Vokale fehlen, dein Kopf ergänzt „Juden lügen“ von selbst. Das ist keine Abschwächung, sondern Tarnung. So rutscht der Satz durch Filter und ist schwerer zu verfolgen. Wer Bescheid weiß, versteht ihn trotzdem.",
     src: "BfV, Exkurs „Grafische Abwandlungen“, S. 48"
   },
   {
     q: "Wir sind die neuen Juden.",
     ctx: "Redebeitrag auf einer Protestkundgebung",
     a: "code",
-    why: "Täter-Opfer-Umkehr. Beansprucht den Verfolgungsstatus der Shoah-Opfer für die eigene Lage und relativiert damit den Holocaust. Erschien in der Coronazeit als „Judenstern“ mit der Aufschrift „Ungeimpft“.",
+    why: "Täter-Opfer-Umkehr. Wer das sagt, stellt sich mit den Verfolgten der Shoah gleich und verharmlost damit den Holocaust. In der Coronazeit tauchte das als „Judenstern“ mit der Aufschrift „Ungeimpft“ auf.",
     src: "AAS S. 34 f. · REG S. 38"
   },
   {
     q: "BlackRock hat enormen Einfluss auf die Finanzmärkte.",
     ctx: "Satz aus einer Wirtschaftssendung",
     a: "grau",
-    why: "Als Tatsachenaussage unproblematisch. Zum Code wird der Name erst in einer Erzählung von geheimer Steuerung — neben „Globalisten“ oder „Hochfinanz“. Kapitalismuskritik wird dort antisemitisch, wo sie das System auf eine Gruppe zurückführt.",
+    why: "Als Tatsache kein Problem. Zum Code wird der Name erst, wenn er in einer Geschichte über geheime Steuerung steht, neben Wörtern wie „Globalisten“ oder „Hochfinanz“. Kapitalismuskritik wird antisemitisch, wenn sie alles auf eine Gruppe schiebt.",
     src: "BfV Kap. 2.1 · AAS S. 10 f."
   }
 ];
 
 const TOOLS = [
   { n: "Werkzeug 1", h: "Vage Anspielung",
-    p: "Andeutungen, die sich erst über Kontext und geteiltes Wissen erschließen. Wörtlich genommen ergeben sie oft keinen Sinn — sie erzeugen aber eine Atmosphäre des Verdachts.",
+    p: "Andeutungen, die man nur mit Vorwissen versteht. Wörtlich ergeben sie oft keinen Sinn. Aber sie machen Stimmung und säen Verdacht.",
     ex: "„Masken fallen lassen“" },
   { n: "Werkzeug 2", h: "Personalisierung",
-    p: "Einzelne Namen stehen stellvertretend für die ganze Gruppe und lenken den Blick auf eine vermeintliche „jüdische Macht“. Ständig kommen neue Namen hinzu.",
+    p: "Ein Name steht für die ganze Gruppe. So wirkt es, als gäbe es eine „jüdische Macht“. Ständig kommen neue Namen dazu.",
     ex: "Rothschild · Soros · Fink" },
   { n: "Werkzeug 3", h: "Begriffsersetzung",
-    p: "Belastete Wörter werden durch scheinbar neutrale ersetzt. Die Aussage wirkt oberflächlich harmlos — und Widerspruch lässt sich als Überinterpretation zurückweisen.",
+    p: "Ein belastetes Wort wird durch ein harmlos klingendes ersetzt. Der Satz wirkt unauffällig. Wer widerspricht, bekommt zu hören, er interpretiere zu viel hinein.",
     ex: "„Globalisten“ · „Zionisten“" },
   { n: "Werkzeug 4", h: "Abwertendes Bild",
-    p: "Tier- und Krankheitsmetaphern wirken entmenschlichend und erzeugen ein Gefühl existenzieller Bedrohung. Sie legen nahe, dass „Beseitigung“ notwendig sei.",
+    p: "Tier- und Krankheitsbilder sprechen Menschen das Menschsein ab und machen Angst. Sie legen nahe, man müsse sie „beseitigen“.",
     ex: "Krake · Parasit · Krebs" },
   { n: "Werkzeug 5", h: "Zahlencode",
-    p: "Zahlen erzeugen zunächst keine Bilder im Kopf. Genau diese vermeintliche Sachlichkeit macht sie effektiv: nach außen bedeutungslos, nach innen Erkennungszeichen.",
+    p: "Zahlen lösen erst mal keine Bilder im Kopf aus. Genau das macht sie wirksam: Für Außenstehende bedeuten sie nichts, für Eingeweihte sind sie ein Erkennungszeichen.",
     ex: "109/110 · 271k" },
   { n: "Werkzeug 6", h: "Optisches Zeichen",
-    p: "Überzeichnete Körpermerkmale oder grafische Abwandlungen tarnen und markieren zugleich. Sie erlauben Gleichgesinnten, sich untereinander zu erkennen.",
+    p: "Verzerrte Körpermerkmale oder veränderte Schrift. Sie tarnen die Botschaft und markieren zugleich. Gleichgesinnte erkennen sich daran.",
     ex: "(((...))) · JDN LGN" }
 ];
 
@@ -560,4 +558,10 @@ const SOURCES = [
     d: "Regishut, Berlin 2023. Nach politischen Spektren gegliedert, mit umfangreichem Register und Angaben zur Strafbarkeit." },
   { k: "BPB", t: "Dossier Antisemitismus – Glossar",
     d: "Bundeszentrale für politische Bildung. Herkunft und heutige Verwendung einzelner Metaphern, u. a. Tiermetaphern." },
+  { k: "LAS", t: "Leipziger Autoritarismus-Studie 2024",
+    d: "Decker/Kiess/Brähler, zitiert nach BfV." },
+  { k: "NGJ", t: "nichts-gegen-juden.de",
+    d: "Amadeu Antonio Stiftung." },
+  { k: "RIAS", t: "report-antisemitism.de",
+    d: "Bundesverband RIAS." },
 ];

@@ -397,10 +397,10 @@
 
     var q = score / QUIZ.length;
     var msg;
-    if (q >= .9)      msg = "Du erkennst auch die Graubereiche. Genau die sind der schwierige Teil.";
-    else if (q >= .6) msg = "Die eindeutigen Codes sitzen. Schwierig wird es dort, wo der Kontext entscheidet.";
-    else if (q >= .3) msg = "Die meisten Codes wirken genau deshalb, weil sie beim ersten Lesen harmlos aussehen.";
-    else              msg = "Das ist der Normalfall — und der Grund, warum Codes funktionieren. Sie sind gebaut, um nicht aufzufallen.";
+    if (q >= .9)      msg = "Du erkennst auch die Graubereiche. Das ist der schwierige Teil.";
+    else if (q >= .6) msg = "Die klaren Codes erkennst du. Schwierig wird es da, wo der Kontext entscheidet.";
+    else if (q >= .3) msg = "Die meisten Codes wirken, weil sie beim ersten Lesen harmlos aussehen.";
+    else              msg = "Ganz normal. Genau deshalb funktionieren Codes: Sie sind gemacht, um nicht aufzufallen.";
     var p = el("p", null, msg);
     p.style.marginTop = "1.25rem";
     wrap.appendChild(p);
@@ -510,8 +510,20 @@
      4 — MECHANIK · ZAHLEN · WAS TUN
      Jede Aussage trägt ihre Herkunft.
      --------------------------------------------------------- */
-  /* Die sechs Werkzeuge der Umwegkommunikation (BfV S. 71 f.).
-     Die früheren vier Hebel (MECHANIK) bleiben als Daten erhalten. */
+  /* Die vier Stilmittel der Propaganda-Collage (MECHANIK), direkt unter
+     der Bildnotiz und vor den Werkzeugen. Jede Karte mit eigener Quelle. */
+  var stilEl = $("#stil");
+  if (stilEl) {
+    MECHANIK.forEach(function (m) {
+      var d = el("div", "mech-item stil-item");
+      d.appendChild(el("h3", null, m.h));
+      d.appendChild(el("p", null, m.p));
+      d.appendChild(el("span", "src", "Quelle: " + m.src));
+      stilEl.appendChild(d);
+    });
+  }
+
+  /* Die sechs Werkzeuge der Umwegkommunikation (BfV S. 71 f.). */
   var mechEl = $("#mech");
   TOOLS.forEach(function (m) {
     var d = el("div", "mech-item");
