@@ -1,0 +1,86 @@
+[
+  {
+    "text": "--ink",
+    "textColor": "#0E0E0D",
+    "background": "--paper",
+    "backgroundColor": "#ECE5D6",
+    "ratio": 15.4
+  },
+  {
+    "text": "--ink-2",
+    "textColor": "#3E3B37",
+    "background": "--paper",
+    "backgroundColor": "#ECE5D6",
+    "ratio": 8.88
+  },
+  {
+    "text": "--ink-3",
+    "textColor": "#5E5953",
+    "background": "--paper",
+    "backgroundColor": "#ECE5D6",
+    "ratio": 5.53
+  },
+  {
+    "text": "--ink-3",
+    "textColor": "#5E5953",
+    "background": "--paper-2",
+    "backgroundColor": "#E0D7C4",
+    "ratio": 4.85
+  },
+  {
+    "text": "--red-tx",
+    "textColor": "#B5140B",
+    "background": "--paper",
+    "backgroundColor": "#ECE5D6",
+    "ratio": 5.46
+  },
+  {
+    "text": "--red-tx",
+    "textColor": "#B5140B",
+    "background": "--paper-2",
+    "backgroundColor": "#E0D7C4",
+    "ratio": 4.78
+  },
+  {
+    "text": "--on-dark",
+    "textColor": "#ECE5D6",
+    "background": "--dark",
+    "backgroundColor": "#0E0E0D",
+    "ratio": 15.4
+  },
+  {
+    "text": "--on-dark-2",
+    "textColor": "#A29D95",
+    "background": "--dark",
+    "backgroundColor": "#0E0E0D",
+    "ratio": 7.17
+  },
+  {
+    "text": "--on-dark-2",
+    "textColor": "#A29D95",
+    "background": "--dark-3",
+    "backgroundColor": "#2A2826",
+    "ratio": 5.45
+  },
+  {
+    "text": "--red-dk",
+    "textColor": "#FF5145",
+    "background": "--dark",
+    "backgroundColor": "#0E0E0D",
+    "ratio": 5.99
+  },
+  {
+    "text": "--red-dk",
+    "textColor": "#FF5145",
+    "background": "--dark-3",
+    "backgroundColor": "#2A2826",
+    "ratio": 4.56
+  },
+  {
+    "text": "--white",
+    "textColor": "#FFFFFF",
+    "background": "--red",
+    "backgroundColor": "#E1251B",
+    "ratio": 4.69
+  }
+]

@@ -1,14 +1,6 @@
-/* =========================================================
-   ZEICHEN LESEN
-   Kampagnenprototyp — Decoder für antisemitische Codes
-
-   Gestaltung nach Vorbild „Rights Against the Right“:
-   großflächige, kondensierte Versalien; harte Farbflächen
-   in Hell, Schwarz und Rot; klare Linien statt Collage-Papier.
-
-   Gestaltungsprinzip bleibt: MARKIEREN.
-   Nichts wird nachgebaut. Alles wird angestrichen.
-   ========================================================= */
+/* Gestaltungsprinzip: Zitat und Eingriff trennen. Papier, Riss und Raster zeigen die
+   Propagandaästhetik. Klare Schrift und rote Markierung ordnen sie ein. Motive wie Strahlen,
+   Fackel und Fadenkreuz stehen nur in den Bildern und sind dort markiert. */
 
 /* ---------- Schriften (selbst gehostet, OFL) ---------- */
 
@@ -32,8 +24,8 @@
 
 :root {
   /* Flächen */
-  --paper:   #F1F0EC;
-  --paper-2: #E6E4DE;
+  --paper:   #ECE5D6;
+  --paper-2: #E0D7C4;
   --white:   #FFFFFF;
 
   /* Tinte */
@@ -48,14 +40,14 @@
   --dark:    #0E0E0D;
   --dark-2:  #1A1918;
   --dark-3:  #2A2826;
-  --on-dark: #F1F0EC;
+  --on-dark: #ECE5D6;
   --on-dark-2: #A29D95;
-  --line-dk: rgba(241,240,236,.18);
+  --line-dk: rgba(236,229,214,.18);
 
   /* DER Akzent. Großflächig und für große Schrift. */
   --red:     #E1251B;
   /* Rot für kleine Schrift auf Hell (≥ 4,5:1) */
-  --red-tx:  #C4180E;
+  --red-tx:  #B5140B;
   /* Rot für kleine Schrift auf Schwarz (≥ 4,5:1) */
   --red-dk:  #FF5145;
 
@@ -222,7 +214,7 @@ mark, .hl {
 
 .topbar {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(241,240,236,.95);
+  background: rgba(236,229,214,.95);
   -webkit-backdrop-filter: saturate(1.4) blur(14px);
   backdrop-filter: saturate(1.4) blur(14px);
   border-bottom: 1px solid transparent;
@@ -965,7 +957,7 @@ mark, .hl {
   .tun-top .sec-head h2 { font-size: clamp(3rem, 7.5vw, 7.5rem); }
 }
 .tun-img { display: block; }
-.tun-img img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
+.tun-img img { display: block; width: 100%; height: auto; }
 
 .acts-wrap { position: relative; }
 .acts {
@@ -1146,3 +1138,96 @@ mark, .hl {
 .stil-item { padding: clamp(1rem, 2vw, 1.25rem) 0 clamp(1.25rem, 2.4vw, 1.75rem); }
 .stil-item h3 { font-size: clamp(1.75rem, 2.6vw, 2.25rem); margin-bottom: .75rem; }
 .stil-item p { font-size: .9375rem; }
+
+/* Zitat: ruhige Materialflächen. Eingriff: untexturierte Bedienelemente. */
+:root {
+  --tear-1: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201000%2024%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M0%200H1000V12L973%2017%20946%209%20918%2014%20887%207%20865%2016%20831%2011%20804%2019%20778%2010%20746%2015%20717%208%20681%2017%20655%2012%20628%2020%20601%2010%20575%2016%20543%207%20511%2014%20482%2011%20450%2018%20426%208%20397%2015%20368%2010%20339%2019%20313%2012%20287%2016%20262%207%20233%2014%20205%2010%20174%2018%20149%2011%20122%2016%2096%208%2063%2014%2036%2010%200%2017Z%22%2F%3E%3C%2Fsvg%3E");
+  --tear-2: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201000%2024%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M0%200H1000V18L978%2012%20956%2017%20924%208%20895%2014%20863%2010%20839%2018%20807%2012%20783%2016%20753%207%20722%2013%20696%209%20661%2018%20637%2013%20610%2016%20582%208%20551%2014%20529%2010%20494%2018%20463%2011%20435%2016%20408%207%20382%2014%20351%2010%20322%2017%20294%2012%20268%2020%20242%209%20212%2015%20183%2010%20158%2018%20131%2013%2098%2016%2074%207%2043%2013%2019%2010%200%2015Z%22%2F%3E%3C%2Fsvg%3E");
+  --tear-3: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201000%2024%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M0%200H1000V9L966%2014%20942%2010%20916%2018%20884%2012%20857%2016%20826%208%20795%2014%20771%2010%20740%2019%20714%2013%20687%2016%20659%209%20630%2014%20607%2011%20574%2018%20549%2012%20520%2016%20490%207%20462%2014%20433%2010%20405%2017%20376%2012%20345%2019%20319%209%20290%2015%20260%2011%20232%2018%20206%2012%20174%2016%20146%208%20121%2014%2093%2010%2065%2017%2032%2012%200%2019Z%22%2F%3E%3C%2Fsvg%3E");
+}
+body { isolation: isolate; }
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: 1;
+  pointer-events: none; opacity: .05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23000' filter='url(%23grain)' d='M0 0h160v160H0z'/%3E%3C/svg%3E");
+}
+/* Eigene Ebenen halten Text und Interaktion vor dem Papierkorn. */
+.hero > .shell, .subline, .sec-head, .img-note, .quiz, .posts-wrap,
+.bruecke, .lex-note, .glyphs, .drill, .mech, .stil, .stil-h, .faq,
+.acts-wrap, .facts-band > .shell, .melden, .foot > .shell {
+  position: relative; z-index: 2;
+}
+.sec.dark, .sec.red, .facts-band {
+  background-image: radial-gradient(circle, rgb(236 229 214 / .045) .7px, transparent .85px);
+  background-size: 5px 5px;
+}
+.sec.red, .facts-band {
+  background-image: radial-gradient(circle, rgb(14 14 13 / .045) .7px, transparent .85px);
+}
+.sec.dark, .sec.red, .facts-band, .band-img, .hero-visual, .tun-figure {
+  position: relative;
+  --tear-top: var(--paper);
+  --tear-bottom: var(--paper);
+}
+.sec.dark::before, .sec.dark::after,
+.sec.red::before, .sec.red::after,
+.facts-band::before, .facts-band::after,
+.band-img::before, .band-img::after,
+.hero-visual::before, .hero-visual::after,
+.tun-figure::before, .tun-figure::after {
+  content: ""; position: absolute; left: 0; right: 0;
+  height: 24px; z-index: 1; pointer-events: none;
+  background-color: var(--tear-top);
+  -webkit-mask: var(--tear-1) center / 100% 100% no-repeat;
+  mask: var(--tear-1) center / 100% 100% no-repeat;
+  top: -1px;
+}
+.sec.dark::after, .sec.red::after, .facts-band::after,
+.band-img::after, .hero-visual::after, .tun-figure::after {
+  top: auto; bottom: -1px; transform: rotate(180deg);
+  background-color: var(--tear-bottom);
+  -webkit-mask-image: var(--tear-2); mask-image: var(--tear-2);
+}
+.band-img::before, .sec.red::before, .tun-figure::before {
+  -webkit-mask-image: var(--tear-3); mask-image: var(--tear-3);
+}
+/* Genau eine Kante an der gemeinsamen Grenze Rot/Schwarz. */
+.facts-band { --tear-bottom: var(--dark); }
+.facts-band + .sec.dark::before { content: none; }
+#melden { --tear-bottom: var(--dark); }
+.band-img { margin-bottom: 0; }
+.band-img + .img-note { margin-block: 1.5rem clamp(2.5rem, 5vw, 4rem); }
+.tun-figure { margin: 0; line-height: 0; }
+/* Die Risskante sitzt außerhalb der neuen Bilder: Motive am Bildrand bleiben sichtbar. */
+.collage-band, .tun-figure { padding-block: 24px; background: var(--ink); }
+.mobilisation-band { padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+.mobilisation-band > .img-note { margin-bottom: 0; }
+.eyebrow:has(.secnum), .img-note-h {
+  width: fit-content; max-width: 100%;
+  background: var(--paper-2); padding: .3rem .65rem;
+  box-shadow: 1px 2px 0 rgb(14 14 13 / .12);
+  transform: rotate(-1deg); transform-origin: left center;
+}
+.sec.dark .eyebrow:has(.secnum), .dark .img-note-h {
+  background: var(--dark-3); color: var(--on-dark);
+}
+.sec.red .eyebrow:has(.secnum) { color: var(--ink); }
+.dark .img-note { color: var(--on-dark-2); border-color: var(--red-dk); }
+/* Kleine Quellen bleiben auch auf Weiß und Creme kontrastreich. */
+.dark .quiz .src { color: var(--ink-3); }
+.dark .quiz .src::before { color: var(--red-tx); }
+.dark .quiz .btn:not(.mark):not(.light) { color: var(--ink); }
+.dark .quiz .btn::before { background: var(--ink); }
+.dark .quiz .btn:hover, .dark .quiz .btn:focus-visible {
+  color: #fff; border-color: var(--ink);
+}
+.facts-band .src { color: #fff; }
+.glyph[aria-pressed="true"] .gl-n,
+.glyph[aria-pressed="true"] .gl-tag,
+.glyph[aria-pressed="true"] svg { color: #fff; opacity: 1; }
+/* Auch die seitlichen Karten bleiben lesbar, wenn das Karussell sie verkleinert. */
+.post, .act { opacity: 1 !important; }
+/* Das Zahlenband liegt direkt vor dem dunklen FAQ-Abschnitt. */
+@media (max-width: 30rem) {
+  .eyebrow:has(.secnum), .img-note-h { transform: none; }
+}
