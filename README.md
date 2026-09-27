@@ -41,6 +41,9 @@ Nach Vorbild *Rights Against the Right*: großflächige, kondensierte
 Versalien, harte Farbflächen, Rot als Signal. Klare Linien statt
 Collage-Papier — die Collagen stehen nur noch als Vollbild-Bänder.
 
+Alle Designentscheidungen mit Begründung, verworfenen Alternativen und
+Kontrastwerten: [`docs/designentscheidungen.md`](docs/designentscheidungen.md).
+
 - **Farbe** — Papier `#F1F0EC`, Tinte `#0E0E0D`, Rot `#E1251B`. Die Abschnitte
   wechseln als ganze Flächen: hell, schwarz (Test, Fragen, Fuß), rot (Zahlen,
   Melden). Für kleine Schrift gibt es dunklere bzw. hellere Rotstufen, damit
