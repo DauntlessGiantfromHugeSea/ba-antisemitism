@@ -359,7 +359,8 @@ mark, .hl {
   .hero-foot { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
   .hero-foot .cta-row { grid-column: 1 / -1; }
 }
-@media (min-width: 76rem) {
+/* Erst ab 90rem passen Text, Zahl mit Beschriftung und beide Buttons in eine Zeile. */
+@media (min-width: 90rem) {
   .hero-foot { grid-template-columns: minmax(0, 34rem) minmax(0, 1fr) auto; }
   .hero-foot .cta-row { grid-column: auto; justify-self: end; }
 }
@@ -880,6 +881,9 @@ mark, .hl {
   border-top: 2px solid var(--ink);
   padding: clamp(1.25rem, 2.4vw, 1.75rem) 0 clamp(2rem, 4vw, 3rem);
   display: grid; grid-template-columns: minmax(0, 1fr); gap: 0;
+  /* Karten einer Zeile sind gleich hoch. Die Inhalte bleiben oben,
+     sonst landet der Überschuss zwischen Überschrift und Text. */
+  align-content: start;
 }
 .mech-item .n {
   font-family: var(--mono); font-size: .75rem; font-weight: 700;
@@ -898,7 +902,7 @@ mark, .hl {
   background: var(--red); color: #fff;
   padding-block: clamp(3.5rem, 8vw, 7rem);
 }
-.facts-band .eyebrow { color: #fff; border-top: 2px solid #fff; padding-top: 1rem; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+.facts-band .eyebrow { max-width: none; color: #fff; border-top: 2px solid #fff; padding-top: 1rem; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
 .facts { display: grid; gap: clamp(2rem, 4vw, 3rem); grid-template-columns: 1fr; }
 @media (min-width: 56rem) { .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .fact .fig {
@@ -1106,10 +1110,17 @@ mark, .hl {
    Die Bilder zeigen Stilmittel. Der Text darunter benennt sie.
    --------------------------------------------------------- */
 .img-note {
-  margin-top: clamp(1rem, 2.4vw, 1.5rem);
+  margin-block: 1.5rem clamp(2.5rem, 5vw, 4rem);
   padding-left: 1rem; border-left: 3px solid var(--red-tx);
   max-width: 62ch; color: var(--ink-2); font-size: .9375rem; line-height: 1.55;
 }
+/* Linksbündig mit dem Text der Abschnitte statt frei zentriert. */
+.img-note.shell {
+  width: auto; max-width: 62ch;
+  margin-inline: max(var(--pad), calc((100% - 96rem) / 2 + var(--pad))) var(--pad);
+  padding-inline: 1rem 0;
+}
+.subline + .img-note { margin-top: 0; }
 .img-note-h {
   display: block; font-family: var(--mono); font-size: .6875rem; font-weight: 700;
   letter-spacing: .08em; text-transform: uppercase; color: var(--red-tx);
@@ -1196,7 +1207,6 @@ body::before {
 .facts-band + .sec.dark::before { content: none; }
 #melden { --tear-bottom: var(--dark); }
 .band-img { margin-bottom: 0; }
-.band-img + .img-note { margin-block: 1.5rem clamp(2.5rem, 5vw, 4rem); }
 .tun-figure { margin: 0; line-height: 0; }
 /* Die Risskante sitzt außerhalb der neuen Bilder: Motive am Bildrand bleiben sichtbar. */
 .collage-band, .tun-figure { padding-block: 24px; background: var(--ink); }
@@ -1231,3 +1241,77 @@ body::before {
 @media (max-width: 30rem) {
   .eyebrow:has(.secnum), .img-note-h { transform: none; }
 }
+
+/* ---------------------------------------------------------
+   Bildnotiz als Fragezeichen am Bild
+   Mit JS sitzt ein roter Knopf in der Bildecke und öffnet die Notiz.
+   Ohne JS steht die Notiz wie oben unter dem Bild.
+   --------------------------------------------------------- */
+.hero-visual, .band-img, .tun-figure {
+  --q-size: clamp(2.25rem, 3.2vw, 2.75rem);
+  --q-inset: clamp(.75rem, 2vw, 1.5rem);
+  /* Über der unteren Risskante (24px) bleiben. */
+  --q-bottom: calc(24px + clamp(.5rem, 1.2vw, .9rem));
+}
+.pop-open { z-index: 30; }
+
+.img-q {
+  position: absolute; z-index: 3;
+  right: var(--q-inset); bottom: var(--q-bottom);
+  width: var(--q-size); height: var(--q-size); padding: 0;
+  display: grid; place-items: center;
+  border: 2px solid #fff; border-radius: 50%;
+  background: var(--red); color: #fff; cursor: pointer;
+  font-family: var(--display); font-weight: 900; font-stretch: 80%;
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem); line-height: 1;
+  box-shadow: 0 4px 14px rgb(14 14 13 / .45);
+  transition: transform .2s var(--ease), background .2s ease;
+}
+.img-q:hover { transform: scale(1.08); }
+.img-q[aria-expanded="true"] { background: var(--ink); }
+.img-q:focus-visible { outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 7px var(--ink); }
+
+.img-note.img-pop {
+  position: absolute; z-index: 4;
+  right: var(--q-inset); bottom: calc(var(--q-bottom) + var(--q-size) + .6rem);
+  width: min(24rem, calc(100vw - 2rem)); max-width: none; margin: 0;
+  background: var(--white); color: var(--ink-2);
+  border: 2px solid var(--ink);
+  padding: 1rem 2.75rem 1.1rem 1.15rem;
+  font-size: .9375rem; line-height: 1.55;
+  box-shadow: 0 18px 40px -12px rgb(14 14 13 / .45);
+  transform-origin: bottom right;
+  animation: popIn .22s var(--ease) both;
+}
+.img-note.img-pop[hidden] { display: none; }
+.img-pop-x {
+  position: absolute; top: .45rem; right: .5rem;
+  border: 0; background: transparent; cursor: pointer;
+  font-size: 1.375rem; line-height: 1; color: var(--ink-3); padding: .2rem .4rem;
+}
+.img-pop-x:hover { color: var(--red-tx); }
+/* Notiz verweist auf die rechte Bildhälfte: Knopf links, damit sie frei bleibt. */
+.q-left .img-q { right: auto; left: var(--q-inset); }
+@media (min-width: 48rem) {
+  .q-left .img-note.img-pop { right: auto; left: var(--q-inset); transform-origin: bottom left; }
+}
+@keyframes popIn { from { opacity: 0; transform: scale(.92) translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* Schmale Schirme: Die Bilder sind flach. Die Notiz klappt unter
+   dem Bild auf, damit das Motiv sichtbar bleibt. */
+@media (max-width: 47.999rem) {
+  .img-note.img-pop {
+    top: calc(100% - 12px); bottom: auto; left: .75rem; right: .75rem; width: auto;
+    transform-origin: top right;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .img-q { transition: none; }
+  .img-note.img-pop { animation: none; }
+}
+
+/* Ohne die Notizen darunter brauchen die Bilder eigenen Abstand. */
+.has-pops .band-img { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.has-pops .mobilisation-band .band-img { margin-bottom: 0; }
+@media (min-width: 64rem) { .has-pops .hero-visual { margin-bottom: clamp(2rem, 4vw, 3rem); } }
+.has-pops .mobilisation-band { padding-bottom: clamp(1.5rem, 3vw, 2.5rem); }

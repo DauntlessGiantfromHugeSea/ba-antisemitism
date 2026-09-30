@@ -683,7 +683,83 @@
   }
 
   /* ---------------------------------------------------------
-     9 — SCROLL-REVEAL
+     9 — BILDNOTIZEN als Fragezeichen am Bild
+     Ohne JS stehen die Notizen unter den Bildern. Mit JS wandert
+     jede Notiz in ihr Bild und öffnet sich über einen roten Knopf
+     in der Ecke. Immer nur eine offen; Escape und Klick daneben
+     schließen.
+     --------------------------------------------------------- */
+  var pops = [];
+
+  function closePop(p, refocus) {
+    if (p.note.hidden) return;
+    p.note.hidden = true;
+    p.btn.setAttribute("aria-expanded", "false");
+    p.box.classList.remove("pop-open");
+    if (refocus) p.btn.focus();
+  }
+
+  $$(".img-note").forEach(function (note, i) {
+    /* Das zugehörige Bild steht davor — direkt oder in einem Container. */
+    var box = null, prev = note.previousElementSibling;
+    while (prev && !box) {
+      box = prev.matches(".hero-visual, .band-img, .tun-figure")
+        ? prev : prev.querySelector(".hero-visual, .band-img, .tun-figure");
+      prev = prev.previousElementSibling;
+    }
+    if (!box) return;
+
+    var id = note.id || "bildnotiz-" + (i + 1);
+    note.id = id;
+    note.classList.remove("shell", "rv");
+    note.classList.add("img-pop");
+    note.hidden = true;
+
+    var btn = el("button", "img-q", "?");
+    btn.type = "button";
+    btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-controls", id);
+    btn.setAttribute("aria-label", "Was ist im Bild markiert?");
+
+    var x = el("button", "img-pop-x", "×");
+    x.type = "button";
+    x.setAttribute("aria-label", "Notiz schließen");
+    note.insertBefore(x, note.firstChild);
+
+    box.appendChild(btn);
+    box.appendChild(note);
+
+    var p = { box: box, btn: btn, note: note };
+    pops.push(p);
+
+    btn.addEventListener("click", function () {
+      var open = note.hidden;
+      pops.forEach(function (o) { closePop(o, false); });
+      if (!open) return;
+      note.hidden = false;
+      btn.setAttribute("aria-expanded", "true");
+      box.classList.add("pop-open");
+    });
+    x.addEventListener("click", function () { closePop(p, true); });
+  });
+
+  if (pops.length) {
+    document.documentElement.classList.add("has-pops");
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape") return;
+      pops.forEach(function (p) {
+        if (!p.note.hidden) closePop(p, p.box.contains(document.activeElement));
+      });
+    });
+    document.addEventListener("click", function (e) {
+      pops.forEach(function (p) {
+        if (!p.btn.contains(e.target) && !p.note.contains(e.target)) closePop(p, false);
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------
+     10 — SCROLL-REVEAL
      --------------------------------------------------------- */
   var reveals = $$(".rv");
   if (!("IntersectionObserver" in window) ||
