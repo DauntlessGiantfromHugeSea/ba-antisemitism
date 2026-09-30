@@ -1,6 +1,6 @@
 # Bildnachweis für die Bachelorarbeit
 
-Vorstudie „Zeichen lesen“ zur Bachelorarbeit „Gegen den Strich. Eine Aufklärungskampagne über die Stilmittel antisemitischer Propaganda“.
+Vorarbeit „Zeichen lesen“ zur Bachelorarbeit „Gegen den Strich. Eine Aufklärungskampagne über die Stilmittel antisemitischer Propaganda“.
 
 Die Angabe „KI-generiert: ja“ für die bisherigen Collagen folgt der vorhandenen Deklaration in der Fußzeile. Für die drei neuen Collagen stammt sie aus der Aufgabenstellung. Werkzeug und Modell sind nicht überliefert. Ein nachträglich formulierter Prompt wäre kein Nachweis des tatsächlich verwendeten Prompts.
 
