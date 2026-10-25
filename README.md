@@ -3,7 +3,7 @@
 > Hass sagt nicht mehr, wie er heißt.
 
 Interaktiver Decoder für antisemitische Codes und Chiffren.
-Gestalterischer Kampagnenprototyp im Rahmen einer **Bachelorarbeit Mediendesign**.
+Website der Kampagne „Gegen den Strich“, Teil einer **Bachelorarbeit Mediendesign**.
 
 **Kein Angebot einer Behörde. Keine Rechtsberatung.**
 

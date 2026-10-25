@@ -1,0 +1,8 @@
+# Arbeitsnotizen im Repo (README, Bildnachweis) nicht über die Website ausliefern.
+<FilesMatch "\.(md|json|txt)$">
+  Require all denied
+</FilesMatch>
+# Ausnahme: Lizenztexte der Schriften müssen abrufbar bleiben.
+<FilesMatch "^OFL-.*\.txt$">
+  Require all granted
+</FilesMatch>
