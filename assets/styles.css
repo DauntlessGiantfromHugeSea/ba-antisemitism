@@ -1208,8 +1208,8 @@ body::before {
 #melden { --tear-bottom: var(--dark); }
 .band-img { margin-bottom: 0; }
 .tun-figure { margin: 0; line-height: 0; }
-/* Die Risskante sitzt außerhalb der neuen Bilder: Motive am Bildrand bleiben sichtbar. */
-.collage-band, .tun-figure { padding-block: 24px; background: var(--ink); }
+/* Die Risskante schneidet in das Bild selbst, kein zusätzlicher Rand. */
+.collage-band, .tun-figure { padding-block: 0; background: none; }
 .mobilisation-band { padding-bottom: clamp(2.5rem, 5vw, 4rem); }
 .mobilisation-band > .img-note { margin-bottom: 0; }
 .eyebrow:has(.secnum), .img-note-h {
