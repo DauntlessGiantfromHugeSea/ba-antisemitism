@@ -5,6 +5,9 @@
   "use strict";
 
   var $  = function (s, r) { return (r || document).querySelector(s); };
+  /* Hinweis neben jeder Quelle zu einem Code: Codes zeigen ihre Bedeutung
+     erst im Zusammenhang (BfV S. 21). */
+  var KONTEXT = " · Immer im Kontext zu betrachten.";
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
   function el(tag, cls, txt) {
@@ -157,7 +160,7 @@
     bubbleEl.appendChild(h);
     bubbleEl.appendChild(el("p", "bub-kind", part.kind));
     bubbleEl.appendChild(el("p", "bub-note", part.note));
-    if (part.src) bubbleEl.appendChild(el("span", "src", "Quelle: " + part.src));
+    if (part.src) bubbleEl.appendChild(el("span", "src", "Quelle: " + part.src + KONTEXT));
 
     var close = el("button", "bub-x", "×");
     close.type = "button";
@@ -360,7 +363,7 @@
     var head = right ? "Richtig" : "Nicht ganz";
     v.appendChild(el("p", "head", head));
     v.appendChild(el("p", null, item.why));
-    v.appendChild(el("span", "src", "Quelle: " + item.src));
+    v.appendChild(el("span", "src", "Quelle: " + item.src + KONTEXT));
     qVerdict.appendChild(v);
 
     qScore.textContent = score + " richtig";
@@ -492,7 +495,7 @@
       term.appendChild(el("span", "plus", "+"));
       b.appendChild(term);
       b.appendChild(el("div", "def", x.d));
-      b.appendChild(el("div", "cat", "Quelle: " + x.src));
+      b.appendChild(el("div", "cat", "Quelle: " + x.src + KONTEXT));
       if (x.flag) b.appendChild(el("span", "flag", x.flag));
 
       b.addEventListener("click", function () {
