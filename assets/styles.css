@@ -1255,6 +1255,23 @@ body::before {
 }
 .pop-open { z-index: 30; }
 
+/* Kennzeichnung an jedem Bild: KI-Bild, bewusst kein Originalmaterial. */
+.ki-tag {
+  position: absolute; z-index: 2;
+  left: var(--q-inset); top: calc(24px + clamp(.4rem, 1vw, .75rem));
+  font-family: var(--mono); font-size: .6875rem; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase; line-height: 1;
+  color: var(--on-dark); background: rgb(14 14 13 / .82);
+  padding: .4rem .55rem;
+  pointer-events: none;
+}
+/* Schmale Schirme: Im Kopf liegt der Balken „Antisemitismus“ weit oben.
+   Die Kennzeichnung wandert nach unten links, neben das Fragezeichen. */
+@media (max-width: 47.999rem) {
+  .ki-tag { font-size: .625rem; padding: .35rem .5rem; }
+  .hero-visual .ki-tag { top: auto; bottom: calc(var(--q-bottom) + (var(--q-size) - 1.4rem) / 2); }
+}
+
 .img-q {
   position: absolute; z-index: 3;
   right: var(--q-inset); bottom: var(--q-bottom);
@@ -1315,3 +1332,8 @@ body::before {
 .has-pops .mobilisation-band .band-img { margin-bottom: 0; }
 @media (min-width: 64rem) { .has-pops .hero-visual { margin-bottom: clamp(2rem, 4vw, 3rem); } }
 .has-pops .mobilisation-band { padding-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+/* Mit Fragezeichen-Notizen stößt das Fackel-Band direkt an „Melden“:
+   eine Risskante in Rot statt zwei Kanten mit Papierstreifen dazwischen. */
+.has-pops .mobilisation-band { padding-bottom: 0; }
+.has-pops .mobilisation-band .band-img { --tear-bottom: var(--red); }
+.has-pops .mobilisation-band + #melden::before { content: none; }
