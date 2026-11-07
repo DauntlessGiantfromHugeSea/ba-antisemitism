@@ -512,6 +512,17 @@
 
   $("#total").textContent = String(CODES.length);
 
+  /* Codes-Übersicht im Kopf: Die Zahlen stehen als Text im HTML.
+     Dazu kommt je Eintrag ein Kästchen, rein grafisch. */
+  $$(".matrix-t td[data-n]").forEach(function (td) {
+    var n = parseInt(td.getAttribute("data-n"), 10) || 0;
+    if (!n) return;
+    var dots = el("span", "mx-dots");
+    dots.setAttribute("aria-hidden", "true");
+    for (var i = 0; i < n; i++) dots.appendChild(document.createElement("i"));
+    td.insertBefore(dots, td.querySelector(".mx-ex"));
+  });
+
   /* ---------------------------------------------------------
      4 — MECHANIK · ZAHLEN · WAS TUN
      Jede Aussage trägt ihre Herkunft.
