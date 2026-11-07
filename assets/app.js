@@ -627,6 +627,94 @@
   }
 
   /* ---------------------------------------------------------
+     CODE-WAND
+     Je Werkzeug ein Code, riesig gesetzt. Ein rot gezeichneter Strich
+     wird beim Scrollen über den Code gezogen. Bei reduzierter Bewegung
+     steht der Strich sofort ganz da.
+     --------------------------------------------------------- */
+  var wallSec = $("#wand");
+  var wallEl = $("#wall");
+  /* Drei leicht unterschiedliche Linien, damit der Strich nach Hand aussieht. */
+  var STRIKES = [
+    "M6 58 C 140 46, 300 64, 480 52 S 820 40, 994 47",
+    "M4 50 C 170 62, 360 42, 560 50 S 860 60, 996 44",
+    "M8 62 C 210 50, 380 58, 600 46 S 880 50, 992 40"
+  ];
+  if (wallSec && wallEl && typeof WALL !== "undefined" && typeof KURZ !== "undefined") {
+    var wallReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var wallItems = [];
+    WALL.forEach(function (title, i) {
+      var x = CODES.filter(function (c) { return c.t === title; })[0];
+      var w = x && WERKZEUGE.filter(function (t) { return t.id === x.w; })[0];
+      if (!x || !w || !KURZ[x.t]) return;
+      var li = el("li", "wall-item");
+      var tool = el("p", "wall-tool");
+      tool.appendChild(el("span", "wall-n", w.n));
+      tool.appendChild(document.createTextNode("Werkzeug " + w.label));
+      li.appendChild(tool);
+
+      var code = el("p", "wall-code");
+      code.appendChild(el("span", "sr-only", "Gestrichener Code: "));
+      var word = el("s", null, x.t);
+      code.appendChild(word);
+      var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("class", "wall-strike");
+      svg.setAttribute("viewBox", "0 0 1000 100");
+      svg.setAttribute("preserveAspectRatio", "none");
+      svg.setAttribute("aria-hidden", "true");
+      svg.setAttribute("focusable", "false");
+      var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", STRIKES[i % STRIKES.length]);
+      svg.appendChild(path);
+      word.appendChild(svg);
+      li.appendChild(code);
+
+      var meta = el("div", "wall-meta");
+      meta.appendChild(el("p", "wall-k", KURZ[x.t]));
+      meta.appendChild(el("span", "src", "Quelle: " + x.src + KONTEXT));
+      li.appendChild(meta);
+      wallEl.appendChild(li);
+      wallItems.push(word);
+    });
+    wallSec.hidden = false;
+
+    /* Jeder Code passt in seine Spalte: zu breite Wörter werden kleiner
+       gesetzt, statt umzubrechen oder seitlich überzustehen. */
+    var fitWall = function () {
+      $$(".wall-code", wallEl).forEach(function (p) {
+        p.style.fontSize = "";
+        var s = p.querySelector("s");
+        for (var k = 0; k < 12 && s.offsetWidth > p.clientWidth; k++) {
+          p.style.fontSize = (parseFloat(window.getComputedStyle(p).fontSize) * 0.92) + "px";
+        }
+      });
+    };
+    fitWall();
+    window.addEventListener("resize", fitWall);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitWall);
+
+    if (!wallReduce && wallItems.length) {
+      var wallTicking = false;
+      var drawWall = function () {
+        wallTicking = false;
+        var vh = window.innerHeight || 1;
+        wallItems.forEach(function (w) {
+          var r = w.getBoundingClientRect();
+          /* 0, wenn der Code unten ins Bild kommt, 1 ab etwa 40 % Höhe. */
+          var p = Math.min(1, Math.max(0, (vh * 0.92 - r.top) / (vh * 0.5)));
+          w.style.setProperty("--p", p.toFixed(3));
+        });
+      };
+      wallSec.classList.add("is-drawing");
+      window.addEventListener("scroll", function () {
+        if (!wallTicking) { wallTicking = true; window.requestAnimationFrame(drawWall); }
+      }, { passive: true });
+      window.addEventListener("resize", drawWall);
+      drawWall();
+    }
+  }
+
+  /* ---------------------------------------------------------
      4 — MECHANIK · ZAHLEN · WAS TUN
      Jede Aussage trägt ihre Herkunft.
      --------------------------------------------------------- */

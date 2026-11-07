@@ -388,6 +388,11 @@ const KURZ = {
   "Hakennase": "Macht zugeschriebene Minderwertigkeit körperlich sichtbar."
 };
 
+/* Code-Wand (07.11.2026, abends): je Werkzeug ein Eintrag, in der Reihenfolge
+   von WERKZEUGE. Gewählt sind Codes, die das BfV als Beispiel des Werkzeugs
+   nennt (S. 71 f.) oder die schon im Kopf oder bei den Werkzeugen stehen. */
+const WALL = ["Schuldkult", "Rothschild", "Globalisten", "Krake", "109 / 110", "(((Echo)))"];
+
 /* Der annotierte Beispiel-Post.
    Konstruiert aus Einzelcodes der Quellen — kein realer Beitrag. */
 /* Vier konstruierte Beiträge im Social-Media-Format.
