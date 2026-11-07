@@ -486,7 +486,7 @@
 
     var list = el("div", "lex");
     CODES.filter(function (x) { return x.c === cat.id; }).forEach(function (x) {
-      var b = el("button", "card");
+      var b = el("button", x.lvl === "kontext" ? "card is-kontext" : "card");
       b.type = "button";
       b.setAttribute("aria-expanded", "false");
 
@@ -494,6 +494,9 @@
       term.appendChild(el("span", null, x.t));
       term.appendChild(el("span", "plus", "+"));
       b.appendChild(term);
+      /* Urteilsstufe wie im Test. Solche Einträge gelten nicht als Code
+         und stehen deshalb ungestrichen, aber immer mit dieser Marke. */
+      if (x.lvl === "kontext") b.appendChild(el("span", "lvl", "Kommt auf den Kontext an"));
       b.appendChild(el("div", "def", x.d));
       b.appendChild(el("div", "cat", "Quelle: " + x.src + KONTEXT));
       if (x.flag) b.appendChild(el("span", "flag", x.flag));

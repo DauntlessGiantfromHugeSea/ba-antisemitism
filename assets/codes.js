@@ -73,6 +73,10 @@ const CODES = [
     d: "Israelische Währung als Code für „jüdisches“ Geld. Markiert Profit und Besitz als jüdisch." },
   { t: "Happy Merchant", c: "geld", src: "BfV · AAS",
     d: "Karikatur-Meme mit langer krummer Nase, unförmigen Zähnen, Buckel, Bart, Kippa und reibenden Händen. Extrem hoher Verbreitungsgrad in digitalen Räumen." },
+  /* Neu 07.11.2026: auf TikTok belegt, mit zweiter Quelle bestätigt
+     (Schnabel & Berendsen, 2024, S. 26; Bundesverband RIAS, 2026, S. 28; Lorenz, 2025, S. 273–274). */
+  { t: "Geldsack- und Geldbündel-Emojis", c: "geld", src: "BSAF · RIAS · LOR",
+    d: "Geldsäcke oder Geldbündel in Kommentaren zu Jüdinnen und Juden oder Israel spielen auf die alte Lüge an, Juden seien besonders gierig und reich." },
 
   /* ---------- WELTVERSCHWÖRUNG ---------- */
   { t: "Puppenspieler / Marionette", c: "welt", src: "BfV · AAS · REG",
@@ -117,6 +121,13 @@ const CODES = [
     d: "Unterstellt Jüdinnen und Juden mangelnde Loyalität und eine verborgene Parallelmacht innerhalb der Nation." },
   { t: "Reptiloiden", c: "welt", src: "REG",
     d: "Behauptung einer nicht-menschlichen Herrscherkaste. Verbindet Entmenschlichung mit dem Weltverschwörungsnarrativ." },
+  /* Neu 07.11.2026: auf TikTok belegt, mit zweiter Quelle bestätigt
+     (Schnabel & Berendsen, 2024, S. 11, 14, 15, 29; BfV S. 12; AAS S. 36–37; Becker, 2024a, S. 160–162). */
+  { t: "„Israel kontrolliert die Medien“", c: "welt", src: "BSAF · BfV · AAS · DA",
+    d: "Behauptet, Israel oder „die Zionisten“ steuerten heimlich Medien, Wirtschaft und Regierungen der Welt. Dahinter steckt der alte Mythos einer geheimen jüdischen Macht, nur mit Israel als neuem Namen." },
+  /* (Schnabel & Berendsen, 2024, S. 18, 26; BfV, 2024, S. 52, 59; Chapelan, 2024, S. 181) */
+  { t: "„Inside-Job“ / „falsche Flagge“", c: "welt", src: "BSAF · BfV-L · DA",
+    d: "Behauptet, Israel habe den Angriff vom 7. Oktober selbst inszeniert. So werden die Opfer zu Tätern gemacht, und eine angeblich jüdische Macht soll hinter allem stecken." },
 
   /* ---------- KRANKHEIT & BLUT ---------- */
   { t: "Ritualmordlegende", c: "bio", src: "BfV · AAS · REG",
@@ -209,6 +220,10 @@ const CODES = [
     d: "Unterstellt Jüdinnen und Juden, aus der Erinnerung an den Holocaust materiellen Profit zu schlagen." },
   { t: "Wahrheit macht frei", c: "schuld", src: "REG",
     d: "Verballhornung der Auschwitzer Torinschrift. Verhöhnt die Ermordeten und wird häufig in verschwörungsideologischen Kontexten verwendet." },
+  /* Neu 07.11.2026: auf TikTok belegt, mit zweiter Quelle bestätigt
+     (Schnabel & Berendsen, 2024, S. 19; Bundesverband RIAS, 2026, S. 25; Becker, 2024b, S. 375–377). */
+  { t: "„Auschwitz = Gaza“", c: "schuld", src: "BSAF · RIAS · DA",
+    d: "Setzt Israel mit dem NS-Regime und Gaza mit dem Vernichtungslager gleich. Damit wird der Holocaust verharmlost, und Jüdinnen und Juden werden von Opfern zu Tätern gemacht." },
 
   /* ---------- ISRAELBEZOGEN ---------- */
   { t: "Zionisten / ZiOS", c: "israel", src: "BfV · AAS · REG",
@@ -223,14 +238,22 @@ const CODES = [
     d: "Seit Ende 2023 in HAMAS-Propaganda als Zielmarkierung verwendet. 2024 vom BMI als Kennzeichen in die Verbotsverfügung aufgenommen, die Verwendung kann strafbar sein.", flag: "kennzeichenverbot" },
   { t: "Kindermörder Israel", c: "israel", src: "BfV · AAS · REG",
     d: "Aktualisiert die Ritualmordlegende: Israel vergieße das Blut palästinensischer Kinder mit Absicht. Aus dieser Vorstellung können Vernichtungswünsche folgen." },
+  /* Neu 07.11.2026: auf TikTok belegt, mit zweiter Quelle bestätigt
+     (Schnabel & Berendsen, 2024, S. 18; Placzynta, 2024a, S. 64–65; Chapelan, 2024, S. 181). */
+  { t: "Organraub-Vorwurf", c: "israel", src: "BSAF · DA",
+    d: "Behauptet, Israel habe es auf die Organe palästinensischer Kinder abgesehen. Das ist die extremste Form der alten Ritualmordlegende, nach der Juden Kindern etwas antun, um ihren Körper zu benutzen." },
   { t: "Apartheidstaat / Unrechtsstaat", c: "israel", src: "AAS · REG",
     d: "Spricht Israel Rechtsstaatlichkeit und demokratischen Charakter grundsätzlich ab. Der Begriff selbst ist nicht antisemitisch, entscheidend ist der Kontext." },
   { t: "Zionazis", c: "israel", src: "REG",
     d: "Gleichsetzung israelischer Politik mit dem Nationalsozialismus. Verharmlost die NS-Verbrechen und kehrt Täter und Opfer um." },
   { t: "Krebsgeschwür (auf Israel bezogen)", c: "israel", src: "REG",
     d: "Von islamistischen Regimen und Gruppen zur Dämonisierung Israels genutzt: Der Staat müsse „entfernt“ werden." },
-  { t: "From the river to the sea", c: "israel", src: "REG",
-    d: "Parole, die je nach Kontext als Forderung nach Auflösung des Staates Israel verstanden wird. Von deutschen Gerichten teils als strafbar bewertet. Kontext entscheidet." },
+  /* Überarbeitet 07.11.2026: Stufe „kommt auf den Kontext an“, der Widerspruch
+     der Quellen steht offen im Text (Schnabel & Berendsen, 2024, S. 15, 28;
+     Vincent et al., 2024, S. 450–451; BfV, 2024, S. 71, Fn. 126, S. 84;
+     Bundesverband RIAS, 2026, S. 20–21; Regishut, 2023). */
+  { t: "From the river to the sea", c: "israel", lvl: "kontext", src: "BSAF · BfV-L · RIAS · DA · REG",
+    d: "Viele Fachstellen lesen diese Parole als Absage an Israels Existenz, und deutsche Gerichte haben sie teils als strafbar bewertet. Ob es dabei auf den Zusammenhang ankommt, sehen die Quellen verschieden, denn BfV und RIAS ordnen sie nach dem Umfeld ein, etwa auf einer Demo, während Forschende um Vincent schreiben, ihre Bedeutung hänge nicht vom Kontext ab." },
   { t: "Chaibar, Chaibar, ya Yahud", c: "israel", src: "REG",
     d: "Bezieht sich auf Mohammeds Feldzug gegen die jüdische Oasenstadt Chaibar im 7. Jh. Erinnert an die Unterwerfung „der Juden“ und dient als Vernichtungsdrohung." },
   { t: "Udrub, Udrub Tal Abib", c: "israel", src: "REG",
@@ -259,6 +282,10 @@ const CODES = [
     d: "Akronym mit offener Aufstachelung zur Vernichtung jüdischen Lebens. Extremfall der Dehumanisierung." },
   { t: "Hakennase", c: "zeichen", src: "AAS · BPB · REG",
     d: "Zentrales Merkmal fast jeder antisemitischen Darstellung, von Münzen des 17. Jh. bis zu Stürmer-Karikaturen und heutigen Memes. Macht zugeschriebene Minderwertigkeit körperlich sichtbar." },
+  /* Neu 07.11.2026: auf TikTok belegt, mit zweiter Quelle bestätigt
+     (Schnabel & Berendsen, 2024, S. 14; Ebbrecht-Hartmann, 2024, S. 10). */
+  { t: "Filter mit verlängerter Nase", c: "zeichen", src: "BSAF · EH",
+    d: "Ein TikTok-Filter verzerrt das Gesicht und verlängert die Nase, dazu läuft das Lied „If I Were a Rich Man“ aus dem Musical „Anatevka“. Zusammen ruft das die alten Bilder von der jüdischen Nase und vom angeblichen jüdischen Reichtum auf." },
   { t: "Schläfenlocken & Hut", c: "zeichen", src: "BfV · REG",
     d: "Das Erscheinungsbild ultraorthodoxer Juden wird stellvertretend für alle Jüdinnen und Juden gesetzt und markiert sie kollektiv als fremdartig." },
   { t: "Davidstern als Feindmarkierung", c: "zeichen", src: "BfV · REG",
@@ -562,6 +589,16 @@ const SOURCES = [
     d: "Decker/Kiess/Brähler, zitiert nach BfV." },
   { k: "NGJ", t: "nichts-gegen-juden.de",
     d: "Amadeu Antonio Stiftung." },
-  { k: "RIAS", t: "report-antisemitism.de",
-    d: "Bundesverband RIAS." },
+  { k: "RIAS", t: "report-antisemitism.de · Antisemitische Vorfälle in Deutschland 2025",
+    d: "Bundesverband RIAS. Jahresbericht 2025, erschienen 2026." },
+  { k: "BSAF", t: "Die TikTok-Intifada. Der 7. Oktober & die Folgen im Netz",
+    d: "Schnabel, D. & Berendsen, E., Bildungsstätte Anne Frank, 2024. Codes daraus nur mit zweiter, unabhängiger Quelle." },
+  { k: "DA", t: "Decoding antisemitism. A guide to identifying antisemitism online",
+    d: "Becker, M. J., Troschke, H., Bolton, M. & Chapelan, A. (Hrsg.), Palgrave Macmillan, 2024. Kapitel von Becker, Chapelan, Placzynta und Vincent et al." },
+  { k: "BfV-L", t: "Lagebild Antisemitismus 2022/23",
+    d: "Bundesamt für Verfassungsschutz, 2024." },
+  { k: "LOR", t: "Von Hashtags und Geschichte",
+    d: "Lorenz, A., Publizistik 70 (1), 2025, S. 261–287." },
+  { k: "EH", t: "Memefizierter Antisemitismus",
+    d: "Ebbrecht-Hartmann, T., CARS Working Papers Nr. 21, 2024." },
 ];
