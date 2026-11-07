@@ -569,11 +569,19 @@ const TOOLS = [
     ex: "(((...))) · JDN LGN" }
 ];
 
+/* Die vier Wirkebenen (BfV S. 73). Seit dem Umbau vom 07.11.2026 als
+   Grafik im Abschnitt Werkzeuge. Gedankenstriche durch Satzzeichen ersetzt,
+   Inhalt unverändert. Die Zeichen zeigen den Vorgang, kein Motiv aus den
+   Codes-Listen (Grundsatz aus dem Briefing für die Icons). */
 const LEVELS = [
-  { h: "Emotional", p: "Zieht am Verstand vorbei und löst im Unterbewusstsein eine instinktive Reaktion aus: Angst, Wut, Ekel — oder das gute Gefühl, ein „Wissender“ zu sein." },
-  { h: "Kognitiv", p: "Setzt Deutungsrahmen. Konstruiert Feindbilder, reduziert Komplexität auf gut und böse und untergräbt das Vertrauen in Institutionen." },
-  { h: "Moralisch", p: "Höhlt demokratische Werte schleichend aus. Entmenschlichung senkt die Hemmschwelle für Beleidigungen und Angriffe und normalisiert Antisemitismus." },
-  { h: "Handlung", p: "Fordert dazu auf, die passive Rolle zu verlassen: Solidarisierung, Parteinahme — im Extremfall Mobilisierung zu unmittelbarer Gewalt." }
+  { h: "Emotional", p: "Zieht am Verstand vorbei und löst im Unterbewusstsein eine instinktive Reaktion aus: Angst, Wut, Ekel oder das gute Gefühl, ein „Wissender“ zu sein.",
+    icon: '<path d="M6 34h12l6-14 8 28 7-20 5 6h14"/>' },
+  { h: "Kognitiv", p: "Setzt Deutungsrahmen. Konstruiert Feindbilder, reduziert Komplexität auf gut und böse und untergräbt das Vertrauen in Institutionen.",
+    icon: '<path d="M10 14h44v36H10z"/><path d="M32 14v36"/>' },
+  { h: "Moralisch", p: "Höhlt demokratische Werte schleichend aus. Entmenschlichung senkt die Hemmschwelle für Beleidigungen und Angriffe und normalisiert Antisemitismus.",
+    icon: '<path d="M8 16h16v14h16v14h16"/>' },
+  { h: "Handlung", p: "Fordert dazu auf, die passive Rolle zu verlassen: Solidarisierung, Parteinahme, im Extremfall Mobilisierung zu unmittelbarer Gewalt.",
+    icon: '<path d="M10 20v34h34"/><path d="M26 38 52 12M34 12h18v18"/>' }
 ];
 
 const SOURCES = [

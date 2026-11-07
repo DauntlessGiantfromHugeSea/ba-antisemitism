@@ -552,6 +552,30 @@
     mechEl.appendChild(d);
   });
 
+  /* Die vier Wirkebenen (BfV S. 73) als Reihe mit Zeichen. */
+  var levelsEl = $("#levels");
+  if (levelsEl && typeof LEVELS !== "undefined") {
+    LEVELS.forEach(function (l, i) {
+      var li = el("li", "level");
+      var top = el("div", "level-top");
+      top.appendChild(el("span", "level-n", "Ebene " + (i + 1)));
+      var s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      s.setAttribute("viewBox", "0 0 64 64");
+      s.setAttribute("fill", "none");
+      s.setAttribute("stroke", "currentColor");
+      s.setAttribute("stroke-width", "3");
+      s.setAttribute("stroke-linecap", "square");
+      s.setAttribute("stroke-linejoin", "miter");
+      s.setAttribute("aria-hidden", "true");
+      s.innerHTML = l.icon || "";
+      top.appendChild(s);
+      li.appendChild(top);
+      li.appendChild(el("h4", null, l.h));
+      li.appendChild(el("p", null, l.p));
+      levelsEl.appendChild(li);
+    });
+  }
+
   var factsEl = $("#facts");
   FACTS.forEach(function (f) {
     var d = el("div", "fact");

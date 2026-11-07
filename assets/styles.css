@@ -1150,3 +1150,71 @@ mark::after, .x::after {
 @media (max-width: 23.999rem) {
   .matrix-t tbody tr { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* =========================================================
+   VIER WIRKEBENEN (BfV S. 73) als Reihe
+   Ab 62rem nebeneinander, verbunden durch eine Linie mit Pfeil.
+   Darunter untereinander, die Linie läuft links mit.
+   ========================================================= */
+
+.levels {
+  margin-top: clamp(2rem, 5vw, 4rem);
+  border-top: 2px solid var(--ink); padding-top: clamp(1rem, 2vw, 1.5rem);
+}
+.levels-head { display: grid; gap: .9rem 3rem; grid-template-columns: 1fr; margin-bottom: clamp(1.75rem, 4vw, 3rem); }
+.levels-title { font-size: clamp(2.5rem, 6vw, 5.5rem); max-width: none; }
+.levels-head .sub, .levels-head .src { margin: 0; }
+@media (min-width: 62rem) {
+  .levels-head { grid-template-columns: minmax(0, 1fr) minmax(0, 24rem); align-items: end; }
+  .levels-head .eyebrow { grid-column: 1 / -1; }
+  .levels-head .src { grid-column: 2; }
+}
+
+.levels-row {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: 1fr; gap: 0;
+}
+.level {
+  position: relative;
+  padding: 0 0 clamp(1.5rem, 3vw, 2rem) 2.25rem;
+  border-left: 2px solid var(--ink);
+  margin-left: .5rem;
+}
+.level:last-child { border-left-color: transparent; }
+/* Knoten auf der Linie */
+.level::before {
+  content: ""; position: absolute; left: -7px; top: .2rem;
+  width: 12px; height: 12px; background: var(--paper); border: 2px solid var(--ink);
+}
+.level:last-child::before { background: var(--ink); }
+.level-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .75rem; }
+.level-n {
+  font-family: var(--mono); font-size: .75rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
+}
+.level svg { width: 44px; height: 44px; flex: none; color: var(--ink); }
+.level h4 {
+  font-family: var(--display); font-weight: 900; font-stretch: 66%;
+  text-transform: uppercase; font-size: clamp(2rem, 3.4vw, 3rem); line-height: .9;
+  margin: 0 0 .75rem;
+}
+.level p { margin: 0; color: var(--ink-2); font-size: .9375rem; max-width: 36ch; }
+
+@media (min-width: 62rem) {
+  .levels-row { grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: clamp(1.25rem, 2.5vw, 2.5rem); }
+  .level {
+    border-left: 0; margin-left: 0; padding: 2.25rem 0 0;
+    border-top: 2px solid var(--ink);
+  }
+  .level:last-child { border-top-color: var(--ink); }
+  .level::before { left: 0; top: -7px; }
+  /* Pfeil zur nächsten Ebene über die Lücke */
+  .level:not(:last-child)::after {
+    content: ""; position: absolute; top: -1px; right: calc(-1 * clamp(1.25rem, 2.5vw, 2.5rem));
+    width: clamp(1.25rem, 2.5vw, 2.5rem); height: 2px; background: var(--ink);
+  }
+  .level:not(:last-child) .level-top::after {
+    content: ""; position: absolute; top: -6px; right: calc(-1 * clamp(1.25rem, 2.5vw, 2.5rem) + 1px);
+    width: 0; height: 0; border-block: 5px solid transparent; border-left: 8px solid var(--ink);
+  }
+}
