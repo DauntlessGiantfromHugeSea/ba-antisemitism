@@ -1084,6 +1084,29 @@ mark::after, .x::after {
   display: flex; flex-wrap: wrap; gap: .2rem .55rem; max-width: none;
 }
 .mx-chips li { max-width: 100%; }
+.chip {
+  background: none; border: 0; margin: 0; padding: .12rem .2rem; margin-inline: -.2rem;
+  text-align: left; cursor: pointer; text-decoration: none;
+  transition: background .15s ease, color .15s ease;
+}
+.chip s { font: inherit; color: inherit; }
+/* Antippen: Feld wird rot, Schrift weiß (4,69 : 1), der Strich dunkel. */
+.chip:hover, .chip:focus-visible { background: var(--red); color: var(--on-red); }
+.chip:hover s, .chip:focus-visible s { text-decoration-color: var(--ink); }
+.chip:focus-visible { outline-color: var(--ink); outline-offset: 1px; }
+
+/* Randspalte und Randzeile leicht getönt (Schrift darauf 11,91 : 1). */
+.matrix-t td.mx-rand { background: rgba(231,225,214,.55); }
+.mx-key s {
+  font-family: var(--display); font-weight: 800; font-stretch: 70%; text-transform: uppercase;
+  text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: .17em;
+  color: var(--ink); font-size: .8125rem;
+}
+.mx-key i { display: block; width: 14px; height: 14px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
+html:not(.js) .mx-key-chip { display: none; }
+
+/* Sprung aus der Übersicht: Karte kurz markieren. */
+.card.is-hit { background: rgba(225,37,27,.08); box-shadow: inset 4px 0 0 var(--red); padding-left: .9rem; transition: background .3s, padding .3s; }
 .mx-chips s, .chip {
   font-family: var(--display); font-weight: 800; font-stretch: 70%;
   text-transform: uppercase; font-size: .8125rem; line-height: 1.2; letter-spacing: .005em;
@@ -1108,7 +1131,7 @@ mark::after, .x::after {
 }
 .matrix-notes p, .matrix-notes li { max-width: 60ch; }
 .mx-legend { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin: 0; font-family: var(--mono); font-size: .6875rem; letter-spacing: .02em; }
-.mx-key { display: inline-flex; align-items: center; gap: .5rem; }
+.mx-key { display: inline-flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
 .mx-ex-list { margin: 0; padding-left: 1.25rem; display: grid; gap: .9rem; }
 .mx-ex-list li::marker { font-family: var(--mono); font-size: .75rem; font-weight: 700; color: var(--ink); }
 .mx-ex-list .x { font-weight: 650; color: var(--ink); margin-right: .2em; }

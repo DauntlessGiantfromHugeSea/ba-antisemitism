@@ -430,15 +430,39 @@
      3 — CODES: Glyphen-Raster mit Drill-down
      Sechs Erzählungen und ein Werkzeugfeld. Erst antippen zeigt die Codes.
      --------------------------------------------------------- */
-  /* Die Einträge einer Zelle als Liste, jeder Code gestrichen. */
+  /* Die Einträge einer Zelle als Liste. Jeder Code steht gestrichen auf
+     einem Knopf, der seinen Eintrag im Lexikon öffnet. Für Screenreader
+     sagt ein versteckter Zusatz, dass der Code gestrichen ist und wohin
+     der Knopf führt. */
   function chipList(list) {
     var ul = el("ul", "mx-chips");
     list.forEach(function (x) {
       var li = el("li");
-      li.appendChild(el("s", null, x.t));
+      var b = el("button", "chip");
+      b.type = "button";
+      b.appendChild(el("s", null, x.t));
+      b.appendChild(el("span", "sr-only", ", gestrichener Code, Erklärung im Lexikon öffnen"));
+      b.addEventListener("click", function () { openEntry(x); });
+      li.appendChild(b);
       ul.appendChild(li);
     });
     return ul;
+  }
+
+  /* Springt zum Eintrag im Lexikon: Feld öffnen, Karte aufklappen,
+     hinscrollen und den Fokus auf die Karte setzen. */
+  function openEntry(x) {
+    var cat = CATEGORIES.filter(function (c) { return c.id === x.c; })[0];
+    if (!cat) return;
+    if (openCat !== cat.id) toggleCat(cat);
+    var card = $$(".card", drillEl).filter(function (c) { return c.dataset.t === x.t; })[0];
+    if (!card) return;
+    card.setAttribute("aria-expanded", "true");
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    card.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+    try { card.focus({ preventScroll: true }); } catch (e) { card.focus(); }
+    card.classList.add("is-hit");
+    window.setTimeout(function () { card.classList.remove("is-hit"); }, 1800);
   }
 
   var glyphsEl = $("#glyphs");
@@ -499,6 +523,7 @@
     CODES.filter(function (x) { return x.c === cat.id; }).forEach(function (x) {
       var b = el("button", x.lvl === "kontext" ? "card is-kontext" : "card");
       b.type = "button";
+      b.dataset.t = x.t;
       b.setAttribute("aria-expanded", "false");
 
       var term = el("div", "term");
