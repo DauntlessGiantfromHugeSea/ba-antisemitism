@@ -585,17 +585,16 @@
     factsEl.appendChild(d);
   });
 
+  /* Was tun: fünf Schritte als Ablauf (Liste mit Linie und Pfeilen). */
   var actsEl = $("#acts");
   ACTIONS.forEach(function (a, i) {
-    var d = el("div", "act");
-    d.appendChild(el("span", "n", String(i + 1)));
+    var d = el("li", "step");
+    d.appendChild(el("span", "step-n", String(i + 1)));
     d.appendChild(el("h3", null, a.h));
     d.appendChild(el("p", null, a.p));
     d.appendChild(el("span", "src", "Quelle: " + a.src));
     actsEl.appendChild(d);
   });
-
-  carousel(actsEl, ".act", "#actPrev", "#actNext", "#actPos");
 
 
   /* ---------------------------------------------------------
