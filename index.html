@@ -105,12 +105,14 @@
   </div>
 
   <!-- Codes-Übersicht: sechs Formen mal sechs Werkzeuge (Umbau 07.11.2026).
-       Zahlen laut Zuordnung vom 07.11.2026 (108 Einträge) und den sechs
-       neuen Einträgen mit Vorschlag aus der Zwei-Quellen-Notiz. -->
+       app.js zählt die Felder f und w aus codes.js und baut die Tabelle neu.
+       Die Zahlen hier sind nur der Stand für Besuche ohne JavaScript
+       (07.11.2026, abends: 113 Einträge, die Parole in der Kontextstufe
+       zählt nicht mit). -->
   <section class="matrix shell rv" aria-labelledby="matrixTitle">
     <div class="matrix-head">
       <p class="eyebrow">Übersicht</p>
-      <h2 class="d matrix-title" id="matrixTitle">114 Einträge.<br>Sechs Formen.<br><span class="quiet">Sechs Werkzeuge.</span></h2>
+      <h2 class="d matrix-title" id="matrixTitle"><span id="mxTotal">113</span> Einträge.<br>Sechs Formen.<br><span class="hot">Sechs Werkzeuge.</span></h2>
       <p class="sub">
         Jede Zeile ist eine Form von Antisemitismus. Jede Spalte ist ein Werkzeug, mit dem ein Code
         seine Botschaft versteckt. Die Zahl sagt, wie viele Einträge im Lexikon dort stehen.
@@ -191,14 +193,14 @@
           </tr>
           <tr role="row">
             <th role="rowheader" scope="row">Israel<small>israelbezogen</small></th>
-            <td role="cell" class="mx-c" data-label="Vage Anspielung" data-n="5"><span class="mx-v">5</span></td>
+            <td role="cell" class="mx-c" data-label="Vage Anspielung" data-n="4"><span class="mx-v">4</span></td>
             <td role="cell" class="mx-c mx-0" data-label="Personalisierung" data-n="0"><span class="mx-v">0</span></td>
             <td role="cell" class="mx-c" data-label="Begriffsersetzung" data-n="2"><span class="mx-v">2</span></td>
             <td role="cell" class="mx-c" data-label="Abwertendes Bild" data-n="3"><span class="mx-v">3</span></td>
             <td role="cell" class="mx-c mx-0" data-label="Zahlencode" data-n="0"><span class="mx-v">0</span></td>
             <td role="cell" class="mx-c" data-label="Optisches Zeichen" data-n="1"><span class="mx-v">1</span></td>
             <td role="cell" class="mx-c mx-rand" data-label="offen gesagt" data-n="2"><span class="mx-v">2</span></td>
-            <td role="cell" class="mx-sum" data-label="Summe"><span class="mx-v">13</span></td>
+            <td role="cell" class="mx-sum" data-label="Summe"><span class="mx-v">12</span></td>
           </tr>
         </tbody>
         <tbody role="rowgroup" class="mx-foot">
@@ -215,14 +217,14 @@
           </tr>
           <tr role="row" class="mx-total">
             <th role="rowheader" scope="row">Summe</th>
-            <td role="cell" class="mx-sum" data-label="Vage Anspielung"><span class="mx-v">42</span></td>
+            <td role="cell" class="mx-sum" data-label="Vage Anspielung"><span class="mx-v">41</span></td>
             <td role="cell" class="mx-sum" data-label="Personalisierung"><span class="mx-v">11</span></td>
             <td role="cell" class="mx-sum" data-label="Begriffsersetzung"><span class="mx-v">16</span></td>
             <td role="cell" class="mx-sum" data-label="Abwertendes Bild"><span class="mx-v">16</span></td>
             <td role="cell" class="mx-sum" data-label="Zahlencode"><span class="mx-v">4</span></td>
             <td role="cell" class="mx-sum" data-label="Optisches Zeichen"><span class="mx-v">13</span></td>
             <td role="cell" class="mx-sum mx-rand" data-label="offen gesagt"><span class="mx-v">12</span></td>
-            <td role="cell" class="mx-sum mx-all" data-label="Summe"><span class="mx-v">114</span></td>
+            <td role="cell" class="mx-sum mx-all" data-label="Summe"><span class="mx-v">113</span></td>
           </tr>
         </tbody>
       </table>
@@ -243,6 +245,8 @@
       <p class="mx-about">
         „Offen gesagt“ heißt: Der Eintrag sagt, was er meint, und braucht kein Werkzeug.
         „Je nach Kontext“ heißt: Das Zeichen markiert nur „jüdisch“. Welche Form gemeint ist, zeigt erst der Satz drumherum.
+        Die Parole „From the river to the sea“ steht im Lexikon in der Stufe „Kommt auf den Kontext an“.
+        Sie gilt hier nicht als Code und zählt deshalb in der Übersicht nicht mit.
         Die Zuordnung ist ein Entwurf vom 07.11.2026 und kann sich noch ändern.
         <span class="src">Formen nach Pfahl-Traughber (2007), S. 6–10, und BfV, S. 12 · Werkzeuge nach BfV, S. 71 f. · offen und versteckt nach Schwarz-Friesel/Reinharz (2013), S. 50 f. · Zuordnung: eigene Darstellung</span>
       </p>

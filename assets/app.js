@@ -430,6 +430,17 @@
      3 — CODES: Glyphen-Raster mit Drill-down
      Sechs Erzählungen und ein Werkzeugfeld. Erst antippen zeigt die Codes.
      --------------------------------------------------------- */
+  /* Die Einträge einer Zelle als Liste, jeder Code gestrichen. */
+  function chipList(list) {
+    var ul = el("ul", "mx-chips");
+    list.forEach(function (x) {
+      var li = el("li");
+      li.appendChild(el("s", null, x.t));
+      ul.appendChild(li);
+    });
+    return ul;
+  }
+
   var glyphsEl = $("#glyphs");
   var drillEl  = $("#drill");
   var openCat  = null;
@@ -512,16 +523,83 @@
 
   $("#total").textContent = String(CODES.length);
 
-  /* Codes-Übersicht im Kopf: Die Zahlen stehen als Text im HTML.
-     Dazu kommt je Eintrag ein Kästchen, rein grafisch. */
-  $$(".matrix-t td[data-n]").forEach(function (td) {
-    var n = parseInt(td.getAttribute("data-n"), 10) || 0;
-    if (!n) return;
-    var dots = el("span", "mx-dots");
-    dots.setAttribute("aria-hidden", "true");
-    for (var i = 0; i < n; i++) dots.appendChild(document.createElement("i"));
-    td.insertBefore(dots, td.querySelector(".mx-ex"));
-  });
+  /* ---------------------------------------------------------
+     CODES-ÜBERSICHT im Kopf: Formen mal Werkzeuge
+     Zählt die Felder f und w aus CODES. Einträge der Stufe
+     „Kommt auf den Kontext an“ (lvl: "kontext") gelten nicht als Code
+     und zählen nicht mit. Die Tabelle in index.html bleibt als Stand
+     ohne JavaScript stehen und wird hier ersetzt.
+     --------------------------------------------------------- */
+  var matrixT = $(".matrix-t");
+  if (matrixT && typeof FORMS !== "undefined" && typeof WERKZEUGE !== "undefined") {
+    var mxCodes = CODES.filter(function (x) { return x.lvl !== "kontext" && x.f && x.w; });
+    var cell = {};
+    mxCodes.forEach(function (x) {
+      var k = x.f + "|" + x.w;
+      (cell[k] = cell[k] || []).push(x);
+    });
+    var colSum = WERKZEUGE.map(function () { return 0; });
+
+    var mkCell = function (tag, cls, label) {
+      var c = el(tag, cls);
+      c.setAttribute("role", tag === "th" ? "rowheader" : "cell");
+      if (tag === "th") c.setAttribute("scope", "row");
+      if (label) c.setAttribute("data-label", label);
+      return c;
+    };
+
+    var mkRow = function (f) {
+      var tr = el("tr", f.rand ? "mx-ctx" : null);
+      tr.setAttribute("role", "row");
+      var th = mkCell("th");
+      th.appendChild(document.createTextNode(f.label));
+      th.appendChild(el("small", null, f.fach));
+      tr.appendChild(th);
+      var rowSum = 0;
+      WERKZEUGE.forEach(function (w, wi) {
+        var list = cell[f.id + "|" + w.id] || [];
+        var n = list.length;
+        rowSum += n; colSum[wi] += n;
+        var td = mkCell("td", "mx-c" + (n ? "" : " mx-0") + (w.rand || f.rand ? " mx-rand" : ""), w.label);
+        td.setAttribute("data-n", String(n));
+        td.appendChild(el("span", "mx-v", String(n)));
+        if (n) td.appendChild(chipList(list));
+        tr.appendChild(td);
+      });
+      var sum = mkCell("td", "mx-sum", "Summe");
+      sum.appendChild(el("span", "mx-v", String(rowSum)));
+      tr.appendChild(sum);
+      return tr;
+    };
+
+    var mainBody = el("tbody");
+    var footBody = el("tbody", "mx-foot");
+    mainBody.setAttribute("role", "rowgroup");
+    footBody.setAttribute("role", "rowgroup");
+    FORMS.forEach(function (f) { (f.rand ? footBody : mainBody).appendChild(mkRow(f)); });
+
+    var tot = el("tr", "mx-total");
+    tot.setAttribute("role", "row");
+    var totTh = mkCell("th", null);
+    totTh.textContent = "Summe";
+    tot.appendChild(totTh);
+    WERKZEUGE.forEach(function (w, wi) {
+      var td = mkCell("td", "mx-sum" + (w.rand ? " mx-rand" : ""), w.label);
+      td.appendChild(el("span", "mx-v", String(colSum[wi])));
+      tot.appendChild(td);
+    });
+    var all = mkCell("td", "mx-sum mx-all", "Summe");
+    all.appendChild(el("span", "mx-v", String(mxCodes.length)));
+    tot.appendChild(all);
+    footBody.appendChild(tot);
+
+    /* Alte Zeilen ersetzen, der Tabellenkopf bleibt. */
+    $$("tbody", matrixT).forEach(function (b) { b.remove(); });
+    matrixT.appendChild(mainBody);
+    matrixT.appendChild(footBody);
+    var mxTotal = $("#mxTotal");
+    if (mxTotal) mxTotal.textContent = String(mxCodes.length);
+  }
 
   /* ---------------------------------------------------------
      4 — MECHANIK · ZAHLEN · WAS TUN

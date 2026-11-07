@@ -1064,29 +1064,38 @@ mark::after, .x::after {
   display: block; margin-top: .3rem; font-family: var(--mono); font-size: .625rem;
   font-weight: 500; letter-spacing: .04em; text-transform: none; color: var(--ink-2);
 }
-.matrix-t td { padding: .8rem .6rem; }
+.matrix-t td { padding: .8rem .6rem 1rem; }
 .matrix-t tbody tr > * { border-bottom: 1px solid var(--line-soft); }
 
+/* Zahl je Feld groß in Signalrot (ab 28 px, also große Schrift, 4,09 : 1). */
 .mx-v {
-  font-family: var(--mono); font-size: .875rem; font-weight: 700;
-  font-variant-numeric: tabular-nums; color: var(--ink);
+  display: block;
+  font-family: var(--display); font-weight: 900; font-stretch: 66%;
+  font-size: clamp(1.75rem, 2.4vw, 2.25rem); line-height: .9;
+  font-variant-numeric: tabular-nums; color: var(--red);
 }
-.mx-0 .mx-v { font-weight: 400; color: var(--ink-2); }
-.mx-dots { display: flex; flex-wrap: wrap; gap: 2px; margin-top: .45rem; max-width: 7.5rem; }
-.mx-dots i, .mx-key i { display: block; width: 7px; height: 7px; background: var(--ink); }
-.mx-rand .mx-dots i, .mx-key-rand i { background: transparent; box-shadow: inset 0 0 0 1.5px var(--ink-2); }
+.mx-0 .mx-v { font-family: var(--mono); font-size: .875rem; font-weight: 400; line-height: 1.4; color: var(--ink-2); }
+.mx-rand .mx-v { color: var(--ink); }
 
-.mx-ex {
-  display: block; margin-top: .5rem;
-  font-family: var(--display); font-weight: 800; font-stretch: 72%;
-  text-transform: uppercase; font-size: .875rem; line-height: 1.1; color: var(--ink);
+/* Jeder Eintrag als gestrichenes Wort. Der Strich ist rot, das Wort
+   bleibt in Schriftfarbe lesbar (13,52 : 1). */
+.mx-chips {
+  list-style: none; margin: .55rem 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: .2rem .55rem; max-width: none;
 }
-.mx-ex sup { font-family: var(--mono); font-size: .6875rem; font-weight: 600; margin-left: .2em; }
+.mx-chips li { max-width: 100%; }
+.mx-chips s, .chip {
+  font-family: var(--display); font-weight: 800; font-stretch: 70%;
+  text-transform: uppercase; font-size: .8125rem; line-height: 1.2; letter-spacing: .005em;
+  color: var(--ink);
+  text-decoration: line-through; text-decoration-color: var(--red);
+  text-decoration-thickness: .17em; text-decoration-skip-ink: none;
+}
 
 /* Randspalten und Randzeilen vom Raster absetzen */
 .matrix-t th.mx-rand, .matrix-t td.mx-rand[data-label="offen gesagt"],
 .matrix-t th.mx-sum, .matrix-t td.mx-sum[data-label="Summe"] { border-left: 1px solid var(--line); }
-.matrix-t td.mx-sum .mx-v { font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: 1.375rem; }
+.matrix-t td.mx-sum .mx-v { font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: 1.375rem; color: var(--ink); }
 .matrix-t .mx-ctx > * { border-top: 1px dashed var(--line); }
 .matrix-t .mx-total > * { border-top: 2px solid var(--ink); border-bottom: 0; }
 .matrix-t .mx-total th { font-family: var(--mono); font-size: .75rem; letter-spacing: .08em; }
@@ -1128,6 +1137,8 @@ mark::after, .x::after {
     display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.25rem;
     border-top: 2px solid var(--ink); padding: .9rem 0 1.25rem;
   }
+  /* Felder mit Einträgen über die ganze Breite, leere Felder paarweise. */
+  .matrix-t tbody td:not(.mx-0) { grid-column: 1 / -1; }
   .matrix-t tbody tr > * { border: 0; }
   .matrix-t tbody th { grid-column: 1 / -1; padding: 0 0 .6rem; font-size: 1.375rem; }
   .matrix-t tbody td {
@@ -1138,8 +1149,10 @@ mark::after, .x::after {
     content: attr(data-label); font-family: var(--mono); font-size: .625rem; font-weight: 600;
     letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2);
   }
-  .matrix-t td.mx-sum .mx-v { font-size: 1.125rem; }
-  .mx-dots { flex-basis: 100%; max-width: none; margin-top: .1rem; order: 3; }
+  .matrix-t td.mx-sum .mx-v { font-size: 1.375rem; }
+  .matrix-t td .mx-v { font-size: 1.5rem; }
+  .matrix-t td.mx-0 .mx-v { font-size: .875rem; }
+  .mx-chips { flex-basis: 100%; margin-top: .3rem; }
   .mx-ex { flex-basis: 100%; order: 4; margin-top: .2rem; }
   .matrix-t tbody tr.mx-ctx { border-top: 2px dashed var(--ink-2); }
   .matrix-t .mx-total th { font-size: .875rem; }
