@@ -1,6 +1,5 @@
-/* Gestaltungsprinzip: Zitat und Eingriff trennen. Papier, Riss und Raster zeigen die
-   Propagandaästhetik. Klare Schrift und rote Markierung ordnen sie ein. Motive wie Strahlen,
-   Fackel und Fadenkreuz stehen nur in den Bildern und sind dort markiert. */
+/* Gestaltungsprinzip: neutral und infografisch. Keine Bilder aus der Propaganda,
+   keine Collagen, keine Risskanten. Codes werden gestrichen und erklärt. */
 
 /* ---------- Schriften (selbst gehostet, OFL) ---------- */
 
@@ -381,51 +380,7 @@ mark, .hl {
   line-height: 1.45; max-width: 18ch; padding-bottom: .25rem;
 }
 
-/* ---------- Collage als Vollbild-Band ---------- */
-
-/* Das Bild darf NICHT beschnitten werden — die Balken sind
-   prozentual auf das Original bezogen. */
-.hero-visual {
-  position: relative; container-type: inline-size; line-height: 0;
-  background: var(--ink);
-}
-.hero-img, .hero-img img { display: block; width: 100%; height: auto; }
-
-.ov-band {
-  position: absolute; left: 20%; top: 27%; width: 61%; height: 31%;
-  background: var(--ink);
-  display: flex; align-items: center; justify-content: center;
-}
-.ov-band p { font-size: 8.4cqw; line-height: .9; color: var(--on-dark); margin: 0; max-width: none; white-space: nowrap; }
-
-.ov-strip {
-  position: absolute; left: 35.5%; top: 57%; width: 38.5%; height: 12%;
-  background: var(--paper);
-  display: flex; align-items: center; justify-content: center;
-}
-.ov-strip p {
-  font-family: var(--display); font-weight: 900; font-stretch: 70%;
-  text-transform: uppercase; font-size: 2.05cqw; line-height: 1;
-  color: var(--ink); margin: 0; max-width: none; white-space: nowrap;
-  box-shadow: inset 0 -.28em 0 rgba(225,37,27,.9);
-}
-
-.subline {
-  display: none; max-width: none;
-  font-size: clamp(1.5rem, 7.5vw, 2.75rem); color: var(--ink);
-  padding-block: 1.5rem 0; margin: 0;
-}
-
-@media (max-width: 63.999rem) {
-  /* Die Zeile im Streifen wäre hier nur wenige Pixel hoch. Der Streifen
-     entfällt, der schwarze Balken wird verlängert und deckt beide
-     eingebrannten Zeilen ab. Die Unterzeile steht lesbar darunter. */
-  .ov-strip { display: none; }
-  .ov-band { top: 26%; height: 46%; }
-  .subline { display: block; padding-bottom: 1.5rem; }
-}
-
-/* ---------- Laufband: Codes, rot durchgestrichen ---------- */
+: Codes, rot durchgestrichen ---------- */
 
 .ticker {
   background: var(--ink); color: var(--on-dark);
@@ -841,38 +796,6 @@ mark, .hl {
    04 MECHANIK
    ========================================================= */
 
-/* Bild darf NICHT beschnitten werden — die Balken sind prozentual
-   auf das Original bezogen. */
-.band-img {
-  margin: 0 0 clamp(3rem, 6vw, 5rem);
-  position: relative; container-type: inline-size; line-height: 0;
-  background: var(--ink);
-}
-.band-img img { display: block; width: 100%; height: auto; }
-
-.pv-band {
-  position: absolute; left: 21.5%; top: 29%; width: 61%; height: 28%;
-  background: var(--ink);
-  display: flex; align-items: center; justify-content: center;
-}
-.pv-band p { font-size: 11.2cqw; line-height: .9; color: var(--on-dark); margin: 0; max-width: none; white-space: nowrap; }
-
-.pv-claim {
-  position: absolute; left: 38.5%; top: 56%; width: 29%; height: 21.5%;
-  background: var(--paper);
-  display: flex; flex-direction: column; justify-content: center;
-  gap: .4cqw; padding-inline: 2.2cqw;
-}
-.pv-claim p {
-  font-family: var(--display); font-weight: 900; font-stretch: 72%;
-  text-transform: uppercase; font-size: 2cqw; line-height: 1.15;
-  color: var(--ink); margin: 0; max-width: none; white-space: nowrap;
-}
-.pv-claim .pv-hit { background: var(--red); color: #fff; align-self: flex-start; padding: .1em .3em; margin-top: .3cqw; }
-
-/* Schmale Schirme: die Zeilen wären nur wenige Pixel hoch. */
-@media (max-width: 63.999rem) { .pv-claim p { visibility: hidden; } }
-
 /* Vier Hebel als nummerierte Liste in zwei Spalten */
 .mech { display: grid; grid-template-columns: 1fr; column-gap: clamp(2rem, 5vw, 5rem); }
 @media (min-width: 60rem) { .mech { grid-template-columns: repeat(2, 1fr); } }
@@ -960,8 +883,6 @@ mark, .hl {
   .tun-top .sec-head { grid-template-columns: 1fr; }
   .tun-top .sec-head h2 { font-size: clamp(3rem, 7.5vw, 7.5rem); }
 }
-.tun-img { display: block; }
-.tun-img img { display: block; width: 100%; height: auto; }
 
 .acts-wrap { position: relative; }
 .acts {
@@ -1105,27 +1026,6 @@ mark, .hl {
 .gate .btn { margin-top: 1.75rem; }
 
 
-/* ---------------------------------------------------------
-   Markierung der Collagen durch Text (26.09.2026)
-   Die Bilder zeigen Stilmittel. Der Text darunter benennt sie.
-   --------------------------------------------------------- */
-.img-note {
-  margin-block: 1.5rem clamp(2.5rem, 5vw, 4rem);
-  padding-left: 1rem; border-left: 3px solid var(--red-tx);
-  max-width: 62ch; color: var(--ink-2); font-size: .9375rem; line-height: 1.55;
-}
-/* Linksbündig mit dem Text der Abschnitte statt frei zentriert. */
-.img-note.shell {
-  width: auto; max-width: 62ch;
-  margin-inline: max(var(--pad), calc((100% - 96rem) / 2 + var(--pad))) var(--pad);
-  padding-inline: 1rem 0;
-}
-.subline + .img-note { margin-top: 0; }
-.img-note-h {
-  display: block; font-family: var(--mono); font-size: .6875rem; font-weight: 700;
-  letter-spacing: .08em; text-transform: uppercase; color: var(--red-tx);
-  margin-bottom: .35rem;
-}
 .lex-note {
   max-width: 62ch; color: var(--ink-2); font-size: .9375rem; line-height: 1.55;
   margin: 0 0 clamp(1.25rem, 3vw, 2rem);
@@ -1150,80 +1050,7 @@ mark, .hl {
 .stil-item h3 { font-size: clamp(1.75rem, 2.6vw, 2.25rem); margin-bottom: .75rem; }
 .stil-item p { font-size: .9375rem; }
 
-/* Zitat: ruhige Materialflächen. Eingriff: untexturierte Bedienelemente. */
-:root {
-  --tear-1: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201000%2024%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M0%200H1000V12L973%2017%20946%209%20918%2014%20887%207%20865%2016%20831%2011%20804%2019%20778%2010%20746%2015%20717%208%20681%2017%20655%2012%20628%2020%20601%2010%20575%2016%20543%207%20511%2014%20482%2011%20450%2018%20426%208%20397%2015%20368%2010%20339%2019%20313%2012%20287%2016%20262%207%20233%2014%20205%2010%20174%2018%20149%2011%20122%2016%2096%208%2063%2014%2036%2010%200%2017Z%22%2F%3E%3C%2Fsvg%3E");
-  --tear-2: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201000%2024%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M0%200H1000V18L978%2012%20956%2017%20924%208%20895%2014%20863%2010%20839%2018%20807%2012%20783%2016%20753%207%20722%2013%20696%209%20661%2018%20637%2013%20610%2016%20582%208%20551%2014%20529%2010%20494%2018%20463%2011%20435%2016%20408%207%20382%2014%20351%2010%20322%2017%20294%2012%20268%2020%20242%209%20212%2015%20183%2010%20158%2018%20131%2013%2098%2016%2074%207%2043%2013%2019%2010%200%2015Z%22%2F%3E%3C%2Fsvg%3E");
-  --tear-3: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201000%2024%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M0%200H1000V9L966%2014%20942%2010%20916%2018%20884%2012%20857%2016%20826%208%20795%2014%20771%2010%20740%2019%20714%2013%20687%2016%20659%209%20630%2014%20607%2011%20574%2018%20549%2012%20520%2016%20490%207%20462%2014%20433%2010%20405%2017%20376%2012%20345%2019%20319%209%20290%2015%20260%2011%20232%2018%20206%2012%20174%2016%20146%208%20121%2014%2093%2010%2065%2017%2032%2012%200%2019Z%22%2F%3E%3C%2Fsvg%3E");
-}
-body { isolation: isolate; }
-body::before {
-  content: ""; position: fixed; inset: 0; z-index: 1;
-  pointer-events: none; opacity: .05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23000' filter='url(%23grain)' d='M0 0h160v160H0z'/%3E%3C/svg%3E");
-}
-/* Eigene Ebenen halten Text und Interaktion vor dem Papierkorn. */
-.hero > .shell, .subline, .sec-head, .img-note, .quiz, .posts-wrap,
-.bruecke, .lex-note, .glyphs, .drill, .mech, .stil, .stil-h, .faq,
-.acts-wrap, .facts-band > .shell, .melden, .foot > .shell {
-  position: relative; z-index: 2;
-}
-.sec.dark, .sec.red, .facts-band {
-  background-image: radial-gradient(circle, rgb(236 229 214 / .045) .7px, transparent .85px);
-  background-size: 5px 5px;
-}
-.sec.red, .facts-band {
-  background-image: radial-gradient(circle, rgb(14 14 13 / .045) .7px, transparent .85px);
-}
-.sec.dark, .sec.red, .facts-band, .band-img, .hero-visual, .tun-figure {
-  position: relative;
-  --tear-top: var(--paper);
-  --tear-bottom: var(--paper);
-}
-.sec.dark::before, .sec.dark::after,
-.sec.red::before, .sec.red::after,
-.facts-band::before, .facts-band::after,
-.band-img::before, .band-img::after,
-.hero-visual::before, .hero-visual::after,
-.tun-figure::before, .tun-figure::after {
-  content: ""; position: absolute; left: 0; right: 0;
-  height: 24px; z-index: 1; pointer-events: none;
-  background-color: var(--tear-top);
-  -webkit-mask: var(--tear-1) center / 100% 100% no-repeat;
-  mask: var(--tear-1) center / 100% 100% no-repeat;
-  top: -1px;
-}
-.sec.dark::after, .sec.red::after, .facts-band::after,
-.band-img::after, .hero-visual::after, .tun-figure::after {
-  top: auto; bottom: -1px; transform: rotate(180deg);
-  background-color: var(--tear-bottom);
-  -webkit-mask-image: var(--tear-2); mask-image: var(--tear-2);
-}
-.band-img::before, .sec.red::before, .tun-figure::before {
-  -webkit-mask-image: var(--tear-3); mask-image: var(--tear-3);
-}
-/* Genau eine Kante an der gemeinsamen Grenze Rot/Schwarz. */
-.facts-band { --tear-bottom: var(--dark); }
-.facts-band + .sec.dark::before { content: none; }
-#melden { --tear-bottom: var(--dark); }
-.band-img { margin-bottom: 0; }
-.tun-figure { margin: 0; line-height: 0; }
-/* Die Risskante schneidet in das Bild selbst, kein zusätzlicher Rand. */
-.collage-band, .tun-figure { padding-block: 0; background: none; }
-.mobilisation-band { padding-bottom: clamp(2.5rem, 5vw, 4rem); }
-.mobilisation-band > .img-note { margin-bottom: 0; }
-.eyebrow:has(.secnum), .img-note-h {
-  width: fit-content; max-width: 100%;
-  background: var(--paper-2); padding: .3rem .65rem;
-  box-shadow: 1px 2px 0 rgb(14 14 13 / .12);
-  transform: rotate(-1deg); transform-origin: left center;
-}
-.sec.dark .eyebrow:has(.secnum), .dark .img-note-h {
-  background: var(--dark-3); color: var(--on-dark);
-}
-.sec.red .eyebrow:has(.secnum) { color: var(--ink); }
-.dark .img-note { color: var(--on-dark-2); border-color: var(--red-dk); }
-/* Kleine Quellen bleiben auch auf Weiß und Creme kontrastreich. */
+/* Quellen in kleiner Schrift bleiben auf hellen Karten kontrastreich. */
 .dark .quiz .src { color: var(--ink-3); }
 .dark .quiz .src::before { color: var(--red-tx); }
 .dark .quiz .btn:not(.mark):not(.light) { color: var(--ink); }
@@ -1231,109 +1058,8 @@ body::before {
 .dark .quiz .btn:hover, .dark .quiz .btn:focus-visible {
   color: #fff; border-color: var(--ink);
 }
-.facts-band .src { color: #fff; }
 .glyph[aria-pressed="true"] .gl-n,
 .glyph[aria-pressed="true"] .gl-tag,
 .glyph[aria-pressed="true"] svg { color: #fff; opacity: 1; }
 /* Auch die seitlichen Karten bleiben lesbar, wenn das Karussell sie verkleinert. */
 .post, .act { opacity: 1 !important; }
-/* Das Zahlenband liegt direkt vor dem dunklen FAQ-Abschnitt. */
-@media (max-width: 30rem) {
-  .eyebrow:has(.secnum), .img-note-h { transform: none; }
-}
-
-/* ---------------------------------------------------------
-   Bildnotiz als Fragezeichen am Bild
-   Mit JS sitzt ein roter Knopf in der Bildecke und öffnet die Notiz.
-   Ohne JS steht die Notiz wie oben unter dem Bild.
-   --------------------------------------------------------- */
-.hero-visual, .band-img, .tun-figure {
-  --q-size: clamp(2.25rem, 3.2vw, 2.75rem);
-  --q-inset: clamp(.75rem, 2vw, 1.5rem);
-  /* Über der unteren Risskante (24px) bleiben. */
-  --q-bottom: calc(24px + clamp(.5rem, 1.2vw, .9rem));
-}
-.pop-open { z-index: 30; }
-
-/* Kennzeichnung an jedem Bild: KI-Bild, bewusst kein Originalmaterial. */
-.ki-tag {
-  position: absolute; z-index: 2;
-  left: var(--q-inset); top: calc(24px + clamp(.4rem, 1vw, .75rem));
-  font-family: var(--mono); font-size: .6875rem; font-weight: 600;
-  letter-spacing: .06em; text-transform: uppercase; line-height: 1;
-  color: var(--on-dark); background: rgb(14 14 13 / .82);
-  padding: .4rem .55rem;
-  pointer-events: none;
-}
-/* Schmale Schirme: Im Kopf liegt der Balken „Antisemitismus“ weit oben.
-   Die Kennzeichnung wandert nach unten links, neben das Fragezeichen. */
-@media (max-width: 47.999rem) {
-  .ki-tag { font-size: .625rem; padding: .35rem .5rem; }
-  .hero-visual .ki-tag { top: auto; bottom: calc(var(--q-bottom) + (var(--q-size) - 1.4rem) / 2); }
-}
-
-.img-q {
-  position: absolute; z-index: 3;
-  right: var(--q-inset); bottom: var(--q-bottom);
-  width: var(--q-size); height: var(--q-size); padding: 0;
-  display: grid; place-items: center;
-  border: 2px solid #fff; border-radius: 50%;
-  background: var(--red); color: #fff; cursor: pointer;
-  font-family: var(--display); font-weight: 900; font-stretch: 80%;
-  font-size: clamp(1.125rem, 1.6vw, 1.375rem); line-height: 1;
-  box-shadow: 0 4px 14px rgb(14 14 13 / .45);
-  transition: transform .2s var(--ease), background .2s ease;
-}
-.img-q:hover { transform: scale(1.08); }
-.img-q[aria-expanded="true"] { background: var(--ink); }
-.img-q:focus-visible { outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 7px var(--ink); }
-
-.img-note.img-pop {
-  position: absolute; z-index: 4;
-  right: var(--q-inset); bottom: calc(var(--q-bottom) + var(--q-size) + .6rem);
-  width: min(24rem, calc(100vw - 2rem)); max-width: none; margin: 0;
-  background: var(--white); color: var(--ink-2);
-  border: 2px solid var(--ink);
-  padding: 1rem 2.75rem 1.1rem 1.15rem;
-  font-size: .9375rem; line-height: 1.55;
-  box-shadow: 0 18px 40px -12px rgb(14 14 13 / .45);
-  transform-origin: bottom right;
-  animation: popIn .22s var(--ease) both;
-}
-.img-note.img-pop[hidden] { display: none; }
-.img-pop-x {
-  position: absolute; top: .45rem; right: .5rem;
-  border: 0; background: transparent; cursor: pointer;
-  font-size: 1.375rem; line-height: 1; color: var(--ink-3); padding: .2rem .4rem;
-}
-.img-pop-x:hover { color: var(--red-tx); }
-/* Notiz verweist auf die rechte Bildhälfte: Knopf links, damit sie frei bleibt. */
-.q-left .img-q { right: auto; left: var(--q-inset); }
-@media (min-width: 48rem) {
-  .q-left .img-note.img-pop { right: auto; left: var(--q-inset); transform-origin: bottom left; }
-}
-@keyframes popIn { from { opacity: 0; transform: scale(.92) translateY(6px); } to { opacity: 1; transform: none; } }
-
-/* Schmale Schirme: Die Bilder sind flach. Die Notiz klappt unter
-   dem Bild auf, damit das Motiv sichtbar bleibt. */
-@media (max-width: 47.999rem) {
-  .img-note.img-pop {
-    top: calc(100% - 12px); bottom: auto; left: .75rem; right: .75rem; width: auto;
-    transform-origin: top right;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .img-q { transition: none; }
-  .img-note.img-pop { animation: none; }
-}
-
-/* Ohne die Notizen darunter brauchen die Bilder eigenen Abstand. */
-.has-pops .band-img { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
-.has-pops .mobilisation-band .band-img { margin-bottom: 0; }
-@media (min-width: 64rem) { .has-pops .hero-visual { margin-bottom: clamp(2rem, 4vw, 3rem); } }
-.has-pops .mobilisation-band { padding-bottom: clamp(1.5rem, 3vw, 2.5rem); }
-/* Mit Fragezeichen-Notizen stößt das Fackel-Band direkt an „Melden“:
-   eine Risskante in Rot statt zwei Kanten mit Papierstreifen dazwischen. */
-.has-pops .mobilisation-band { padding-bottom: 0; }
-.has-pops .mobilisation-band .band-img { --tear-bottom: var(--red); }
-.has-pops .mobilisation-band + #melden::before { content: none; }

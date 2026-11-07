@@ -4,7 +4,11 @@ Vorarbeit „Zeichen lesen“ zur Bachelorarbeit „Gegen den Strich. Eine Aufkl
 
 Die Angabe „KI-generiert: ja“ für die bisherigen Collagen folgt der vorhandenen Deklaration in der Fußzeile. Für die drei neuen Collagen stammt sie aus der Aufgabenstellung. Werkzeug und Modell sind nicht überliefert. Ein nachträglich formulierter Prompt wäre kein Nachweis des tatsächlich verwendeten Prompts.
 
-## Aktuell eingebundene Bilder
+## Stand 07.11.2026
+
+Seit dem Umbau vom 07.11.2026 (Branch `claude/neutral-infografik`) bindet die Seite keine dieser Bilder mehr ein. An ihre Stelle treten Infografiken in HTML und CSS. Die Dateien bleiben als Nachweis im Repo. Ob sie gelöscht werden, entscheidet Dustyn.
+
+## Bis zum 07.11.2026 eingebunden
 
 | Dateiname | KI-generiert | Werkzeug oder Modell | Vollständiger Prompt | Abschnitt | Stilmittel | Quelle der Bildnotiz |
 | --- | --- | --- | --- | --- | --- | --- |
