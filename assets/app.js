@@ -547,7 +547,13 @@
     d.appendChild(el("span", "n", m.n));
     d.appendChild(el("h3", null, m.h));
     d.appendChild(el("p", null, m.p));
-    d.appendChild(el("p", "ex", m.ex));
+    /* Beispiele sind Codes und stehen deshalb gestrichen. */
+    var ex = el("p", "ex");
+    m.ex.split(" · ").forEach(function (w, i) {
+      if (i) ex.appendChild(document.createTextNode(" · "));
+      ex.appendChild(el("span", "strike", w));
+    });
+    d.appendChild(ex);
     d.appendChild(el("span", "src", "Quelle: BfV, S. 71 f."));
     mechEl.appendChild(d);
   });
@@ -732,6 +738,10 @@
   if (!("IntersectionObserver" in window) ||
       window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     reveals.forEach(function (n) { n.classList.add("in"); });
+    /* Auch hier melden, dass app.js läuft. Sonst nimmt das Sicherheitsnetz
+       im Kopf der Seite nach 2 s die Klasse js weg, und bei reduzierter
+       Bewegung fällt das Menü am Handy auf die Notfall-Zeile zurück. */
+    window.__rvReady = true;
   } else {
     window.__rvReady = true;
     var io = new IntersectionObserver(function (entries) {
