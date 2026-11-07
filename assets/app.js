@@ -622,14 +622,17 @@
   }
 
   /* ---------------------------------------------------------
-     5 — TICKER
-     Die Codes, die gerade im Umlauf sind.
-     Liste wird verdoppelt, damit die Schleife nahtlos läuft.
+     5 — LAUFBAND
+     Seit dem Umbau vom 07.11.2026 laufen hier die sechs Werkzeuge
+     aus TOOLS statt der gestrichenen Codes: Mechanismen statt Begriffe.
+     Die Liste steht viermal da, damit die Schleife nahtlos läuft.
      --------------------------------------------------------- */
   var tickerEl = $("#ticker");
-  var ticker = CODES.map(function (x) { return x.t; });
-  ticker.concat(ticker).forEach(function (t) {
-    tickerEl.appendChild(el("span", null, t));
+  var names = TOOLS.map(function (m, i) { return { n: "0" + (i + 1), h: m.h }; });
+  names.concat(names, names, names).forEach(function (t) {
+    var sp = el("span", null, t.h);
+    sp.insertBefore(el("small", null, t.n), sp.firstChild);
+    tickerEl.appendChild(sp);
   });
 
   /* ---------------------------------------------------------

@@ -390,6 +390,10 @@ mark::after, .x::after {
   text-transform: uppercase; letter-spacing: -.005em;
   margin-inline: clamp(.9rem, 2vw, 1.6rem); white-space: nowrap;
 }
+.ticker small {
+  font-family: var(--mono); font-size: .3em; font-weight: 600; letter-spacing: .06em;
+  vertical-align: top; margin-right: .5em; color: var(--ink-2);
+}
 @keyframes roll { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
 
