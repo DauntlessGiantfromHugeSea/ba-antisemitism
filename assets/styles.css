@@ -1,8 +1,9 @@
-/* Gestaltungsprinzip: neutral und infografisch (Umbau 07.11.2026).
+/* Gestaltungsprinzip: plakativ und infografisch (zweiter Durchgang 07.11.2026).
    Keine Bilder aus der Propaganda, keine Collagen, keine Risskanten.
-   Palette A: Papier, Fläche, Schrift, Schrift 2, Linie und ein gedecktes Rot.
-   Das Rot gehört dem Strich, mit dem Codes gestrichen werden, und wenigen
-   grafischen Akzenten. Keine roten und keine schwarzen Flächen. */
+   Drei Farben tragen die Seite: Papier, Schrift und Signalrot. Der rote
+   Strich durch den Code ist das wiederkehrende Zeichen der Kampagne. Rot
+   darf wieder Fläche sein (Zahlenband, Melden, Knöpfe, Nummern), Schrift
+   als dunkle Fläche gibt Laufband und Fuß den Plakatkontrast. */
 
 /* ---------- Schriften (selbst gehostet, OFL) ---------- */
 
@@ -25,16 +26,32 @@
 }
 
 :root {
-  /* Palette A (Entscheidung 07.11.2026). Kontraste nach WCAG 2.1:
-     Schrift auf Papier 13,52 : 1, auf Fläche 11,91 : 1.
-     Schrift 2 auf Papier 6,17 : 1, auf Fläche 5,44 : 1.
-     Akzent auf Papier 4,74 : 1, auf Fläche 4,18 : 1, dort nur als Grafik. */
+  /* Palette A (Entscheidung 07.11.2026) mit Signalrot (07.11.2026, abends).
+     Kontraste nach WCAG 2.1, gerechnet mit der relativen Leuchtdichte:
+     Schrift #26241F auf Papier 13,52 : 1, auf Fläche 11,91 : 1.
+     Schrift 2 #5C5850 auf Papier 6,17 : 1, auf Fläche 5,44 : 1.
+     Signalrot #E1251B auf Papier 4,09 : 1, auf Fläche 3,60 : 1. Damit nur
+       für Flächen, Striche, Grafik und große Schrift (ab 24 px oder ab
+       18,66 px fett, Schwelle 3 : 1).
+     Rot für kleine Schrift #B5140B auf Papier 5,97 : 1, auf Fläche 5,26 : 1.
+     Weiß auf Signalrot 4,69 : 1, also auch für kleine Schrift auf roten
+       Flächen. Papier auf Signalrot 4,09 : 1, nur für große Schrift.
+     Weiß auf dunklem Rot #B5140B (Hover auf Rot) 6,84 : 1.
+     Dunkle Fläche #26241F: Papier darauf 13,52 : 1, Schrift 2 dunkel
+       #B8B0A2 darauf 7,21 : 1, Signalrot darauf 3,31 : 1 (nur Strich,
+       Grafik und große Schrift). */
   --paper:   #F3EFE7;
   --surface: #E7E1D6;
   --surface-2: #DCD5C8;   /* Hover auf Fläche */
   --ink:     #26241F;
   --ink-2:   #5C5850;
-  --accent:  #C0392B;
+  --red:     #E1251B;     /* Signalrot: Fläche, Strich, große Schrift */
+  --red-tx:  #B5140B;     /* Rot für kleine Schrift auf Hell */
+  --on-red:  #FFFFFF;     /* Schrift auf Signalrot */
+  --dark:    #26241F;     /* Schrift als Fläche */
+  --on-dark: #F3EFE7;
+  --on-dark-2: #B8B0A2;
+  --line-dk: rgba(243,239,231,.22);
   --line:    #A9A398;
   --line-soft: rgba(38,36,31,.16);
 
@@ -78,11 +95,11 @@ body {
   overflow-x: hidden;
 }
 
-::selection { background: var(--ink); color: var(--paper); }
+::selection { background: var(--red); color: var(--on-red); }
 
 a { color: inherit; text-decoration-color: var(--line); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
 a:hover { text-decoration-color: var(--ink); }
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
 
 img { max-width: 100%; }
 
@@ -109,6 +126,8 @@ img { max-width: 100%; }
   line-height: .88; text-wrap: balance; margin: 0;
 }
 .quiet { color: var(--ink-2); }
+/* Große Schrift in Signalrot, erst ab 24 px (4,09 : 1 auf Papier). */
+.hot { color: var(--red); }
 
 .eyebrow {
   font-family: var(--mono); font-size: .75rem; letter-spacing: .14em;
@@ -118,8 +137,8 @@ img { max-width: 100%; }
 .secnum {
   display: inline-grid; place-items: center;
   min-width: 2.4em; height: 1.9em; padding-inline: .45em;
-  border: 1.5px solid var(--ink); color: var(--ink); letter-spacing: .04em;
-  font-variant-numeric: tabular-nums;
+  border: 1.5px solid var(--red); background: var(--red); color: var(--on-red);
+  letter-spacing: .04em; font-variant-numeric: tabular-nums;
 }
 
 p { max-width: var(--measure); }
@@ -135,11 +154,11 @@ mark, .x {
 }
 mark::after, .x::after {
   content: ""; position: absolute; left: -.06em; right: -.06em; top: 50%;
-  height: .11em; margin-top: -.03em; background: var(--accent);
+  height: .11em; margin-top: -.03em; background: var(--red);
   transform: rotate(-2deg); pointer-events: none;
 }
 .strike {
-  text-decoration: line-through; text-decoration-color: var(--accent);
+  text-decoration: line-through; text-decoration-color: var(--red);
   text-decoration-thickness: .11em;
 }
 
@@ -174,11 +193,13 @@ mark::after, .x::after {
 .btn .arr { transition: transform .3s var(--ease); }
 .btn:hover .arr { transform: translateX(4px); }
 
-/* Hauptaktion: Schrift als Fläche (Papier auf Schrift 13,52 : 1). */
-.btn.mark, .btn.light { background: var(--ink); color: var(--paper); }
-.btn.mark::before, .btn.light::before { background: var(--ink-2); }
+/* Hauptaktion: Signalrot als Fläche (Weiß auf Rot 4,69 : 1,
+   beim Überfahren Weiß auf dunklem Rot 6,84 : 1). */
+.btn.mark, .btn.light { background: var(--red); color: var(--on-red); border-color: var(--red); }
+.btn.mark::before, .btn.light::before { background: var(--red-tx); }
 .btn.mark:hover, .btn.mark:focus-visible,
-.btn.light:hover, .btn.light:focus-visible { color: var(--paper); border-color: var(--ink-2); }
+.btn.light:hover, .btn.light:focus-visible { color: var(--on-red); border-color: var(--red-tx); }
+.btn.mark:focus-visible, .btn.light:focus-visible { outline-color: var(--ink); }
 
 .btn.sm { padding: .7rem 1rem; font-size: .75rem; }
 .btn.icon { padding: 0; width: 3.25rem; height: 3.25rem; justify-content: center; font-size: 1.125rem; font-family: var(--body); }
@@ -186,7 +207,7 @@ mark::after, .x::after {
 .btn:disabled { opacity: .4; cursor: not-allowed; }
 .btn:disabled::before { display: none; }
 .btn:disabled:hover { color: var(--ink); }
-.btn.mark:disabled:hover { color: var(--paper); }
+.btn.mark:disabled:hover { color: var(--on-red); }
 
 @media (prefers-reduced-motion: reduce) {
   .btn::before, .btn .arr { transition: none; }
@@ -202,7 +223,7 @@ mark::after, .x::after {
   position: fixed; inset: 0 0 auto; height: 3px; z-index: 120; pointer-events: none;
 }
 .progress-top i {
-  display: block; height: 100%; background: var(--accent);
+  display: block; height: 100%; background: var(--red);
   transform: scaleX(0); transform-origin: left;
 }
 
@@ -230,7 +251,7 @@ mark::after, .x::after {
 }
 .brand::after {
   content: ""; position: absolute; left: -.12em; right: -.12em; top: 50%;
-  height: .12em; background: var(--accent); transform: translateY(-50%) rotate(-3deg);
+  height: .12em; background: var(--red); transform: translateY(-50%) rotate(-3deg);
 }
 
 .nav { display: flex; gap: .25rem; margin-left: auto; }
@@ -366,7 +387,7 @@ mark::after, .x::after {
 .stat b {
   font-family: var(--display); font-weight: 900; font-stretch: 66%;
   font-size: clamp(4rem, 9vw, 7.5rem); line-height: .78;
-  letter-spacing: -.02em; color: var(--ink); font-variant-numeric: tabular-nums;
+  letter-spacing: -.02em; color: var(--red); font-variant-numeric: tabular-nums;
 }
 .stat span {
   font-family: var(--mono); font-size: .75rem; font-weight: 550;
@@ -515,7 +536,7 @@ mark::after, .x::after {
   text-decoration-thickness: .11em;
 }
 /* Nach dem Scan ist jeder Code gestrichen und nummeriert. */
-.post.scanned .tok { cursor: pointer; text-decoration-color: var(--accent); }
+.post.scanned .tok { cursor: pointer; text-decoration-color: var(--red); }
 .post.scanned .tok:hover, .post.scanned .tok[aria-expanded="true"] {
   background: var(--paper); box-shadow: inset 0 -2px 0 var(--ink);
 }
@@ -527,7 +548,7 @@ mark::after, .x::after {
 
 .scanline {
   position: absolute; top: 0; bottom: 0; width: 2px; left: 0;
-  background: var(--accent);
+  background: var(--red);
   opacity: 0; pointer-events: none; z-index: 3;
 }
 .post.scanning .scanline { animation: sweep 1000ms cubic-bezier(.4,0,.2,1) forwards; }
@@ -585,7 +606,7 @@ mark::after, .x::after {
   font-family: var(--display); font-weight: 900; font-stretch: 70%;
   text-transform: uppercase; font-size: 1.375rem; line-height: 1.1;
   margin: 0 1.8rem .5rem 0; max-width: none;
-  text-decoration: line-through; text-decoration-color: var(--accent);
+  text-decoration: line-through; text-decoration-color: var(--red);
   text-decoration-thickness: .11em;
 }
 .bub-kind {
@@ -615,7 +636,7 @@ mark::after, .x::after {
 }
 .quiz-bar .score { color: var(--ink); font-variant-numeric: tabular-nums; }
 .progress { height: 6px; background: var(--surface); position: relative; }
-.progress > i { position: absolute; inset: 0 auto 0 0; background: var(--ink); transition: width .5s var(--ease); }
+.progress > i { position: absolute; inset: 0 auto 0 0; background: var(--red); transition: width .5s var(--ease); }
 .quiz-body { padding: clamp(1.75rem, 4.5vw, 3.75rem) clamp(1.25rem, 3.5vw, 3rem) clamp(1.75rem, 4vw, 3rem); }
 
 .prompt {
@@ -765,7 +786,7 @@ mark::after, .x::after {
 }
 /* Der Begriff steht gestrichen, die Erklärung klappt darunter auf. */
 .card .term > span:first-child {
-  text-decoration: line-through; text-decoration-color: var(--accent);
+  text-decoration: line-through; text-decoration-color: var(--red);
   text-decoration-thickness: .1em;
 }
 .card .term .plus {
@@ -837,25 +858,28 @@ mark::after, .x::after {
 .stil-item h3 { font-size: clamp(1.75rem, 2.6vw, 2.25rem); margin-bottom: .75rem; }
 .stil-item p { font-size: .9375rem; }
 
-/* ---------- Zahlen: Band zwischen Linien ---------- */
+/* ---------- Zahlen: rotes Band ----------
+   Signalrot als Fläche. Alle Schrift darauf ist Weiß (4,69 : 1). */
 
 .facts-band {
-  background: var(--paper); color: var(--ink);
+  background: var(--red); color: var(--on-red);
   padding-block: clamp(3.5rem, 8vw, 7rem);
 }
-.facts-band .eyebrow { max-width: none; border-top: 2px solid var(--ink); padding-top: 1rem; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+.facts-band .eyebrow { max-width: none; color: var(--on-red); border-top: 2px solid var(--on-red); padding-top: 1rem; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
 .facts { display: grid; gap: clamp(2rem, 4vw, 3rem); grid-template-columns: 1fr; }
 @media (min-width: 56rem) { .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.fact { border-left: 1px solid var(--line); padding-left: clamp(1rem, 2vw, 1.5rem); }
+.fact { border-left: 2px solid var(--on-red); padding-left: clamp(1rem, 2vw, 1.5rem); }
 .fact .fig {
   display: block; font-family: var(--display); font-weight: 900; font-stretch: 66%;
   text-transform: uppercase; letter-spacing: -.01em; line-height: .82;
-  font-size: clamp(4rem, 9vw, 8.5rem); color: var(--ink);
+  font-size: clamp(4rem, 9vw, 8.5rem); color: var(--on-red);
   font-variant-numeric: tabular-nums; margin-bottom: 1.1rem;
 }
 /* Wort statt Zahl, kleiner, damit es auf Höhe der Zahlen bleibt. */
 .fact .fig.word { font-size: clamp(2.75rem, 4.6vw, 4.5rem); line-height: .86; }
-.fact p { margin: 0; font-size: 1.0625rem; color: var(--ink-2); max-width: 34ch; }
+.fact p { margin: 0; font-size: 1.0625rem; color: var(--on-red); max-width: 34ch; }
+.on-red .src, .on-red .src::before { color: var(--on-red); }
+.on-red :focus-visible { outline-color: var(--on-red); }
 
 /* =========================================================
    05 FRAGEN
@@ -900,26 +924,31 @@ mark::after, .x::after {
 }
 
 /* =========================================================
-   07 MELDEN
+   07 MELDEN als rote Fläche (Weiß auf Rot 4,69 : 1)
    ========================================================= */
+
+#melden { background: var(--red); color: var(--on-red); }
+#melden .eyebrow { color: var(--on-red); }
+/* Nummer invertiert: Rot auf Weiß 4,69 : 1 */
+#melden .secnum { background: var(--on-red); border-color: var(--on-red); color: var(--red); }
 
 .melden {
   display: grid; grid-template-columns: 1fr; gap: 1.5rem 3rem;
-  border-top: 2px solid var(--ink); padding-top: clamp(1rem, 2vw, 1.5rem);
+  border-top: 2px solid var(--on-red); padding-top: clamp(1rem, 2vw, 1.5rem);
 }
-.melden h2 { font-size: clamp(4rem, 16vw, 14rem); color: var(--ink); line-height: .88; }
-.melden .sub { margin: 0 0 1.75rem; font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); }
+.melden h2 { font-size: clamp(4rem, 16vw, 14rem); color: var(--on-red); line-height: .88; }
+.melden .sub { margin: 0 0 1.75rem; font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); color: var(--on-red); }
 @media (min-width: 62rem) {
   .melden { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: end; }
   .melden h2 { font-size: clamp(4rem, 10.5vw, 10.5rem); }
   .melden .eyebrow { grid-column: 1 / -1; margin-bottom: .5rem; }
 }
 
-.melden-links { display: grid; border-top: 2px solid var(--ink); }
+.melden-links { display: grid; border-top: 2px solid var(--on-red); }
 .mlink {
   display: grid; grid-template-columns: 4.5rem 1fr auto; align-items: center; gap: 1rem;
-  padding: 1.1rem 0; border-bottom: 2px solid var(--ink);
-  color: var(--ink); text-decoration: none;
+  padding: 1.1rem 0; border-bottom: 2px solid var(--on-red);
+  color: var(--on-red); text-decoration: none;
   transition: padding .3s var(--ease), background .2s ease, color .2s ease;
 }
 .mlink-k { font-family: var(--mono); font-size: .75rem; font-weight: 700; letter-spacing: .1em; }
@@ -928,34 +957,37 @@ mark::after, .x::after {
   text-transform: uppercase; font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1;
 }
 .mlink .arr { font-size: 1.5rem; transition: transform .3s var(--ease); }
-.mlink:hover, .mlink:focus-visible { background: var(--surface); padding-inline: 1rem; }
+/* Beim Überfahren dunkles Rot, Weiß darauf 6,84 : 1 */
+.mlink:hover, .mlink:focus-visible { background: var(--red-tx); padding-inline: 1rem; }
 .mlink:hover .arr { transform: translate(3px, -3px); }
 
 /* =========================================================
    FUSS
    ========================================================= */
 
-.foot { background: var(--surface); color: var(--ink); padding-block: clamp(4rem, 9vw, 8rem) 1.5rem; border-top: 1px solid var(--line); }
+.foot { background: var(--dark); color: var(--on-dark); padding-block: clamp(4rem, 9vw, 8rem) 1.5rem; }
 .foot p.big {
-  color: var(--ink);
+  color: var(--on-dark);
   font-size: clamp(2.5rem, 13.2vw, 13rem); line-height: .84;
   margin: 0 0 clamp(3rem, 6vw, 5rem); max-width: none; text-wrap: nowrap;
 }
 .foot-grid {
   display: grid; gap: 1.75rem; grid-template-columns: 1fr;
-  border-top: 1px solid var(--line); padding-top: 2rem;
+  border-top: 1px solid var(--line-dk); padding-top: 2rem;
 }
 @media (min-width: 56rem) { .foot-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3rem; } }
-.foot p { color: var(--ink-2); font-size: .875rem; line-height: 1.6; max-width: 46ch; margin: 0; }
-.foot b { color: var(--ink); font-weight: 600; }
+.foot p { color: var(--on-dark-2); font-size: .875rem; line-height: 1.6; max-width: 46ch; margin: 0; }
+.foot b { color: var(--on-dark); font-weight: 600; }
+/* Signalrot auf dunkler Fläche nur in großer Schrift (3,31 : 1) */
+.foot .big .hot { color: var(--red); }
 .foot-bar {
   display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
   margin-top: clamp(3rem, 6vw, 5rem); padding-top: 1.25rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--line-dk);
   font-family: var(--mono); font-size: .6875rem; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--ink-2);
+  text-transform: uppercase; color: var(--on-dark-2);
 }
-.foot-bar a { color: var(--ink); text-decoration: none; }
+.foot-bar a { color: var(--on-dark); text-decoration: none; }
 .foot-bar a:hover { text-decoration: underline; }
 
 /* =========================================================
