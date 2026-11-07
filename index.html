@@ -254,8 +254,14 @@
   </section>
 </section>
 
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track" id="ticker"></div>
+<!-- Laufband: gestrichene Codes mit Kurzbedeutung aus codes.js.
+     Für Screenreader versteckt, die Alternative steht direkt davor. -->
+<div class="ticker-box">
+  <p class="sr-only">Hier läuft ein Band mit gestrichenen Codes und ihrer Bedeutung durch. Alle Codes stehen mit Erklärung und Quelle im Abschnitt 03 Codes.</p>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="ticker"></div>
+  </div>
+  <button type="button" class="ticker-btn" id="tickerBtn" aria-pressed="false" hidden>Laufband anhalten</button>
 </div>
 
 

@@ -327,6 +327,67 @@ const CODES = [
     d: "Formel von Heinrich von Treitschke (1879), später Kopfzeile des NS-Hetzblatts „Der Stürmer“. Bis heute in Abwandlungen im Umlauf." }
 ];
 
+/* Kurzbedeutungen für Laufband, Code-Wand, Kacheln und Werkzeuge
+   (07.11.2026, abends). Jede Kurzbedeutung ist wörtlich aus dem Feld d
+   des Eintrags genommen, höchstens gekürzt, mit großem Anfangsbuchstaben
+   und Punkt am Ende. Es gibt keine neue Aussage und keinen neuen Code.
+   Regel aus dem fachlichen Abgleich vom 25.10.2026: kein Code ohne
+   Erklärung. Ins Laufband kommen nur Einträge mit Kurzbedeutung, ohne
+   Personennamen (w: "person"), ohne offen Gesagtes (w: "offen") und
+   ohne die Kontextstufe. */
+const KURZ = {
+  "Hochfinanz": "Steht für eine angebliche „jüdische Weltfinanzkontrolle“.",
+  "Globalisten": "Chiffre für eine „kosmopolitische Elite“ ohne Bindung an Vaterland, Kultur oder Tradition.",
+  "Ostküste": "Verweis auf den angeblich jüdisch kontrollierten Finanzstandort New York.",
+  "Wall Street": "Synonym für ein „wurzelloses“, internationales „Finanzjudentum“.",
+  "Zinsknechtschaft": "Unterstellt, ein jüdisch gedachtes Finanzwesen halte das „schaffende Volk“ durch Zinsen in Abhängigkeit.",
+  "Rothschild": "Bankiersfamilie des 18./19. Jh. als Chiffre für eine geheime „jüdische Elite“, die Kriege, Krisen und Katastrophen orchestriere.",
+  "George Soros": "Personifiziert „Hochfinanz“, „Globalisten“ und „Kosmopoliten“.",
+  "Larry Fink": "Neuerer personifizierter Code für „jüdische Finanzmacht“.",
+  "Schekel": "Israelische Währung als Code für „jüdisches“ Geld.",
+  "Geldsack- und Geldbündel-Emojis": "Spielen auf die alte Lüge an, Juden seien besonders gierig und reich.",
+  "Puppenspieler / Marionette": "Politische Akteure seien nur willenlose Werkzeuge eines „jüdischen Willens“.",
+  "Strippenzieher / Drahtzieher": "„Der Jude“ ziehe im Verborgenen die Fäden und lenke so das Weltgeschehen.",
+  "Great Reset": "Umgedeutet zum Plan einer „Elite“ zur Versklavung oder Vernichtung der Menschheit.",
+  "New World Order (NWO)": "Sammelbegriff für eine drohende „totalitäre Weltregierung“, hinter der „jüdische Strippenzieher“ stünden.",
+  "tptb, the powers that be": "Markiert eine anonyme, meist jüdisch gedachte „Weltelite“.",
+  "Kalergi-Plan": "Behauptet, „Eliten“ planten den Austausch der weißen Bevölkerung, oft verknüpft mit „jüdischer Steuerung“.",
+  "Lügenpresse": "Behauptet, die Medien seien gleichgeschaltet und gesteuert.",
+  "„Israel kontrolliert die Medien“": "Behauptet, Israel oder „die Zionisten“ steuerten heimlich Medien, Wirtschaft und Regierungen der Welt.",
+  "„Inside-Job“ / „falsche Flagge“": "Behauptet, Israel habe den Angriff vom 7. Oktober selbst inszeniert.",
+  "Adrenochrom": "Die Ritualmordlegende in modernem Gewand.",
+  "Das allsehende Auge": "Erzeugt das Gefühl totaler Überwachung durch eine unsichtbare Macht.",
+  "Plandemie": "Unterstellt, Pandemien seien geplante biologische Angriffe einer geheimen „Elite“.",
+  "Pest / Geschwür / Krebs": "Krankheitsmetaphern markieren jüdisches Leben als tödliche Gefahr im „Volkskörper“.",
+  "Virus / Bazillus / #Covid1948": "Israel als Virus dargestellt, unter Bezug auf das Gründungsjahr 1948.",
+  "Moloch": "Chiffre für einen jüdisch gedachten „Blutkult“.",
+  "Krake": "Einer der verbreitetsten Codes der Bildpropaganda: Tentakel umschlingen den Globus.",
+  "Ratte": "Jüdinnen und Juden als Krankheitsüberträger und ekelerregende Schädlinge.",
+  "Parasiten / Flöhe / Ungeziefer": "Markiert jüdisches Leben als biologische Gefahr.",
+  "Schuldkult": "Diffamiert das Gedenken an die NS-Verbrechen als aufgezwungen und übertrieben.",
+  "Schlussstrich": "Forderung, die Auseinandersetzung mit der NS-Vergangenheit zu beenden.",
+  "Auschwitzkeule": "Unterstellt, die Erinnerung an den Holocaust werde als Einschüchterungsmittel und Moralkeule eingesetzt.",
+  "Holocaust-Religion": "Rahmt die Erinnerungskultur als dogmatischen, faktenfreien Glauben.",
+  "Psychologischer Völkermord": "Erklärt das Erinnern zum eigentlichen Verbrechen, an „den Deutschen“.",
+  "Muh 6 Gorillion": "Verhöhnung der rund sechs Millionen Ermordeten.",
+  "271k": "Behauptet, in den Konzentrations- und Vernichtungslagern seien „nur“ 271.000 Menschen gestorben.",
+  "Judenstern „Ungeimpft“": "Der gelbe Zwangsstern der NS-Zeit, getragen mit der Aufschrift „Ungeimpft“.",
+  "Holocaust-Industrie": "Unterstellt Jüdinnen und Juden, aus der Erinnerung an den Holocaust materiellen Profit zu schlagen.",
+  "Wahrheit macht frei": "Verballhornung der Auschwitzer Torinschrift.",
+  "ZOG / ZORG / JOG": "Westliche Regierungen seien Marionetten einer zionistischen bzw. jüdischen Besatzung.",
+  "USrael": "Unterstellt, die US-Politik werde zum Vorteil „des Juden“ und Israels gesteuert.",
+  "IsraHell": "Dämonisiert den Staat als Ort des „absolut Bösen“.",
+  "Rotes Dreieck": "Seit Ende 2023 in HAMAS-Propaganda als Zielmarkierung verwendet.",
+  "Kindermörder Israel": "Aktualisiert die Ritualmordlegende: Israel vergieße das Blut palästinensischer Kinder mit Absicht.",
+  "Organraub-Vorwurf": "Behauptet, Israel habe es auf die Organe palästinensischer Kinder abgesehen.",
+  "Zionazis": "Gleichsetzung israelischer Politik mit dem Nationalsozialismus.",
+  "(((Echo)))": "Dreifache Klammern markieren Personen, Firmen, Organisationen oder Gruppen als „jüdisch“, ohne es auszusprechen.",
+  "JDN LGN": "Entvokalisierung von „Juden lügen“.",
+  "Juice / 🧃": "Phonetische Nähe zu „Jews“.",
+  "109 / 110": "Behauptet, Jüdinnen und Juden seien aus 109 Ländern vertrieben worden. Die 110 ist eine offene Aufforderung, das aktuelle Wohnland folgen zu lassen.",
+  "Hakennase": "Macht zugeschriebene Minderwertigkeit körperlich sichtbar."
+};
+
 /* Der annotierte Beispiel-Post.
    Konstruiert aus Einzelcodes der Quellen — kein realer Beitrag. */
 /* Vier konstruierte Beiträge im Social-Media-Format.

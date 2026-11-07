@@ -732,17 +732,45 @@
 
   /* ---------------------------------------------------------
      5 — LAUFBAND
-     Seit dem Umbau vom 07.11.2026 laufen hier die sechs Werkzeuge
-     aus TOOLS statt der gestrichenen Codes: Mechanismen statt Begriffe.
-     Die Liste steht viermal da, damit die Schleife nahtlos läuft.
+     Gestrichene Codes, jeder mit seiner Kurzbedeutung aus KURZ.
+     Ohne Personennamen, ohne offen Gesagtes und ohne Kontextstufe
+     (Regeln aus dem fachlichen Abgleich vom 25.10.2026). Die Liste
+     steht zweimal da, damit die Schleife nahtlos läuft. Das Band ist
+     für Screenreader versteckt, die Alternative steht im HTML.
      --------------------------------------------------------- */
   var tickerEl = $("#ticker");
-  var names = TOOLS.map(function (m, i) { return { n: "0" + (i + 1), h: m.h }; });
-  names.concat(names, names, names).forEach(function (t) {
-    var sp = el("span", null, t.h);
-    sp.insertBefore(el("small", null, t.n), sp.firstChild);
-    tickerEl.appendChild(sp);
-  });
+  if (tickerEl && typeof KURZ !== "undefined") {
+    var tickCodes = CODES.filter(function (x) {
+      return KURZ[x.t] && x.w !== "person" && x.w !== "offen" && x.lvl !== "kontext";
+    });
+    tickCodes.concat(tickCodes).forEach(function (x) {
+      var item = el("span", "tk");
+      item.appendChild(el("s", "tk-code", x.t));
+      item.appendChild(el("span", "tk-k", KURZ[x.t]));
+      tickerEl.appendChild(item);
+    });
+    var tickerBox = tickerEl.parentElement;
+    var tickBtn = $("#tickerBtn");
+    var tickReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    /* Gleichmäßiges Tempo, egal wie viele Codes im Band stehen. */
+    var setSpeed = function () {
+      var half = tickerEl.scrollWidth / 2;
+      if (half > 0) tickerEl.style.animationDuration = Math.round(half / 60) + "s";
+    };
+    if (!tickReduce) {
+      setSpeed();
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(setSpeed);
+    }
+    /* Anhalten per Knopf, damit auch die Tastatur das Band stoppen kann. */
+    if (tickBtn && !tickReduce) {
+      tickBtn.hidden = false;
+      tickBtn.addEventListener("click", function () {
+        var paused = tickerBox.classList.toggle("is-paused");
+        tickBtn.setAttribute("aria-pressed", String(paused));
+        tickBtn.textContent = paused ? "Laufband weiter" : "Laufband anhalten";
+      });
+    }
+  }
 
   /* ---------------------------------------------------------
      6 — KOPFLEISTE

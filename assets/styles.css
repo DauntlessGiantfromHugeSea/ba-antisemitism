@@ -395,28 +395,50 @@ mark::after, .x::after {
   line-height: 1.45; max-width: 18ch; padding-bottom: .25rem;
 }
 
-/* ---------- Laufband ---------- */
+/* ---------- Laufband: gestrichene Codes auf dunkler Fläche ----------
+   Code in Papier (13,52 : 1), Strich in Signalrot (3,31 : 1, Grafik),
+   Bedeutung in #B8B0A2 (7,21 : 1). */
 
-.ticker {
-  background: var(--surface); color: var(--ink);
-  border-block: 1px solid var(--line);
-  overflow: hidden; padding-block: clamp(.9rem, 2vw, 1.4rem);
+.ticker-box { position: relative; background: var(--dark); color: var(--on-dark); }
+html:not(.js) .ticker-box { display: none; }
+.ticker { overflow: hidden; padding-block: clamp(1rem, 2.2vw, 1.6rem) 2.25rem; }
+.ticker-track { display: flex; align-items: center; width: max-content; animation: roll 400s linear infinite; }
+.ticker:hover .ticker-track, .ticker-box.is-paused .ticker-track { animation-play-state: paused; }
+.tk {
+  display: inline-flex; align-items: center; gap: clamp(.6rem, 1.2vw, 1rem);
+  margin-inline: clamp(1rem, 2.2vw, 1.75rem); white-space: nowrap;
 }
-.ticker-track { display: flex; width: max-content; animation: roll 140s linear infinite; }
-.ticker:hover .ticker-track { animation-play-state: paused; }
-.ticker span {
-  position: relative;
+.tk::after {
+  content: ""; width: .55rem; height: .55rem; background: var(--red);
+  margin-left: clamp(1rem, 2.2vw, 1.75rem); flex: none;
+}
+.tk-code {
   font-family: var(--display); font-weight: 900; font-stretch: 66%;
   font-size: clamp(1.75rem, 4.2vw, 3.5rem); line-height: 1;
-  text-transform: uppercase; letter-spacing: -.005em;
-  margin-inline: clamp(.9rem, 2vw, 1.6rem); white-space: nowrap;
+  text-transform: uppercase; letter-spacing: -.005em; color: var(--on-dark);
+  text-decoration: line-through; text-decoration-color: var(--red);
+  text-decoration-thickness: .13em; text-decoration-skip-ink: none;
 }
-.ticker small {
-  font-family: var(--mono); font-size: .3em; font-weight: 600; letter-spacing: .06em;
-  vertical-align: top; margin-right: .5em; color: var(--ink-2);
+.tk-k {
+  font-family: var(--mono); font-size: .6875rem; font-weight: 500; line-height: 1.35;
+  letter-spacing: .01em; color: var(--on-dark-2);
+  white-space: normal; width: max-content; max-width: 24ch;
 }
+.ticker-btn {
+  position: absolute; right: var(--pad); bottom: .35rem;
+  font-family: var(--mono); font-size: .625rem; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--on-dark); background: var(--dark);
+  border: 1px solid var(--line-dk); padding: .2rem .5rem; cursor: pointer;
+}
+.ticker-btn:hover { border-color: var(--on-dark); }
+.ticker-btn:focus-visible { outline-color: var(--red); }
 @keyframes roll { to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
+/* Ohne Bewegung steht das Band still und lässt sich seitlich wischen. */
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; }
+  .ticker { overflow-x: auto; scrollbar-width: none; }
+  .ticker::-webkit-scrollbar { display: none; }
+}
 
 /* =========================================================
    ABSCHNITTE
