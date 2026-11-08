@@ -482,19 +482,34 @@
     return s;
   }
 
+  /* Kachel: Knopf mit Zahl, Zeichen und Name. Das Zeichen steht rot
+     gestrichen, darunter ein Satz, welchen Code es zeigt und was er
+     bedeutet (Bedeutung aus KURZ). */
   CATEGORIES.forEach(function (cat) {
     var n = CODES.filter(function (x) { return x.c === cat.id; }).length;
+    var tile = el("div", "glyph-tile");
+    tile.dataset.cat = cat.id;
     var b = el("button", "glyph");
     b.type = "button";
     b.dataset.cat = cat.id;
     b.setAttribute("aria-pressed", "false");
-    b.appendChild(svgFor(cat));
+    var ico = el("span", "gl-ico");
+    ico.appendChild(svgFor(cat));
+    b.appendChild(ico);
     var lab = el("span", "gl-label", cat.label);
     if (cat.tool) lab.appendChild(el("small", "gl-tag", "Werkzeug, keine Erzählung"));
     b.appendChild(lab);
     b.appendChild(el("span", "gl-n", String(n)));
     b.addEventListener("click", function () { toggleCat(cat); });
-    glyphsEl.appendChild(b);
+    tile.appendChild(b);
+    if (cat.sign && typeof KURZ !== "undefined" && KURZ[cat.sign.code]) {
+      var sign = el("p", "gl-sign");
+      sign.appendChild(document.createTextNode(cat.sign.lead + " "));
+      sign.appendChild(el("s", null, cat.sign.code));
+      sign.appendChild(document.createTextNode(". " + KURZ[cat.sign.code]));
+      tile.appendChild(sign);
+    }
+    glyphsEl.appendChild(tile);
   });
 
   function toggleCat(cat) {
@@ -503,6 +518,9 @@
 
     $$(".glyph", glyphsEl).forEach(function (g) {
       g.setAttribute("aria-pressed", String(g.dataset.cat === openCat));
+    });
+    $$(".glyph-tile", glyphsEl).forEach(function (t) {
+      t.classList.toggle("is-on", t.dataset.cat === openCat);
     });
 
     drillEl.innerHTML = "";

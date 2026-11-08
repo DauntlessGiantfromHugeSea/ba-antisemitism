@@ -11,27 +11,39 @@
    ========================================================= */
 
 /* Jedes Narrativ bekommt ein Zeichen — abgeleitet aus dem
-   Bildrepertoire, das es tatsächlich benutzt. */
+   Bildrepertoire, das es tatsächlich benutzt.
+   Seit dem 07.11.2026 (abends) stehen die Zeichen wieder auf den Kacheln,
+   rot gestrichen und mit einem Satz dazu. sign sagt, welchen Code das
+   Zeichen zeigt (laut BA – Briefing Kategorie-Icons), die Bedeutung kommt
+   aus KURZ. Die Münze ist laut Briefing selbst kein Code, steht aber nah
+   am Code „Schekel“. */
 const CATEGORIES = [
   { id: "geld", label: "Geldmacht", claim: "„Sie kontrollieren das Geld.“", catSrc: "BfV Kap. 2.1 · AAS S. 10 f.",
+    sign: { lead: "Das Zeichen zeigt eine Münze mit Währungszeichen, nah am Code", code: "Schekel" },
     icon: '<circle cx="32" cy="32" r="13"/><path d="M32 14v36M24 22h13a5 5 0 0 1 0 10H27a5 5 0 0 0 0 10h13"/>' },
 
   { id: "welt", label: "Welt\u00ADverschwörung", claim: "„Sie ziehen die Fäden.“", catSrc: "BfV Kap. 2.2 · REG S. 30–39",
+    sign: { lead: "Das Zeichen zeigt den Code", code: "Puppenspieler / Marionette" },
     icon: '<path d="M10 12h44M22 12v10M42 12v10M32 12v8"/><path d="M32 20a6 6 0 1 1 0 12 6 6 0 0 1 0-12z"/><path d="M32 32v10M32 42l-9 12M32 42l9 12M22 22l-6 10M42 22l6 10"/>' },
 
   { id: "bio", label: "Krankheit & Blut", claim: "„Sie vergiften uns.“", catSrc: "BfV Kap. 2.3 · REG S. 40–45",
+    sign: { lead: "Das Zeichen zeigt den Code", code: "Das allsehende Auge" },
     icon: '<path d="M4 32s11-15 28-15 28 15 28 15-11 15-28 15S4 32 4 32z"/><circle cx="32" cy="32" r="8"/><circle cx="32" cy="32" r="2.5" fill="currentColor"/>' },
 
   { id: "tier", label: "Ent\u00ADmenschlichung", claim: "„Sie sind keine Menschen.“", catSrc: "BfV Kap. 2.4 · bpb, Tiermetaphern",
+    sign: { lead: "Das Zeichen zeigt den Code", code: "Krake" },
     icon: '<path d="M32 8c9 0 15 7 15 15v6c0 3 2 4 4 5"/><path d="M32 8c-9 0-15 7-15 15v6c0-3-2 4-4 5"/><circle cx="26" cy="22" r="2.5" fill="currentColor"/><circle cx="38" cy="22" r="2.5" fill="currentColor"/><path d="M17 30c-4 6-9 10-13 12M22 33c-3 8-6 14-10 18M32 34c0 9-1 16-2 22M42 33c3 8 6 14 10 18M47 30c4 6 9 10 13 12"/>' },
 
   { id: "schuld", label: "Schuldabwehr", claim: "„Schluss damit.“", catSrc: "BfV Kap. 2.5 · AAS S. 30 f.",
+    sign: { lead: "Das Zeichen zeigt den Code", code: "Schlussstrich" },
     icon: '<path d="M12 20h40M12 30h28M12 40h34"/><path d="M6 52h52" stroke-width="7"/>' },
 
   { id: "israel", label: "Israelbezogen", claim: "„Der Staat ist das Böse.“", catSrc: "BfV Kap. 2.6 · REG S. 64–74",
+    sign: { lead: "Das Zeichen zeigt den Code", code: "Rotes Dreieck" },
     icon: '<path d="M32 52 8 12h48L32 52z"/>' },
 
   { id: "zeichen", label: "Zeichen & Zahlen", tool: true, claim: "„Wer’s weiß, weiß es.“", catSrc: "BfV S. 71 f.",
+    sign: { lead: "Das Zeichen zeigt den Code", code: "(((Echo)))" },
     icon: '<path d="M26 10C16 18 12 25 12 32s4 14 14 22M34 10c10 8 14 15 14 22s-4 14-14 22"/><path d="M20 14c-6 6-9 12-9 18s3 12 9 18M44 14c6 6 9 12 9 18s-3 12-9 18"/>' }
 ];
 
