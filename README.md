@@ -25,10 +25,11 @@ Gestalterische Leitidee: *Mechanismen entlarven, nicht Codes feiern.*
 
 | # | Abschnitt | Was passiert |
 |---|-----------|--------------|
+| – | **Kopf** | Schlagzeile, dann ein Laufband mit gestrichenen Codes und ihrer Kurzbedeutung, die Code-Wand (je Werkzeug ein Code, riesig und rot gestrichen) und die Codes-Übersicht aus sechs Formen und sechs Werkzeugen mit allen Einträgen als antippbare, gestrichene Wörter. |
 | 01 | **Scan** | Vier konstruierte Posts im Karussell, je mit Marker-Sweep — zusammen 19 nummerierte Codes mit Sprechblase und Gegenrede. |
 | 02 | **Test** | Acht Aussagen, drei Antwortoptionen. Die dritte — *„Kommt auf den Kontext an“* — ist keine Ausrede, sondern oft die fachlich richtige Antwort. |
-| 03 | **Codes** | Sieben Kacheln (sechs Erzählungen, ein Werkzeugfeld), Drill-down zu 114 Einträgen. Davor der Hinweis, dass Antisemitismus ein Brückennarrativ ist. |
-| 04 | **Werkzeuge** | Sechs Werkzeuge der Umwegkommunikation, dann die vier Wirkebenen als Grafik, danach drei belegte Zahlen zur Verbreitung. |
+| 03 | **Codes** | Sieben Kacheln (sechs Erzählungen, ein Werkzeugfeld) mit rot gestrichenem Zeichen und einem Satz dazu, Drill-down zu 114 Einträgen. Davor der Hinweis, dass Antisemitismus ein Brückennarrativ ist. |
+| 04 | **Werkzeuge** | Sechs Werkzeuge der Umwegkommunikation, jedes mit gestrichenen Beispielen samt Bedeutung, dann die vier Wirkebenen als Grafik, danach drei belegte Zahlen zur Verbreitung auf rotem Band. |
 | 05 | **Fragen** | Sechs typische Einwände mit Antwort aus der Fachliteratur. |
 | 06 | **Was tun** | Fünf Handlungsschritte als Ablaufgrafik. |
 | 07 | **Melden** | BfV-Hinweistelefon und RIAS-Meldestelle. |
@@ -42,19 +43,28 @@ Seite neutral und infografisch. Collagen, KI-Bilder, Risskanten und
 Papiertexturen sind entfernt. Die Bilddateien liegen weiter in `assets/img/`
 als Nachweis, siehe `assets/img/BILDER.md`.
 
-- **Palette A** als CSS-Variablen: Papier `#F3EFE7`, Fläche `#E7E1D6`,
-  Schrift `#26241F`, Schrift 2 `#5C5850`, Akzent `#C0392B`, Linie `#A9A398`.
-  Das Rot gehört dem Strich, mit dem Codes gestrichen werden. Keine roten
-  und keine schwarzen Flächen. Die Urteilsfarben im Test (grün, grau, rot)
-  bleiben, weil sie dort Bedeutung tragen.
+Im zweiten Durchgang am selben Abend kamen das Signalrot und die einzelnen
+Codes zurück. Die Seite ist jetzt plakativ und infografisch.
+
+- **Palette** als CSS-Variablen: Papier `#F3EFE7`, Fläche `#E7E1D6`,
+  Schrift `#26241F`, Schrift 2 `#5C5850`, Linie `#A9A398`, dazu Signalrot
+  `#E1251B` für Flächen, Striche und große Schrift und `#B5140B` für kleine
+  rote Schrift auf Hell. Rote Flächen: Hauptknöpfe, Abschnittsnummern,
+  Zahlenband, Melden, aktive Kachel. Dunkle Flächen: Laufband und Fuß.
+  Alle Kontraste stehen im Kommentar bei den Farbvariablen in
+  `assets/styles.css`. Die Urteilsfarben im Test (grün, grau, rot) bleiben,
+  weil sie dort Bedeutung tragen.
 - **Typografie:** Archivo (variabel) kondensiert und extrafett für
   Überschriften, normal für Fließtext, JetBrains Mono für Labels und Quellen.
-- **Infografiken statt Bilder:** Im Kopf die Codes-Übersicht als Tabelle aus
-  sechs Formen und sechs Werkzeugen, im Abschnitt Werkzeuge die vier
-  Wirkebenen, bei „Was tun“ der Ablauf. Das Laufband zeigt die Namen der
-  sechs Werkzeuge.
-- **Der Strich:** Codes stehen gestrichen und erklärt. Offen stehen sie nur
-  im Test und in den Posts vor dem Scan.
+- **Der Strich:** Jeder Code steht rot gestrichen und nie ohne Bedeutung.
+  Laufband, Code-Wand, Kacheln und Werkzeug-Beispiele nehmen die
+  Kurzbedeutung aus `KURZ` in `codes.js`, wörtlich aus dem Erklärtext des
+  Eintrags. In der Übersicht öffnet jeder gestrichene Eintrag seine
+  Erklärung im Lexikon. Offen stehen Codes nur im Test und in den Posts vor
+  dem Scan. In der Code-Wand wird ein handgezeichneter SVG-Strich beim
+  Scrollen über den Code gezogen, bei reduzierter Bewegung steht er sofort da.
+- **Infografiken statt Bilder:** Codes-Übersicht aus sechs Formen und sechs
+  Werkzeugen, die vier Wirkebenen, der Ablauf bei „Was tun“.
 - **Kein antisemitisches Bildmaterial**, keine Personen, keine jüdischen
   Symbole.
 
@@ -77,9 +87,11 @@ angefragt.
 index.html
 assets/
   styles.css    Design-Tokens und Layout
-  codes.js      Datenbasis: 114 Einträge, 7 Kacheln, Posts, Quiz, FAQ,
-                Werkzeuge, Wirkebenen, Zahlen, Handlungsschritte
-  app.js        Scan, Test, Drill-down, Übersicht, Kopfleiste, Menü, Laufband
+  codes.js      Datenbasis: 114 Einträge mit Form (f) und Werkzeug (w),
+                Formen, Werkzeuge, Kurzbedeutungen (KURZ), Code-Wand (WALL),
+                7 Kacheln, Posts, Quiz, FAQ, Wirkebenen, Zahlen, Schritte
+  app.js        Scan, Test, Drill-down, Übersicht (zählt aus codes.js),
+                Code-Wand, Kopfleiste, Menü, Laufband
   fonts/        Archivo und JetBrains Mono (variabel, WOFF2, SIL OFL 1.1)
   img/          frühere Collagen, nicht mehr eingebunden (BILDER.md)
 ```
@@ -103,6 +115,10 @@ Vollbild-Menü), kein horizontaler Scroll von 320 bis 2560 px.
 Alle 114 Einträge stammen aus Fachpublikationen; die Zuordnung steht an jedem
 Eintrag. Die sechs Einträge vom 07.11.2026 aus dem TikTok-Bericht der
 Bildungsstätte Anne Frank haben jeweils eine zweite, unabhängige Quelle.
+Die Codes-Übersicht zählt 113 Einträge, weil die Parole „From the river to
+the sea“ in der Stufe „Kommt auf den Kontext an“ steht und nicht als Code
+gilt. Form und Werkzeug je Eintrag folgen der Zuordnung vom 07.11.2026
+(Entwurf, Frage 5 zu Kofferwörtern und Akronymen noch offen).
 
 | Kürzel | Quelle |
 |--------|--------|
