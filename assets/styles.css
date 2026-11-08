@@ -479,7 +479,7 @@ html:not(.js) .ticker-box { display: none; }
   margin: 0; max-width: none;
   font-family: var(--display); font-weight: 900; font-stretch: 64%;
   text-transform: uppercase; letter-spacing: -.02em; line-height: .86;
-  font-size: clamp(3rem, 14vw, 13.5rem); color: var(--ink);
+  font-size: clamp(3rem, 19vw, 13.5rem); color: var(--ink);
   white-space: nowrap;
 }
 .wall-code s { position: relative; display: inline-block; text-decoration: none; padding-inline: .02em; }
