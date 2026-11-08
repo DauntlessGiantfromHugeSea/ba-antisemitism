@@ -662,22 +662,22 @@ const QUIZ = [
 const TOOLS = [
   { n: "Werkzeug 1", h: "Vage Anspielung",
     p: "Andeutungen, die man nur mit Vorwissen versteht. Wörtlich ergeben sie oft keinen Sinn. Aber sie machen Stimmung und säen Verdacht.",
-    ex: "„Masken fallen lassen“" },
+    codes: ["Psychologischer Völkermord", "Schuldkult"] },
   { n: "Werkzeug 2", h: "Personalisierung",
     p: "Ein Name steht für die ganze Gruppe. So wirkt es, als gäbe es eine „jüdische Macht“. Ständig kommen neue Namen dazu.",
-    ex: "Rothschild · Soros · Fink" },
+    codes: ["Rothschild", "George Soros", "Larry Fink"] },
   { n: "Werkzeug 3", h: "Begriffsersetzung",
     p: "Ein belastetes Wort wird durch ein harmlos klingendes ersetzt. Der Satz wirkt unauffällig. Wer widerspricht, bekommt zu hören, er interpretiere zu viel hinein.",
-    ex: "„Globalisten“ · „Zionisten“" },
+    codes: ["Globalisten", "Hochfinanz"] },
   { n: "Werkzeug 4", h: "Abwertendes Bild",
     p: "Tier- und Krankheitsbilder sprechen Menschen das Menschsein ab und machen Angst. Sie legen nahe, man müsse sie „beseitigen“.",
-    ex: "Krake · Parasit · Krebs" },
+    codes: ["Krake", "Parasiten / Flöhe / Ungeziefer", "Pest / Geschwür / Krebs"] },
   { n: "Werkzeug 5", h: "Zahlencode",
     p: "Zahlen lösen erst mal keine Bilder im Kopf aus. Genau das macht sie wirksam: Für Außenstehende bedeuten sie nichts, für Eingeweihte sind sie ein Erkennungszeichen.",
-    ex: "109/110 · 271k" },
+    codes: ["109 / 110", "271k"] },
   { n: "Werkzeug 6", h: "Optisches Zeichen",
     p: "Verzerrte Körpermerkmale oder veränderte Schrift. Sie tarnen die Botschaft und markieren zugleich. Gleichgesinnte erkennen sich daran.",
-    ex: "(((...))) · JDN LGN" }
+    codes: ["(((Echo)))", "JDN LGN"] }
 ];
 
 /* Die vier Wirkebenen (BfV S. 73). Seit dem Umbau vom 07.11.2026 als

@@ -756,11 +756,16 @@
     d.appendChild(el("span", "n", m.n));
     d.appendChild(el("h3", null, m.h));
     d.appendChild(el("p", null, m.p));
-    /* Beispiele sind Codes und stehen deshalb gestrichen. */
-    var ex = el("p", "ex");
-    m.ex.split(" · ").forEach(function (w, i) {
-      if (i) ex.appendChild(document.createTextNode(" · "));
-      ex.appendChild(el("span", "strike", w));
+    /* Beispiele sind Einträge aus CODES. Sie stehen gestrichen und immer
+       mit ihrer Kurzbedeutung aus KURZ, damit kein Code ohne Erklärung
+       bleibt (so auch „109 / 110“ und „271k“ bei Werkzeug 5). */
+    var ex = el("ul", "ex");
+    (m.codes || []).forEach(function (t) {
+      if (typeof KURZ === "undefined" || !KURZ[t]) return;
+      var li = el("li");
+      li.appendChild(el("s", "strike", t));
+      li.appendChild(el("span", "ex-k", KURZ[t]));
+      ex.appendChild(li);
     });
     d.appendChild(ex);
     d.appendChild(el("span", "src", "Quelle: BfV, S. 71 f."));

@@ -961,9 +961,18 @@ html:not(.js) .ticker-box { display: none; }
   line-height: .88; margin: 0 0 1rem;
 }
 .mech-item p { margin: 0; color: var(--ink-2); max-width: 44ch; }
+/* Beispiele: Code groß und rot gestrichen, Bedeutung klein daneben. */
 .mech-item .ex {
-  margin-top: .9rem; font-family: var(--mono); font-size: .8125rem; color: var(--ink);
+  list-style: none; margin: 1.1rem 0 0; padding: 0;
+  display: grid; gap: .7rem; border-top: 1px solid var(--line-soft); padding-top: .9rem;
 }
+.mech-item .ex li { display: grid; gap: .15rem; }
+.mech-item .ex .strike {
+  font-family: var(--display); font-weight: 900; font-stretch: 70%;
+  text-transform: uppercase; font-size: clamp(1.25rem, 1.8vw, 1.5rem); line-height: 1.05;
+  color: var(--ink); text-decoration-thickness: .13em; text-decoration-skip-ink: none;
+}
+.mech-item .ex-k { font-size: .875rem; line-height: 1.45; color: var(--ink-2); max-width: 46ch; }
 
 .stil { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
 .stil-h { margin: clamp(2rem, 4vw, 3rem) 0 0; }
