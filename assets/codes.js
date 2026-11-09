@@ -339,7 +339,7 @@ const CODES = [
     d: "Formel von Heinrich von Treitschke (1879), später Kopfzeile des NS-Hetzblatts „Der Stürmer“. Bis heute in Abwandlungen im Umlauf." }
 ];
 
-/* Kurzbedeutungen für Laufband, Code-Wand, Kacheln und Werkzeuge
+/* Kurzbedeutungen für Laufband, Kacheln und Werkzeuge
    (07.11.2026, abends). Jede Kurzbedeutung ist wörtlich aus dem Feld d
    des Eintrags genommen, höchstens gekürzt, mit großem Anfangsbuchstaben
    und Punkt am Ende. Es gibt keine neue Aussage und keinen neuen Code.
@@ -399,11 +399,6 @@ const KURZ = {
   "109 / 110": "Behauptet, Jüdinnen und Juden seien aus 109 Ländern vertrieben worden. Die 110 ist eine offene Aufforderung, das aktuelle Wohnland folgen zu lassen.",
   "Hakennase": "Macht zugeschriebene Minderwertigkeit körperlich sichtbar."
 };
-
-/* Code-Wand (07.11.2026, abends): je Werkzeug ein Eintrag, in der Reihenfolge
-   von WERKZEUGE. Gewählt sind Codes, die das BfV als Beispiel des Werkzeugs
-   nennt (S. 71 f.) oder die schon im Kopf oder bei den Werkzeugen stehen. */
-const WALL = ["Schuldkult", "Rothschild", "Globalisten", "Krake", "109 / 110", "(((Echo)))"];
 
 /* Der annotierte Beispiel-Post.
    Konstruiert aus Einzelcodes der Quellen — kein realer Beitrag. */
