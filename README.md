@@ -25,10 +25,10 @@ Gestalterische Leitidee: *Mechanismen entlarven, nicht Codes feiern.*
 
 | # | Abschnitt | Was passiert |
 |---|-----------|--------------|
-| – | **Kopf** | Schlagzeile, dann ein Laufband mit gestrichenen Codes und ihrer Kurzbedeutung, die Code-Wand (je Werkzeug ein Code, riesig und rot gestrichen) und die Codes-Übersicht aus sechs Formen und sechs Werkzeugen mit allen Einträgen als antippbare, gestrichene Wörter. |
+| – | **Kopf** | Schlagzeile, dann ein Laufband mit 47 gestrichenen Codes und ihrer Kurzbedeutung und die Codes-Übersicht aus sechs Formen und sechs Werkzeugen mit allen Einträgen als antippbare, gestrichene Wörter. |
 | 01 | **Scan** | Vier konstruierte Posts im Karussell, je mit Marker-Sweep — zusammen 19 nummerierte Codes mit Sprechblase und Gegenrede. |
 | 02 | **Test** | Acht Aussagen, drei Antwortoptionen. Die dritte — *„Kommt auf den Kontext an“* — ist keine Ausrede, sondern oft die fachlich richtige Antwort. |
-| 03 | **Codes** | Sieben Kacheln (sechs Erzählungen, ein Werkzeugfeld) mit rot gestrichenem Zeichen und einem Satz dazu, Drill-down zu 114 Einträgen. Davor der Hinweis, dass Antisemitismus ein Brückennarrativ ist. |
+| 03 | **Codes** | Sieben Kacheln (sechs Erzählungen, ein Werkzeugfeld) mit rot gestrichenem Zeichen und einem Satz dazu. Eine Kachel öffnet ihre Codes als Karten, Antippen klappt Bedeutung und Quelle auf (114 Einträge). Davor der Hinweis, dass Antisemitismus ein Brückennarrativ ist. |
 | 04 | **Werkzeuge** | Sechs Werkzeuge der Umwegkommunikation, jedes mit gestrichenen Beispielen samt Bedeutung, dann die vier Wirkebenen als Grafik, danach drei belegte Zahlen zur Verbreitung auf rotem Band. |
 | 05 | **Fragen** | Sechs typische Einwände mit Antwort aus der Fachliteratur. |
 | 06 | **Was tun** | Fünf Handlungsschritte als Ablaufgrafik. |
@@ -44,7 +44,9 @@ Papiertexturen sind entfernt. Die Bilddateien liegen weiter in `assets/img/`
 als Nachweis, siehe `assets/img/BILDER.md`.
 
 Im zweiten Durchgang am selben Abend kamen das Signalrot und die einzelnen
-Codes zurück. Die Seite ist jetzt plakativ und infografisch.
+Codes zurück. Die Seite ist jetzt plakativ und infografisch. Im dritten
+Durchgang am 09.11.2026 fiel die Code-Wand wieder weg, das Laufband bekam
+seinen alten Stil zurück, und die Kachel-Zeichen wurden zu Dateien.
 
 - **Palette** als CSS-Variablen: Papier `#F3EFE7`, Fläche `#E7E1D6`,
   Schrift `#26241F`, Schrift 2 `#5C5850`, Linie `#A9A398`, dazu Signalrot
@@ -57,12 +59,12 @@ Codes zurück. Die Seite ist jetzt plakativ und infografisch.
 - **Typografie:** Archivo (variabel) kondensiert und extrafett für
   Überschriften, normal für Fließtext, JetBrains Mono für Labels und Quellen.
 - **Der Strich:** Jeder Code steht rot gestrichen und nie ohne Bedeutung.
-  Laufband, Code-Wand, Kacheln und Werkzeug-Beispiele nehmen die
-  Kurzbedeutung aus `KURZ` in `codes.js`, wörtlich aus dem Erklärtext des
-  Eintrags. In der Übersicht öffnet jeder gestrichene Eintrag seine
-  Erklärung im Lexikon. Offen stehen Codes nur im Test und in den Posts vor
-  dem Scan. In der Code-Wand wird ein handgezeichneter SVG-Strich beim
-  Scrollen über den Code gezogen, bei reduzierter Bewegung steht er sofort da.
+  Laufband, Kacheln und Werkzeug-Beispiele nehmen die Kurzbedeutung aus
+  `KURZ` in `codes.js`, wörtlich aus dem Erklärtext des Eintrags. Im
+  Laufband ist der Strich ein schräger roter Balken wie im alten Stand, die
+  Bedeutung steht klein darunter. In der Übersicht öffnet jeder gestrichene
+  Eintrag seine Karte im Lexikon aufgeklappt. Offen stehen Codes nur im
+  Test und in den Posts vor dem Scan.
 - **Infografiken statt Bilder:** Codes-Übersicht aus sechs Formen und sechs
   Werkzeugen, die vier Wirkebenen, der Ablauf bei „Was tun“.
 - **Kein antisemitisches Bildmaterial**, keine Personen, keine jüdischen
@@ -88,13 +90,32 @@ index.html
 assets/
   styles.css    Design-Tokens und Layout
   codes.js      Datenbasis: 114 Einträge mit Form (f) und Werkzeug (w),
-                Formen, Werkzeuge, Kurzbedeutungen (KURZ), Code-Wand (WALL),
-                7 Kacheln, Posts, Quiz, FAQ, Wirkebenen, Zahlen, Schritte
+                Formen, Werkzeuge, Kurzbedeutungen (KURZ), 7 Kacheln,
+                Posts, Quiz, FAQ, Wirkebenen, Zahlen, Schritte
   app.js        Scan, Test, Drill-down, Übersicht (zählt aus codes.js),
-                Code-Wand, Kopfleiste, Menü, Laufband
+                Kopfleiste, Menü, Laufband
+  icons/        Zeichen der Kacheln, eine SVG-Datei je Kachel
   fonts/        Archivo und JetBrains Mono (variabel, WOFF2, SIL OFL 1.1)
   img/          frühere Collagen, nicht mehr eingebunden (BILDER.md)
 ```
+
+### Eigene Zeichen für die Kacheln
+
+Jede Kachel kann ein Zeichen als SVG-Datei bekommen.
+
+- Datei: `assets/icons/<id>.svg`, wobei `<id>` die id der Kachel in
+  `CATEGORIES` ist: `geld`, `welt`, `bio`, `tier`, `schuld`, `israel`,
+  `zeichen`.
+- Format: SVG mit `viewBox="0 0 64 64"`, Linien oder Flächen in einer
+  beliebigen deckenden Farbe (zum Beispiel Schwarz), Hintergrund
+  transparent. Die Datei dient als Maske, die Seite färbt das Zeichen in
+  der Schriftfarbe der Kachel, auf der aktiven roten Kachel also weiß.
+- Einschalten: in `codes.js` bei der Kachel `icon: "<id>.svg"` setzen.
+  `icon: null` heißt Kachel ohne Zeichen, dann fragt die Seite keine Datei
+  an. Im Moment hat `israel` kein Zeichen.
+- Zeigt das neue Zeichen keinen Code, bei der Kachel das Feld `sign`
+  löschen. Dann entfallen der rote Strich über dem Zeichen und der Satz
+  darunter.
 
 Lokal ansehen:
 
