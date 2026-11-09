@@ -472,9 +472,16 @@
   /* Zeichen einer Kachel aus assets/icons/<icon>. Die Datei dient als
      Maske, die Fläche dahinter hat die Schriftfarbe der Kachel. So wird
      das Zeichen auf der roten, aktiven Kachel weiß. Ohne icon bleibt die
-     Kachel ohne Zeichen, und es wird keine Datei angefragt. */
+     Kachel ohne Zeichen, und es wird keine Datei angefragt.
+     Roter Strich und Satz gehören nur zu den alten Zeichen, die selbst
+     einen Code zeigen. Sie heißen alt-<id>.svg. Ein neues, neutrales
+     Zeichen <id>.svg steht immer ohne Strich und ohne Satz, auch wenn
+     bei der Kachel noch sign eingetragen ist. */
+  function isOldIcon(cat) {
+    return !!(cat.icon && /^alt-/.test(cat.icon) && cat.sign);
+  }
   function iconFor(cat) {
-    var ico = el("span", "gl-ico" + (cat.sign ? " is-code" : ""));
+    var ico = el("span", "gl-ico" + (isOldIcon(cat) ? " is-code" : ""));
     ico.setAttribute("aria-hidden", "true");
     var img = el("span", "gl-ico-img");
     var url = "url(\"assets/icons/" + cat.icon + "\")";
@@ -503,8 +510,9 @@
     b.appendChild(el("span", "gl-n", String(n)));
     b.addEventListener("click", function () { toggleCat(cat); });
     tile.appendChild(b);
-    /* Der Satz erklärt das gezeigte Zeichen, ohne Zeichen entfällt er. */
-    if (cat.icon && cat.sign && typeof KURZ !== "undefined" && KURZ[cat.sign.code]) {
+    /* Der Satz erklärt ein altes Zeichen, das einen Code zeigt. Ohne
+       Zeichen oder mit neuem, neutralem Zeichen entfällt er. */
+    if (isOldIcon(cat) && typeof KURZ !== "undefined" && KURZ[cat.sign.code]) {
       var sign = el("p", "gl-sign");
       sign.appendChild(document.createTextNode(cat.sign.lead + " "));
       sign.appendChild(el("s", null, cat.sign.code));

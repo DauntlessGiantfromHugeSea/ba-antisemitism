@@ -113,9 +113,14 @@ Jede Kachel kann ein Zeichen als SVG-Datei bekommen.
 - Einschalten: in `codes.js` bei der Kachel `icon: "<id>.svg"` setzen.
   `icon: null` heißt Kachel ohne Zeichen, dann fragt die Seite keine Datei
   an. Im Moment hat `israel` kein Zeichen.
-- Zeigt das neue Zeichen keinen Code, bei der Kachel das Feld `sign`
-  löschen. Dann entfallen der rote Strich über dem Zeichen und der Satz
-  darunter.
+- Alte und neue Zeichen: Die bisherigen Zeichen zeigen selbst Codes und
+  heißen `alt-<id>.svg`. Nur sie stehen mit rotem Strich und mit dem Satz
+  zum Code aus `sign`. Ein eigenes Zeichen `<id>.svg` steht immer ohne
+  Strich und ohne Satz, auch wenn `sign` noch eingetragen ist. Bis Dustyn
+  entscheidet, bleiben die alten Zeichen gestrichen stehen, nur das
+  Dreieck bei `israel` ist ausgeblendet.
+- Zeichen für die sechs Werkzeuge heißen später `werkzeug-<id>.svg`, damit
+  sie nicht mit der Kachel `zeichen` kollidieren.
 
 Lokal ansehen:
 

@@ -21,28 +21,32 @@
    (viewBox 0 0 64 64, Linien in Schwarz, app.js färbt sie per Maske ein).
    icon nennt die Datei, icon: null heißt Kachel ohne Zeichen. Das Dreieck
    der Kachel „Israelbezogen“ ist ausgeblendet (Entscheidung 09.11.2026).
-   Wer ein eigenes Zeichen ablegt, das keinen Code zeigt, löscht bei der
-   Kachel das Feld sign. Dann entfallen roter Strich und Satz. */
+   Die alten Zeichen zeigen selbst Codes und heißen alt-<id>.svg. Nur sie
+   stehen rot gestrichen und mit dem Satz aus sign. Dustyns eigene
+   Zeichen heißen <id>.svg (ids: geld, welt, bio, tier, schuld, israel,
+   zeichen) und stehen immer ohne Strich und Satz. Zum Einschalten
+   icon auf "<id>.svg" setzen. Zeichen für die Werkzeuge heißen später
+   werkzeug-<id>.svg, damit sie nicht mit der Kachel „zeichen“ kollidieren. */
 const CATEGORIES = [
   { id: "geld", label: "Geldmacht", claim: "„Sie kontrollieren das Geld.“", catSrc: "BfV Kap. 2.1 · AAS S. 10 f.",
     sign: { lead: "Das Zeichen zeigt eine Münze mit Währungszeichen, nah am Code", code: "Schekel" },
-    icon: "geld.svg" },
+    icon: "alt-geld.svg" },
 
   { id: "welt", label: "Welt\u00ADverschwörung", claim: "„Sie ziehen die Fäden.“", catSrc: "BfV Kap. 2.2 · REG S. 30–39",
     sign: { lead: "Das Zeichen zeigt den Code", code: "Puppenspieler / Marionette" },
-    icon: "welt.svg" },
+    icon: "alt-welt.svg" },
 
   { id: "bio", label: "Krankheit & Blut", claim: "„Sie vergiften uns.“", catSrc: "BfV Kap. 2.3 · REG S. 40–45",
     sign: { lead: "Das Zeichen zeigt den Code", code: "Das allsehende Auge" },
-    icon: "bio.svg" },
+    icon: "alt-bio.svg" },
 
   { id: "tier", label: "Ent\u00ADmenschlichung", claim: "„Sie sind keine Menschen.“", catSrc: "BfV Kap. 2.4 · bpb, Tiermetaphern",
     sign: { lead: "Das Zeichen zeigt den Code", code: "Krake" },
-    icon: "tier.svg" },
+    icon: "alt-tier.svg" },
 
   { id: "schuld", label: "Schuldabwehr", claim: "„Schluss damit.“", catSrc: "BfV Kap. 2.5 · AAS S. 30 f.",
     sign: { lead: "Das Zeichen zeigt den Code", code: "Schlussstrich" },
-    icon: "schuld.svg" },
+    icon: "alt-schuld.svg" },
 
   { id: "israel", label: "Israelbezogen", claim: "„Der Staat ist das Böse.“", catSrc: "BfV Kap. 2.6 · REG S. 64–74",
     sign: { lead: "Das Zeichen zeigt den Code", code: "Rotes Dreieck" },
@@ -50,7 +54,7 @@ const CATEGORIES = [
 
   { id: "zeichen", label: "Zeichen & Zahlen", tool: true, claim: "„Wer’s weiß, weiß es.“", catSrc: "BfV S. 71 f.",
     sign: { lead: "Das Zeichen zeigt den Code", code: "(((Echo)))" },
-    icon: "zeichen.svg" }
+    icon: "alt-zeichen.svg" }
 ];
 
 /* Formen und Werkzeuge für die Codes-Übersicht im Kopf.
