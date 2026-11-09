@@ -469,17 +469,19 @@
   var drillEl  = $("#drill");
   var openCat  = null;
 
-  function svgFor(cat) {
-    var s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    s.setAttribute("viewBox", "0 0 64 64");
-    s.setAttribute("fill", "none");
-    s.setAttribute("stroke", "currentColor");
-    s.setAttribute("stroke-width", "3");
-    s.setAttribute("stroke-linecap", "square");
-    s.setAttribute("stroke-linejoin", "miter");
-    s.setAttribute("aria-hidden", "true");
-    s.innerHTML = cat.icon;
-    return s;
+  /* Zeichen einer Kachel aus assets/icons/<icon>. Die Datei dient als
+     Maske, die Fläche dahinter hat die Schriftfarbe der Kachel. So wird
+     das Zeichen auf der roten, aktiven Kachel weiß. Ohne icon bleibt die
+     Kachel ohne Zeichen, und es wird keine Datei angefragt. */
+  function iconFor(cat) {
+    var ico = el("span", "gl-ico" + (cat.sign ? " is-code" : ""));
+    ico.setAttribute("aria-hidden", "true");
+    var img = el("span", "gl-ico-img");
+    var url = "url(\"assets/icons/" + cat.icon + "\")";
+    img.style.webkitMaskImage = url;
+    img.style.maskImage = url;
+    ico.appendChild(img);
+    return ico;
   }
 
   /* Kachel: Knopf mit Zahl, Zeichen und Name. Das Zeichen steht rot
@@ -493,16 +495,16 @@
     b.type = "button";
     b.dataset.cat = cat.id;
     b.setAttribute("aria-pressed", "false");
-    var ico = el("span", "gl-ico");
-    ico.appendChild(svgFor(cat));
-    b.appendChild(ico);
+    if (cat.icon) b.appendChild(iconFor(cat));
+    else b.classList.add("no-ico");
     var lab = el("span", "gl-label", cat.label);
     if (cat.tool) lab.appendChild(el("small", "gl-tag", "Werkzeug, keine Erzählung"));
     b.appendChild(lab);
     b.appendChild(el("span", "gl-n", String(n)));
     b.addEventListener("click", function () { toggleCat(cat); });
     tile.appendChild(b);
-    if (cat.sign && typeof KURZ !== "undefined" && KURZ[cat.sign.code]) {
+    /* Der Satz erklärt das gezeigte Zeichen, ohne Zeichen entfällt er. */
+    if (cat.icon && cat.sign && typeof KURZ !== "undefined" && KURZ[cat.sign.code]) {
       var sign = el("p", "gl-sign");
       sign.appendChild(document.createTextNode(cat.sign.lead + " "));
       sign.appendChild(el("s", null, cat.sign.code));
