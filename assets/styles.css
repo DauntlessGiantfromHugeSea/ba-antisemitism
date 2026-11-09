@@ -7,7 +7,10 @@
    Knöpfe und „Test starten“, die aktive Auswahl (Kachel, offene Karte),
    der Abschnitt Melden. Rote Schrift ist ein Akzent und bleibt klein oder
    kurz. Schrift als dunkle Fläche gibt Laufband, Zahlenband und Fuß den
-   Plakatkontrast. */
+   Plakatkontrast.
+   Ausnahmen, von Dustyn am 09.11.2026 bestätigt: Die Zahlen in der
+   Codes-Übersicht und „Haltung zeigen.“ im Fuß bleiben rote Schrift,
+   obwohl dort nicht gehandelt wird. */
 
 /* ---------- Schriften (selbst gehostet, OFL) ---------- */
 
@@ -170,6 +173,9 @@ mark::after, .x::after {
   height: .11em; margin-top: -.03em; background: var(--red);
   transform: rotate(-2deg); pointer-events: none;
 }
+/* Emoji als Code: etwas Luft rechts und links, damit Strich und Wort
+   nicht aneinanderkleben. */
+mark.emo { margin-inline: .12em .2em; }
 .strike {
   text-decoration: line-through; text-decoration-color: var(--red);
   text-decoration-thickness: .11em;

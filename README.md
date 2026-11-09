@@ -53,8 +53,12 @@ die Rot-Regel kam dazu.
 - **Rot-Regel (09.11.2026):** Rot ist der Eingriff. Als Linie und Strich
   ist Rot überall erlaubt. Als Fläche steht Rot nur dort, wo gehandelt
   wird: Knöpfe und „Test starten“, aktive Kachel und offene Karte, der
-  Abschnitt Melden. Rote Schrift ist ein kurzer Akzent, etwa „Haltung
-  zeigen.“ im Fuß und die Zahlen der Übersicht.
+  Abschnitt Melden. Rote Schrift ist ein kurzer Akzent. Bestätigte
+  Ausnahmen ohne Handlung sind die Zahlen der Übersicht und „Haltung
+  zeigen.“ im Fuß, die rot bleiben.
+- **Codes im Kopf:** Der Einstiegssatz nennt zwei auf TikTok belegte Codes
+  mit zweiter Quelle, die Marionette und das Geldsack-Emoji. Beide stehen
+  gestrichen und mit ihrer Bedeutung aus `codes.js` direkt im Satz.
 - **Palette** als CSS-Variablen: Papier `#F3EFE7`, Fläche `#E7E1D6`,
   Schrift `#26241F`, Schrift 2 `#5C5850`, Linie `#A9A398`, dazu Signalrot
   `#E1251B` für Striche, Linien, Handlungsflächen und große Schrift und
