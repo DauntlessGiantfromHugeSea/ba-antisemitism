@@ -1144,43 +1144,12 @@ html:not(.js) .ticker-box { display: none; }
 .mx-0 .mx-v { font-family: var(--mono); font-size: .875rem; font-weight: 400; line-height: 1.4; color: var(--ink-2); }
 .mx-rand .mx-v { color: var(--ink); }
 
-/* Jeder Eintrag als gestrichenes Wort. Der Strich ist rot, das Wort
-   bleibt in Schriftfarbe lesbar (13,52 : 1). */
-.mx-chips {
-  list-style: none; margin: .55rem 0 0; padding: 0;
-  display: flex; flex-wrap: wrap; gap: .2rem .55rem; max-width: none;
-}
-.mx-chips li { max-width: 100%; }
-.chip {
-  background: none; border: 0; margin: 0; padding: .12rem .2rem; margin-inline: -.2rem;
-  text-align: left; cursor: pointer; text-decoration: none;
-  transition: background .15s ease, color .15s ease;
-}
-.chip s { font: inherit; color: inherit; }
-/* Antippen: Feld wird rot, Schrift weiß (4,69 : 1), der Strich dunkel. */
-.chip:hover, .chip:focus-visible { background: var(--red); color: var(--on-red); }
-.chip:hover s, .chip:focus-visible s { text-decoration-color: var(--ink); }
-.chip:focus-visible { outline-color: var(--ink); outline-offset: 1px; }
+/* Seit dem 09.11.2026 stehen in den Feldern keine Codewörter mehr, nur
+   die Zahl. Die Codes stehen mit Bedeutung in den Karten unter 03 Codes. */
 
 /* Randspalte und Randzeile leicht getönt (Schrift darauf 11,91 : 1). */
 .matrix-t td.mx-rand { background: rgba(231,225,214,.55); }
-.mx-key s {
-  font-family: var(--display); font-weight: 800; font-stretch: 70%; text-transform: uppercase;
-  text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: .17em;
-  color: var(--ink); font-size: .8125rem;
-}
 .mx-key i { display: block; width: 14px; height: 14px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
-html:not(.js) .mx-key-chip { display: none; }
-
-/* Sprung aus der Übersicht: Karte kurz markieren. */
-.card.is-hit { background: rgba(225,37,27,.08); box-shadow: inset 4px 0 0 var(--red); padding-left: .9rem; transition: background .3s, padding .3s; }
-.mx-chips s, .chip {
-  font-family: var(--display); font-weight: 800; font-stretch: 70%;
-  text-transform: uppercase; font-size: .8125rem; line-height: 1.2; letter-spacing: .005em;
-  color: var(--ink);
-  text-decoration: line-through; text-decoration-color: var(--red);
-  text-decoration-thickness: .17em; text-decoration-skip-ink: none;
-}
 
 /* Randspalten und Randzeilen vom Raster absetzen */
 .matrix-t th.mx-rand, .matrix-t td.mx-rand[data-label="offen gesagt"],
@@ -1227,8 +1196,7 @@ html:not(.js) .mx-key-chip { display: none; }
     display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.25rem;
     border-top: 2px solid var(--ink); padding: .9rem 0 1.25rem;
   }
-  /* Felder mit Einträgen über die ganze Breite, leere Felder paarweise. */
-  .matrix-t tbody td:not(.mx-0) { grid-column: 1 / -1; }
+  /* Ohne Codewörter passen alle Felder paarweise nebeneinander. */
   .matrix-t tbody tr > * { border: 0; }
   .matrix-t tbody th { grid-column: 1 / -1; padding: 0 0 .6rem; font-size: 1.375rem; }
   .matrix-t tbody td {
@@ -1242,7 +1210,6 @@ html:not(.js) .mx-key-chip { display: none; }
   .matrix-t td.mx-sum .mx-v { font-size: 1.375rem; }
   .matrix-t td .mx-v { font-size: 1.5rem; }
   .matrix-t td.mx-0 .mx-v { font-size: .875rem; }
-  .mx-chips { flex-basis: 100%; margin-top: .3rem; }
   .mx-ex { flex-basis: 100%; order: 4; margin-top: .2rem; }
   .matrix-t tbody tr.mx-ctx { border-top: 2px dashed var(--ink-2); }
   .matrix-t .mx-total th { font-size: .875rem; }

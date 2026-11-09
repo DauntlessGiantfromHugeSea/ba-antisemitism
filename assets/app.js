@@ -430,41 +430,6 @@
      3 — CODES: Glyphen-Raster mit Drill-down
      Sechs Erzählungen und ein Werkzeugfeld. Erst antippen zeigt die Codes.
      --------------------------------------------------------- */
-  /* Die Einträge einer Zelle als Liste. Jeder Code steht gestrichen auf
-     einem Knopf, der seinen Eintrag im Lexikon öffnet. Für Screenreader
-     sagt ein versteckter Zusatz, dass der Code gestrichen ist und wohin
-     der Knopf führt. */
-  function chipList(list) {
-    var ul = el("ul", "mx-chips");
-    list.forEach(function (x) {
-      var li = el("li");
-      var b = el("button", "chip");
-      b.type = "button";
-      b.appendChild(el("s", null, x.t));
-      b.appendChild(el("span", "sr-only", ", gestrichener Code, Erklärung im Lexikon öffnen"));
-      b.addEventListener("click", function () { openEntry(x); });
-      li.appendChild(b);
-      ul.appendChild(li);
-    });
-    return ul;
-  }
-
-  /* Springt zum Eintrag im Lexikon: Feld öffnen, Karte aufklappen,
-     hinscrollen und den Fokus auf die Karte setzen. */
-  function openEntry(x) {
-    var cat = CATEGORIES.filter(function (c) { return c.id === x.c; })[0];
-    if (!cat) return;
-    if (openCat !== cat.id) toggleCat(cat);
-    var card = $$(".card", drillEl).filter(function (c) { return c.dataset.t === x.t; })[0];
-    if (!card) return;
-    card.setAttribute("aria-expanded", "true");
-    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    card.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
-    try { card.focus({ preventScroll: true }); } catch (e) { card.focus(); }
-    card.classList.add("is-hit");
-    window.setTimeout(function () { card.classList.remove("is-hit"); }, 1800);
-  }
-
   var glyphsEl = $("#glyphs");
   var drillEl  = $("#drill");
   var openCat  = null;
@@ -578,7 +543,10 @@
 
   /* ---------------------------------------------------------
      CODES-ÜBERSICHT im Kopf: Formen mal Werkzeuge
-     Zählt die Felder f und w aus CODES. Einträge der Stufe
+     Zählt die Felder f und w aus CODES. Seit dem 09.11.2026 zeigt jedes
+     Feld nur die Zahl. Die Codewörter stehen nur in den aufklappbaren
+     Karten im Abschnitt Codes, immer mit Bedeutung (Regel „kein Code ohne
+     Bedeutung“). Einträge der Stufe
      „Kommt auf den Kontext an“ (lvl: "kontext") gelten nicht als Code
      und zählen nicht mit. Die Tabelle in index.html bleibt als Stand
      ohne JavaScript stehen und wird hier ersetzt.
@@ -616,7 +584,6 @@
         var td = mkCell("td", "mx-c" + (n ? "" : " mx-0") + (w.rand || f.rand ? " mx-rand" : ""), w.label);
         td.setAttribute("data-n", String(n));
         td.appendChild(el("span", "mx-v", String(n)));
-        if (n) td.appendChild(chipList(list));
         tr.appendChild(td);
       });
       var sum = mkCell("td", "mx-sum", "Summe");
