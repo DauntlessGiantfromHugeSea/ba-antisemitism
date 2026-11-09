@@ -25,11 +25,11 @@ Gestalterische Leitidee: *Mechanismen entlarven, nicht Codes feiern.*
 
 | # | Abschnitt | Was passiert |
 |---|-----------|--------------|
-| – | **Kopf** | Schlagzeile, dann ein Laufband mit 47 gestrichenen Codes und ihrer Kurzbedeutung und die Codes-Übersicht aus sechs Formen und sechs Werkzeugen mit allen Einträgen als antippbare, gestrichene Wörter. |
+| – | **Kopf** | Schlagzeile, dann ein Laufband mit 47 gestrichenen Codes und ihrer Kurzbedeutung und die Codes-Übersicht aus sechs Formen und sechs Werkzeugen, die je Feld nur die Zahl der Einträge zeigt. |
 | 01 | **Scan** | Vier konstruierte Posts im Karussell, je mit Marker-Sweep — zusammen 19 nummerierte Codes mit Sprechblase und Gegenrede. |
 | 02 | **Test** | Acht Aussagen, drei Antwortoptionen. Die dritte — *„Kommt auf den Kontext an“* — ist keine Ausrede, sondern oft die fachlich richtige Antwort. |
 | 03 | **Codes** | Sieben Kacheln (sechs Erzählungen, ein Werkzeugfeld) mit rot gestrichenem Zeichen und einem Satz dazu. Eine Kachel öffnet ihre Codes als Karten, Antippen klappt Bedeutung und Quelle auf (114 Einträge). Davor der Hinweis, dass Antisemitismus ein Brückennarrativ ist. |
-| 04 | **Werkzeuge** | Sechs Werkzeuge der Umwegkommunikation, jedes mit gestrichenen Beispielen samt Bedeutung, dann die vier Wirkebenen als Grafik, danach drei belegte Zahlen zur Verbreitung auf rotem Band. |
+| 04 | **Werkzeuge** | Sechs Werkzeuge der Umwegkommunikation, jedes mit gestrichenen Beispielen samt Bedeutung, dann die vier Wirkebenen als Grafik, danach drei belegte Zahlen zur Verbreitung auf dunklem Band. |
 | 05 | **Fragen** | Sechs typische Einwände mit Antwort aus der Fachliteratur. |
 | 06 | **Was tun** | Fünf Handlungsschritte als Ablaufgrafik. |
 | 07 | **Melden** | BfV-Hinweistelefon und RIAS-Meldestelle. |
@@ -46,13 +46,20 @@ als Nachweis, siehe `assets/img/BILDER.md`.
 Im zweiten Durchgang am selben Abend kamen das Signalrot und die einzelnen
 Codes zurück. Die Seite ist jetzt plakativ und infografisch. Im dritten
 Durchgang am 09.11.2026 fiel die Code-Wand wieder weg, das Laufband bekam
-seinen alten Stil zurück, und die Kachel-Zeichen wurden zu Dateien.
+seinen alten Stil zurück, und die Kachel-Zeichen wurden zu Dateien. Im
+vierten Durchgang am selben Tag verlor die Übersicht ihre Codewörter, und
+die Rot-Regel kam dazu.
 
+- **Rot-Regel (09.11.2026):** Rot ist der Eingriff. Als Linie und Strich
+  ist Rot überall erlaubt. Als Fläche steht Rot nur dort, wo gehandelt
+  wird: Knöpfe und „Test starten“, aktive Kachel und offene Karte, der
+  Abschnitt Melden. Rote Schrift ist ein kurzer Akzent, etwa „Haltung
+  zeigen.“ im Fuß und die Zahlen der Übersicht.
 - **Palette** als CSS-Variablen: Papier `#F3EFE7`, Fläche `#E7E1D6`,
   Schrift `#26241F`, Schrift 2 `#5C5850`, Linie `#A9A398`, dazu Signalrot
-  `#E1251B` für Flächen, Striche und große Schrift und `#B5140B` für kleine
-  rote Schrift auf Hell. Rote Flächen: Hauptknöpfe, Abschnittsnummern,
-  Zahlenband, Melden, aktive Kachel. Dunkle Flächen: Laufband und Fuß.
+  `#E1251B` für Striche, Linien, Handlungsflächen und große Schrift und
+  `#B5140B` für kleine rote Schrift auf Hell, etwa die Abschnittsnummern.
+  Dunkle Flächen: Laufband, Zahlenband und Fuß.
   Alle Kontraste stehen im Kommentar bei den Farbvariablen in
   `assets/styles.css`. Die Urteilsfarben im Test (grün, grau, rot) bleiben,
   weil sie dort Bedeutung tragen.
@@ -62,9 +69,9 @@ seinen alten Stil zurück, und die Kachel-Zeichen wurden zu Dateien.
   Laufband, Kacheln und Werkzeug-Beispiele nehmen die Kurzbedeutung aus
   `KURZ` in `codes.js`, wörtlich aus dem Erklärtext des Eintrags. Im
   Laufband ist der Strich ein schräger roter Balken wie im alten Stand, die
-  Bedeutung steht klein darunter. In der Übersicht öffnet jeder gestrichene
-  Eintrag seine Karte im Lexikon aufgeklappt. Offen stehen Codes nur im
-  Test und in den Posts vor dem Scan.
+  Bedeutung steht klein darunter. Die Übersicht zeigt keine Codewörter,
+  nur Zahlen, die Codes selbst stehen in den aufklappbaren Karten unter
+  03 Codes. Offen stehen Codes nur im Test und in den Posts vor dem Scan.
 - **Infografiken statt Bilder:** Codes-Übersicht aus sechs Formen und sechs
   Werkzeugen, die vier Wirkebenen, der Ablauf bei „Was tun“.
 - **Kein antisemitisches Bildmaterial**, keine Personen, keine jüdischen
