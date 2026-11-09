@@ -768,7 +768,7 @@
     });
     tickCodes.concat(tickCodes).forEach(function (x) {
       var item = el("span", "tk");
-      item.appendChild(el("s", "tk-code", x.t));
+      item.appendChild(el("span", "tk-code", x.t));
       item.appendChild(el("span", "tk-k", KURZ[x.t]));
       tickerEl.appendChild(item);
     });
