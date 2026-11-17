@@ -100,7 +100,8 @@ const WERKZEUGE = [
    neun Einträge mit schriftlicher Quelle, einzelne alte Einträge haben ihr
    Emoji und den Social-Media-Beleg dazubekommen (jeweils kommentiert).
    Kürzel neu: SG = Salhi & Goldhorn 2025, ADL = ADL 2025, BSAF-R = BSAF
-   2024a, CB = Chapelan & Bolton 2024, RIAS wie bisher. */
+   2024a, BSAF-G = BSAF 2026a, BSAF-M = BSAF 2025, CB = Chapelan & Bolton
+   2024, RIAS wie bisher. BSAF meint weiter nur den TikTok-Bericht von 2024. */
 const CODES = [
   /* ---------- GELDMACHT ---------- */
   { t: "Hochfinanz", c: "geld", f: "geld", w: "ersetzung", src: "BfV · AAS",
@@ -189,7 +190,7 @@ const CODES = [
   { t: "Schlange / 🐍", c: "tier", f: "verschwoerung", w: "bild", src: "AAS · BPB · DA · SG",
     d: "Steht für Hinterlist, Täuschung und Gefahr. „Der Jude“ nehme die Völker in den Würgegriff und vergifte die Menschheit. Verbreitet in Karikaturen im Iran und in der arabischen Welt. In Kommentaren steht heute auch das Schlangen-Emoji für Juden." },
   /* Spinne: 16.11.2026 Beleg als Meme ergänzt (BSAF, 2026a, S. 46). */
-  { t: "Spinne", c: "tier", f: "verschwoerung", w: "bild", src: "BfV · REG · BSAF",
+  { t: "Spinne", c: "tier", f: "verschwoerung", w: "bild", src: "BfV · REG · BSAF-G",
     d: "Netz und lüsterner Blick verbinden das Motiv der Kontrolle mit einer unterstellten sexuellen Bedrohlichkeit." },
   /* Ratte: 16.11.2026 Ratten-Emoji ergänzt (Bundesverband RIAS, 2026, S. 28–29). */
   { t: "Ratte / 🐀", c: "tier", f: "koerper", w: "bild", src: "BfV · BPB · RIAS",
@@ -217,7 +218,7 @@ const CODES = [
   /* ---------- SCHULDABWEHR ---------- */
   /* Schuldkult und Schlussstrich: 16.11.2026 Belege aus Social Media ergänzt
      (BSAF, 2025, S. 6; Ebbrecht-Hartmann, 2024, S. 16). */
-  { t: "Schuldkult", c: "schuld", f: "schuld", w: "anspielung", src: "BfV · AAS · REG · BSAF",
+  { t: "Schuldkult", c: "schuld", f: "schuld", w: "anspielung", src: "BfV · AAS · REG · BSAF-M",
     d: "Geschichtsrevisionistischer Kampfbegriff. Diffamiert das Gedenken an die NS-Verbrechen als aufgezwungen und übertrieben, um Verantwortung abzustreifen." },
   { t: "Schlussstrich", c: "schuld", f: "schuld", w: "anspielung", src: "AAS · REG · EH",
     d: "Forderung, die Auseinandersetzung mit der NS-Vergangenheit zu beenden. Zentrale Form des Post-Shoah-Antisemitismus." },
@@ -233,7 +234,7 @@ const CODES = [
   /* 271k: 16.11.2026 Schreibweisen und Belege ergänzt (Salhi & Goldhorn, 2025,
      S. 135–137; BSAF, 2025, S. 10–11; ADL, 2025). Von Delberg als 271,
      271000 und 271k genannt (E-Mail vom 15.11.2026). */
-  { t: "271k / 271.000 / 271", c: "schuld", f: "schuld", w: "zahl", src: "BfV · SG · BSAF · ADL",
+  { t: "271k / 271.000 / 271", c: "schuld", f: "schuld", w: "zahl", src: "BfV · SG · BSAF-M · ADL",
     d: "Behauptet, in den Konzentrations- und Vernichtungslagern seien „nur“ 271.000 Menschen gestorben. Holocaustleugnung in Zahlenform. Auf TikTok steht die Zahl oft ohne Erklärung unter Beiträgen jüdischer Creator:innen." },
   /* 16.11.2026: „Holohoax“ als Schreibweise aus Telegram und TikTok ergänzt
      (Topor, 2025, S. 35; Salhi & Goldhorn, 2025, S. 136). */
@@ -248,11 +249,11 @@ const CODES = [
   /* Zionisten bis Rotes Dreieck: 16.11.2026 Belege aus Social Media ergänzt
      (BSAF, 2026a, S. 20, 25; BSAF, 2024a, S. 34; Becker et al., 2024, S. 50, 54;
      Bundesverband RIAS, 2026, S. 29, 37). ZOG nennt auch Delberg (E-Mail vom 15.11.2026). */
-  { t: "Zionisten / ZiOS", c: "israel", f: "israel", w: "ersetzung", src: "BfV · AAS · REG · BSAF",
+  { t: "Zionisten / ZiOS", c: "israel", f: "israel", w: "ersetzung", src: "BfV · AAS · REG · BSAF-G",
     d: "Herabwürdigender Ersatzbegriff für „die Israelis“ oder „die Juden“. Der Zionismus selbst ist eine legitime politische Bewegung, der Code kippt ihn ins Feindbild. Im Netz auch kurz „Zios“." },
   { t: "ZOG / ZORG / JOG", c: "israel", f: "verschwoerung", w: "ersetzung", src: "BfV · AAS · REG · BSAF-R",
     d: "„Zionist“ bzw. „Jewish Occupied Government“: Westliche Regierungen seien Marionetten einer zionistischen bzw. jüdischen Besatzung." },
-  { t: "IsraHell", c: "israel", f: "israel", w: "bild", src: "BfV · BSAF · DA",
+  { t: "IsraHell", c: "israel", f: "israel", w: "bild", src: "BfV · BSAF-G · DA",
     d: "Kofferwort aus Israel und Hell. Dämonisiert den Staat als Ort des „absolut Bösen“." },
   { t: "Rotes Dreieck", c: "israel", f: "israel", w: "zeichen", src: "BfV · REG · RIAS · EH",
     d: "Seit Ende 2023 in HAMAS-Propaganda als Zielmarkierung verwendet. 2024 vom BMI als Kennzeichen in die Verbotsverfügung aufgenommen, die Verwendung kann strafbar sein. Als Emoji 🔻 steht es auch in Drohnachrichten an Jüdinnen und Juden.", flag: "kennzeichenverbot" },
@@ -334,7 +335,7 @@ const CODES = [
   { t: "Filter mit verlängerter Nase", c: "zeichen", f: "koerper", w: "zeichen", src: "BSAF · EH",
     d: "Ein TikTok-Filter verzerrt das Gesicht und verlängert die Nase, dazu läuft das Lied „If I Were a Rich Man“ aus dem Musical „Anatevka“. Zusammen ruft das die alten Bilder von der jüdischen Nase und vom angeblichen jüdischen Reichtum auf." },
   /* Davidstern: 16.11.2026 Belege aus Social Media ergänzt (BSAF, 2026a, S. 19, 22). */
-  { t: "Davidstern als Feindmarkierung", c: "zeichen", f: "kontext", w: "zeichen", src: "BfV · REG · BSAF",
+  { t: "Davidstern als Feindmarkierung", c: "zeichen", f: "kontext", w: "zeichen", src: "BfV · REG · BSAF-G",
     d: "Auf Hüten, Stirnen, Flaggen oder Logos angebracht, markiert der Stern den angeblich „wahren Urheber“ hinter einem politischen Geschehen." }
 ];
 
@@ -729,6 +730,10 @@ const SOURCES = [
     d: "Salhi, M. & Goldhorn, Y., in Becker, M. J., Scheiber, M. & Jensen, U. (Hrsg.), Imagery of hate online, Open Book Publishers, 2025, S. 107–152." },
   { k: "BSAF-R", t: "Das TikTok-Universum der (extremen) Rechten",
     d: "Bildungsstätte Anne Frank, Report #RechteJugend, 2024." },
+  { k: "BSAF-G", t: "Zwischen Gym und Weltverschwörung",
+    d: "Bildungsstätte Anne Frank, IV. Digital-Report, 2026." },
+  { k: "BSAF-M", t: "Der Holocaust als Meme",
+    d: "Bildungsstätte Anne Frank, Report #revisionismus40, 2025." },
   { k: "CB", t: "Affirmation of Nazis, Hitler and the Holocaust",
     d: "Chapelan, A. & Bolton, M., in Decoding antisemitism, Palgrave Macmillan, 2024, S. 353–367." },
   { k: "ADL", t: "Coded Hate: Extremists weaponize seemingly innocuous content to promote bigotry",

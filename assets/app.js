@@ -647,7 +647,8 @@
     d.appendChild(el("p", null, m.p));
     /* Beispiele sind Einträge aus CODES. Sie stehen gestrichen und immer
        mit ihrer Kurzbedeutung aus KURZ, damit kein Code ohne Erklärung
-       bleibt (so auch „109 / 110“ und „271k“ bei Werkzeug 5). */
+       bleibt (so auch „109 / 110“, „271k / 271.000 / 271“ und „88“ bei
+       Werkzeug 5, Stand 16.11.2026). */
     var ex = el("ul", "ex");
     (m.codes || []).forEach(function (t) {
       if (typeof KURZ === "undefined" || !KURZ[t]) return;

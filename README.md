@@ -25,10 +25,10 @@ Gestalterische Leitidee: *Mechanismen entlarven, nicht Codes feiern.*
 
 | # | Abschnitt | Was passiert |
 |---|-----------|--------------|
-| – | **Kopf** | Schlagzeile, dann ein Laufband mit 47 gestrichenen Codes und ihrer Kurzbedeutung und die Codes-Übersicht aus sechs Formen und sechs Werkzeugen, die je Feld nur die Zahl der Einträge zeigt. |
+| – | **Kopf** | Schlagzeile, dann ein Laufband mit 44 gestrichenen Codes und ihrer Kurzbedeutung und die Codes-Übersicht aus sechs Formen und sechs Werkzeugen, die je Feld nur die Zahl der Einträge zeigt. |
 | 01 | **Scan** | Vier konstruierte Posts im Karussell, je mit Marker-Sweep — zusammen 19 nummerierte Codes mit Sprechblase und Gegenrede. |
 | 02 | **Test** | Acht Aussagen, drei Antwortoptionen. Die dritte — *„Kommt auf den Kontext an“* — ist keine Ausrede, sondern oft die fachlich richtige Antwort. |
-| 03 | **Codes** | Sieben Kacheln (sechs Erzählungen, ein Werkzeugfeld) mit rot gestrichenem Zeichen und einem Satz dazu. Eine Kachel öffnet ihre Codes als Karten, Antippen klappt Bedeutung und Quelle auf (114 Einträge). Davor der Hinweis, dass Antisemitismus ein Brückennarrativ ist. |
+| 03 | **Codes** | Sieben Kacheln (sechs Erzählungen, ein Werkzeugfeld) mit rot gestrichenem Zeichen und einem Satz dazu. Eine Kachel öffnet ihre Codes als Karten, Antippen klappt Bedeutung und Quelle auf (73 Einträge). Davor der Hinweis, dass Antisemitismus ein Brückennarrativ ist. |
 | 04 | **Werkzeuge** | Sechs Werkzeuge der Umwegkommunikation, jedes mit gestrichenen Beispielen samt Bedeutung, dann die vier Wirkebenen als Grafik, danach drei belegte Zahlen zur Verbreitung auf dunklem Band. |
 | 05 | **Fragen** | Sechs typische Einwände mit Antwort aus der Fachliteratur. |
 | 06 | **Was tun** | Fünf Handlungsschritte als Ablaufgrafik. |
@@ -100,7 +100,7 @@ angefragt.
 index.html
 assets/
   styles.css    Design-Tokens und Layout
-  codes.js      Datenbasis: 114 Einträge mit Form (f) und Werkzeug (w),
+  codes.js      Datenbasis: 73 Einträge mit Form (f) und Werkzeug (w),
                 Formen, Werkzeuge, Kurzbedeutungen (KURZ), 7 Kacheln,
                 Posts, Quiz, FAQ, Wirkebenen, Zahlen, Schritte
   app.js        Scan, Test, Drill-down, Übersicht (zählt aus codes.js),
@@ -149,10 +149,13 @@ Vollbild-Menü), kein horizontaler Scroll von 320 bis 2560 px.
 
 ## Datenbasis
 
-Alle 114 Einträge stammen aus Fachpublikationen; die Zuordnung steht an jedem
+Alle 73 Einträge stammen aus Fachpublikationen; die Zuordnung steht an jedem
 Eintrag. Die sechs Einträge vom 07.11.2026 aus dem TikTok-Bericht der
 Bildungsstätte Anne Frank haben jeweils eine zweite, unabhängige Quelle.
-Die Codes-Übersicht zählt 113 Einträge, weil die Parole „From the river to
+Seit dem 16.11.2026 stehen im Lexikon nur noch Codes, die eine Quelle auf
+Social Media belegt. Die 50 herausgenommenen Einträge liegen mit Grund in
+assets/codes-archiv-2026-11-16.js, die Seite lädt diese Datei nicht.
+Die Codes-Übersicht zählt 72 Einträge, weil die Parole „From the river to
 the sea“ in der Stufe „Kommt auf den Kontext an“ steht und nicht als Code
 gilt. Form und Werkzeug je Eintrag folgen der Zuordnung vom 07.11.2026
 (Entwurf, Frage 5 zu Kofferwörtern und Akronymen noch offen).
@@ -169,6 +172,12 @@ gilt. Form und Werkzeug je Eintrag folgen der Zuordnung vom 07.11.2026
 | RIAS | Bundesverband RIAS: report-antisemitism.de; *Antisemitische Vorfälle in Deutschland 2025.* 2026 |
 | LOR | Lorenz, A.: *Von Hashtags und Geschichte.* Publizistik 70 (1), 2025 |
 | EH | Ebbrecht-Hartmann, T.: *Memefizierter Antisemitismus.* CARS Working Papers 21, 2024 |
+| SG | Salhi, M. & Goldhorn, Y.: Memefication of antisemitism. In Becker, Scheiber & Jensen (Hrsg.): *Imagery of hate online.* Open Book Publishers 2025, S. 107–152 |
+| BSAF-R | Bildungsstätte Anne Frank: *Das TikTok-Universum der (extremen) Rechten.* 2024 |
+| BSAF-G | Bildungsstätte Anne Frank: *Zwischen Gym und Weltverschwörung.* 2026 |
+| BSAF-M | Bildungsstätte Anne Frank: *Der Holocaust als Meme.* 2025 |
+| CB | Chapelan, A. & Bolton, M.: Affirmation of Nazis, Hitler and the Holocaust. In *Decoding antisemitism.* 2024, S. 353–367 |
+| ADL | Anti-Defamation League: *Coded Hate.* 2025 |
 
 ## Grenzen
 
