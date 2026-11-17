@@ -90,6 +90,17 @@ const WERKZEUGE = [
   { id: "offen",      n: "ohne", label: "offen gesagt", rand: true }
 ];
 
+/* Umbau am 16.11.2026 (Dustyn: „mehr die codes rein, die auf social media
+   sind“). Grundlage sind die Antwort von Mike Samuel Delberg (E-Mail vom
+   15.11.2026) und die Prüfung in „BA – Codes auf Social Media nach Delberg
+   (2026-11-16)“ im Vault. Im Lexikon bleibt nur, was eine Quelle auf Social
+   Media belegt, also in Posts, Kommentaren, Memes, Emojis, Hashtags, Profilen
+   oder Chats. 50 Einträge ohne diesen Beleg und die zwei lebenden Personen
+   stehen unverändert und mit Grund in codes-archiv-2026-11-16.js. Neu sind
+   neun Einträge mit schriftlicher Quelle, einzelne alte Einträge haben ihr
+   Emoji und den Social-Media-Beleg dazubekommen (jeweils kommentiert).
+   Kürzel neu: SG = Salhi & Goldhorn 2025, ADL = ADL 2025, BSAF-R = BSAF
+   2024a, CB = Chapelan & Bolton 2024, RIAS wie bisher. */
 const CODES = [
   /* ---------- GELDMACHT ---------- */
   { t: "Hochfinanz", c: "geld", f: "geld", w: "ersetzung", src: "BfV · AAS",
@@ -100,31 +111,16 @@ const CODES = [
     d: "Geografischer Verweis auf den angeblich jüdisch kontrollierten Finanzstandort New York, und damit auf Jüdinnen und Juden im Allgemeinen." },
   { t: "Wall Street", c: "geld", f: "geld", w: "ersetzung", src: "BfV · AAS",
     d: "Synonym für ein „wurzelloses“, internationales „Finanzjudentum“. Rahmt den Kapitalismus als fremde, feindselige Macht gegen die nationale Gemeinschaft." },
-  { t: "Raffendes vs. schaffendes Kapital", c: "geld", f: "geld", w: "ersetzung", src: "AAS · REG",
-    d: "Künstliche Trennung: „schaffende“ (einheimische) Arbeit gegen „raffendes“ (angeblich jüdisches) Finanzkapital. Kernformel der NS-Wirtschaftspropaganda." },
-  { t: "Großkapitalisten", c: "geld", f: "geld", w: "ersetzung", src: "BfV",
-    d: "Zeichnet das Feindbild eines gierigen Ausbeuters ohne Loyalität zu „Volk und Nation“, dieselbe Trennung wie raffend/schaffend." },
-  { t: "Zinsknechtschaft", c: "geld", f: "geld", w: "ersetzung", src: "REG",
-    d: "NS-Kampfbegriff. Unterstellt, ein jüdisch gedachtes Finanzwesen halte das „schaffende Volk“ durch Zinsen in Abhängigkeit." },
   { t: "Rothschild", c: "geld", f: "verschwoerung", w: "person", src: "BfV · AAS · REG",
     d: "Bankiersfamilie des 18./19. Jh. als Chiffre für eine geheime „jüdische Elite“, die Kriege, Krisen und Katastrophen orchestriere. Titel eines NS-Propagandafilms von 1940." },
-  { t: "George Soros", c: "geld", f: "verschwoerung", w: "person", src: "BfV · AAS · REG",
-    d: "Personifiziert „Hochfinanz“, „Globalisten“ und „Kosmopoliten“. Zentrale Projektionsfläche für den „Drahtzieher“ im Hintergrund." },
-  { t: "Larry Fink", c: "geld", f: "geld", w: "person", src: "BfV",
-    d: "Neuerer personifizierter Code für „jüdische Finanzmacht“; ergänzt Rothschild und Soros. Zeigt, wie Vorurteile auf immer neue Akteure übertragen werden." },
   { t: "Rockefeller", c: "geld", f: "geld", w: "person", src: "BfV · AAS",
     d: "Die Familie hat keine jüdischen Wurzeln, wird aber mit den Rothschilds gleichgesetzt. Solche Personalisierungen markieren „das Judentum“ als globale Finanzelite." },
-  { t: "Warburg", c: "geld", f: "geld", w: "person", src: "BfV",
-    d: "Jüdische Bankiersfamilie; Paul Warburgs Rolle bei der Gründung der US-Notenbank dient als Aufhänger für Verschwörungsmythen." },
   { t: "BlackRock", c: "geld", f: "geld", w: "person", src: "BfV",
     d: "Fungiert als Code, der das Narrativ einer „jüdischen Weltfinanzkontrolle“ bedient. Sachliche Kritik am Einfluss von Vermögensverwaltern ist davon zu unterscheiden, der Kontext entscheidet." },
-  { t: "Goldman Sachs", c: "geld", f: "geld", w: "person", src: "REG",
-    d: "Bankname als Chiffre für eine angeblich jüdisch gesteuerte Weltwirtschaft." },
   { t: "Geldjude / Wucherer", c: "geld", f: "geld", w: "zeichen", src: "BfV · AAS",
     d: "Bildformel des sozialen Antisemitismus: Geldsäcke, Dollarzeichen, der dick-dünn-Kontrast zwischen Ausbeuter und Ausgebeutetem." },
-  { t: "Schnorrer", c: "geld", f: "geld", w: "ersetzung", src: "REG",
-    d: "Abwertung als unproduktiv und schmarotzend. Brücke zwischen sozialem Antisemitismus und Parasiten-Metaphorik." },
-  { t: "Schekel", c: "geld", f: "geld", w: "ersetzung", src: "BfV",
+  /* Schekel: 16.11.2026 Beleg auf TikTok ergänzt (Salhi & Goldhorn, 2025, S. 124). */
+  { t: "Schekel", c: "geld", f: "geld", w: "ersetzung", src: "BfV · SG",
     d: "Israelische Währung als Code für „jüdisches“ Geld. Markiert Profit und Besitz als jüdisch." },
   { t: "Happy Merchant", c: "geld", f: "geld", w: "zeichen", src: "BfV · AAS",
     d: "Karikatur-Meme mit langer krummer Nase, unförmigen Zähnen, Buckel, Bart, Kippa und reibenden Händen. Extrem hoher Verbreitungsgrad in digitalen Räumen." },
@@ -144,38 +140,14 @@ const CODES = [
     d: "Ursprünglich ein WEF-Konzept für die Zeit nach der Coronapandemie, umgedeutet zum Plan einer „Elite“ zur Versklavung oder Vernichtung der Menschheit." },
   { t: "New World Order (NWO)", c: "welt", f: "verschwoerung", w: "anspielung", src: "BfV · AAS · REG",
     d: "Sammelbegriff für eine drohende „totalitäre Weltregierung“, hinter der „jüdische Strippenzieher“ stünden, um Nationalstaaten aufzulösen." },
-  { t: "Deep State", c: "welt", f: "verschwoerung", w: "anspielung", src: "REG",
-    d: "Behauptet einen verborgenen Machtapparat hinter der gewählten Regierung. In antisemitischen Kontexten jüdisch konnotiert." },
   { t: "Illuminati", c: "welt", f: "verschwoerung", w: "person", src: "BfV · REG",
     d: "1776 gegründeter, 1785 verbotener Geheimorden. Sein Name dient heute als Chiffre für eine fiktive, im Verborgenen agierende „Weltregierung“." },
-  { t: "Freimaurer", c: "welt", f: "verschwoerung", w: "person", src: "BfV · REG",
-    d: "Ethischer Bund, in Verschwörungserzählungen mit jüdischen Familien verknüpft zum Feindbild einer „jüdisch-freimaurerischen Weltverschwörung“." },
-  { t: "Bilderberger", c: "welt", f: "verschwoerung", w: "person", src: "BfV · REG",
-    d: "Die Intransparenz der seit 1954 stattfindenden Konferenz dient als Code für eine „geheime Weltregierung“ unter „jüdischem Einfluss“." },
-  { t: "tptb, the powers that be", c: "welt", f: "verschwoerung", w: "anspielung", src: "BfV",
-    d: "„Die herrschenden Mächte“. Bewusst vage gehalten, markiert eine anonyme, meist jüdisch gedachte „Weltelite“." },
-  { t: "Kalergi-Plan", c: "welt", f: "verschwoerung", w: "anspielung", src: "BfV · REG",
-    d: "Nach Richard Coudenhove-Kalergi. Behauptet, „Eliten“ planten den Austausch der weißen Bevölkerung, oft verknüpft mit „jüdischer Steuerung“." },
-  { t: "Kaufman-Plan", c: "welt", f: "verschwoerung", w: "anspielung", src: "BfV · REG",
-    d: "Ein folgenloses Pamphlet von 1941, von der NS-Propaganda zum Beleg einer „jüdischen Vernichtungslust“ gegen die Deutschen umgedeutet." },
-  { t: "Hooton-Plan", c: "welt", f: "verschwoerung", w: "anspielung", src: "REG",
-    d: "Wie der Kaufman-Plan: ein historischer Vorschlag, umgedeutet zum Beleg eines geplanten „Völkermords an den Deutschen“." },
   { t: "Protokolle der Weisen von Zion", c: "welt", f: "verschwoerung", w: "anspielung", src: "REG",
     d: "Anfang des 20. Jh. verbreitete Fälschung, die einen jüdischen Plan zur Weltherrschaft behauptet. Bis heute Grundtext antisemitischer Verschwörungsideologie." },
   { t: "QAnon / WWG1WGA", c: "welt", f: "verschwoerung", w: "anspielung", src: "AAS · REG",
     d: "Erzählung von einer satanistischen Elite, die Kinder entführe, foltere und töte. Strukturell die Ritualmordlegende in digitaler Form." },
   { t: "Kabale", c: "welt", f: "verschwoerung", w: "ersetzung", src: "BfV · REG",
     d: "Ursprünglich ein Begriff der jüdischen Mystik, umgedeutet zu bösartigen „Drahtziehern“ eines industriellen Kinderhandels." },
-  { t: "JewSA / Jewnited States", c: "welt", f: "verschwoerung", w: "ersetzung", src: "BfV · AAS",
-    d: "Kofferwörter aus Jew und USA. Unterstellen, die Vereinigten Staaten stünden unter jüdischer Kontrolle und seien Werkzeug jüdischer Interessen." },
-  { t: "Lügenpresse", c: "welt", f: "verschwoerung", w: "anspielung", src: "AAS · REG",
-    d: "Behauptet, die Medien seien gleichgeschaltet und gesteuert. Dahinter steht oft das Narrativ einer „jüdischen Verschwörung“, schon Treitschke behauptete das im 19. Jh." },
-  { t: "Tavistock-Institut", c: "welt", f: "verschwoerung", w: "person", src: "BfV",
-    d: "Britische Forschungseinrichtung von 1947, in Verschwörungsmythen zur Zentrale globaler „Gedankenkontrolle“ erklärt." },
-  { t: "Staat im Staate", c: "welt", f: "verschwoerung", w: "anspielung", src: "REG",
-    d: "Unterstellt Jüdinnen und Juden mangelnde Loyalität und eine verborgene Parallelmacht innerhalb der Nation." },
-  { t: "Reptiloiden", c: "welt", f: "verschwoerung", w: "bild", src: "REG",
-    d: "Behauptung einer nicht-menschlichen Herrscherkaste. Verbindet Entmenschlichung mit dem Weltverschwörungsnarrativ." },
   /* Neu 07.11.2026: auf TikTok belegt, mit zweiter Quelle bestätigt
      (Schnabel & Berendsen, 2024, S. 11, 14, 15, 29; BfV S. 12; AAS S. 36–37; Becker, 2024a, S. 160–162). */
   { t: "„Israel kontrolliert die Medien“", c: "welt", f: "verschwoerung", w: "anspielung", src: "BSAF · BfV · AAS · DA",
@@ -183,6 +155,11 @@ const CODES = [
   /* (Schnabel & Berendsen, 2024, S. 18, 26; BfV, 2024, S. 52, 59; Chapelan, 2024, S. 181) */
   { t: "„Inside-Job“ / „falsche Flagge“", c: "welt", f: "verschwoerung", w: "anspielung", src: "BSAF · BfV-L · DA",
     d: "Behauptet, Israel habe den Angriff vom 7. Oktober selbst inszeniert. So werden die Opfer zu Tätern gemacht, und eine angeblich jüdische Macht soll hinter allem stecken." },
+  /* Neu 16.11.2026: auf TikTok und in Memes belegt (Salhi & Goldhorn, 2025,
+     S. 121, 124; Jensen, 2025, S. 26; Becker et al., 2024, S. 185), von Delberg
+     als „goy“ und „guter goy“ genannt (E-Mail vom 15.11.2026). */
+  { t: "„Goy“ / „guter Goy“", c: "welt", f: "verschwoerung", w: "anspielung", src: "SG · DA",
+    d: "„Goy“ ist das jiddische Wort für Nichtjuden. Im Netz wird es abwertend benutzt: Ein „guter Goy“ sei, wer sich von Juden lenken und täuschen lässt. Dahinter steckt die Erzählung einer heimlichen jüdischen Macht." },
 
   /* ---------- KRANKHEIT & BLUT ---------- */
   { t: "Ritualmordlegende", c: "bio", f: "glaube", w: "offen", src: "BfV · AAS · REG",
@@ -191,106 +168,94 @@ const CODES = [
     d: "Fiktive Verjüngungsdroge, angeblich aus dem Blut gefolterter Kinder gewonnen. Die Ritualmordlegende in modernem Gewand." },
   { t: "Okkulte Kinderopfer", c: "bio", f: "glaube", w: "anspielung", src: "BfV",
     d: "Chiffre für die Behauptung, „jüdische Kreise“ folterten und töteten nicht jüdische Kinder in satanischen Ritualen." },
-  { t: "Brunnenvergifter", c: "bio", f: "verschwoerung", w: "offen", src: "BfV · AAS · REG",
-    d: "Legende aus der Pestzeit ab 1347: Jüdische Gemeinden hätten das Trinkwasser vergiftet. Mündete in die Pestpogrome." },
   { t: "Das allsehende Auge", c: "bio", f: "verschwoerung", w: "zeichen", src: "BfV · REG",
     d: "Popkulturell verankertes Symbol für Geheimgesellschaften. Erzeugt das Gefühl totaler Überwachung durch eine unsichtbare Macht." },
-  { t: "Satan / Teufel / kleiner Satan", c: "bio", f: "glaube", w: "bild", src: "AAS · REG",
-    d: "Christlich tradierte Dämonisierung. Im Mittelalter galt ein Teufelspakt als Grundlage für Ritualmord- und Brunnenvergiftungsmythen." },
-  { t: "Gottesmörder / Jesusmörder", c: "bio", f: "glaube", w: "offen", src: "REG",
-    d: "Vorwurf christlicher Kirchenväter, „die Juden“ trügen die Schuld am Tod Jesu. Diente jahrhundertelang zur Rechtfertigung von Verfolgung." },
-  { t: "Big Pharma", c: "bio", f: "verschwoerung", w: "anspielung", src: "BfV",
-    d: "Steht für eine „jüdisch“ kontrollierte Pharmaindustrie, die die Menschheit vergifte oder unfruchtbar mache statt sie zu heilen." },
-  { t: "Plandemie", c: "bio", f: "verschwoerung", w: "anspielung", src: "BfV · REG",
-    d: "Unterstellt, Pandemien seien geplante biologische Angriffe einer geheimen „Elite“ zur Erlangung totaler Kontrolle." },
-  { t: "Giftspritze", c: "bio", f: "verschwoerung", w: "anspielung", src: "AAS",
-    d: "Bezeichnung für Impfungen als Mittel zur Dezimierung der Menschheit. Antisemitische Impferzählungen reichen bis ins 19. Jahrhundert zurück." },
-  { t: "Schulmedizin", c: "bio", f: "koerper", w: "anspielung", src: "BfV",
-    d: "Diffamierung evidenzbasierter Medizin als „jüdisch“; ihr gegenübergestellt wird eine „natürliche“ oder „germanische“ Heilkunde." },
-  { t: "Pest / Geschwür / Krebs", c: "bio", f: "koerper", w: "bild", src: "BfV · AAS · REG",
+  /* 16.11.2026: Teufels-Emoji und Belege aus Kommentaren ergänzt
+     (Bundesverband RIAS, 2026, S. 28; Lorenz, 2025, S. 274, Tab. 1). */
+  { t: "Satan / Teufel / kleiner Satan / 😈", c: "bio", f: "glaube", w: "bild", src: "AAS · REG · RIAS · LOR",
+    d: "Christlich tradierte Dämonisierung. Im Mittelalter galt ein Teufelspakt als Grundlage für Ritualmord- und Brunnenvergiftungsmythen. Heute steht das Teufels-Emoji in Kommentaren, etwa neben einem Davidstern, und setzt Jüdinnen und Juden mit dem Teufel gleich." },
+  /* Pest bis Virus: 16.11.2026 Belege aus TikTok und Kommentaren ergänzt
+     (Salhi & Goldhorn, 2025, S. 124; Lorenz, 2025, S. 273; Becker et al., 2024, S. 78). */
+  { t: "Pest / Geschwür / Krebs", c: "bio", f: "koerper", w: "bild", src: "BfV · AAS · REG · SG · LOR",
     d: "Krankheitsmetaphern markieren jüdisches Leben als tödliche Gefahr im „Volkskörper“ und legen „Hygienemaßnahmen“ oder operative Entfernung nahe." },
-  { t: "Virus / Bazillus / #Covid1948", c: "bio", f: "israel", w: "bild", src: "AAS",
+  { t: "Virus / Bazillus / #Covid1948", c: "bio", f: "israel", w: "bild", src: "AAS · DA",
     d: "Israel als Virus dargestellt, unter Bezug auf das Gründungsjahr 1948. 2020 und 2021 tausendfach als Hashtag verbreitet." },
-  { t: "Dajjal", c: "bio", f: "glaube", w: "bild", src: "BfV",
-    d: "Islamische Endzeitfigur, vergleichbar dem Antichristen. Die Gleichsetzung des jüdischen Messias mit dem Dajjal deutet den jüdischen Glauben zum „absolut Bösen“ um." },
-  { t: "Moloch", c: "bio", f: "glaube", w: "anspielung", src: "REG",
-    d: "Antike Gottheit, der Kinderopfer zugeschrieben wurden. Dient in Verschwörungserzählungen als Chiffre für einen jüdisch gedachten „Blutkult“." },
 
   /* ---------- ENTMENSCHLICHUNG ---------- */
   { t: "Krake", c: "tier", f: "verschwoerung", w: "bild", src: "BfV · AAS · BPB",
     d: "Einer der verbreitetsten Codes der Bildpropaganda: Tentakel umschlingen den Globus. Auch ohne jeden Judenbezug gilt das Motiv als strukturell antisemitisch." },
-  { t: "Schlange", c: "tier", f: "verschwoerung", w: "bild", src: "AAS · BPB",
-    d: "Steht für Hinterlist, Täuschung und Gefahr. „Der Jude“ nehme die Völker in den Würgegriff und vergifte die Menschheit. Verbreitet in Karikaturen im Iran und in der arabischen Welt." },
-  { t: "Spinne", c: "tier", f: "verschwoerung", w: "bild", src: "BfV · REG",
+  /* Schlange: 16.11.2026 Schlangen-Emoji ergänzt (Becker et al., 2024, S. 101;
+     Salhi & Goldhorn, 2025, S. 125). */
+  { t: "Schlange / 🐍", c: "tier", f: "verschwoerung", w: "bild", src: "AAS · BPB · DA · SG",
+    d: "Steht für Hinterlist, Täuschung und Gefahr. „Der Jude“ nehme die Völker in den Würgegriff und vergifte die Menschheit. Verbreitet in Karikaturen im Iran und in der arabischen Welt. In Kommentaren steht heute auch das Schlangen-Emoji für Juden." },
+  /* Spinne: 16.11.2026 Beleg als Meme ergänzt (BSAF, 2026a, S. 46). */
+  { t: "Spinne", c: "tier", f: "verschwoerung", w: "bild", src: "BfV · REG · BSAF",
     d: "Netz und lüsterner Blick verbinden das Motiv der Kontrolle mit einer unterstellten sexuellen Bedrohlichkeit." },
-  { t: "Ratte", c: "tier", f: "koerper", w: "bild", src: "BfV · BPB",
-    d: "Kernmetapher der NS-Propaganda: Jüdinnen und Juden als Krankheitsüberträger und ekelerregende Schädlinge." },
-  { t: "Schwein / Judensau", c: "tier", f: "glaube", w: "bild", src: "AAS · BPB · REG",
-    d: "Nutzt die religiösen Speisegesetze zur Verhöhnung. Die älteste „Judensau“ am Brandenburger Dom stammt aus dem 13. Jahrhundert." },
-  { t: "Söhne von Affen und Schweinen", c: "tier", f: "glaube", w: "bild", src: "BfV · REG",
-    d: "Aus Koranversen hergeleitete Diffamierung als gottverfluchte, minderwertige Wesen. Wird von Islamist:innen zur Rechtfertigung von Gewalt herangezogen." },
-  { t: "Hund", c: "tier", f: "koerper", w: "bild", src: "BPB",
+  /* Ratte: 16.11.2026 Ratten-Emoji ergänzt (Bundesverband RIAS, 2026, S. 28–29). */
+  { t: "Ratte / 🐀", c: "tier", f: "koerper", w: "bild", src: "BfV · BPB · RIAS",
+    d: "Kernmetapher der NS-Propaganda: Jüdinnen und Juden als Krankheitsüberträger und ekelerregende Schädlinge. Als Emoji steht die Ratte heute in Kommentaren und Drohnachrichten, etwa neben der Israelfahne." },
+  /* Schwein: 16.11.2026 Schweine-Emoji ergänzt (Bundesverband RIAS, 2026, S. 28). */
+  { t: "Schwein / Judensau / 🐷", c: "tier", f: "glaube", w: "bild", src: "AAS · BPB · REG · RIAS",
+    d: "Nutzt die religiösen Speisegesetze zur Verhöhnung. Die älteste „Judensau“ am Brandenburger Dom stammt aus dem 13. Jahrhundert. Heute werden auch Schweine-Emojis verwendet, um antisemitische Aussagen zu transportieren." },
+  /* Hund: 16.11.2026 Beleg aus Kommentaren ergänzt (Becker et al., 2024, S. 76). */
+  { t: "Hund", c: "tier", f: "koerper", w: "bild", src: "BPB · DA",
     d: "Abwertung als minderwertig, mit langer Tradition besonders im arabischen Raum; verwendet bei den Pogromen in Palästina der 1920er- und 1930er-Jahre." },
-  { t: "Heuschrecken", c: "tier", f: "geld", w: "bild", src: "BfV",
-    d: "Gefräßige Schwärme, die über ein Land herfielen, seine Ressourcen vertilgten und es verwüstet zurückließen." },
-  { t: "Parasiten / Flöhe / Ungeziefer", c: "tier", f: "koerper", w: "bild", src: "BfV · REG",
+  /* Parasiten: 16.11.2026 Belege aus TikTok und Kommentaren ergänzt (BSAF, 2024a, S. 34; Becker et al., 2024, S. 77). */
+  { t: "Parasiten / Flöhe / Ungeziefer", c: "tier", f: "koerper", w: "bild", src: "BfV · REG · BSAF-R · DA",
     d: "„Schmarotzer ohne eigene Schöpfungskraft“, die vom „Wirtsvolk“ lebten. Markiert jüdisches Leben als biologische Gefahr." },
+  /* Neu 16.11.2026: auf TikTok belegt (Salhi & Goldhorn, 2025, S. 125), von
+     Delberg als Emoji und Meme-Motiv genannt (E-Mail vom 15.11.2026). Die
+     Bedeutung als Ungeziefer nach BfV S. 55. */
+  { t: "Kakerlaken-Emoji 🪳", c: "tier", f: "koerper", w: "bild", src: "SG · BfV",
+    d: "Steht in Kommentaren statt des Wortes Juden. Wie Ratten und Ungeziefer setzt die Kakerlake Menschen mit Schädlingen gleich und spricht ihnen das Menschsein ab." },
+  /* Neu 16.11.2026: Emoji-Code auf TikTok (BSAF, 2024a, S. 33). */
+  { t: "Vampir-Emoji 🧛", c: "tier", f: "koerper", w: "bild", src: "BSAF-R",
+    d: "Ruft das antisemitische Bild vom „Blutsauger“ auf, der von anderen lebt." },
   { t: "Gharqad-Baum", c: "tier", f: "glaube", w: "anspielung", src: "BfV",
     d: "Aus einer Endzeit-Überlieferung: der „Baum der Juden“, der sie am Ende der Zeiten schütze. Wer davor platziert wird, gilt als Schutzschild „jüdischer Interessen“." },
-  { t: "Ahasver / Der ewige Jude", c: "tier", f: "glaube", w: "anspielung", src: "REG",
-    d: "Legendenfigur des ruhelos umherwandernden Juden. Markiert jüdisches Leben als heimatlos, fremd und verflucht. Titel eines NS-Propagandafilms von 1940." },
 
   /* ---------- SCHULDABWEHR ---------- */
-  { t: "Schuldkult", c: "schuld", f: "schuld", w: "anspielung", src: "BfV · AAS · REG",
+  /* Schuldkult und Schlussstrich: 16.11.2026 Belege aus Social Media ergänzt
+     (BSAF, 2025, S. 6; Ebbrecht-Hartmann, 2024, S. 16). */
+  { t: "Schuldkult", c: "schuld", f: "schuld", w: "anspielung", src: "BfV · AAS · REG · BSAF",
     d: "Geschichtsrevisionistischer Kampfbegriff. Diffamiert das Gedenken an die NS-Verbrechen als aufgezwungen und übertrieben, um Verantwortung abzustreifen." },
-  { t: "Schlussstrich", c: "schuld", f: "schuld", w: "anspielung", src: "AAS · REG",
+  { t: "Schlussstrich", c: "schuld", f: "schuld", w: "anspielung", src: "AAS · REG · EH",
     d: "Forderung, die Auseinandersetzung mit der NS-Vergangenheit zu beenden. Zentrale Form des Post-Shoah-Antisemitismus." },
-  { t: "Auschwitzkeule", c: "schuld", f: "schuld", w: "anspielung", src: "AAS · REG",
-    d: "Nach Martin Walser 1998. Unterstellt, die Erinnerung an den Holocaust werde als Einschüchterungsmittel und Moralkeule eingesetzt." },
   { t: "Holocaust-Religion", c: "schuld", f: "schuld", w: "anspielung", src: "BfV · REG",
     d: "Rahmt die Erinnerungskultur als dogmatischen, faktenfreien Glauben und stellt damit den Holocaust selbst infrage." },
   { t: "Umerziehung", c: "schuld", f: "schuld", w: "anspielung", src: "BfV · REG",
     d: "Kampfbegriff mit Gehirnwäsche-Assoziation: Die Deutschen würden bis heute manipuliert, um ihr „natürliches“ Nationalbewusstsein zu zerstören." },
   { t: "Psychologischer Völkermord", c: "schuld", f: "schuld", w: "anspielung", src: "BfV",
     d: "Erklärt das Erinnern zum eigentlichen Verbrechen, an „den Deutschen“. Klassische Täter-Opfer-Umkehr." },
-  { t: "Morgenthau-Plan", c: "schuld", f: "verschwoerung", w: "anspielung", src: "BfV · REG",
-    d: "Nie verabschiedeter Entwurf von 1944 zur Deindustrialisierung Deutschlands, umgedeutet zum „jüdischen Racheplan“." },
-  { t: "Muh 6 Gorillion", c: "schuld", f: "schuld", w: "zahl", src: "BfV",
+  /* Muh 6 Gorillion: 16.11.2026 Beleg auf TikTok ergänzt (Salhi & Goldhorn, 2025, S. 136). */
+  { t: "Muh 6 Gorillion", c: "schuld", f: "schuld", w: "zahl", src: "BfV · SG",
     d: "Auf Imageboards verbreitete Verhöhnung der rund sechs Millionen Ermordeten. Die bewusste Falschschreibung soll die Opferzahl lächerlich machen." },
-  { t: "271k", c: "schuld", f: "schuld", w: "zahl", src: "BfV",
-    d: "Behauptet, in den Konzentrations- und Vernichtungslagern seien „nur“ 271.000 Menschen gestorben. Holocaustleugnung in Zahlenform." },
-  { t: "6-Millionen-Lüge / Auschwitzlüge", c: "schuld", f: "schuld", w: "offen", src: "REG",
+  /* 271k: 16.11.2026 Schreibweisen und Belege ergänzt (Salhi & Goldhorn, 2025,
+     S. 135–137; BSAF, 2025, S. 10–11; ADL, 2025). Von Delberg als 271,
+     271000 und 271k genannt (E-Mail vom 15.11.2026). */
+  { t: "271k / 271.000 / 271", c: "schuld", f: "schuld", w: "zahl", src: "BfV · SG · BSAF · ADL",
+    d: "Behauptet, in den Konzentrations- und Vernichtungslagern seien „nur“ 271.000 Menschen gestorben. Holocaustleugnung in Zahlenform. Auf TikTok steht die Zahl oft ohne Erklärung unter Beiträgen jüdischer Creator:innen." },
+  /* 16.11.2026: „Holohoax“ als Schreibweise aus Telegram und TikTok ergänzt
+     (Topor, 2025, S. 35; Salhi & Goldhorn, 2025, S. 136). */
+  { t: "Holohoax / 6-Millionen-Lüge / Auschwitzlüge", c: "schuld", f: "schuld", w: "offen", src: "REG · SG",
     d: "Offene Leugnung des Holocaust. In Deutschland als Volksverhetzung strafbar." },
-  { t: "Judenstern „Ungeimpft“", c: "schuld", f: "schuld", w: "zeichen", src: "BfV · AAS · REG",
-    d: "Der gelbe Zwangsstern der NS-Zeit, getragen mit der Aufschrift „Ungeimpft“. Botschaft: „Wir sind die neuen Juden“. Täter-Opfer-Umkehr und Holocaustrelativierung." },
-  { t: "Impfholocaust", c: "schuld", f: "schuld", w: "offen", src: "BfV",
-    d: "Setzt staatliche Impfpolitik mit dem Holocaust gleich. Verharmlost die NS-Verbrechen und dämonisiert demokratische Institutionen zugleich." },
-  { t: "Babycaust", c: "schuld", f: "schuld", w: "offen", src: "AAS · REG",
-    d: "Von radikalen Abtreibungsgegner:innen verwendet. Setzt Schwangerschaftsabbrüche mit dem Holocaust gleich und diffamiert Ärzt:innen als Massenmörder:innen." },
-  { t: "Tier-KZ / Holocaust auf dem Teller", c: "schuld", f: "schuld", w: "offen", src: "AAS · REG",
-    d: "Tierrechtsvergleiche mit der Shoah. Verkennt die Systematik und Singularität der NS-Verbrechen und relativiert sie." },
-  { t: "Bombenholocaust", c: "schuld", f: "schuld", w: "offen", src: "REG",
-    d: "Setzt die alliierten Luftangriffe mit dem Holocaust gleich, um die deutsche Tätergesellschaft als Opfer zu inszenieren." },
-  { t: "Holocaust-Industrie", c: "schuld", f: "schuld", w: "anspielung", src: "REG",
-    d: "Unterstellt Jüdinnen und Juden, aus der Erinnerung an den Holocaust materiellen Profit zu schlagen." },
-  { t: "Wahrheit macht frei", c: "schuld", f: "schuld", w: "anspielung", src: "REG",
-    d: "Verballhornung der Auschwitzer Torinschrift. Verhöhnt die Ermordeten und wird häufig in verschwörungsideologischen Kontexten verwendet." },
   /* Neu 07.11.2026: auf TikTok belegt, mit zweiter Quelle bestätigt
      (Schnabel & Berendsen, 2024, S. 19; Bundesverband RIAS, 2026, S. 25; Becker, 2024b, S. 375–377). */
   { t: "„Auschwitz = Gaza“", c: "schuld", f: "schuld", w: "offen", src: "BSAF · RIAS · DA",
     d: "Setzt Israel mit dem NS-Regime und Gaza mit dem Vernichtungslager gleich. Damit wird der Holocaust verharmlost, und Jüdinnen und Juden werden von Opfern zu Tätern gemacht." },
 
   /* ---------- ISRAELBEZOGEN ---------- */
-  { t: "Zionisten / ZiOS", c: "israel", f: "israel", w: "ersetzung", src: "BfV · AAS · REG",
-    d: "Herabwürdigender Ersatzbegriff für „die Israelis“ oder „die Juden“. Der Zionismus selbst ist eine legitime politische Bewegung, der Code kippt ihn ins Feindbild." },
-  { t: "ZOG / ZORG / JOG", c: "israel", f: "verschwoerung", w: "ersetzung", src: "BfV · AAS · REG",
+  /* Zionisten bis Rotes Dreieck: 16.11.2026 Belege aus Social Media ergänzt
+     (BSAF, 2026a, S. 20, 25; BSAF, 2024a, S. 34; Becker et al., 2024, S. 50, 54;
+     Bundesverband RIAS, 2026, S. 29, 37). ZOG nennt auch Delberg (E-Mail vom 15.11.2026). */
+  { t: "Zionisten / ZiOS", c: "israel", f: "israel", w: "ersetzung", src: "BfV · AAS · REG · BSAF",
+    d: "Herabwürdigender Ersatzbegriff für „die Israelis“ oder „die Juden“. Der Zionismus selbst ist eine legitime politische Bewegung, der Code kippt ihn ins Feindbild. Im Netz auch kurz „Zios“." },
+  { t: "ZOG / ZORG / JOG", c: "israel", f: "verschwoerung", w: "ersetzung", src: "BfV · AAS · REG · BSAF-R",
     d: "„Zionist“ bzw. „Jewish Occupied Government“: Westliche Regierungen seien Marionetten einer zionistischen bzw. jüdischen Besatzung." },
-  { t: "USrael", c: "israel", f: "verschwoerung", w: "ersetzung", src: "BfV · AAS · REG",
-    d: "Kofferwort aus USA und Israel. Unterstellt, die US-Politik werde zum Vorteil „des Juden“ und Israels gesteuert." },
-  { t: "IsraHell", c: "israel", f: "israel", w: "bild", src: "BfV",
+  { t: "IsraHell", c: "israel", f: "israel", w: "bild", src: "BfV · BSAF · DA",
     d: "Kofferwort aus Israel und Hell. Dämonisiert den Staat als Ort des „absolut Bösen“." },
-  { t: "Rotes Dreieck", c: "israel", f: "israel", w: "zeichen", src: "BfV · REG",
-    d: "Seit Ende 2023 in HAMAS-Propaganda als Zielmarkierung verwendet. 2024 vom BMI als Kennzeichen in die Verbotsverfügung aufgenommen, die Verwendung kann strafbar sein.", flag: "kennzeichenverbot" },
+  { t: "Rotes Dreieck", c: "israel", f: "israel", w: "zeichen", src: "BfV · REG · RIAS · EH",
+    d: "Seit Ende 2023 in HAMAS-Propaganda als Zielmarkierung verwendet. 2024 vom BMI als Kennzeichen in die Verbotsverfügung aufgenommen, die Verwendung kann strafbar sein. Als Emoji 🔻 steht es auch in Drohnachrichten an Jüdinnen und Juden.", flag: "kennzeichenverbot" },
   { t: "Kindermörder Israel", c: "israel", f: "israel", w: "anspielung", src: "BfV · AAS · REG",
     d: "Aktualisiert die Ritualmordlegende: Israel vergieße das Blut palästinensischer Kinder mit Absicht. Aus dieser Vorstellung können Vernichtungswünsche folgen." },
   /* Neu 07.11.2026: auf TikTok belegt, mit zweiter Quelle bestätigt
@@ -299,9 +264,11 @@ const CODES = [
     d: "Behauptet, Israel habe es auf die Organe palästinensischer Kinder abgesehen. Das ist die extremste Form der alten Ritualmordlegende, nach der Juden Kindern etwas antun, um ihren Körper zu benutzen." },
   { t: "Apartheidstaat / Unrechtsstaat", c: "israel", f: "israel", w: "anspielung", src: "AAS · REG",
     d: "Spricht Israel Rechtsstaatlichkeit und demokratischen Charakter grundsätzlich ab. Der Begriff selbst ist nicht antisemitisch, entscheidend ist der Kontext." },
-  { t: "Zionazis", c: "israel", f: "israel", w: "ersetzung", src: "REG",
+  /* Zionazis und Krebsgeschwür: 16.11.2026 Belege aus Social Media ergänzt
+     (BSAF, 2026a, S. 25; Becker, 2024b, S. 376; Becker et al., 2024, S. 194, 474). */
+  { t: "Zionazis", c: "israel", f: "israel", w: "ersetzung", src: "REG · BSAF · DA",
     d: "Gleichsetzung israelischer Politik mit dem Nationalsozialismus. Verharmlost die NS-Verbrechen und kehrt Täter und Opfer um." },
-  { t: "Krebsgeschwür (auf Israel bezogen)", c: "israel", f: "israel", w: "bild", src: "REG",
+  { t: "Krebsgeschwür (auf Israel bezogen)", c: "israel", f: "israel", w: "bild", src: "REG · DA",
     d: "Von islamistischen Regimen und Gruppen zur Dämonisierung Israels genutzt: Der Staat müsse „entfernt“ werden." },
   /* Überarbeitet 07.11.2026: Stufe „kommt auf den Kontext an“, der Widerspruch
      der Quellen steht offen im Text (Schnabel & Berendsen, 2024, S. 15, 28;
@@ -309,44 +276,66 @@ const CODES = [
      Bundesverband RIAS, 2026, S. 20–21; Regishut, 2023). */
   { t: "From the river to the sea", c: "israel", f: "israel", w: "anspielung", lvl: "kontext", src: "BSAF · BfV-L · RIAS · DA · REG",
     d: "Viele Fachstellen lesen diese Parole als Absage an Israels Existenz, und deutsche Gerichte haben sie teils als strafbar bewertet. Ob es dabei auf den Zusammenhang ankommt, sehen die Quellen verschieden, denn BfV und RIAS ordnen sie nach dem Umfeld ein, etwa auf einer Demo, während Forschende um Vincent schreiben, ihre Bedeutung hänge nicht vom Kontext ab." },
-  { t: "Chaibar, Chaibar, ya Yahud", c: "israel", f: "glaube", w: "anspielung", src: "REG",
-    d: "Bezieht sich auf Mohammeds Feldzug gegen die jüdische Oasenstadt Chaibar im 7. Jh. Erinnert an die Unterwerfung „der Juden“ und dient als Vernichtungsdrohung." },
-  { t: "Udrub, Udrub Tal Abib", c: "israel", f: "israel", w: "offen", src: "REG",
-    d: "„Bombardiert, bombardiert Tel Aviv“. Liedzeile von 2012, auf Versammlungen als Parole verwendet. Muss als Gewaltaufruf verstanden werden." },
-  { t: "Birruh biddam, nafdik ya Aqsa", c: "israel", f: "israel", w: "anspielung", src: "REG",
-    d: "„Mit Geist und Blut opfern wir uns für dich, oh Aqsa“. Appelliert an den Märtyrerkult und glorifiziert den gewaltsamen Kampf gegen Israel." },
-  { t: "Hinter Steinen und Bäumen", c: "israel", f: "glaube", w: "anspielung", src: "REG",
-    d: "Anspielung auf einen Hadith, nach dem Steine und Bäume am Jüngsten Tag versteckte Juden verraten. Teil der HAMAS-Charta; religiöse Legitimation von Gewalt." },
-  { t: "Free Palestine from German guilt", c: "israel", f: "schuld", w: "anspielung", src: "REG",
-    d: "Verbindet propalästinensischen Protest mit der Forderung nach einem Schlussstrich unter die deutsche Erinnerungskultur." },
-  { t: "Stop doing what Hitler did to you", c: "israel", f: "israel", w: "offen", src: "REG",
+  /* Stop doing …: 16.11.2026 fast wortgleich in Kommentaren belegt (Becker, 2024b, S. 375). */
+  { t: "Stop doing what Hitler did to you", c: "israel", f: "israel", w: "offen", src: "REG · DA",
     d: "Täter-Opfer-Umkehr in Parolenform: Unterstellt Jüdinnen und Juden, aus der Shoah nichts gelernt zu haben und sie zu wiederholen." },
 
   /* ---------- ZEICHEN & ZAHLEN ---------- */
   { t: "(((Echo)))", c: "zeichen", f: "kontext", w: "zeichen", src: "BfV",
     d: "Dreifache Klammern markieren Personen, Firmen, Organisationen oder Gruppen als „jüdisch“, ohne es auszusprechen. Im Netz weit verbreitet." },
-  { t: "JDN LGN", c: "zeichen", f: "verschwoerung", w: "zeichen", src: "BfV · REG",
-    d: "Entvokalisierung von „Juden lügen“. Nutzt die Fähigkeit des Gehirns, unvollständige Wörter zu ergänzen, und umgeht damit Filter und Strafverfolgung." },
-  { t: "Juice / 🧃", c: "zeichen", f: "kontext", w: "ersetzung", src: "BfV",
+  /* Juice, 109 und 6MWE: 16.11.2026 Belege aus TikTok und Kommentaren ergänzt
+     (Bundesverband RIAS, 2026, S. 28; Salhi & Goldhorn, 2025, S. 122–126, 135–136;
+     ADL, 2025; Becker et al., 2024, S. 361). 🧃 und 6MWE nennt auch Delberg
+     (E-Mail vom 15.11.2026). */
+  { t: "Juice / 🧃", c: "zeichen", f: "kontext", w: "ersetzung", src: "BfV · RIAS · SG · ADL",
     d: "Phonetische Nähe zu „Jews“. Als Saftkarton-Emoji verschleiert der Code antisemitische Inhalte und umgeht automatische Moderation." },
-  { t: "109 / 110", c: "zeichen", f: "koerper", w: "zahl", src: "BfV",
+  { t: "109 / 110", c: "zeichen", f: "koerper", w: "zahl", src: "BfV · SG",
     d: "Behauptet, Jüdinnen und Juden seien aus 109 Ländern vertrieben worden. Die 110 ist eine offene Aufforderung, das aktuelle Wohnland folgen zu lassen." },
-  { t: "6MWE", c: "zeichen", f: "koerper", w: "zahl", src: "BfV",
+  { t: "6MWE", c: "zeichen", f: "koerper", w: "zahl", src: "BfV · DA · SG",
     d: "„6 Million Wasn't Enough“. Verhöhnt die Opfer des Holocaust und fordert offen einen erneuten Genozid." },
-  { t: "GTKRWN", c: "zeichen", f: "koerper", w: "zeichen", src: "BfV",
-    d: "Akronym mit offener Aufstachelung zur Vernichtung jüdischen Lebens. Extremfall der Dehumanisierung." },
-  { t: "Hakennase", c: "zeichen", f: "koerper", w: "zeichen", src: "AAS · BPB · REG",
-    d: "Zentrales Merkmal fast jeder antisemitischen Darstellung, von Münzen des 17. Jh. bis zu Stürmer-Karikaturen und heutigen Memes. Macht zugeschriebene Minderwertigkeit körperlich sichtbar." },
+  /* Neu 16.11.2026: von Delberg genannt (E-Mail vom 15.11.2026). Bedeutung nach
+     Chapelan & Bolton (2024, S. 353–354), dort mit 88 als Zahlencode; online
+     belegt bei Topor (2025, S. 44) und BSAF (2024a, S. 34). */
+  { t: "88", c: "zeichen", f: "koerper", w: "zahl", src: "CB · BSAF-R",
+    d: "Steht für „Heil Hitler“, weil H der achte Buchstabe des Alphabets ist. Wer Hitler unter Beiträgen zu Jüdinnen und Juden feiert, rechtfertigt damit den Völkermord an ihnen." },
+  /* Neu 16.11.2026: auf TikTok belegt (Salhi & Goldhorn, 2025, S. 130–132;
+     ADL, 2025), von Delberg als „der Maler“ genannt (E-Mail vom 15.11.2026). */
+  { t: "„der Maler“ / „Austrian Painter“", c: "zeichen", f: "koerper", w: "ersetzung", src: "SG · ADL · CB",
+    d: "Deckname für Adolf Hitler, nach seiner frühen Tätigkeit als Maler. Er umgeht Filter, die den Namen erkennen würden, und wird auch als Emojis geschrieben, mit Österreich-Flagge und Malerpalette." },
+  /* Neu 16.11.2026: Emoji-Code auf TikTok (BSAF, 2024a, S. 33; Lorenz, 2025,
+     S. 274, Tab. 1), von Delberg als erhobene Hand und Personen-Emojis genannt
+     (E-Mail vom 15.11.2026). */
+  { t: "Person mit erhobener Hand 🙋", c: "zeichen", f: "koerper", w: "zeichen", src: "BSAF-R · LOR · CB",
+    d: "Die Person, die den rechten Arm hebt, steht in Kommentaren für den Hitlergruß. Unter Beiträgen zu Jüdinnen und Juden feiert sie den Nationalsozialismus und damit den Holocaust." },
+  /* Neu 16.11.2026: auf TikTok belegt (Salhi & Goldhorn, 2025, S. 136, 141),
+     von Delberg als Emoji und Meme-Motiv genannt (E-Mail vom 15.11.2026). */
+  { t: "Seifen-Emoji 🧼", c: "zeichen", f: "koerper", w: "zeichen", src: "SG",
+    d: "Verhöhnt die Ermordeten des Holocaust. Das Emoji spielt auf die Behauptung an, aus den Leichen sei Seife gemacht worden, und macht die Opfer zum Witz." },
+  /* Neu 16.11.2026: auf TikTok belegt (Salhi & Goldhorn, 2025, S. 136, 141),
+     von Delberg genannt (E-Mail vom 15.11.2026). Nur im Zusammenhang ein Code,
+     das BfV liest das Feuer-Emoji in anderen Posts als bloßes Warnzeichen (S. 26). */
+  { t: "Feuer-Emoji 🔥", c: "zeichen", f: "koerper", w: "zeichen", src: "SG",
+    d: "Unter Beiträgen zu Jüdinnen und Juden steht das Feuer für die Lager des Holocaust und ihre Öfen. Für sich allein ist das Emoji harmlos, erst der Zusammenhang macht es zum Code." },
+  /* Neu 16.11.2026: Bundesverband RIAS (2026, S. 29) belegt die Israelfahne
+     neben Ratte, Sarg und rotem Dreieck in einer Drohnachricht, das BfV-Lagebild
+     (2024, S. A34) ein KI-Bild aus Israelfahne und Schweinen. Dass die Fahne als
+     Emoji für Juden steht, schreiben Salhi & Goldhorn (2025, S. 122). Von Delberg
+     als Flagge plus Emoji genannt (E-Mail vom 15.11.2026). Den Kothaufen neben
+     dem Saftpäckchen belegt RIAS (S. 28), neben der Fahne nur Schnabel & Berendsen
+     (2024, S. 13) ohne zweite Quelle, deshalb steht er hier nicht im Titel. */
+  { t: "Israelfahne neben Ratte oder Schwein", c: "zeichen", f: "kontext", w: "zeichen", src: "RIAS · BfV-L · SG",
+    d: "Die Fahne steht in solchen Kommentaren für Jüdinnen und Juden, das Tier daneben wertet sie ab. Die Fahne allein ist kein Code, erst die Kombination macht sie dazu." },
+  /* Hakennase: 16.11.2026 Nasen- und Pinocchio-Emoji ergänzt (Salhi & Goldhorn,
+     2025, S. 122, 124–126; Lorenz, 2025, S. 274). */
+  { t: "Hakennase / 👃 / 🤥", c: "zeichen", f: "koerper", w: "zeichen", src: "AAS · BPB · REG · SG · LOR",
+    d: "Zentrales Merkmal fast jeder antisemitischen Darstellung, von Münzen des 17. Jh. bis zu Stürmer-Karikaturen und heutigen Memes. Macht zugeschriebene Minderwertigkeit körperlich sichtbar. In Kommentaren stehen dafür Nasen- und Pinocchio-Emojis, die auch das Bild vom lügenden Juden aufrufen." },
   /* Neu 07.11.2026: auf TikTok belegt, mit zweiter Quelle bestätigt
      (Schnabel & Berendsen, 2024, S. 14; Ebbrecht-Hartmann, 2024, S. 10). */
   { t: "Filter mit verlängerter Nase", c: "zeichen", f: "koerper", w: "zeichen", src: "BSAF · EH",
     d: "Ein TikTok-Filter verzerrt das Gesicht und verlängert die Nase, dazu läuft das Lied „If I Were a Rich Man“ aus dem Musical „Anatevka“. Zusammen ruft das die alten Bilder von der jüdischen Nase und vom angeblichen jüdischen Reichtum auf." },
-  { t: "Schläfenlocken & Hut", c: "zeichen", f: "kontext", w: "zeichen", src: "BfV · REG",
-    d: "Das Erscheinungsbild ultraorthodoxer Juden wird stellvertretend für alle Jüdinnen und Juden gesetzt und markiert sie kollektiv als fremdartig." },
-  { t: "Davidstern als Feindmarkierung", c: "zeichen", f: "kontext", w: "zeichen", src: "BfV · REG",
-    d: "Auf Hüten, Stirnen, Flaggen oder Logos angebracht, markiert der Stern den angeblich „wahren Urheber“ hinter einem politischen Geschehen." },
-  { t: "Die Juden sind unser Unglück", c: "zeichen", f: "verschwoerung", w: "offen", src: "REG",
-    d: "Formel von Heinrich von Treitschke (1879), später Kopfzeile des NS-Hetzblatts „Der Stürmer“. Bis heute in Abwandlungen im Umlauf." }
+  /* Davidstern: 16.11.2026 Belege aus Social Media ergänzt (BSAF, 2026a, S. 19, 22). */
+  { t: "Davidstern als Feindmarkierung", c: "zeichen", f: "kontext", w: "zeichen", src: "BfV · REG · BSAF",
+    d: "Auf Hüten, Stirnen, Flaggen oder Logos angebracht, markiert der Stern den angeblich „wahren Urheber“ hinter einem politischen Geschehen." }
 ];
 
 /* Kurzbedeutungen für Laufband, Kacheln und Werkzeuge
@@ -356,58 +345,57 @@ const CODES = [
    Regel aus dem fachlichen Abgleich vom 25.10.2026: kein Code ohne
    Erklärung. Ins Laufband kommen nur Einträge mit Kurzbedeutung, ohne
    Personennamen (w: "person"), ohne offen Gesagtes (w: "offen") und
-   ohne die Kontextstufe. */
+   ohne die Kontextstufe.
+   16.11.2026: Kurzbedeutungen der herausgenommenen Einträge liegen in
+   codes-archiv-2026-11-16.js, die neuen Einträge haben eine Kurzbedeutung
+   nach derselben Regel, umbenannte Einträge ihren neuen Schlüssel. */
 const KURZ = {
   "Hochfinanz": "Steht für eine angebliche „jüdische Weltfinanzkontrolle“.",
   "Globalisten": "Chiffre für eine „kosmopolitische Elite“ ohne Bindung an Vaterland, Kultur oder Tradition.",
   "Ostküste": "Verweis auf den angeblich jüdisch kontrollierten Finanzstandort New York.",
   "Wall Street": "Synonym für ein „wurzelloses“, internationales „Finanzjudentum“.",
-  "Zinsknechtschaft": "Unterstellt, ein jüdisch gedachtes Finanzwesen halte das „schaffende Volk“ durch Zinsen in Abhängigkeit.",
   "Rothschild": "Bankiersfamilie des 18./19. Jh. als Chiffre für eine geheime „jüdische Elite“, die Kriege, Krisen und Katastrophen orchestriere.",
-  "George Soros": "Personifiziert „Hochfinanz“, „Globalisten“ und „Kosmopoliten“.",
-  "Larry Fink": "Neuerer personifizierter Code für „jüdische Finanzmacht“.",
+  "Rockefeller": "Solche Personalisierungen markieren „das Judentum“ als globale Finanzelite.",
   "Schekel": "Israelische Währung als Code für „jüdisches“ Geld.",
   "Geldsack- und Geldbündel-Emojis": "Spielen auf die alte Lüge an, Juden seien besonders gierig und reich.",
   "Puppenspieler / Marionette": "Politische Akteure seien nur willenlose Werkzeuge eines „jüdischen Willens“.",
   "Strippenzieher / Drahtzieher": "„Der Jude“ ziehe im Verborgenen die Fäden und lenke so das Weltgeschehen.",
   "Great Reset": "Umgedeutet zum Plan einer „Elite“ zur Versklavung oder Vernichtung der Menschheit.",
   "New World Order (NWO)": "Sammelbegriff für eine drohende „totalitäre Weltregierung“, hinter der „jüdische Strippenzieher“ stünden.",
-  "tptb, the powers that be": "Markiert eine anonyme, meist jüdisch gedachte „Weltelite“.",
-  "Kalergi-Plan": "Behauptet, „Eliten“ planten den Austausch der weißen Bevölkerung, oft verknüpft mit „jüdischer Steuerung“.",
-  "Lügenpresse": "Behauptet, die Medien seien gleichgeschaltet und gesteuert.",
   "„Israel kontrolliert die Medien“": "Behauptet, Israel oder „die Zionisten“ steuerten heimlich Medien, Wirtschaft und Regierungen der Welt.",
   "„Inside-Job“ / „falsche Flagge“": "Behauptet, Israel habe den Angriff vom 7. Oktober selbst inszeniert.",
+  "„Goy“ / „guter Goy“": "Ein „guter Goy“ sei, wer sich von Juden lenken und täuschen lässt.",
   "Adrenochrom": "Die Ritualmordlegende in modernem Gewand.",
   "Das allsehende Auge": "Erzeugt das Gefühl totaler Überwachung durch eine unsichtbare Macht.",
-  "Plandemie": "Unterstellt, Pandemien seien geplante biologische Angriffe einer geheimen „Elite“.",
   "Pest / Geschwür / Krebs": "Krankheitsmetaphern markieren jüdisches Leben als tödliche Gefahr im „Volkskörper“.",
   "Virus / Bazillus / #Covid1948": "Israel als Virus dargestellt, unter Bezug auf das Gründungsjahr 1948.",
-  "Moloch": "Chiffre für einen jüdisch gedachten „Blutkult“.",
   "Krake": "Einer der verbreitetsten Codes der Bildpropaganda: Tentakel umschlingen den Globus.",
-  "Ratte": "Jüdinnen und Juden als Krankheitsüberträger und ekelerregende Schädlinge.",
+  "Ratte / 🐀": "Jüdinnen und Juden als Krankheitsüberträger und ekelerregende Schädlinge.",
   "Parasiten / Flöhe / Ungeziefer": "Markiert jüdisches Leben als biologische Gefahr.",
+  "Kakerlaken-Emoji 🪳": "Steht in Kommentaren statt des Wortes Juden.",
+  "Vampir-Emoji 🧛": "Ruft das antisemitische Bild vom „Blutsauger“ auf, der von anderen lebt.",
   "Schuldkult": "Diffamiert das Gedenken an die NS-Verbrechen als aufgezwungen und übertrieben.",
   "Schlussstrich": "Forderung, die Auseinandersetzung mit der NS-Vergangenheit zu beenden.",
-  "Auschwitzkeule": "Unterstellt, die Erinnerung an den Holocaust werde als Einschüchterungsmittel und Moralkeule eingesetzt.",
   "Holocaust-Religion": "Rahmt die Erinnerungskultur als dogmatischen, faktenfreien Glauben.",
   "Psychologischer Völkermord": "Erklärt das Erinnern zum eigentlichen Verbrechen, an „den Deutschen“.",
   "Muh 6 Gorillion": "Verhöhnung der rund sechs Millionen Ermordeten.",
-  "271k": "Behauptet, in den Konzentrations- und Vernichtungslagern seien „nur“ 271.000 Menschen gestorben.",
-  "Judenstern „Ungeimpft“": "Der gelbe Zwangsstern der NS-Zeit, getragen mit der Aufschrift „Ungeimpft“.",
-  "Holocaust-Industrie": "Unterstellt Jüdinnen und Juden, aus der Erinnerung an den Holocaust materiellen Profit zu schlagen.",
-  "Wahrheit macht frei": "Verballhornung der Auschwitzer Torinschrift.",
+  "271k / 271.000 / 271": "Behauptet, in den Konzentrations- und Vernichtungslagern seien „nur“ 271.000 Menschen gestorben.",
   "ZOG / ZORG / JOG": "Westliche Regierungen seien Marionetten einer zionistischen bzw. jüdischen Besatzung.",
-  "USrael": "Unterstellt, die US-Politik werde zum Vorteil „des Juden“ und Israels gesteuert.",
   "IsraHell": "Dämonisiert den Staat als Ort des „absolut Bösen“.",
   "Rotes Dreieck": "Seit Ende 2023 in HAMAS-Propaganda als Zielmarkierung verwendet.",
   "Kindermörder Israel": "Aktualisiert die Ritualmordlegende: Israel vergieße das Blut palästinensischer Kinder mit Absicht.",
   "Organraub-Vorwurf": "Behauptet, Israel habe es auf die Organe palästinensischer Kinder abgesehen.",
   "Zionazis": "Gleichsetzung israelischer Politik mit dem Nationalsozialismus.",
   "(((Echo)))": "Dreifache Klammern markieren Personen, Firmen, Organisationen oder Gruppen als „jüdisch“, ohne es auszusprechen.",
-  "JDN LGN": "Entvokalisierung von „Juden lügen“.",
   "Juice / 🧃": "Phonetische Nähe zu „Jews“.",
   "109 / 110": "Behauptet, Jüdinnen und Juden seien aus 109 Ländern vertrieben worden. Die 110 ist eine offene Aufforderung, das aktuelle Wohnland folgen zu lassen.",
-  "Hakennase": "Macht zugeschriebene Minderwertigkeit körperlich sichtbar."
+  "88": "Steht für „Heil Hitler“, weil H der achte Buchstabe des Alphabets ist.",
+  "„der Maler“ / „Austrian Painter“": "Deckname für Adolf Hitler, nach seiner frühen Tätigkeit als Maler.",
+  "Person mit erhobener Hand 🙋": "Die Person, die den rechten Arm hebt, steht in Kommentaren für den Hitlergruß.",
+  "Seifen-Emoji 🧼": "Verhöhnt die Ermordeten des Holocaust.",
+  "Feuer-Emoji 🔥": "Unter Beiträgen zu Jüdinnen und Juden steht das Feuer für die Lager des Holocaust und ihre Öfen.",
+  "Israelfahne neben Ratte oder Schwein": "Die Fahne steht in solchen Kommentaren für Jüdinnen und Juden, das Tier daneben wertet sie ab.",
+  "Hakennase / 👃 / 🤥": "Macht zugeschriebene Minderwertigkeit körperlich sichtbar."
 };
 
 /* Der annotierte Beispiel-Post.
