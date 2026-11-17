@@ -95,7 +95,7 @@ const WERKZEUGE = [
    15.11.2026) und die Prüfung in „BA – Codes auf Social Media nach Delberg
    (2026-11-16)“ im Vault. Im Lexikon bleibt nur, was eine Quelle auf Social
    Media belegt, also in Posts, Kommentaren, Memes, Emojis, Hashtags, Profilen
-   oder Chats. 50 Einträge ohne diesen Beleg und die zwei lebenden Personen
+   oder Chats. 48 Einträge ohne diesen Beleg und die zwei lebenden Personen
    stehen unverändert und mit Grund in codes-archiv-2026-11-16.js. Neu sind
    neun Einträge mit schriftlicher Quelle, einzelne alte Einträge haben ihr
    Emoji und den Social-Media-Beleg dazubekommen (jeweils kommentiert).
@@ -428,18 +428,20 @@ const POSTS = [
         note: "Ursprünglich ein WEF-Konzept für die Zeit nach der Pandemie, umgedeutet zum Plan einer „Elite“ zur Versklavung der Menschheit.",
         src: "BfV S. 39 \u00b7 AAS S. 8" },
       { txt: " längst beschlossen. " },
-      { mark: "Soros", kind: "Personalisierung",
-        note: "Ein Einzelname steht für die ganze Gruppe. Soros personifiziert „Hochfinanz“ und „Globalisten“ und ersetzt ältere Chiffren wie Rothschild.",
-        src: "BfV S. 51 \u00b7 AAS S. 24" },
+      /* 16.11.2026: Soros (lebende Person) durch Rothschild und „Lügenpresse“
+         (nicht auf Social Media belegt) durch die gekauften Medien ersetzt. */
+      { mark: "Rothschild", kind: "Personalisierung",
+        note: "Ein Familienname steht für die ganze Gruppe. Rothschild dient als Chiffre für eine angebliche jüdische Elite, die Finanzen und Weltpolitik lenke.",
+        src: "BfV S. 34 f. \u00b7 AAS S. 24" },
       { txt: " " },
       { mark: "zieht die Fäden", kind: "Puppenspieler-Motiv",
         note: "Das Marionettenbild unterstellt, sichtbare Politik sei nur Fassade und alle Akteure seien Werkzeuge eines „jüdischen Willens“.",
         src: "BfV S. 37 \u00b7 AAS S. 8" },
       { txt: ", und die " },
-      { mark: "Lügenpresse", kind: "Verschwörungsnarrativ",
-        note: "Behauptet gesteuerte, gleichgeschaltete Medien. Dahinter steht das Narrativ einer „jüdischen“ Kontrolle der Öffentlichkeit, schon Treitschke behauptete das 1879.",
-        src: "AAS S. 36 f." },
-      { txt: " schweigt." }
+      { mark: "gekauften Medien", kind: "Verschwörungsnarrativ",
+        note: "Unterstellt, eine geheime jüdische Macht steuere Politik und Medien. Auf TikTok heißt es dann, Israel oder „die Zionisten“ lenkten die Medien.",
+        src: "BfV S. 12 · Schnabel & Berendsen 2024, S. 11" },
+      { txt: " schweigen." }
     ]
   },
   {
@@ -460,10 +462,13 @@ const POSTS = [
       { mark: "Plan der Siegermächte", kind: "Verschwörungsnarrativ",
         note: "Bedient klassische Mythen über eine („jüdisch“ gelenkte) Fremdherrschaft: Die Entnazifizierung sei strategisch geplante Beherrschung gewesen.",
         src: "BfV S. 59" },
-      { txt: ". Wer das sagt, wird fertiggemacht, " },
-      { mark: "wir sind die neuen Juden", kind: "Täter-Opfer-Umkehr",
-        note: "Beansprucht den Verfolgungsstatus der Shoah-Opfer für die eigene Lage. Verharmlost den Holocaust und entwertet das Gedenken.",
-        src: "AAS S. 34 f. \u00b7 REG S. 38" },
+      /* 16.11.2026: „wir sind die neuen Juden“ (vor allem Corona-Demos, nicht auf
+         Social Media belegt) durch „psychologischer Völkermord“ ersetzt, der im
+         selben Telegram-Post steht (BfV S. 58 f.). */
+      { txt: ". Wer das sagt, wird fertiggemacht. Das ist ein " },
+      { mark: "psychologischer Völkermord", kind: "Täter-Opfer-Umkehr",
+        note: "Erklärt das Erinnern zum eigentlichen Verbrechen, an „den Deutschen“. Klassische Täter-Opfer-Umkehr.",
+        src: "BfV S. 59" },
       { txt: "." }
     ]
   },
@@ -486,9 +491,10 @@ const POSTS = [
         note: "Herabwürdigender Ersatzbegriff für „die Israelis“ oder „die Juden“. Der Zionismus selbst ist eine legitime politische Bewegung, der Code kippt ihn ins Feindbild.",
         src: "BfV S. 65 \u00b7 AAS S. 14 f." },
       { txt: " in Washington decken alles. " },
-      { mark: "USrael", kind: "Kofferwort",
-        note: "Unterstellt, die US-Politik werde zum Vorteil „des Juden“ und Israels gesteuert. Schliesst an den Mythos der „jüdischen Weltverschwörung“ an.",
-        src: "BfV S. 69 \u00b7 AAS S. 12" },
+      /* 16.11.2026: „USrael“ (nicht auf Social Media belegt) durch „IsraHell“ ersetzt. */
+      { mark: "IsraHell", kind: "Kofferwort",
+        note: "Kofferwort aus Israel und Hell. Dämonisiert den Staat als Ort des „absolut Bösen“ und ist auf Social Media gängiger Slang.",
+        src: "BfV S. 69 \u00b7 BSAF 2026a, S. 25" },
       { txt: " " },
       { mark: "\ud83d\udd3a", kind: "Zielmarkierung",
         note: "Das rote Dreieck stammt aus HAMAS-Propaganda und diente dort als Zielmarkierung. Seit 2024 vom BMI als Organisationskennzeichen erfasst, die Verwendung kann strafbar sein.",
@@ -509,11 +515,12 @@ const POSTS = [
       { mark: "\ud83e\uddc3", kind: "Filterumgehung",
         note: "„Juice“ klingt wie „Jews“. Der Saftkarton umgeht automatische Moderationsfilter und markiert die Gruppe zugleich als andersartig.",
         src: "BfV S. 55" },
-      { txt: " will keiner hören. " },
-      { mark: "JDN LGN", kind: "Entvokalisierung",
-        note: "Das Gehirn ergänzt „Juden lügen“ selbstständig. Die Auslassung ist keine Abschwächung, sondern Tarnung, sie umgeht Filter und erschwert die Strafverfolgung.",
-        src: "BfV S. 48" },
-      { txt: " Wer es kapiert, kapiert es." }
+      /* 16.11.2026: „JDN LGN“ (T-Shirt auf einer Demo, BfV S. 48) durch „271k“ ersetzt. */
+      { txt: " will keiner hören. Und es waren nur " },
+      { mark: "271k", kind: "Zahlencode",
+        note: "Behauptet, in den Lagern seien „nur“ 271.000 Menschen gestorben. Das ist Holocaustleugnung in Zahlenform, auf TikTok oft ohne jede Erklärung.",
+        src: "BfV S. 62 · Salhi & Goldhorn 2025, S. 135" },
+      { txt: ". Wer es kapiert, kapiert es." }
     ]
   }
 ];
@@ -630,18 +637,20 @@ const QUIZ = [
     src: "BfV, Kap. 2.5, Fallbeispiel 2, S. 60 f."
   },
   {
-    q: "JDN LGN",
-    ctx: "Aufdruck auf einem T-Shirt bei einer Demonstration",
+    /* 16.11.2026: „JDN LGN“ (T-Shirt auf einer Demo) und „Wir sind die neuen
+       Juden.“ (Kundgebung) durch zwei auf Social Media belegte Codes ersetzt. */
+    q: "271k",
+    ctx: "Kommentar unter dem TikTok-Video einer jüdischen Creatorin",
     a: "code",
-    why: "Die Vokale fehlen, dein Kopf ergänzt „Juden lügen“ von selbst. Das ist keine Abschwächung, sondern Tarnung. So rutscht der Satz durch Filter und ist schwerer zu verfolgen. Wer Bescheid weiß, versteht ihn trotzdem.",
-    src: "BfV, Exkurs „Grafische Abwandlungen“, S. 48"
+    why: "Die Zahl behauptet, im Holocaust seien „nur“ 271.000 Menschen gestorben. Das ist Holocaustleugnung in Zahlenform. Auf TikTok steht sie oft ohne jede Erklärung unter Beiträgen jüdischer Creator:innen, wer Bescheid weiß, versteht sie trotzdem.",
+    src: "Salhi & Goldhorn 2025, S. 135–137 · BfV S. 62"
   },
   {
-    q: "Wir sind die neuen Juden.",
-    ctx: "Redebeitrag auf einer Protestkundgebung",
+    q: "Guter Goy. Macht genau, was man ihm sagt.",
+    ctx: "Kommentar unter dem Post eines Politikers, der sich gegen Antisemitismus ausspricht",
     a: "code",
-    why: "Täter-Opfer-Umkehr. Wer das sagt, stellt sich mit den Verfolgten der Shoah gleich und verharmlost damit den Holocaust. In der Coronazeit tauchte das als „Judenstern“ mit der Aufschrift „Ungeimpft“ auf.",
-    src: "AAS S. 34 f. · REG S. 38"
+    why: "„Goy“ ist das jiddische Wort für Nichtjuden. Im Netz wird es abwertend benutzt: Ein „guter Goy“ sei, wer sich von Juden lenken und täuschen lässt. Dahinter steckt die Erzählung einer heimlichen jüdischen Macht.",
+    src: "Jensen 2025, S. 26 · Salhi & Goldhorn 2025, S. 124"
   },
   {
     q: "BlackRock hat enormen Einfluss auf die Finanzmärkte.",
@@ -658,19 +667,21 @@ const TOOLS = [
     codes: ["Psychologischer Völkermord", "Schuldkult"] },
   { n: "Werkzeug 2", h: "Personalisierung",
     p: "Ein Name steht für die ganze Gruppe. So wirkt es, als gäbe es eine „jüdische Macht“. Ständig kommen neue Namen dazu.",
-    codes: ["Rothschild", "George Soros", "Larry Fink"] },
+    codes: ["Rothschild", "Rockefeller"] },
+  /* 16.11.2026: Beispiele auf Social-Media-Codes umgestellt (Soros, Fink
+     und JDN LGN sind im Archiv). */
   { n: "Werkzeug 3", h: "Begriffsersetzung",
     p: "Ein belastetes Wort wird durch ein harmlos klingendes ersetzt. Der Satz wirkt unauffällig. Wer widerspricht, bekommt zu hören, er interpretiere zu viel hinein.",
-    codes: ["Globalisten", "Hochfinanz"] },
+    codes: ["Globalisten", "Juice / 🧃"] },
   { n: "Werkzeug 4", h: "Abwertendes Bild",
     p: "Tier- und Krankheitsbilder sprechen Menschen das Menschsein ab und machen Angst. Sie legen nahe, man müsse sie „beseitigen“.",
-    codes: ["Krake", "Parasiten / Flöhe / Ungeziefer", "Pest / Geschwür / Krebs"] },
+    codes: ["Krake", "Ratte / 🐀", "Kakerlaken-Emoji 🪳"] },
   { n: "Werkzeug 5", h: "Zahlencode",
     p: "Zahlen lösen erst mal keine Bilder im Kopf aus. Genau das macht sie wirksam: Für Außenstehende bedeuten sie nichts, für Eingeweihte sind sie ein Erkennungszeichen.",
-    codes: ["109 / 110", "271k"] },
+    codes: ["109 / 110", "271k / 271.000 / 271", "88"] },
   { n: "Werkzeug 6", h: "Optisches Zeichen",
-    p: "Verzerrte Körpermerkmale oder veränderte Schrift. Sie tarnen die Botschaft und markieren zugleich. Gleichgesinnte erkennen sich daran.",
-    codes: ["(((Echo)))", "JDN LGN"] }
+    p: "Verzerrte Körpermerkmale, veränderte Schrift oder Emojis. Sie tarnen die Botschaft und markieren zugleich. Gleichgesinnte erkennen sich daran.",
+    codes: ["(((Echo)))", "Geldsack- und Geldbündel-Emojis", "Seifen-Emoji 🧼"] }
 ];
 
 /* Die vier Wirkebenen (BfV S. 73). Seit dem Umbau vom 07.11.2026 als
@@ -713,4 +724,13 @@ const SOURCES = [
     d: "Lorenz, A., Publizistik 70 (1), 2025, S. 261–287." },
   { k: "EH", t: "Memefizierter Antisemitismus",
     d: "Ebbrecht-Hartmann, T., CARS Working Papers Nr. 21, 2024." },
+  /* Neu 16.11.2026 mit dem Umbau auf Social-Media-Codes. */
+  { k: "SG", t: "Memefication of antisemitism. Antisemitic content on TikTok",
+    d: "Salhi, M. & Goldhorn, Y., in Becker, M. J., Scheiber, M. & Jensen, U. (Hrsg.), Imagery of hate online, Open Book Publishers, 2025, S. 107–152." },
+  { k: "BSAF-R", t: "Das TikTok-Universum der (extremen) Rechten",
+    d: "Bildungsstätte Anne Frank, Report #RechteJugend, 2024." },
+  { k: "CB", t: "Affirmation of Nazis, Hitler and the Holocaust",
+    d: "Chapelan, A. & Bolton, M., in Decoding antisemitism, Palgrave Macmillan, 2024, S. 353–367." },
+  { k: "ADL", t: "Coded Hate: Extremists weaponize seemingly innocuous content to promote bigotry",
+    d: "Anti-Defamation League, Center on Extremism, 07.08.2025, aktualisiert 2026." },
 ];
