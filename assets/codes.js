@@ -207,10 +207,10 @@ const CODES = [
   /* Neu 16.11.2026: auf TikTok belegt (Salhi & Goldhorn, 2025, S. 125), von
      Delberg als Emoji und Meme-Motiv genannt (E-Mail vom 15.11.2026). Die
      Bedeutung als Ungeziefer nach BfV S. 55. */
-  { t: "Kakerlaken-Emoji 🪳", c: "tier", f: "koerper", w: "bild", src: "SG · BfV",
+  { t: "Kakerlake / 🪳", c: "tier", f: "koerper", w: "bild", src: "SG · BfV",
     d: "Steht in Kommentaren statt des Wortes Juden. Wie Ratten und Ungeziefer setzt die Kakerlake Menschen mit Schädlingen gleich und spricht ihnen das Menschsein ab." },
   /* Neu 16.11.2026: Emoji-Code auf TikTok (BSAF, 2024a, S. 33). */
-  { t: "Vampir-Emoji 🧛", c: "tier", f: "koerper", w: "bild", src: "BSAF-R",
+  { t: "Vampir / 🧛", c: "tier", f: "koerper", w: "bild", src: "BSAF-R",
     d: "Ruft das antisemitische Bild vom „Blutsauger“ auf, der von anderen lebt." },
   { t: "Gharqad-Baum", c: "tier", f: "glaube", w: "anspielung", src: "BfV",
     d: "Aus einer Endzeit-Überlieferung: der „Baum der Juden“, der sie am Ende der Zeiten schütze. Wer davor platziert wird, gilt als Schutzschild „jüdischer Interessen“." },
@@ -288,7 +288,7 @@ const CODES = [
      (Bundesverband RIAS, 2026, S. 28; Salhi & Goldhorn, 2025, S. 122–126, 135–136;
      ADL, 2025; Becker et al., 2024, S. 361). 🧃 und 6MWE nennt auch Delberg
      (E-Mail vom 15.11.2026). */
-  { t: "Juice / 🧃", c: "zeichen", f: "kontext", w: "ersetzung", src: "BfV · RIAS · SG · ADL",
+  { t: "Saftpäckchen / Juice / 🧃", c: "zeichen", f: "kontext", w: "ersetzung", src: "BfV · RIAS · SG · ADL",
     d: "Phonetische Nähe zu „Jews“. Als Saftkarton-Emoji verschleiert der Code antisemitische Inhalte und umgeht automatische Moderation." },
   { t: "109 / 110", c: "zeichen", f: "koerper", w: "zahl", src: "BfV · SG",
     d: "Behauptet, Jüdinnen und Juden seien aus 109 Ländern vertrieben worden. Die 110 ist eine offene Aufforderung, das aktuelle Wohnland folgen zu lassen." },
@@ -306,16 +306,16 @@ const CODES = [
   /* Neu 16.11.2026: Emoji-Code auf TikTok (BSAF, 2024a, S. 33; Lorenz, 2025,
      S. 274, Tab. 1), von Delberg als erhobene Hand und Personen-Emojis genannt
      (E-Mail vom 15.11.2026). */
-  { t: "Person mit erhobener Hand 🙋", c: "zeichen", f: "koerper", w: "zeichen", src: "BSAF-R · LOR · CB",
+  { t: "Person mit erhobener Hand / 🙋", c: "zeichen", f: "koerper", w: "zeichen", src: "BSAF-R · LOR · CB",
     d: "Die Person, die den rechten Arm hebt, steht in Kommentaren für den Hitlergruß. Unter Beiträgen zu Jüdinnen und Juden feiert sie den Nationalsozialismus und damit den Holocaust." },
   /* Neu 16.11.2026: auf TikTok belegt (Salhi & Goldhorn, 2025, S. 136, 141),
      von Delberg als Emoji und Meme-Motiv genannt (E-Mail vom 15.11.2026). */
-  { t: "Seifen-Emoji 🧼", c: "zeichen", f: "koerper", w: "zeichen", src: "SG",
+  { t: "Seife / 🧼", c: "zeichen", f: "koerper", w: "zeichen", src: "SG",
     d: "Verhöhnt die Ermordeten des Holocaust. Das Emoji spielt auf die Behauptung an, aus den Leichen sei Seife gemacht worden, und macht die Opfer zum Witz." },
   /* Neu 16.11.2026: auf TikTok belegt (Salhi & Goldhorn, 2025, S. 136, 141),
      von Delberg genannt (E-Mail vom 15.11.2026). Nur im Zusammenhang ein Code,
      das BfV liest das Feuer-Emoji in anderen Posts als bloßes Warnzeichen (S. 26). */
-  { t: "Feuer-Emoji 🔥", c: "zeichen", f: "koerper", w: "zeichen", src: "SG",
+  { t: "Feuer / 🔥", c: "zeichen", f: "koerper", w: "zeichen", src: "SG",
     d: "Unter Beiträgen zu Jüdinnen und Juden steht das Feuer für die Lager des Holocaust und ihre Öfen. Für sich allein ist das Emoji harmlos, erst der Zusammenhang macht es zum Code." },
   /* Neu 16.11.2026: Bundesverband RIAS (2026, S. 29) belegt die Israelfahne
      neben Ratte, Sarg und rotem Dreieck in einer Drohnachricht, das BfV-Lagebild
@@ -373,8 +373,8 @@ const KURZ = {
   "Krake": "Einer der verbreitetsten Codes der Bildpropaganda: Tentakel umschlingen den Globus.",
   "Ratte / 🐀": "Jüdinnen und Juden als Krankheitsüberträger und ekelerregende Schädlinge.",
   "Parasiten / Flöhe / Ungeziefer": "Markiert jüdisches Leben als biologische Gefahr.",
-  "Kakerlaken-Emoji 🪳": "Steht in Kommentaren statt des Wortes Juden.",
-  "Vampir-Emoji 🧛": "Ruft das antisemitische Bild vom „Blutsauger“ auf, der von anderen lebt.",
+  "Kakerlake / 🪳": "Steht in Kommentaren statt des Wortes Juden.",
+  "Vampir / 🧛": "Ruft das antisemitische Bild vom „Blutsauger“ auf, der von anderen lebt.",
   "Schuldkult": "Diffamiert das Gedenken an die NS-Verbrechen als aufgezwungen und übertrieben.",
   "Schlussstrich": "Forderung, die Auseinandersetzung mit der NS-Vergangenheit zu beenden.",
   "Holocaust-Religion": "Rahmt die Erinnerungskultur als dogmatischen, faktenfreien Glauben.",
@@ -388,13 +388,13 @@ const KURZ = {
   "Organraub-Vorwurf": "Behauptet, Israel habe es auf die Organe palästinensischer Kinder abgesehen.",
   "Zionazis": "Gleichsetzung israelischer Politik mit dem Nationalsozialismus.",
   "(((Echo)))": "Dreifache Klammern markieren Personen, Firmen, Organisationen oder Gruppen als „jüdisch“, ohne es auszusprechen.",
-  "Juice / 🧃": "Phonetische Nähe zu „Jews“.",
+  "Saftpäckchen / Juice / 🧃": "Phonetische Nähe zu „Jews“.",
   "109 / 110": "Behauptet, Jüdinnen und Juden seien aus 109 Ländern vertrieben worden. Die 110 ist eine offene Aufforderung, das aktuelle Wohnland folgen zu lassen.",
   "88": "Steht für „Heil Hitler“, weil H der achte Buchstabe des Alphabets ist.",
   "„der Maler“ / „Austrian Painter“": "Deckname für Adolf Hitler, nach seiner frühen Tätigkeit als Maler.",
-  "Person mit erhobener Hand 🙋": "Die Person, die den rechten Arm hebt, steht in Kommentaren für den Hitlergruß.",
-  "Seifen-Emoji 🧼": "Verhöhnt die Ermordeten des Holocaust.",
-  "Feuer-Emoji 🔥": "Unter Beiträgen zu Jüdinnen und Juden steht das Feuer für die Lager des Holocaust und ihre Öfen.",
+  "Person mit erhobener Hand / 🙋": "Die Person, die den rechten Arm hebt, steht in Kommentaren für den Hitlergruß.",
+  "Seife / 🧼": "Verhöhnt die Ermordeten des Holocaust.",
+  "Feuer / 🔥": "Unter Beiträgen zu Jüdinnen und Juden steht das Feuer für die Lager des Holocaust und ihre Öfen.",
   "Israelfahne neben Ratte oder Schwein": "Die Fahne steht in solchen Kommentaren für Jüdinnen und Juden, das Tier daneben wertet sie ab.",
   "Hakennase / 👃 / 🤥": "Macht zugeschriebene Minderwertigkeit körperlich sichtbar."
 };
@@ -673,16 +673,16 @@ const TOOLS = [
      und JDN LGN sind im Archiv). */
   { n: "Werkzeug 3", h: "Begriffsersetzung",
     p: "Ein belastetes Wort wird durch ein harmlos klingendes ersetzt. Der Satz wirkt unauffällig. Wer widerspricht, bekommt zu hören, er interpretiere zu viel hinein.",
-    codes: ["Globalisten", "Juice / 🧃"] },
+    codes: ["Globalisten", "Saftpäckchen / Juice / 🧃"] },
   { n: "Werkzeug 4", h: "Abwertendes Bild",
     p: "Tier- und Krankheitsbilder sprechen Menschen das Menschsein ab und machen Angst. Sie legen nahe, man müsse sie „beseitigen“.",
-    codes: ["Krake", "Ratte / 🐀", "Kakerlaken-Emoji 🪳"] },
+    codes: ["Krake", "Ratte / 🐀", "Kakerlake / 🪳"] },
   { n: "Werkzeug 5", h: "Zahlencode",
     p: "Zahlen lösen erst mal keine Bilder im Kopf aus. Genau das macht sie wirksam: Für Außenstehende bedeuten sie nichts, für Eingeweihte sind sie ein Erkennungszeichen.",
     codes: ["109 / 110", "271k / 271.000 / 271", "88"] },
   { n: "Werkzeug 6", h: "Optisches Zeichen",
     p: "Verzerrte Körpermerkmale, veränderte Schrift oder Emojis. Sie tarnen die Botschaft und markieren zugleich. Gleichgesinnte erkennen sich daran.",
-    codes: ["(((Echo)))", "Geldsack- und Geldbündel-Emojis", "Seifen-Emoji 🧼"] }
+    codes: ["(((Echo)))", "Geldsack- und Geldbündel-Emojis", "Seife / 🧼"] }
 ];
 
 /* Die vier Wirkebenen (BfV S. 73). Seit dem Umbau vom 07.11.2026 als

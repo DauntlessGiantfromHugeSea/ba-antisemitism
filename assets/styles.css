@@ -858,10 +858,14 @@ html:not(.js) .ticker-box { display: none; }
   text-transform: uppercase; font-size: clamp(1.25rem, 1.8vw, 1.5rem); line-height: 1.1;
   display: flex; align-items: flex-start; gap: .75rem; justify-content: space-between;
 }
-/* Der Begriff steht gestrichen, die Erklärung klappt darunter auf. */
-.card .term > span:first-child {
-  text-decoration: line-through; text-decoration-color: var(--red);
-  text-decoration-thickness: .1em;
+/* Seit der Konsultation vom 20.11.2026 steht der Begriff ungestrichen,
+   nur Emojis bleiben gestrichen. Die Erklärung klappt darunter auf. */
+.card .term .emo-x {
+  text-decoration: none; position: relative; display: inline-block; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+.card .term .emo-x::after {
+  content: ""; position: absolute; left: -12%; right: -12%; top: 50%; height: .14em; margin-top: -.07em;
+  background: var(--red); transform: rotate(-3deg);
 }
 .card .term .plus {
   flex: none; font-family: var(--body); font-weight: 400; font-size: 1.25rem;

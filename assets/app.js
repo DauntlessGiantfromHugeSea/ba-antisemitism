@@ -520,7 +520,16 @@
       b.setAttribute("aria-expanded", "false");
 
       var term = el("div", "term");
-      term.appendChild(el("span", null, x.t));
+      /* Konsultation 20.11.2026: Im Lexikon stehen Wörter ungestrichen neben
+         ihrer Einordnung, nur Emojis bleiben gestrichen. Titel mit Emoji
+         heißen deshalb „Name / Emoji“, etwa „Ratte / 🐀“. */
+      var name = el("span", "term-t");
+      x.t.split(" / ").forEach(function (part, i) {
+        if (i) name.appendChild(document.createTextNode(" / "));
+        var isEmo = /\p{Extended_Pictographic}/u.test(part);
+        name.appendChild(isEmo && x.lvl !== "kontext" ? el("s", "emo-x", part) : el("span", null, part));
+      });
+      term.appendChild(name);
       term.appendChild(el("span", "plus", "+"));
       b.appendChild(term);
       /* Urteilsstufe wie im Test. Solche Einträge gelten nicht als Code
