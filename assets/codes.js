@@ -26,35 +26,41 @@
    Zeichen heißen <id>.svg (ids: geld, welt, bio, tier, schuld, israel,
    zeichen) und stehen immer ohne Strich und Satz. Zum Einschalten
    icon auf "<id>.svg" setzen. Zeichen für die Werkzeuge heißen später
-   werkzeug-<id>.svg, damit sie nicht mit der Kachel „zeichen“ kollidieren. */
+   werkzeug-<id>.svg, damit sie nicht mit der Kachel „zeichen“ kollidieren.
+   Seit dem 21.11.2026 stehen auf allen sieben Kacheln neue, neutrale
+   Zeichen <id>.svg aus einem gemeinsamen System (viewBox 64, Strich 3,
+   runde Enden, currentColor), dazu werkzeug-<id>.svg und ebene-<name>.svg.
+   Es sind Entwürfe von Claude nach Briefing und Icon-Liste, die Dustyn
+   durch eigene Dateien mit demselben Namen ersetzen kann. sign bleibt nur
+   als Nachweis stehen, die Website zeigt es nicht mehr. */
 const CATEGORIES = [
   { id: "geld", label: "Geldmacht", claim: "„Sie kontrollieren das Geld.“", catSrc: "BfV Kap. 2.1 · AAS S. 10 f.",
     sign: { lead: "Das Zeichen zeigt eine Münze mit Währungszeichen, nah am Code", code: "Schekel" },
-    icon: "alt-geld.svg" },
+    icon: "geld.svg" },
 
   { id: "welt", label: "Welt\u00ADverschwörung", claim: "„Sie ziehen die Fäden.“", catSrc: "BfV Kap. 2.2 · REG S. 30–39",
     sign: { lead: "Das Zeichen zeigt den Code", code: "Puppenspieler / Marionette" },
-    icon: "alt-welt.svg" },
+    icon: "welt.svg" },
 
   { id: "bio", label: "Krankheit & Blut", claim: "„Sie vergiften uns.“", catSrc: "BfV Kap. 2.3 · REG S. 40–45",
     sign: { lead: "Das Zeichen zeigt den Code", code: "Das allsehende Auge" },
-    icon: "alt-bio.svg" },
+    icon: "bio.svg" },
 
   { id: "tier", label: "Ent\u00ADmenschlichung", claim: "„Sie sind keine Menschen.“", catSrc: "BfV Kap. 2.4 · bpb, Tiermetaphern",
     sign: { lead: "Das Zeichen zeigt den Code", code: "Krake" },
-    icon: "alt-tier.svg" },
+    icon: "tier.svg" },
 
   { id: "schuld", label: "Schuldabwehr", claim: "„Schluss damit.“", catSrc: "BfV Kap. 2.5 · AAS S. 30 f.",
     sign: { lead: "Das Zeichen zeigt den Code", code: "Schlussstrich" },
-    icon: "alt-schuld.svg" },
+    icon: "schuld.svg" },
 
   { id: "israel", label: "Israelbezogen", claim: "„Der Staat ist das Böse.“", catSrc: "BfV Kap. 2.6 · REG S. 64–74",
     sign: { lead: "Das Zeichen zeigt den Code", code: "Rotes Dreieck" },
-    icon: null },
+    icon: "israel.svg" },
 
   { id: "zeichen", label: "Zeichen & Zahlen", tool: true, claim: "„Wer’s weiß, weiß es.“", catSrc: "BfV S. 71 f.",
     sign: { lead: "Das Zeichen zeigt den Code", code: "(((Echo)))" },
-    icon: "alt-zeichen.svg" }
+    icon: "zeichen.svg" }
 ];
 
 /* Formen und Werkzeuge für die Codes-Übersicht im Kopf.
@@ -695,13 +701,13 @@ const TOOLS = [
    Codes-Listen (Grundsatz aus dem Briefing für die Icons). */
 const LEVELS = [
   { h: "Emotional", p: "Zieht am Verstand vorbei und löst im Unterbewusstsein eine instinktive Reaktion aus: Angst, Wut, Ekel oder das gute Gefühl, ein „Wissender“ zu sein.",
-    icon: '<path d="M6 34h12l6-14 8 28 7-20 5 6h14"/>' },
+    icon: "ebene-emotional.svg" },
   { h: "Kognitiv", p: "Setzt Deutungsrahmen. Konstruiert Feindbilder, reduziert Komplexität auf gut und böse und untergräbt das Vertrauen in Institutionen.",
-    icon: '<path d="M10 14h44v36H10z"/><path d="M32 14v36"/>' },
+    icon: "ebene-kognitiv.svg" },
   { h: "Moralisch", p: "Höhlt demokratische Werte schleichend aus. Entmenschlichung senkt die Hemmschwelle für Beleidigungen und Angriffe und normalisiert Antisemitismus.",
-    icon: '<path d="M8 16h16v14h16v14h16"/>' },
+    icon: "ebene-moralisch.svg" },
   { h: "Handlung", p: "Fordert dazu auf, die passive Rolle zu verlassen: Solidarisierung, Parteinahme, im Extremfall Mobilisierung zu unmittelbarer Gewalt.",
-    icon: '<path d="M10 20v34h34"/><path d="M26 38 52 12M34 12h18v18"/>' }
+    icon: "ebene-handlung.svg" }
 ];
 
 const SOURCES = [

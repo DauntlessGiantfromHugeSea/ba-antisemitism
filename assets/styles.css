@@ -181,6 +181,35 @@ mark.emo { margin-inline: .12em .2em; }
   text-decoration-thickness: .11em;
 }
 
+/* ---------- Zeichen (Icons) ----------
+   Ein System für alle Zeichen der Seite (21.11.2026): viewBox 64, Strich 3,
+   runde Enden und Ecken. Die SVG-Datei ist Maske, die Farbe kommt per
+   currentColor aus der Umgebung. Die Größe setzt font-size, 1em = Kante. */
+.ico {
+  display: inline-block; flex: none; width: 1em; height: 1em;
+  background: currentColor; vertical-align: middle;
+  -webkit-mask: var(--ico) center / contain no-repeat;
+  mask: var(--ico) center / contain no-repeat;
+}
+.i-geld { --ico: url("icons/geld.svg"); }
+.i-welt { --ico: url("icons/welt.svg"); }
+.i-bio { --ico: url("icons/bio.svg"); }
+.i-tier { --ico: url("icons/tier.svg"); }
+.i-schuld { --ico: url("icons/schuld.svg"); }
+.i-israel { --ico: url("icons/israel.svg"); }
+.i-zeichen { --ico: url("icons/zeichen.svg"); }
+.i-werkzeug-anspielung { --ico: url("icons/werkzeug-anspielung.svg"); }
+.i-werkzeug-person { --ico: url("icons/werkzeug-person.svg"); }
+.i-werkzeug-ersetzung { --ico: url("icons/werkzeug-ersetzung.svg"); }
+.i-werkzeug-bild { --ico: url("icons/werkzeug-bild.svg"); }
+.i-werkzeug-zahl { --ico: url("icons/werkzeug-zahl.svg"); }
+.i-werkzeug-zeichen { --ico: url("icons/werkzeug-zeichen.svg"); }
+.i-werkzeug-offen { --ico: url("icons/werkzeug-offen.svg"); }
+.i-ebene-emotional { --ico: url("icons/ebene-emotional.svg"); }
+.i-ebene-kognitiv { --ico: url("icons/ebene-kognitiv.svg"); }
+.i-ebene-moralisch { --ico: url("icons/ebene-moralisch.svg"); }
+.i-ebene-handlung { --ico: url("icons/ebene-handlung.svg"); }
+
 /* ---------- Quellenangabe ---------- */
 
 .src {
@@ -779,28 +808,7 @@ html:not(.js) .ticker-box { display: none; }
   min-height: clamp(10rem, 14vw, 12.5rem);
   position: relative;
 }
-.gl-ico { grid-row: 2; position: relative; display: block; width: clamp(44px, 4.5vw, 56px); height: clamp(44px, 4.5vw, 56px); }
-/* Die SVG-Datei ist Maske, die Farbe kommt von der Kachel. */
-.gl-ico-img {
-  display: block; width: 100%; height: 100%; background: currentColor;
-  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-  -webkit-mask-position: center; mask-position: center;
-  -webkit-mask-size: contain; mask-size: contain;
-}
-/* Roter Strich quer über ein Zeichen, das einen Code zeigt */
-.gl-ico.is-code::after {
-  content: ""; position: absolute; left: -12%; right: -12%; top: 50%;
-  height: 5px; margin-top: -2.5px; background: var(--red);
-  transform: rotate(-12deg); border-radius: 2px;
-}
-.gl-sign {
-  margin: 0; padding: 0 1.1rem 1.1rem; max-width: none;
-  font-size: .8125rem; line-height: 1.45; color: var(--ink-2);
-}
-.gl-sign s {
-  color: var(--ink); font-weight: 650;
-  text-decoration-color: var(--red); text-decoration-thickness: .14em;
-}
+.gl-ico { grid-row: 2; font-size: clamp(44px, 4.5vw, 56px); }
 .gl-n {
   font-family: var(--mono); font-size: .75rem; font-weight: 600;
   letter-spacing: .06em; color: var(--ink-2); font-variant-numeric: tabular-nums;
@@ -820,11 +828,7 @@ html:not(.js) .ticker-box { display: none; }
 }
 
 .glyph-tile.is-on { background: var(--red); color: var(--on-red); }
-.glyph-tile.is-on .gl-n, .glyph-tile.is-on .gl-tag,
-.glyph-tile.is-on .gl-sign, .glyph-tile.is-on .gl-sign s { color: var(--on-red); }
-/* Auf Rot wird der Strich dunkel (3,31 : 1, Grafik) */
-.glyph-tile.is-on .gl-ico.is-code::after { background: var(--ink); }
-.glyph-tile.is-on .gl-sign s { text-decoration-color: var(--ink); }
+.glyph-tile.is-on .gl-n, .glyph-tile.is-on .gl-tag { color: var(--on-red); }
 .glyph-tile.is-on .glyph:focus-visible { outline-color: var(--ink); }
 
 .drill:not(:empty) { margin-top: clamp(2.5rem, 5vw, 4rem); animation: fade .5s ease both; }
@@ -1273,7 +1277,7 @@ html:not(.js) .ticker-box { display: none; }
   font-family: var(--mono); font-size: .75rem; font-weight: 700;
   letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
 }
-.level svg { width: 44px; height: 44px; flex: none; color: var(--ink); }
+.level-ico { font-size: 44px; color: var(--ink); }
 .level h4 {
   font-family: var(--display); font-weight: 900; font-stretch: 66%;
   text-transform: uppercase; font-size: clamp(2rem, 3.4vw, 3rem); line-height: .9;

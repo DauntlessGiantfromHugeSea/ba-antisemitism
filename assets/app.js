@@ -17,6 +17,20 @@
     return n;
   }
 
+  /* Ein Zeichen aus assets/icons/ (Name ohne .svg). Die Datei dient als
+     Maske, die Farbe kommt per currentColor aus der Umgebung. Die Klasse
+     i-<name> mit dem Pfad steht in styles.css. Alle Zeichen der Seite
+     laufen hier durch, damit Größe und Strich überall gleich sind. */
+  function ico(name, cls) {
+    var n = el("span", "ico i-" + String(name).replace(/\.svg$/, "") + (cls ? " " + cls : ""));
+    n.setAttribute("aria-hidden", "true");
+    return n;
+  }
+  var TOOL_BY_ID = {};
+  if (typeof WERKZEUGE !== "undefined") {
+    WERKZEUGE.forEach(function (w) { TOOL_BY_ID[w.id] = w; });
+  }
+
   /* ---------------------------------------------------------
      0 — EINGANGSHINWEIS
      Nur per JS geoeffnet: Faellt JS aus, bleibt der Dialog zu
@@ -434,31 +448,9 @@
   var drillEl  = $("#drill");
   var openCat  = null;
 
-  /* Zeichen einer Kachel aus assets/icons/<icon>. Die Datei dient als
-     Maske, die Fläche dahinter hat die Schriftfarbe der Kachel. So wird
-     das Zeichen auf der roten, aktiven Kachel weiß. Ohne icon bleibt die
-     Kachel ohne Zeichen, und es wird keine Datei angefragt.
-     Roter Strich und Satz gehören nur zu den alten Zeichen, die selbst
-     einen Code zeigen. Sie heißen alt-<id>.svg. Ein neues, neutrales
-     Zeichen <id>.svg steht immer ohne Strich und ohne Satz, auch wenn
-     bei der Kachel noch sign eingetragen ist. */
-  function isOldIcon(cat) {
-    return !!(cat.icon && /^alt-/.test(cat.icon) && cat.sign);
-  }
-  function iconFor(cat) {
-    var ico = el("span", "gl-ico" + (isOldIcon(cat) ? " is-code" : ""));
-    ico.setAttribute("aria-hidden", "true");
-    var img = el("span", "gl-ico-img");
-    var url = "url(\"assets/icons/" + cat.icon + "\")";
-    img.style.webkitMaskImage = url;
-    img.style.maskImage = url;
-    ico.appendChild(img);
-    return ico;
-  }
-
-  /* Kachel: Knopf mit Zahl, Zeichen und Name. Das Zeichen steht rot
-     gestrichen, darunter ein Satz, welchen Code es zeigt und was er
-     bedeutet (Bedeutung aus KURZ). */
+  /* Kachel: Knopf mit Zahl, Zeichen und Name. Seit dem 21.11.2026 zeigt
+     jede Kachel ein neutrales Zeichen, das den Mechanismus der Erzählung
+     zeigt und keinen Code. Strich und Satz zum alten Zeichen entfallen. */
   CATEGORIES.forEach(function (cat) {
     var n = CODES.filter(function (x) { return x.c === cat.id; }).length;
     var tile = el("div", "glyph-tile");
@@ -467,7 +459,7 @@
     b.type = "button";
     b.dataset.cat = cat.id;
     b.setAttribute("aria-pressed", "false");
-    if (cat.icon) b.appendChild(iconFor(cat));
+    if (cat.icon) b.appendChild(ico(cat.icon, "gl-ico"));
     else b.classList.add("no-ico");
     var lab = el("span", "gl-label", cat.label);
     if (cat.tool) lab.appendChild(el("small", "gl-tag", "Werkzeug, keine Erzählung"));
@@ -475,15 +467,6 @@
     b.appendChild(el("span", "gl-n", String(n)));
     b.addEventListener("click", function () { toggleCat(cat); });
     tile.appendChild(b);
-    /* Der Satz erklärt ein altes Zeichen, das einen Code zeigt. Ohne
-       Zeichen oder mit neuem, neutralem Zeichen entfällt er. */
-    if (isOldIcon(cat) && typeof KURZ !== "undefined" && KURZ[cat.sign.code]) {
-      var sign = el("p", "gl-sign");
-      sign.appendChild(document.createTextNode(cat.sign.lead + " "));
-      sign.appendChild(el("s", null, cat.sign.code));
-      sign.appendChild(document.createTextNode(". " + KURZ[cat.sign.code]));
-      tile.appendChild(sign);
-    }
     glyphsEl.appendChild(tile);
   });
 
@@ -502,7 +485,8 @@
     if (!openCat) return;
 
     var head = el("div", "drill-head");
-    var left = el("div");
+    if (cat.icon) head.appendChild(ico(cat.icon, "drill-ico"));
+    var left = el("div", "drill-txt");
     left.appendChild(el("p", "drill-claim", cat.claim));
     if (cat.catSrc) left.appendChild(el("span", "src", "Quelle: " + cat.catSrc));
     head.appendChild(left);
@@ -531,6 +515,15 @@
       });
       term.appendChild(name);
       term.appendChild(el("span", "plus", "+"));
+      /* Werkzeug des Eintrags mit seinem Zeichen, wie in der Übersicht
+         und im Abschnitt Werkzeuge (Feld w in CODES). */
+      var tool = TOOL_BY_ID[x.w];
+      if (tool) {
+        var tw = el("span", "card-tool");
+        tw.appendChild(ico("werkzeug-" + tool.id));
+        tw.appendChild(document.createTextNode(tool.label));
+        b.appendChild(tw);
+      }
       b.appendChild(term);
       /* Urteilsstufe wie im Test. Solche Einträge gelten nicht als Code
          und stehen deshalb ungestrichen, aber immer mit dieser Marke. */
@@ -654,9 +647,13 @@
 
   /* Die sechs Werkzeuge der Umwegkommunikation (BfV S. 71 f.). */
   var mechEl = $("#mech");
-  TOOLS.forEach(function (m) {
+  TOOLS.forEach(function (m, i) {
     var d = el("div", "mech-item");
-    d.appendChild(el("span", "n", m.n));
+    var top = el("div", "mech-top");
+    var w = typeof WERKZEUGE !== "undefined" ? WERKZEUGE[i] : null;
+    if (w && !w.rand) top.appendChild(ico("werkzeug-" + w.id, "mech-ico"));
+    top.appendChild(el("span", "n", m.n));
+    d.appendChild(top);
     d.appendChild(el("h3", null, m.h));
     d.appendChild(el("p", null, m.p));
     /* Beispiele sind Einträge aus CODES. Sie stehen gestrichen und immer
@@ -683,16 +680,7 @@
       var li = el("li", "level");
       var top = el("div", "level-top");
       top.appendChild(el("span", "level-n", "Ebene " + (i + 1)));
-      var s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      s.setAttribute("viewBox", "0 0 64 64");
-      s.setAttribute("fill", "none");
-      s.setAttribute("stroke", "currentColor");
-      s.setAttribute("stroke-width", "3");
-      s.setAttribute("stroke-linecap", "square");
-      s.setAttribute("stroke-linejoin", "miter");
-      s.setAttribute("aria-hidden", "true");
-      s.innerHTML = l.icon || "";
-      top.appendChild(s);
+      if (l.icon) top.appendChild(ico(l.icon, "level-ico"));
       li.appendChild(top);
       li.appendChild(el("h4", null, l.h));
       li.appendChild(el("p", null, l.p));
