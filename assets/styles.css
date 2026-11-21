@@ -721,7 +721,7 @@ html:not(.js) .ticker-box { display: none; }
 }
 .quiz-bar .score { color: var(--ink); font-variant-numeric: tabular-nums; }
 .progress { height: 4px; background: var(--surface); position: relative; }
-.progress > i { position: absolute; inset: 0 auto 0 0; background: var(--ink); transition: width .5s var(--ease); }
+.progress > i { position: absolute; inset: 0 auto 0 0; background: var(--red); transition: width .5s var(--ease); }
 .quiz-body { padding: clamp(1.75rem, 4vw, 3rem) clamp(1.25rem, 3.5vw, 2.5rem) clamp(1.75rem, 3.5vw, 2.5rem); }
 
 .prompt { font-size: var(--fs-h3); line-height: 1.12; margin: 0 0 .9rem; max-width: 26ch; }
@@ -799,8 +799,10 @@ html:not(.js) .ticker-box { display: none; }
   margin: 0 0 clamp(1.25rem, 3vw, 1.75rem);
 }
 
-/* Kacheln: Zahl oben, Zeichen, Name unten. Aktive Kachel mit Kontur in
-   Schrift und zweiter Fläche, ohne Rot. */
+/* Kacheln: Zahl oben, Zeichen, Name unten. Seit dem 21.11.2026 (mehr
+   Farbe) beim Überfahren rote Kontur, aktiv in Rot-Tönung mit roter
+   Kontur und roter Scheibe, das Zeichen darauf in Karte. Text bleibt
+   in Schrift (12,56 : 1) und Schrift 2 (5,73 : 1). */
 .glyphs {
   display: grid; gap: var(--gap);
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -815,7 +817,8 @@ html:not(.js) .ticker-box { display: none; }
   color: var(--ink); display: flex; flex-direction: column; overflow: hidden;
   transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
-.glyph-tile:hover { border-color: var(--ink-2); }
+.glyph-tile:hover { border-color: var(--red); }
+.glyph-tile:hover .ico-disc { background: var(--red-tint); box-shadow: inset 0 0 0 1.5px var(--red); }
 .glyph {
   background: transparent; border: 0; cursor: pointer; color: inherit;
   font: inherit; display: grid; grid-template-rows: auto auto 1fr; justify-items: start;
@@ -841,7 +844,8 @@ html:not(.js) .ticker-box { display: none; }
   display: block; margin-top: .3rem; font-family: var(--mono); font-size: .625rem;
   font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2);
 }
-.glyph-tile.is-on { background: var(--surface); border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.glyph-tile.is-on { background: var(--red-tint); border-color: var(--red); box-shadow: inset 0 0 0 1px var(--red); }
+.glyph-tile.is-on .ico-disc { background: var(--red); color: var(--card); box-shadow: none; }
 
 .drill:not(:empty) { margin-top: clamp(2rem, 4vw, 3rem); animation: fade .5s ease both; }
 @media (prefers-reduced-motion: reduce) { .drill:not(:empty) { animation: none; } }
@@ -872,8 +876,9 @@ html:not(.js) .ticker-box { display: none; }
   display: flex; flex-direction: column; gap: .5rem;
   transition: border-color .2s ease, background .2s ease;
 }
-.card:hover { border-color: var(--ink-2); }
-.card[aria-expanded="true"] { border-color: var(--ink); }
+.card:hover { border-color: var(--red); }
+/* Offene Karte in Rot-Tönung mit roter Kontur (21.11.2026). */
+.card[aria-expanded="true"] { background: var(--red-tint); border-color: var(--red); box-shadow: inset 0 0 0 1px var(--red); }
 .card-tool {
   display: inline-flex; align-items: center; gap: .45rem;
   font-family: var(--mono); font-size: .625rem; font-weight: 500;
@@ -887,8 +892,8 @@ html:not(.js) .ticker-box { display: none; }
 }
 .card .term .emo { font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; }
 .card .term .plus { width: 1.75rem; height: 1.75rem; font-size: 1.125rem; color: var(--ink); margin-top: -.05rem; }
-.card:hover .term .plus { background: var(--surface); }
-.card[aria-expanded="true"] .term .plus { transform: rotate(45deg); background: var(--ink); border-color: var(--ink); color: var(--card); }
+.card:hover .term .plus { background: var(--red-tint); border-color: var(--red); }
+.card[aria-expanded="true"] .term .plus { transform: rotate(45deg); background: var(--red); border-color: var(--red); color: var(--on-red); }
 .card .cat { font-family: var(--mono); font-size: var(--fs-micro); letter-spacing: .02em; line-height: 1.55; color: var(--ink-2); }
 .card .def { font-size: var(--fs-sm); line-height: 1.55; color: var(--ink-2); display: none; max-width: 52ch; }
 .card[aria-expanded="true"] .def { display: block; }
@@ -979,8 +984,8 @@ html:not(.js) .ticker-box { display: none; }
 }
 .faq-item summary:hover .faq-q { color: var(--ink-2); }
 .faq-plus { width: 2.25rem; height: 2.25rem; font-size: 1.25rem; color: var(--ink); }
-.faq-item summary:hover .faq-plus { background: var(--surface-2); }
-.faq-item[open] .faq-plus { transform: rotate(45deg); background: var(--ink); border-color: var(--ink); color: var(--surface); }
+.faq-item summary:hover .faq-plus { background: var(--red-tint); border-color: var(--red); }
+.faq-item[open] .faq-plus { transform: rotate(45deg); background: var(--red); border-color: var(--red); color: var(--on-red); }
 .faq-a { padding: 0 0 clamp(1.25rem, 2.5vw, 1.75rem); }
 .faq-a p { margin: 0; font-size: var(--fs-lead); line-height: 1.6; color: var(--ink-2); max-width: 62ch; }
 
@@ -1023,7 +1028,7 @@ html:not(.js) .ticker-box { display: none; }
   background: var(--red); color: var(--on-red); font-size: 1rem;
   transition: transform .3s var(--ease), background .2s ease;
 }
-.mlink:hover { border-color: var(--ink); }
+.mlink:hover { border-color: var(--red); background: var(--red-tint); }
 .mlink:hover .arr { background: var(--red-dk); transform: translate(2px, -2px); }
 
 /* =========================================================
@@ -1212,9 +1217,9 @@ html:not(.js) .ticker-box { display: none; }
 /* Knoten auf der Linie */
 .level::before {
   content: ""; position: absolute; left: -7px; top: .2rem;
-  width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 1.5px solid var(--ink);
+  width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 1.5px solid var(--red);
 }
-.level:last-child::before { background: var(--ink); }
+.level:last-child::before { background: var(--red); }
 .level-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .75rem; }
 .level-n {
   font-family: var(--mono); font-size: var(--fs-label); font-weight: 500;
@@ -1276,7 +1281,7 @@ html:not(.js) .ticker-box { display: none; }
   position: absolute; left: 0; top: 0;
   width: 2.5rem; height: 2.5rem; border-radius: 50%;
   display: grid; place-items: center;
-  border: 1.5px solid var(--ink); background: var(--card); color: var(--ink);
+  border: 1.5px solid var(--red); background: var(--red-tint); color: var(--ink);
   font-family: var(--mono); font-size: var(--fs-sm); font-weight: 600;
 }
 .step h3 {
