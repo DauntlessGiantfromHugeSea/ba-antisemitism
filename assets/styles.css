@@ -8,9 +8,18 @@
    keine Fotos. Überschriften in Archivo um 700 und leicht schmal, in
    normaler Schreibung wie auf den Plakaten im Website-Stil, Labels,
    Nummern und Quellen in JetBrains Mono.
-   Abgelöst sind damit die schwarzen Bänder (Laufband, Zahlen, Fuß), die
-   rote Fläche bei Melden, die rote aktive Kachel, die roten Zahlen der
-   Übersicht und das rote „Haltung zeigen.“ (Ausnahmen vom 09.11.2026). */
+   Abgelöst sind damit die schwarzen Bänder (Laufband, Zahlen, Fuß) und
+   die rote Fläche bei Melden.
+   Mehr Farbe (zweiter Durchgang am 21.11.2026): Rot kommt kontrolliert
+   zurück, immer in denselben vier Rollen. Erstens als kurzer roter
+   Anstrich auf jeder Kopflinie und als roter Lesebalken. Zweitens als
+   große Zahl ab 24 px (Felder der Übersicht, 72 und 73 im Kopf) und als
+   „Haltung zeigen.“ in Größe h2. Drittens als Rot-Tönung #F8E3DC für
+   aktive Kachel, offene Lexikonkarte, Überfahren, Nummernpille, Knoten
+   und das Zahlenband, mit Rot-Tönung 2 #F1CDC2 als Scheibe hinter den
+   großen Zeichen. Viertens als kleine Fläche nur dort, wo gehandelt wird
+   oder etwas offen ist (Knöpfe, Pfeile, offenes Plus, aktive Scheibe).
+   Kleine Schrift bleibt nie rot, große rote Flächen gibt es nicht. */
 
 /* ---------- Schriften (selbst gehostet, OFL) ---------- */
 

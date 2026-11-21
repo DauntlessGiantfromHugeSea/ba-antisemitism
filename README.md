@@ -59,6 +59,17 @@ keine dunklen Flächen mehr und ein gemeinsames System für alle Zeichen.
   Keine roten Flächen als Schmuck. Damit sind die rote aktive Kachel, der
   rote Abschnitt Melden, die roten Abschnittsnummern und die Ausnahmen vom
   09.11.2026 (rote Zahlen der Übersicht, rotes „Haltung zeigen.“) abgelöst.
+- **Mehr Farbe (21.11.2026, zweiter Durchgang):** Nach dem weichen Stil
+  war die Seite zu blass. Rot kommt deshalb in festen Rollen zurück. Jede
+  Kopflinie trägt links einen kurzen roten Anstrich, der Lesebalken oben
+  ist rot. Die Zahlen der 36 Felder in der Übersicht, die 72 in ihrer
+  Überschrift, die 73 im Kopf und „Haltung zeigen.“ stehen wieder rot,
+  immer ab 24 px. Eine helle Rot-Tönung `#F8E3DC` färbt die aktive Kachel,
+  die offene Lexikonkarte, Überfahren, die Nummernpille und das Zahlenband.
+  Die großen Zeichen stehen auf einer Scheibe in `#F1CDC2`, bei der
+  aktiven Kachel wird sie rot. Die Abschnitte wechseln jetzt streng
+  zwischen Papier und Fläche. Kleine Schrift bleibt nie rot, große rote
+  Flächen und dunkle Bänder gibt es weiter nicht.
 - **Codes im Kopf:** Der Einstiegssatz nennt zwei auf TikTok belegte Codes
   mit zweiter Quelle, die Marionette und das Geldsack-Emoji. Beide stehen
   gestrichen und mit ihrer Bedeutung aus `codes.js` direkt im Satz.
