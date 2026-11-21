@@ -26,6 +26,15 @@
     n.setAttribute("aria-hidden", "true");
     return n;
   }
+  /* Zeichen auf einer Scheibe in Rot-Tönung (21.11.2026, mehr Farbe).
+     Gilt für die großen Zeichen: Kacheln, Codes-Kopf, Werkzeuge,
+     Wirkebenen. Die kleinen Zeichen auf den Lexikonkarten bleiben ohne. */
+  function discIco(name, cls) {
+    var d = el("span", "ico-disc" + (cls ? " " + cls : ""));
+    d.setAttribute("aria-hidden", "true");
+    d.appendChild(ico(name));
+    return d;
+  }
   var TOOL_BY_ID = {};
   if (typeof WERKZEUGE !== "undefined") {
     WERKZEUGE.forEach(function (w) { TOOL_BY_ID[w.id] = w; });
@@ -459,7 +468,7 @@
     b.type = "button";
     b.dataset.cat = cat.id;
     b.setAttribute("aria-pressed", "false");
-    if (cat.icon) b.appendChild(ico(cat.icon, "gl-ico"));
+    if (cat.icon) b.appendChild(discIco(cat.icon, "gl-ico"));
     else b.classList.add("no-ico");
     var lab = el("span", "gl-label", cat.label);
     if (cat.tool) lab.appendChild(el("small", "gl-tag", "Werkzeug, keine Erzählung"));
@@ -485,7 +494,7 @@
     if (!openCat) return;
 
     var head = el("div", "drill-head");
-    if (cat.icon) head.appendChild(ico(cat.icon, "drill-ico"));
+    if (cat.icon) head.appendChild(discIco(cat.icon, "drill-ico"));
     var left = el("div", "drill-txt");
     left.appendChild(el("p", "drill-claim", cat.claim));
     if (cat.catSrc) left.appendChild(el("span", "src", "Quelle: " + cat.catSrc));
@@ -651,7 +660,7 @@
     var d = el("div", "mech-item");
     var top = el("div", "mech-top");
     var w = typeof WERKZEUGE !== "undefined" ? WERKZEUGE[i] : null;
-    if (w && !w.rand) top.appendChild(ico("werkzeug-" + w.id, "mech-ico"));
+    if (w && !w.rand) top.appendChild(discIco("werkzeug-" + w.id, "mech-ico"));
     top.appendChild(el("span", "n", m.n));
     d.appendChild(top);
     d.appendChild(el("h3", null, m.h));
@@ -680,7 +689,7 @@
       var li = el("li", "level");
       var top = el("div", "level-top");
       top.appendChild(el("span", "level-n", "Ebene " + (i + 1)));
-      if (l.icon) top.appendChild(ico(l.icon, "level-ico"));
+      if (l.icon) top.appendChild(discIco(l.icon, "level-ico"));
       li.appendChild(top);
       li.appendChild(el("h4", null, l.h));
       li.appendChild(el("p", null, l.p));

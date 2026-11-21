@@ -216,6 +216,17 @@ mark.emo { margin-inline: .12em .2em; }
 .i-ebene-moralisch { --ico: url("icons/ebene-moralisch.svg"); }
 .i-ebene-handlung { --ico: url("icons/ebene-handlung.svg"); }
 
+/* Scheibe hinter den großen Zeichen (21.11.2026, mehr Farbe): Rot-Tönung 2,
+   Zeichen in Schrift (10,52 : 1). Die Größe setzt font-size, die Scheibe
+   misst 1,6 Kanten. Bei aktiver Kachel und Überfahren wird sie rot. */
+.ico-disc {
+  display: inline-grid; place-items: center; flex: none;
+  width: 1.6em; height: 1.6em; border-radius: 50%;
+  background: var(--red-tint-2); color: var(--ink);
+  transition: background .2s ease, color .2s ease;
+}
+.ico-disc > .ico { font-size: 1em; }
+
 /* ---------- Quellenangabe ---------- */
 
 .src {
@@ -812,7 +823,7 @@ html:not(.js) .ticker-box { display: none; }
   min-height: clamp(9.5rem, 13vw, 11.5rem); border-radius: inherit;
 }
 .glyph:focus-visible { outline-offset: -4px; }
-.gl-ico { grid-row: 2; font-size: clamp(40px, 3.6vw, 48px); }
+.gl-ico { grid-row: 2; font-size: clamp(30px, 2.6vw, 36px); }
 .gl-n {
   font-family: var(--mono); font-size: var(--fs-micro); font-weight: 500;
   letter-spacing: .06em; color: var(--ink-2); font-variant-numeric: tabular-nums;
@@ -838,7 +849,7 @@ html:not(.js) .ticker-box { display: none; }
   display: flex; align-items: center; gap: 1rem 1.25rem; flex-wrap: wrap;
   border-top: 1px solid var(--ink); padding-top: 1.25rem; margin-bottom: 1.5rem;
 }
-.drill-ico { font-size: 48px; color: var(--ink); }
+.drill-ico { font-size: 36px; }
 .drill-txt { flex: 1 1 14rem; min-width: 0; }
 .drill-txt .src { margin-top: .4rem; }
 .drill-claim {
@@ -906,7 +917,7 @@ html:not(.js) .ticker-box { display: none; }
   display: flex; flex-direction: column; align-items: flex-start;
 }
 .mech-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%; margin-bottom: 1.1rem; }
-.mech-ico { font-size: 44px; color: var(--ink); order: 2; }
+.mech-ico { font-size: 34px; order: 2; }
 .mech-item .n {
   font-family: var(--mono); font-size: var(--fs-label); font-weight: 500;
   letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
@@ -1093,7 +1104,7 @@ html:not(.js) .ticker-box { display: none; }
   hyphens: auto; -webkit-hyphens: auto;
 }
 .matrix-t thead th.mx-corner { color: var(--ink-2); padding-left: 0; }
-.mx-ico { display: block; font-size: 28px; color: var(--ink); margin-bottom: .6rem; }
+.mx-ico { display: grid; font-size: 22px; margin-bottom: .6rem; }
 .mx-num { display: block; color: var(--ink-2); margin-bottom: .25rem; font-weight: 700; }
 .matrix-t tbody th {
   font-family: var(--display); font-weight: 650; font-stretch: 88%;
@@ -1209,7 +1220,7 @@ html:not(.js) .ticker-box { display: none; }
   font-family: var(--mono); font-size: var(--fs-label); font-weight: 500;
   letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
 }
-.level-ico { font-size: 44px; color: var(--ink); }
+.level-ico { font-size: 34px; }
 .level h4 {
   font-family: var(--display); font-weight: 700; font-stretch: 85%;
   font-size: var(--fs-h3); line-height: 1.05; letter-spacing: -.01em;
