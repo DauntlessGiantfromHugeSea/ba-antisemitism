@@ -392,6 +392,14 @@ mark.emo { margin-inline: .12em .2em; }
   padding-bottom: clamp(1rem, 2.5vw, 1.5rem);
   border-bottom: 1px solid var(--ink);
 }
+/* Roter Anstrich auch unter der Kopfzeile, gleiche Länge wie an den
+   Abschnittsköpfen (21.11.2026). */
+.hero-meta { position: relative; }
+.hero-meta::after {
+  content: ""; position: absolute; left: 0; bottom: -2px;
+  width: clamp(2.5rem, 5vw, 4rem); height: 3px; background: var(--red);
+  border-radius: 0 2px 0 0;
+}
 
 .hero-title {
   font-size: var(--fs-hero); line-height: .95; letter-spacing: -.018em;
