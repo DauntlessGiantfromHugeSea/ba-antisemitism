@@ -487,7 +487,10 @@ html:not(.js) .ticker-box { display: none; }
 }
 @supports not (overflow-x: clip) { .sec { overflow-x: hidden; } }
 
-/* Zweite Fläche für den Wechsel der Abschnitte. */
+/* Zweite Fläche für den Wechsel der Abschnitte. Seit dem 21.11.2026
+   wechseln Papier und Fläche streng ab: Übersicht Papier, Scan Fläche,
+   Test Papier, Codes Fläche, Werkzeuge Papier, Zahlen Rot-Tönung,
+   Fragen Fläche, Was tun Papier, Melden Fläche, Fuß Papier. */
 .sec.alt { background: var(--surface); }
 
 /* Abschnittskopf, gleich für alle Abschnitte, die Übersicht, die
@@ -927,10 +930,11 @@ html:not(.js) .ticker-box { display: none; }
 .mech-item > .src { margin-top: auto; padding-top: .9rem; }
 
 /* ---------- Zahlen ----------
-   Seit dem 21.11.2026 auf Papier mit feinen Linien statt auf Schwarz.
-   Zahlen in Schrift, keine roten Linien. */
+   Seit dem 21.11.2026 als helles Band in Rot-Tönung statt auf Schwarz.
+   Zahlen in Schrift (12,56 : 1), Text in Schrift 2 (5,73 : 1). */
 
-.facts-band { padding-block: var(--sec-y); }
+.facts-band { padding-block: var(--sec-y); background: var(--red-tint); }
+.facts-band .fact { border-top-color: rgba(225,37,27,.35); }
 .facts-band .eyebrow { max-width: none; border-top: 1px solid var(--ink); padding-top: 1rem; margin-bottom: var(--head-gap); }
 .facts { display: grid; gap: clamp(1.75rem, 3.5vw, 2.5rem); grid-template-columns: 1fr; }
 @media (min-width: 56rem) { .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
