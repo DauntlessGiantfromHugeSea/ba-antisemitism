@@ -62,8 +62,8 @@ keine dunklen Flächen mehr und ein gemeinsames System für alle Zeichen.
 - **Mehr Farbe (21.11.2026, zweiter Durchgang):** Nach dem weichen Stil
   war die Seite zu blass. Rot kommt deshalb in festen Rollen zurück. Jede
   Kopflinie trägt links einen kurzen roten Anstrich, der Lesebalken oben
-  ist rot. Die Zahlen der 36 Felder in der Übersicht, die 72 in ihrer
-  Überschrift, die 73 im Kopf und „Haltung zeigen.“ stehen wieder rot,
+  ist rot. Die Zahlen in den Feldern der Übersicht (ohne Nullen), die 72
+  in ihrer Überschrift, die 73 im Kopf und „Haltung zeigen.“ stehen wieder rot,
   immer ab 24 px. Eine helle Rot-Tönung `#F8E3DC` färbt die aktive Kachel,
   die offene Lexikonkarte, Überfahren, die Nummernpille und das Zahlenband.
   Die großen Zeichen stehen auf einer Scheibe in `#F1CDC2`, bei der

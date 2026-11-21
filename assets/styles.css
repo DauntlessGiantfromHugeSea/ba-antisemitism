@@ -1143,7 +1143,7 @@ html:not(.js) .ticker-box { display: none; }
 .matrix-t tbody tr > * { border-bottom: 1px solid var(--line-soft); }
 
 /* Zahl je Feld. Seit dem zweiten Durchgang am 21.11.2026 (mehr Farbe)
-   wieder rot in den 36 Feldern aus Form und Werkzeug, immer ab 24 px
+   wieder rot in den Feldern aus Form und Werkzeug (ohne Nullen), immer ab 24 px
    und fett (4,09 : 1 auf Papier, große Schrift braucht 3 : 1). Randspalte,
    Randzeile, Summen und Nullen bleiben in Schrift. */
 .mx-v {
