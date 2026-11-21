@@ -28,7 +28,7 @@ Gestalterische Leitidee: *Mechanismen entlarven, nicht Codes feiern.*
 | – | **Kopf** | Schlagzeile, dann ein Laufband mit 44 gestrichenen Codes und ihrer Kurzbedeutung und die Codes-Übersicht aus sechs Formen und sechs Werkzeugen, die je Feld nur die Zahl der Einträge zeigt. |
 | 01 | **Scan** | Vier konstruierte Posts im Karussell, je mit Marker-Sweep — zusammen 19 nummerierte Codes mit Sprechblase und Gegenrede. |
 | 02 | **Test** | Acht Aussagen, drei Antwortoptionen. Die dritte — *„Kommt auf den Kontext an“* — ist keine Ausrede, sondern oft die fachlich richtige Antwort. |
-| 03 | **Codes** | Sieben Kacheln (sechs Erzählungen, ein Werkzeugfeld) mit rot gestrichenem Zeichen und einem Satz dazu. Eine Kachel öffnet ihre Codes als Karten, Antippen klappt Bedeutung und Quelle auf (73 Einträge). Davor der Hinweis, dass Antisemitismus ein Brückennarrativ ist. |
+| 03 | **Codes** | Sieben Kacheln (sechs Erzählungen, ein Werkzeugfeld), jede mit einem neutralen Zeichen, das den Mechanismus zeigt und keinen Code. Eine Kachel öffnet ihre Codes als Karten, Antippen klappt Bedeutung und Quelle auf (73 Einträge). Davor der Hinweis, dass Antisemitismus ein Brückennarrativ ist. |
 | 04 | **Werkzeuge** | Sechs Werkzeuge der Umwegkommunikation, jedes mit gestrichenen Beispielen samt Bedeutung, dann die vier Wirkebenen als Grafik, danach drei belegte Zahlen zur Verbreitung auf dunklem Band. |
 | 05 | **Fragen** | Sechs typische Einwände mit Antwort aus der Fachliteratur. |
 | 06 | **Was tun** | Fünf Handlungsschritte als Ablaufgrafik. |
@@ -48,29 +48,36 @@ Codes zurück. Die Seite ist jetzt plakativ und infografisch. Im dritten
 Durchgang am 09.11.2026 fiel die Code-Wand wieder weg, das Laufband bekam
 seinen alten Stil zurück, und die Kachel-Zeichen wurden zu Dateien. Im
 vierten Durchgang am selben Tag verlor die Übersicht ihre Codewörter, und
-die Rot-Regel kam dazu.
+die Rot-Regel kam dazu. Im fünften Durchgang am 21.11.2026 bekam die Seite
+den weichen Stil, den auch die Plakate haben: Überschriften in normaler
+Schreibung und ruhigerem Gewicht, eine Kartenform, Knöpfe als Pillen,
+keine dunklen Flächen mehr und ein gemeinsames System für alle Zeichen.
 
-- **Rot-Regel (09.11.2026):** Rot ist der Eingriff. Als Linie und Strich
-  ist Rot überall erlaubt. Als Fläche steht Rot nur dort, wo gehandelt
-  wird: Knöpfe und „Test starten“, aktive Kachel und offene Karte, der
-  Abschnitt Melden. Rote Schrift ist ein kurzer Akzent. Bestätigte
-  Ausnahmen ohne Handlung sind die Zahlen der Übersicht und „Haltung
-  zeigen.“ im Fuß, die rot bleiben.
+- **Rot-Regel (21.11.2026):** Rot steht nur als Strich über einem Code
+  (Laufband, Werkzeug-Beispiele, Posts nach dem Scan, Wortmarke) und auf
+  kleinen Handlungselementen wie „Test starten“ und den Melde-Pfeilen.
+  Keine roten Flächen als Schmuck. Damit sind die rote aktive Kachel, der
+  rote Abschnitt Melden, die roten Abschnittsnummern und die Ausnahmen vom
+  09.11.2026 (rote Zahlen der Übersicht, rotes „Haltung zeigen.“) abgelöst.
 - **Codes im Kopf:** Der Einstiegssatz nennt zwei auf TikTok belegte Codes
   mit zweiter Quelle, die Marionette und das Geldsack-Emoji. Beide stehen
   gestrichen und mit ihrer Bedeutung aus `codes.js` direkt im Satz.
 - **Palette** als CSS-Variablen: Papier `#F3EFE7`, Fläche `#E7E1D6`,
   Schrift `#26241F`, Schrift 2 `#5C5850`, Linie `#A9A398`, dazu Signalrot
-  `#E1251B` für Striche, Linien, Handlungsflächen und große Schrift und
-  `#B5140B` für kleine rote Schrift auf Hell, etwa die Abschnittsnummern.
-  Dunkle Flächen: Laufband, Zahlenband und Fuß.
+  `#E1251B` für den Strich und kleine Handlungselemente, `#B5140B` nur noch
+  beim Überfahren roter Knöpfe, dazu Karte `#FBF9F4` wie auf den Plakaten.
+  Schwarze oder dunkle Flächen gibt es seit dem 21.11.2026 nicht mehr.
   Alle Kontraste stehen im Kommentar bei den Farbvariablen in
   `assets/styles.css`. Die Urteilsfarben im Test (grün, grau, rot) bleiben,
   weil sie dort Bedeutung tragen.
-- **Typografie:** Archivo (variabel) kondensiert und extrafett für
-  Überschriften, normal für Fließtext, JetBrains Mono für Labels und Quellen.
-- **Der Strich:** Jeder Code steht rot gestrichen und nie ohne Bedeutung.
-  Laufband, Kacheln und Werkzeug-Beispiele nehmen die Kurzbedeutung aus
+- **Typografie:** Archivo (variabel) mit Gewicht 650 bis 700 und 85 bis
+  88 % Breite in normaler Schreibung für Überschriften, normal für
+  Fließtext, JetBrains Mono für Labels, Nummern und Quellen. Die Größen
+  stehen als Skala in `--fs-*` in `assets/styles.css`.
+- **Der Strich:** Auf Kampagnenmedien steht jeder Code rot gestrichen und
+  nie ohne Bedeutung. Im Lexikon steht seit dem 21.11.2026 nichts
+  gestrichen, jede Karte zeigt geschlossen einen Satz Einordnung.
+  Laufband und Werkzeug-Beispiele nehmen die Kurzbedeutung aus
   `KURZ` in `codes.js`, wörtlich aus dem Erklärtext des Eintrags. Im
   Laufband ist der Strich ein schräger roter Balken wie im alten Stand, die
   Bedeutung steht klein darunter. Die Übersicht zeigt keine Codewörter,
@@ -105,33 +112,30 @@ assets/
                 Posts, Quiz, FAQ, Wirkebenen, Zahlen, Schritte
   app.js        Scan, Test, Drill-down, Übersicht (zählt aus codes.js),
                 Kopfleiste, Menü, Laufband
-  icons/        Zeichen der Kacheln, eine SVG-Datei je Kachel
+  icons/        Zeichen: 7 Erzählungen, 7 Werkzeuge, 4 Wirkebenen
   fonts/        Archivo und JetBrains Mono (variabel, WOFF2, SIL OFL 1.1)
   img/          frühere Collagen, nicht mehr eingebunden (BILDER.md)
 ```
 
-### Eigene Zeichen für die Kacheln
+### Zeichen (Icons)
 
-Jede Kachel kann ein Zeichen als SVG-Datei bekommen.
+Alle Zeichen der Seite kommen aus einem System (Stand 21.11.2026).
 
-- Datei: `assets/icons/<id>.svg`, wobei `<id>` die id der Kachel in
-  `CATEGORIES` ist: `geld`, `welt`, `bio`, `tier`, `schuld`, `israel`,
-  `zeichen`.
-- Format: SVG mit `viewBox="0 0 64 64"`, Linien oder Flächen in einer
-  beliebigen deckenden Farbe (zum Beispiel Schwarz), Hintergrund
-  transparent. Die Datei dient als Maske, die Seite färbt das Zeichen in
-  der Schriftfarbe der Kachel, auf der aktiven roten Kachel also weiß.
-- Einschalten: in `codes.js` bei der Kachel `icon: "<id>.svg"` setzen.
-  `icon: null` heißt Kachel ohne Zeichen, dann fragt die Seite keine Datei
-  an. Im Moment hat `israel` kein Zeichen.
-- Alte und neue Zeichen: Die bisherigen Zeichen zeigen selbst Codes und
-  heißen `alt-<id>.svg`. Nur sie stehen mit rotem Strich und mit dem Satz
-  zum Code aus `sign`. Ein eigenes Zeichen `<id>.svg` steht immer ohne
-  Strich und ohne Satz, auch wenn `sign` noch eingetragen ist. Bis Dustyn
-  entscheidet, bleiben die alten Zeichen gestrichen stehen, nur das
-  Dreieck bei `israel` ist ausgeblendet.
-- Zeichen für die sechs Werkzeuge heißen später `werkzeug-<id>.svg`, damit
-  sie nicht mit der Kachel `zeichen` kollidieren.
+- Dateien in `assets/icons/`: `<id>.svg` für die Kacheln (`geld`, `welt`,
+  `bio`, `tier`, `schuld`, `israel`, `zeichen`), `werkzeug-<id>.svg` für
+  die Werkzeuge (`anspielung`, `person`, `ersetzung`, `bild`, `zahl`,
+  `zeichen`, `offen`) und `ebene-<name>.svg` für die vier Wirkebenen.
+- Format: `viewBox="0 0 64 64"`, nur Linien mit `stroke="currentColor"`,
+  `stroke-width="3"`, runden Enden und Ecken, kleine gefüllte Punkte
+  erlaubt, etwa 4 bis 6 Einheiten Rand. Die Datei dient als Maske
+  (Klasse `.ico` und `i-<name>` in `styles.css`), die Farbe kommt aus der
+  Umgebung.
+- Die Motive folgen dem Briefing und der Icon-Liste im Vault. Es sind
+  Entwürfe von Claude, Dustyn kann jede Datei durch eine eigene mit
+  demselben Namen ersetzen.
+- Die alten Zeichen `alt-<id>.svg` zeigen selbst Codes (Münze, Marionette,
+  Auge, Krake, Schlussstrich, Klammern). Sie sind nicht mehr eingebunden
+  und liegen nur als Nachweis im Repo.
 
 Lokal ansehen:
 
