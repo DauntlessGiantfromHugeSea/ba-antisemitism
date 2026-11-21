@@ -434,7 +434,7 @@ mark.emo { margin-inline: .12em .2em; }
 .stat b {
   font-family: var(--display); font-weight: 700; font-stretch: 85%;
   font-size: clamp(3.5rem, 7vw, 6rem); line-height: .8;
-  letter-spacing: -.02em; color: var(--ink); font-variant-numeric: tabular-nums;
+  letter-spacing: -.02em; color: var(--red); font-variant-numeric: tabular-nums;
 }
 .stat span {
   font-family: var(--mono); font-size: var(--fs-label); font-weight: 500;
@@ -1041,7 +1041,9 @@ html:not(.js) .ticker-box { display: none; }
   font-size: var(--fs-h2); line-height: 1.02; color: var(--ink);
   margin: 0 0 clamp(2.5rem, 5vw, 4rem); max-width: none;
 }
-.foot .big .hot { color: var(--ink-2); }
+/* „Haltung zeigen.“ seit dem 21.11.2026 wieder rot, in Größe h2
+   (ab 34 px fett, 4,09 : 1 auf Papier). */
+.foot .big .hot { color: var(--red); }
 .foot-grid {
   display: grid; gap: 1.75rem; grid-template-columns: 1fr;
   border-top: 1px solid var(--line); padding-top: 1.75rem;
@@ -1123,13 +1125,18 @@ html:not(.js) .ticker-box { display: none; }
 .matrix-t td { padding: .85rem .6rem 1rem; }
 .matrix-t tbody tr > * { border-bottom: 1px solid var(--line-soft); }
 
-/* Zahl je Feld in Schrift (seit 21.11.2026 nicht mehr rot). */
+/* Zahl je Feld. Seit dem zweiten Durchgang am 21.11.2026 (mehr Farbe)
+   wieder rot in den 36 Feldern aus Form und Werkzeug, immer ab 24 px
+   und fett (4,09 : 1 auf Papier, große Schrift braucht 3 : 1). Randspalte,
+   Randzeile, Summen und Nullen bleiben in Schrift. */
 .mx-v {
   display: block;
   font-family: var(--display); font-weight: 700; font-stretch: 85%;
   font-size: clamp(1.5rem, 2vw, 1.875rem); line-height: 1;
   font-variant-numeric: tabular-nums; color: var(--ink);
 }
+.matrix-t tbody:not(.mx-foot) td.mx-c:not(.mx-0):not(.mx-rand) .mx-v { color: var(--red); }
+.mx-title-n { color: var(--red); }
 .mx-0 .mx-v { font-family: var(--mono); font-size: var(--fs-xs); font-weight: 400; line-height: 1.6; color: var(--ink-2); }
 
 /* Randspalte und Randzeile leicht getönt (Schrift darauf über 11 : 1). */
@@ -1185,7 +1192,7 @@ html:not(.js) .ticker-box { display: none; }
     content: attr(data-label); font-family: var(--mono); font-size: .625rem; font-weight: 500;
     letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2);
   }
-  .matrix-t td .mx-v { font-size: 1.375rem; }
+  .matrix-t td .mx-v { font-size: 1.5rem; }
   .matrix-t td.mx-sum .mx-v { font-size: 1.25rem; }
   .matrix-t td.mx-0 .mx-v { font-size: var(--fs-xs); }
   .matrix-t tbody tr.mx-ctx { border-top: 1px dashed var(--ink-2); }
