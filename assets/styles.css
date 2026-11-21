@@ -875,6 +875,8 @@ html:not(.js) .ticker-box { display: none; }
 .card .cat { font-family: var(--mono); font-size: .6875rem; letter-spacing: .04em; color: var(--ink-2); }
 .card .def { font-size: .9375rem; line-height: 1.55; color: var(--ink-2); display: none; max-width: 48ch; }
 .card[aria-expanded="true"] .def { display: block; }
+.card .kurz { font-size: .9375rem; line-height: 1.45; color: var(--ink); margin: 0; max-width: 48ch; }
+.card[aria-expanded="true"] .kurz { display: none; }
 .card .flag {
   align-self: flex-start; font-family: var(--mono); font-size: .625rem; font-weight: 700;
   letter-spacing: .08em; text-transform: uppercase; color: var(--ink);

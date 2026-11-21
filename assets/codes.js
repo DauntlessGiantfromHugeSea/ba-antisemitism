@@ -282,8 +282,12 @@ const CODES = [
     d: "Täter-Opfer-Umkehr in Parolenform: Unterstellt Jüdinnen und Juden, aus der Shoah nichts gelernt zu haben und sie zu wiederholen." },
 
   /* ---------- ZEICHEN & ZAHLEN ---------- */
-  { t: "(((Echo)))", c: "zeichen", f: "kontext", w: "zeichen", src: "BfV",
-    d: "Dreifache Klammern markieren Personen, Firmen, Organisationen oder Gruppen als „jüdisch“, ohne es auszusprechen. Im Netz weit verbreitet." },
+  /* (((Echo))): 21.11.2026 ausgebaut, weil die Website stärker über Zeichen wie
+     die Klammern argumentieren soll (Konsultation 20.11.2026). Belege: BfV (2026,
+     S. 32); Tuters & Hagen (2020) zu 4chan; Salhi & Goldhorn (2025, S. 124, 126)
+     zu TikTok-Kommentaren. */
+  { t: "(((Echo)))", c: "zeichen", f: "kontext", w: "zeichen", src: "BfV · TH · SG",
+    d: "Dreifache Klammern markieren Personen, Firmen, Organisationen oder Gruppen als „jüdisch“, ohne es auszusprechen. Verbreitet hat sich das Zeichen in Foren wie 4chan, heute steht es auch in TikTok-Kommentaren, etwa als „(((they)))“ für „die Juden“." },
   /* Juice, 109 und 6MWE: 16.11.2026 Belege aus TikTok und Kommentaren ergänzt
      (Bundesverband RIAS, 2026, S. 28; Salhi & Goldhorn, 2025, S. 122–126, 135–136;
      ADL, 2025; Becker et al., 2024, S. 361). 🧃 und 6MWE nennt auch Delberg
