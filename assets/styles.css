@@ -858,15 +858,9 @@ html:not(.js) .ticker-box { display: none; }
   text-transform: uppercase; font-size: clamp(1.25rem, 1.8vw, 1.5rem); line-height: 1.1;
   display: flex; align-items: flex-start; gap: .75rem; justify-content: space-between;
 }
-/* Seit der Konsultation vom 20.11.2026 steht der Begriff ungestrichen,
-   nur Emojis bleiben gestrichen. Die Erklärung klappt darunter auf. */
-.card .term .emo-x {
-  text-decoration: none; position: relative; display: inline-block; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-}
-.card .term .emo-x::after {
-  content: ""; position: absolute; left: -12%; right: -12%; top: 50%; height: .14em; margin-top: -.07em;
-  background: var(--red); transform: rotate(-3deg);
-}
+/* Seit dem 21.11.2026 steht im Lexikon nichts gestrichen. Emojis bekommen
+   nur die Emoji-Schrift. Die Erklärung klappt darunter auf. */
+.card .term .emo { font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; }
 .card .term .plus {
   flex: none; font-family: var(--body); font-weight: 400; font-size: 1.25rem;
   width: 1.75rem; height: 1.75rem; display: grid; place-items: center;

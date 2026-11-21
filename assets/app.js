@@ -520,14 +520,14 @@
       b.setAttribute("aria-expanded", "false");
 
       var term = el("div", "term");
-      /* Konsultation 20.11.2026: Im Lexikon stehen Wörter ungestrichen neben
-         ihrer Einordnung, nur Emojis bleiben gestrichen. Titel mit Emoji
-         heißen deshalb „Name / Emoji“, etwa „Ratte / 🐀“. */
+      /* Seit dem 21.11.2026 steht im Lexikon nichts gestrichen, weil jeder
+         Eintrag seine Einordnung direkt daneben zeigt. Titel mit Emoji heißen
+         „Name / Emoji“, etwa „Ratte / 🐀“, wie auf den Plakaten. */
       var name = el("span", "term-t");
       x.t.split(" / ").forEach(function (part, i) {
         if (i) name.appendChild(document.createTextNode(" / "));
         var isEmo = /\p{Extended_Pictographic}/u.test(part);
-        name.appendChild(isEmo && x.lvl !== "kontext" ? el("s", "emo-x", part) : el("span", null, part));
+        name.appendChild(el("span", isEmo ? "emo" : null, part));
       });
       term.appendChild(name);
       term.appendChild(el("span", "plus", "+"));
