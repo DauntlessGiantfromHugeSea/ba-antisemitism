@@ -40,7 +40,12 @@
        auf Karte 6,8 : 1, auf Fläche beim Überfahren #DCD5C8 4,8 : 1.
      Signalrot #E1251B auf Papier 4,09 : 1, deshalb nur Strich, Fläche
        kleiner Knöpfe und Grafik. Weiß auf Signalrot 4,69 : 1, Weiß auf
-       dunklem Rot #B5140B (Überfahren) 6,84 : 1. */
+       dunklem Rot #B5140B (Überfahren) 6,84 : 1.
+     Rot-Tönung #F8E3DC (21.11.2026, mehr Farbe): Schrift darauf 12,56 : 1,
+       Schrift 2 5,73 : 1, Rot als große Zahl oder Grafik 3,80 : 1.
+     Rot-Tönung 2 #F1CDC2 nur als Scheibe hinter Zeichen, Schrift darauf
+       10,52 : 1. Rot als große Zahl (ab 24 px fett) auf Papier 4,09 : 1,
+       auf Karte 4,45 : 1, über 3 : 1 für große Schrift. */
   --paper:     #F3EFE7;
   --surface:   #E7E1D6;
   --surface-2: #DCD5C8;   /* Überfahren auf Fläche */
@@ -52,6 +57,8 @@
   --red:       #E1251B;   /* Strich und kleine Handlungselemente */
   --red-dk:    #B5140B;   /* Überfahren auf Rot */
   --on-red:    #FFFFFF;
+  --red-tint:  #F8E3DC;   /* aktive Kachel, offene Karte, Überfahren, Zahlenband */
+  --red-tint-2:#F1CDC2;   /* Scheibe hinter den Zeichen */
 
   /* Urteilsfarben im Test. Sie tragen dort Bedeutung und bleiben.
      Auf Karte und Fläche jeweils über 4,6 : 1. */
@@ -149,6 +156,12 @@ img { max-width: 100%; }
   display: flex; align-items: baseline; gap: .6rem;
 }
 .secnum { color: var(--ink); font-weight: 700; letter-spacing: .04em; font-variant-numeric: tabular-nums; }
+/* Abschnittsnummer als kleine Pille in Rot-Tönung, Ziffer in Schrift
+   (12,56 : 1). Kleine Schrift bleibt nie rot. */
+.eyebrow .secnum {
+  background: var(--red-tint); border-radius: var(--pill);
+  padding: .2rem .55rem; margin-left: -.05rem;
+}
 
 p { max-width: var(--measure); }
 .sub { color: var(--ink-2); }
@@ -259,7 +272,7 @@ mark.emo { margin-inline: .12em .2em; }
   position: fixed; inset: 0 0 auto; height: 2px; z-index: 120; pointer-events: none;
 }
 .progress-top i {
-  display: block; height: 100%; background: var(--ink-2);
+  display: block; height: 100%; background: var(--red);
   transform: scaleX(0); transform-origin: left;
 }
 
@@ -297,7 +310,8 @@ mark.emo { margin-inline: .12em .2em; }
   transition: color .2s ease, background .2s ease;
 }
 .nav a span { display: none; }
-.nav a:hover, .nav a.is-current { color: var(--ink); background: var(--surface); }
+.nav a:hover { color: var(--ink); background: var(--surface); }
+.nav a.is-current { color: var(--ink); background: var(--red-tint); }
 
 .menu-btn { display: none; }
 
@@ -484,6 +498,15 @@ html:not(.js) .ticker-box { display: none; }
   border-top: 1px solid var(--ink);
   padding-top: clamp(1rem, 2vw, 1.25rem);
   margin-bottom: var(--head-gap);
+}
+/* Roter Anstrich auf der Kopflinie: ein kurzes Stück in Signalrot,
+   gleich für alle Köpfe, das Zahlenband und den Fuß. */
+.sec-head, .matrix-head, .levels-head, .melden, .facts-band .eyebrow, .foot .shell > .big, .drill-head { position: relative; }
+.sec-head::before, .matrix-head::before, .levels-head::before, .melden::before,
+.facts-band .eyebrow::before, .foot .shell > .big::before, .drill-head::before {
+  content: ""; position: absolute; left: 0; top: -2px;
+  width: clamp(2.5rem, 5vw, 4rem); height: 3px; background: var(--red);
+  border-radius: 0 0 2px 0;
 }
 .sec-head h2, .matrix-title, .melden h2 { font-size: var(--fs-h2); line-height: 1.02; }
 .sec-head .sub, .matrix-head .sub, .levels-head .sub, .melden .sub {
