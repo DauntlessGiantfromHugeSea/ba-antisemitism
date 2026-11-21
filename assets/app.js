@@ -540,7 +540,7 @@
       /* Seit dem 21.11.2026 steht jeder Code schon in der geschlossenen Karte
          mit einem Satz Einordnung: die Kurzbedeutung aus KURZ oder der erste
          Satz der Erklärung. Die ganze Erklärung klappt darunter auf. */
-      var kurzSatz = (typeof KURZ !== "undefined" && KURZ[x.t]) || (x.d.match(/^.*?[.!?](?=\s|$)/) || [x.d])[0];
+      var kurzSatz = (typeof KURZ !== "undefined" && KURZ[x.t]) || (x.d.match(/^.*?[^\d\s][.!?](?=\s+[A-ZÄÖÜ„"(]|$)/) || [x.d])[0];
       b.appendChild(el("p", "kurz", kurzSatz));
       b.appendChild(el("div", "def", x.d));
       b.appendChild(el("div", "cat", "Quelle: " + x.src + KONTEXT));
